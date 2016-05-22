@@ -12,16 +12,14 @@ namespace keep.grass
 		}
 		static public DateTime GetLastPublicActivity(string Id)
 		{
-			using(var doc = new XmlDocument())
+			var doc = new XmlDocument();
+			doc.Load(AtomUrl(Id));
+			var eumerator = doc.ChildNodes.GetEnumerator();
+			while(eumerator.MoveNext())
 			{
-				doc.Load(AtomUrl(Id));
-				var eumerator = doc.ChildNodes.GetEnumerator();
-				while(eumerator.MoveNext())
-				{
 
 
-					throw new NotImplementedException();
-				}
+				throw new NotImplementedException();
 			}
 			throw new MissingFieldException();
 		}
