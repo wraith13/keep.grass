@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/wraith13</id>
+  <link type="text/html" rel="alternate" href="https://github.com/wraith13"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/wraith13.atom"/>
+  <title>wraith13’s Activity</title>
+  <updated>2016-05-16T16:29:47Z</updated>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4019904402</id>
+    <published>2016-05-16T16:29:47Z</published>
+    <updated>2016-05-16T16:29:47Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/8e640a2060...c83a120511"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-16T16:29:47Z&quot;&gt;May 16, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/c83a120511a266c27018fb5dfd7772fab4156b92&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;c83a120&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              db: relation テーブル定義の修正
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4016579134</id>
+    <published>2016-05-15T17:55:46Z</published>
+    <updated>2016-05-15T17:55:46Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/69a884211e...8e640a2060"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-15T17:55:46Z&quot;&gt;May 15, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/8e640a206098dd7d820fc0bf6867cc7dfa919df8&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;8e640a2&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              api: 内部的なユーザー追加処理( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4015155930</id>
+    <published>2016-05-14T18:28:32Z</published>
+    <updated>2016-05-14T18:28:32Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/6a87df21d6...69a884211e"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-14T18:28:32Z&quot;&gt;May 14, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/69a884211ec5bb573322b6f36aff030af587b276&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;69a8842&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              queueテーブルをrelationテーブルに統合
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4013039834</id>
+    <published>2016-05-13T19:39:23Z</published>
+    <updated>2016-05-13T19:39:23Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/9e02882156...6a87df21d6"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-13T19:39:23Z&quot;&gt;May 13, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/6a87df21d6cdbe7c002deeca7974b4dc05db3f17&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;6a87df2&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              db: relationテーブルの追加
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4009562863</id>
+    <published>2016-05-13T04:55:18Z</published>
+    <updated>2016-05-13T04:55:18Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/31d67a7cba...9e02882156"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-13T04:55:18Z&quot;&gt;May 13, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/9e0288215695a905735642845a1ba572c9911343&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;9e02882&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              db: table破棄対象から漏れていたtableを追加
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4006942608</id>
+    <published>2016-05-12T16:25:23Z</published>
+    <updated>2016-05-12T16:25:23Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/9e9158e702...31d67a7cba"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-12T16:25:23Z&quot;&gt;May 12, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/31d67a7cbac9e43f1c3933b05cc11c2c0bb1e88d&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;31d67a7&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              api: 内部的なユーザー追加処理( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/4001011811</id>
+    <published>2016-05-11T15:26:41Z</published>
+    <updated>2016-05-11T15:26:41Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/22c213114b...9e9158e702"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-11T15:26:41Z&quot;&gt;May 11, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/9e9158e702ad3cae98fd5ece8120fc13de97d11b&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;9e9158e&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              api: 内部的なユーザー追加処理( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3996539398</id>
+    <published>2016-05-10T19:07:03Z</published>
+    <updated>2016-05-10T19:07:03Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/74a47e9976...22c213114b"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-10T19:07:03Z&quot;&gt;May 10, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/22c213114bbb46e7e736ffbdebb6657ee81221ea&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;22c2131&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              api: 変数名のスペルミスの訂正
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3991806623</id>
+    <published>2016-05-09T22:12:11Z</published>
+    <updated>2016-05-09T22:12:11Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/d50a74c345...74a47e9976"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-09T22:12:11Z&quot;&gt;May 9, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/74a47e997630eb65e0f76dc3badbb5893beab039&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;74a47e9&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              JavaScript: 共同管理者登録APIの呼び出し ( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3987018268</id>
+    <published>2016-05-08T23:05:35Z</published>
+    <updated>2016-05-08T23:05:35Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/e5ec6cac90...d50a74c345"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-08T23:05:35Z&quot;&gt;May 8, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/d50a74c345deb156bc81c105b96cc7b1cdd5df21&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;d50a74c&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              JavaScript: 間違えて http の PUT を使っていたので POST に訂正
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3985759727</id>
+    <published>2016-05-08T04:06:37Z</published>
+    <updated>2016-05-08T04:06:37Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/a3728d1566...e5ec6cac90"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-08T04:06:37Z&quot;&gt;May 8, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/e5ec6cac9039052d8f5a2cb75b7698b4d5d6ad5f&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;e5ec6ca&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              共同管理者のタグ表示
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3984341568</id>
+    <published>2016-05-07T04:03:38Z</published>
+    <updated>2016-05-07T04:03:38Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/eab306d245...a3728d1566"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-07T04:03:38Z&quot;&gt;May 7, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/a3728d15663cdfbcfe25764a8d31ca8b2a14160c&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;a3728d1&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              イベントに情報に共同管理者を表示
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3983096232</id>
+    <published>2016-05-06T19:13:41Z</published>
+    <updated>2016-05-06T19:13:41Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/9d94bed8b7...eab306d245"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-06T19:13:41Z&quot;&gt;May 6, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/eab306d24577012713534d1afcbae304c2173863&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;eab306d&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              JavaScript: twitterユーザー情報取得関数にコールバック引数を追加
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3980124873</id>
+    <published>2016-05-06T05:11:38Z</published>
+    <updated>2016-05-06T05:11:38Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/f94f05fae6...9d94bed8b7"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-06T05:11:38Z&quot;&gt;May 6, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/9d94bed8b77d2d3c3732837ebaacbf79fc8a02e6&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;9d94bed&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              JavaScript: アイコンURL取得処理の関数化
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3979649516</id>
+    <published>2016-05-06T01:07:05Z</published>
+    <updated>2016-05-06T01:07:05Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/c3674b372d...f94f05fae6"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-06T01:07:05Z&quot;&gt;May 6, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/f94f05fae60c36f9e778475f50d4f7e41a0381cb&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;f94f05f&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              twitterユーザー情報取得js
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3975678222</id>
+    <published>2016-05-05T07:14:40Z</published>
+    <updated>2016-05-05T07:14:40Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/7ee4026a07...c3674b372d"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-05T07:14:40Z&quot;&gt;May 5, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/c3674b372de2ac1bf79a5b6dcb97b7d781ed4773&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;c3674b3&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              twitterユーザー情報取得APIの複数ユーザー対応
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3975527469</id>
+    <published>2016-05-05T06:05:43Z</published>
+    <updated>2016-05-05T06:05:43Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/697475ed46...7ee4026a07"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-05T06:05:43Z&quot;&gt;May 5, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/7ee4026a0762a0a34843a5f5b602bbb78e956ca1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;7ee4026&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              twitterユーザー情報取得APIの複数ユーザー対応( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3970378215</id>
+    <published>2016-05-04T06:54:12Z</published>
+    <updated>2016-05-04T06:54:12Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/8ab2b12198...697475ed46"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-04T06:54:12Z&quot;&gt;May 4, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/697475ed46954b199e2e2494e64eebe61b069e57&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;697475e&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              共同管理メンバーが複数いるとドロップダウンメニューが表示されなくなる問題の修正
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3970296849</id>
+    <published>2016-05-04T06:19:09Z</published>
+    <updated>2016-05-04T06:19:09Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/43e4d0d82a...8ab2b12198"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-04T06:19:09Z&quot;&gt;May 4, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/8ab2b1219841697902071adf3e3f0bfc522e734a&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;8ab2b12&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              追加メンバー情報読み込み失敗時の処理
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3967151805</id>
+    <published>2016-05-03T15:20:09Z</published>
+    <updated>2016-05-03T15:20:09Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/3a6f869b72...43e4d0d82a"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-03T15:20:09Z&quot;&gt;May 3, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/43e4d0d82aae1743c743058af44d5e1f69bb9727&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;43e4d0d&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              追加メンバーの loading 表示
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3962344181</id>
+    <published>2016-05-02T16:27:39Z</published>
+    <updated>2016-05-02T16:27:39Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/38a3b215a2...3a6f869b72"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-02T16:27:39Z&quot;&gt;May 2, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/3a6f869b72bcfe7be8168ee37db4658b2188770d&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;3a6f869&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              表示されなくなっていた共同管理者のタグ表示
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3959052168</id>
+    <published>2016-05-01T17:15:23Z</published>
+    <updated>2016-05-01T17:15:23Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/49296f5f04...38a3b215a2"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-05-01T17:15:23Z&quot;&gt;May 1, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/38a3b215a29e1c24482732f50e54dcb8abb60579&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;38a3b21&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              メンバー名入力エディットから[Enter]キー押下で追加
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3957182869</id>
+    <published>2016-04-30T17:50:03Z</published>
+    <updated>2016-04-30T17:50:03Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/df0bf1680f...49296f5f04"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-30T17:50:03Z&quot;&gt;Apr 30, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/49296f5f0410b7acfecec29cd59d1c1fdbdf089e&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;49296f5&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              共同管理者の管理UI ( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3955900468</id>
+    <published>2016-04-29T23:12:57Z</published>
+    <updated>2016-04-29T23:12:57Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/9d4c28f3be...df0bf1680f"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-29T23:12:57Z&quot;&gt;Apr 29, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/df0bf1680fdd9d1021f693a5bc1a0c498d69bca6&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;df0bf16&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              共同管理者の管理UI ( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3951258533</id>
+    <published>2016-04-28T23:56:30Z</published>
+    <updated>2016-04-28T23:56:30Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/f4858a3968...9d4c28f3be"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-28T23:56:30Z&quot;&gt;Apr 28, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/9d4c28f3bef89a82423d1ce6943318c18d8bed7a&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;9d4c28f&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              共同管理者の管理UI ( WIP )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3945935188</id>
+    <published>2016-04-28T00:44:34Z</published>
+    <updated>2016-04-28T00:44:34Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/cea07e0dd1...f4858a3968"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-28T00:44:34Z&quot;&gt;Apr 28, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/f4858a3968e19bc2512b8ee5fcd12d064a0f16b4&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;f4858a3&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              editmodeの多態化
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3943417507</id>
+    <published>2016-04-27T15:20:00Z</published>
+    <updated>2016-04-27T15:20:00Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/275088120b...cea07e0dd1"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-27T15:20:00Z&quot;&gt;Apr 27, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/cea07e0dd1ca2bfb88f4ee03f9a784245e58a257&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;cea07e0&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              [共同管理者の管理]ボタンの追加
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3938337531</id>
+    <published>2016-04-26T16:39:20Z</published>
+    <updated>2016-04-26T16:39:20Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/4074161b13...275088120b"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-26T16:39:20Z&quot;&gt;Apr 26, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/275088120b68a973db0cd9b7f7cacd99d6159dd7&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;2750881&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              livetile画像の解像度を上げた( その方が推奨されてるようなので )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3935360619</id>
+    <published>2016-04-26T04:44:59Z</published>
+    <updated>2016-04-26T04:44:59Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/44bb27c979...4074161b13"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-26T04:44:59Z&quot;&gt;Apr 26, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/4074161b13869774fe877a092b6d82d5affcc6d7&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;4074161&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              livetile対応( と言っても通知は対応してない )
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/3931540225</id>
+    <published>2016-04-25T12:54:58Z</published>
+    <updated>2016-04-25T12:54:58Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/sepiatournament/compare/fa36c3b1ff...44bb27c979"/>
+    <title type="html">wraith13 pushed to master at wraith13/sepiatournament</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?v=3&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;svg aria-label=&quot;Push&quot; class=&quot;octicon octicon-git-commit dashboard-event-icon&quot; height=&quot;32&quot; role=&quot;img&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 14 16&quot; width=&quot;28&quot;&gt;&lt;path d=&quot;M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;relative-time datetime=&quot;2016-04-25T12:54:58Z&quot;&gt;Apr 25, 2016&lt;/relative-time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/sepiatournament/tree/master&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/sepiatournament&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot;&gt;wraith13/sepiatournament&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;gravatar&quot; height=&quot;30&quot; src=&quot;https://avatars0.githubusercontent.com/u/645907?v=3&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;wraith13&quot;&gt;
+            &lt;img alt=&quot;@wraith13&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?v=3&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/wraith13/sepiatournament/commit/44bb27c97956364f9b71a12ccdfca9a88afc6396&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot;&gt;44bb27c&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              ios 用 splash 画像の path 変更
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>
