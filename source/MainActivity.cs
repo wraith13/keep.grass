@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace keep.grass
 {
-	[Activity(Label = "primeapp", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "keep.grass", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
