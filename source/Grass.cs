@@ -12,16 +12,20 @@ namespace keep.grass
 		}
 		static public DateTime GetLastPublicActivity(string Id)
 		{
+			throw new NotImplementedException();
+
+			/*
+			Portable Class Library では XmlDocument が使用できないっぽい。
 			var doc = new XmlDocument();
 			doc.Load(AtomUrl(Id));
 			var eumerator = doc.ChildNodes.GetEnumerator();
 			while(eumerator.MoveNext())
 			{
 
-
 				throw new NotImplementedException();
 			}
 			throw new MissingFieldException();
+			*/
 		}
 	}
 }
