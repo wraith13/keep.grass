@@ -6,20 +6,28 @@ namespace keep.grass
 {
 	public class App : Application
 	{
+		NavigationPage navigation;
 		public App()
 		{
 			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
+			MainPage = navigation = new NavigationPage
+			(
+				new ContentPage {
+					Content = new StackLayout {
+						VerticalOptions = LayoutOptions.Center,
+						Children = {
+							new Label {
+								XAlign = TextAlignment.Center,
+								Text = "Welcome to Xamarin Forms!",
+							},
+							new Button {
+								Text = "Setting",
+								Command = new Command(o => navigation.PushAsync(new SettingsPage())),
+							},
 						}
 					}
 				}
-			};
+			);
 		}
 
 		protected override void OnStart()
