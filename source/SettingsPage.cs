@@ -1,11 +1,13 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using keep.grass.Helpers;
 
 namespace keep.grass
 {
 	public class SettingsPage : ContentPage
 	{
+		EntryCell UserNameCell = null;
 		public SettingsPage()
 		{
 			Content = new StackLayout { 
@@ -17,11 +19,13 @@ namespace keep.grass
 						{
 							new TableSection("Github Account")
 							{
-								new EntryCell
-								{
-									Label = "User Name",
-									Text = "wraith13",
-								},
+								(
+									UserNameCell = new EntryCell
+									{
+										Label = "User Name",
+										Text = "",
+									}
+								),
 							},
 							new TableSection("Alerts")
 							{
@@ -82,6 +86,16 @@ namespace keep.grass
 					},
 				},
 			};
+		}
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			UserNameCell.Text = Settings.UserName;
+		}
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
+			Settings.UserName = UserNameCell.Text;
 		}
 	}
 }

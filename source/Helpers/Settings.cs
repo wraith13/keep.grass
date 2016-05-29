@@ -4,40 +4,54 @@ using Plugin.Settings.Abstractions;
 
 namespace keep.grass.Helpers
 {
-  /// <summary>
-  /// This is the Settings static class that can be used in your Core solution or in any
-  /// of your client applications. All settings are laid out the same exact way with getters
-  /// and setters. 
-  /// </summary>
-  public static class Settings
-  {
-    private static ISettings AppSettings
-    {
-      get
-      {
-        return CrossSettings.Current;
-      }
-    }
+	/// <summary>
+	/// This is the Settings static class that can be used in your Core solution or in any
+	/// of your client applications. All settings are laid out the same exact way with getters
+	/// and setters. 
+	/// </summary>
+	public static class Settings
+	{
+		private static ISettings AppSettings
+		{
+			get
+			{
+				return CrossSettings.Current;
+			}
+		}
 
-    #region Setting Constants
+		#region Setting Constants
 
-    private const string SettingsKey = "settings_key";
-    private static readonly string SettingsDefault = string.Empty;
+		private const string SettingsKey = "settings_key";
+		private static readonly string SettingsDefault = string.Empty;
 
-    #endregion
+		#endregion
 
 
-    public static string GeneralSettings
-    {
-      get
-      {
-        return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
-      }
-      set
-      {
-        AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
-      }
-    }
+		public static string GeneralSettings
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
+			}
+		}
 
-  }
+		private const string UserNameKey = "UserName";
+		private static readonly string UserNameDefault = string.Empty;
+		public static string UserName
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<string>(UserNameKey, UserNameDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(UserNameKey, value);
+			}
+		}
+
+	}
 }
