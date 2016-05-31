@@ -12,54 +12,6 @@ namespace keep.grass
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
 
-		TimeSpan[] TimeSpanTable = new []
-		{
-			TimeSpan.FromTicks(0),
-			TimeSpan.FromMinutes(5),
-			TimeSpan.FromMinutes(10),
-			TimeSpan.FromMinutes(15),
-			TimeSpan.FromMinutes(30),
-			TimeSpan.FromMinutes(45),
-			TimeSpan.FromHours(1),
-			TimeSpan.FromHours(2),
-			TimeSpan.FromHours(3),
-			TimeSpan.FromHours(6),
-			TimeSpan.FromHours(9),
-			TimeSpan.FromHours(12),
-			TimeSpan.FromHours(18),
-		};
-
-		public string TimeSpanToSwitchLabelString(TimeSpan left)
-		{
-			if (TimeSpan.FromHours(1) < left)
-			{
-				return String.Format("{0} hours left", left.TotalHours);
-			}
-			else
-			if (TimeSpan.FromHours(1) == left)
-			{
-				return "1 hour left";
-			}
-			else
-			if (TimeSpan.FromMinutes(1) < left)
-			{
-				return String.Format("{0} minutes left", left.TotalMinutes);
-			}
-			else
-			if (TimeSpan.FromMinutes(1) == left)
-			{
-				return "1 minute left";
-			}
-			else
-			{
-				return "Just 24 hours later";
-			}
-		}
-		public string TimeSpanToSettingKey(TimeSpan left)
-		{
-			return String.Format("alert{0}{1}", left.Hours, left.Minutes);
-		}
-
 		public SettingsPage()
 		{
 			Content = new StackLayout { 
@@ -82,14 +34,14 @@ namespace keep.grass
 							new TableSection("Alerts")
 							{
 								(
-									AlertSwitchCellList = TimeSpanTable.Select
+									AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
 									(
 										i => new KeyValuePair<TimeSpan, SwitchCell>
 										(
 											i,
 											new SwitchCell
 											{
-												Text = TimeSpanToSwitchLabelString(i),
+											Text = Settings.AlertTimeSpanToDisplayName(i),
 											}
 										)
 									)
@@ -108,7 +60,7 @@ namespace keep.grass
 			UserNameCell.Text = Settings.UserName;
 			foreach(var cell in AlertSwitchCellList)
 			{
-				cell.Value.On = Settings.get(TimeSpanToSettingKey(cell.Key), false);
+				cell.Value.On = Settings.GetAlert(cell.Key);
 			}
 		}
 		protected override void OnDisappearing()
@@ -117,7 +69,7 @@ namespace keep.grass
 			Settings.UserName = UserNameCell.Text;
 			foreach(var cell in AlertSwitchCellList)
 			{
-				Settings.set(TimeSpanToSettingKey(cell.Key), cell.Value.On);
+				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
 		}
 	}
