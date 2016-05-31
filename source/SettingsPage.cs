@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
@@ -9,6 +10,7 @@ namespace keep.grass
 	public class SettingsPage : ContentPage
 	{
 		EntryCell UserNameCell = null;
+		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
 
 		TimeSpan[] TimeSpanTable = new []
 		{
@@ -53,6 +55,10 @@ namespace keep.grass
 				return "Just 24 hours later";
 			}
 		}
+		public string TimeSpanToSettingKey(TimeSpan left)
+		{
+			return String.Format("alert{0}{1}", left.Hours, left.Minutes);
+		}
 
 		public SettingsPage()
 		{
@@ -75,13 +81,21 @@ namespace keep.grass
 							},
 							new TableSection("Alerts")
 							{
-								TimeSpanTable.Select
 								(
-									i => new SwitchCell
-									{
-										Text = TimeSpanToSwitchLabelString(i),
-									}
+									AlertSwitchCellList = TimeSpanTable.Select
+									(
+										i => new KeyValuePair<TimeSpan, SwitchCell>
+										(
+											i,
+											new SwitchCell
+											{
+												Text = TimeSpanToSwitchLabelString(i),
+											}
+										)
+									)
+									.ToArray()
 								)
+								.Select(i => i.Value)
 							},
 						}
 					},
@@ -92,11 +106,19 @@ namespace keep.grass
 		{
 			base.OnAppearing();
 			UserNameCell.Text = Settings.UserName;
+			foreach(var cell in AlertSwitchCellList)
+			{
+				cell.Value.On = Settings.get(TimeSpanToSettingKey(cell.Key), false);
+			}
 		}
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
 			Settings.UserName = UserNameCell.Text;
+			foreach(var cell in AlertSwitchCellList)
+			{
+				Settings.set(TimeSpanToSettingKey(cell.Key), cell.Value.On);
+			}
 		}
 	}
 }

@@ -53,5 +53,13 @@ namespace keep.grass.Helpers
 			}
 		}
 
+		public static T get<T>(string Key, T DefaultValue)
+		{
+			return AppSettings.GetValueOrDefault<T>(Key, DefaultValue);
+		}
+		public static void set<T>(string Key, T NewValue)
+		{
+			AppSettings.AddOrUpdateValue<T>(Key, NewValue);
+		}
 	}
 }
