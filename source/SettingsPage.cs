@@ -41,7 +41,8 @@ namespace keep.grass
 											i,
 											new SwitchCell
 											{
-											Text = Settings.AlertTimeSpanToDisplayName(i),
+												Text = Settings.AlertTimeSpanToDisplayName(i),
+												On = Settings.GetAlert(i),
 											}
 										)
 									)
