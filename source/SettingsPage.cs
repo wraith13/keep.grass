@@ -14,6 +14,7 @@ namespace keep.grass
 
 		public SettingsPage()
 		{
+			Title = "Settings";
 			Content = new StackLayout { 
 				Children =
 				{
@@ -72,6 +73,7 @@ namespace keep.grass
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
+			System.Diagnostics.Debug.WriteLine(Grass.GetLastPublicActivity(UserNameCell.Text));
 		}
 	}
 }
