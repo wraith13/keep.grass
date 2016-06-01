@@ -21,7 +21,7 @@ namespace keep.grass
 								Text = "Welcome to Xamarin Forms!",
 							},
 							new Button {
-								Text = "Setting",
+								Text = "Settings",
 								Command = new Command(o => navigation.PushAsync(new SettingsPage())),
 							},
 						}
