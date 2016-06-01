@@ -26,6 +26,7 @@ namespace keep.grass.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.LocalNotifications.Resource.Drawable.plugin_lc_smallicon = global::keep.grass.Droid.Resource.Drawable.plugin_lc_smallicon;
 		}
 		
 		public partial class Attribute
@@ -46,6 +47,9 @@ namespace keep.grass.Droid
 			
 			// aapt resource value: 0x7f020000
 			public const int icon = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int plugin_lc_smallicon = 2130837505;
 			
 			static Drawable()
 			{
