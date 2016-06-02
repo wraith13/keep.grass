@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 
 using keep.grass.Helpers;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -33,7 +34,7 @@ namespace keep.grass
 					}
 				}
 			);
-			UpdateInfo();
+			UpdateInfoAsync().Wait(0);
 		}
 
 		protected override void OnStart()
@@ -47,10 +48,10 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
-			UpdateInfo();
+			UpdateInfoAsync().Wait(0);
 		}
 
-		protected void UpdateInfo()
+		protected async Task UpdateInfoAsync()
 		{
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
@@ -58,7 +59,7 @@ namespace keep.grass
 				UserLabel.Text = "User: " + User;
 				UserLabel.TextColor = Color.Default;
 
-				var LastPublicActivity = Grass.GetLastPublicActivity(User);
+				var LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
 				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
 				var LeftTime = LastPublicActivity.AddHours(24) -DateTime.Now;

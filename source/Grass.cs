@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -12,16 +13,20 @@ namespace keep.grass
 		{
 			return String.Format (AtomUrlFormat, Id);
 		}
-		static public DateTime GetLastPublicActivity(string Id)
+		static public async Task<DateTime> GetLastPublicActivityAsync(string Id)
 		{
-			return DateTime.Parse
+			return await Task.Factory.StartNew<DateTime>
 			(
-				XDocument
+				() =>
+				DateTime.Parse
+				(
+					XDocument
 					.Load(AtomUrl(Id))
 					.Descendants()
 					.Where(i => i.Name.LocalName == "updated")
 					.First()
 					.Value
+				)
 			);
 		}
 	}

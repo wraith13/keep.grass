@@ -73,7 +73,6 @@ namespace keep.grass
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
-			System.Diagnostics.Debug.WriteLine(Grass.GetLastPublicActivity(UserNameCell.Text));
 		}
 	}
 }
