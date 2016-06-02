@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 
 using keep.grass.Helpers;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace keep.grass
@@ -13,6 +14,9 @@ namespace keep.grass
 		Label UserLabel = new Label();
 		Label LastActivityStampLabel = new Label();
 		Label LeftTimeLabel = new Label();
+		DateTime LastPublicActivity;
+
+		Task UpdateLeftTimeTask = null;
 
 		public App()
 		{
@@ -59,10 +63,40 @@ namespace keep.grass
 				UserLabel.Text = "User: " + User;
 				UserLabel.TextColor = Color.Default;
 
-				var LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
+				LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
 				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
-				var LeftTime = LastPublicActivity.AddHours(24) -DateTime.Now;
+				if (null == UpdateLeftTimeTask)
+				{
+					UpdateLeftTimeTask = new Task
+					(
+						() =>
+						{
+							while(true)
+							{
+								Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+								Task.Delay(100).Wait();
+							}
+						}
+					);
+					UpdateLeftTimeTask.Start();
+				}
+			}
+			else
+			{
+				UserLabel.Text = "User: unspecified";
+				UserLabel.TextColor = Color.Default;
+				LastPublicActivity = default(DateTime);
+				LastActivityStampLabel.Text = "";
+				LeftTimeLabel.Text = "";
+			}
+		}
+
+		protected void UpdateLeftTime()
+		{
+			if (default(DateTime) != LastPublicActivity)
+			{
+				var LeftTime = LastPublicActivity.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = "Left Time: " + LeftTime.ToString("hh\\:mm\\:ss");
 				if (LeftTime < TimeSpan.FromHours(0))
 				{
@@ -90,9 +124,6 @@ namespace keep.grass
 			}
 			else
 			{
-				UserLabel.Text = "User: unspecified";
-				UserLabel.TextColor = Color.Default;
-				LastActivityStampLabel.Text = "";
 				LeftTimeLabel.Text = "";
 			}
 		}
