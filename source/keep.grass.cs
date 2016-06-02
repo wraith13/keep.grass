@@ -60,7 +60,7 @@ namespace keep.grass
 				UserLabel.TextColor = Color.Default;
 
 				var LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
-				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd hh:mm:ss");
 
 				var LeftTime = LastPublicActivity.AddHours(24) -DateTime.Now;
 				LeftTimeLabel.Text = "Left Time: " + LeftTime.ToString("hh\\:mm\\:ss");
