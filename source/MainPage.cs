@@ -63,7 +63,7 @@ namespace keep.grass
 				UserLabel.ImageSource = GitHub.GetIconUrl(User);
 				UserLabel.Text = User;
 				UserLabel.TextColor = Color.Default;
-
+			
 				LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 				LastActivityStampLabel.Text = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -99,7 +99,7 @@ namespace keep.grass
 			if (default(DateTime) != LastPublicActivity)
 			{
 				var LeftTime = LastPublicActivity.AddHours(24) - DateTime.Now;
-				LeftTimeLabel.Text = LeftTime.ToString("hh\\:mm\\:ss");
+				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				if (LeftTime < TimeSpan.FromHours(0))
 				{
 					LeftTimeLabel.TextColor = Color.Red;
