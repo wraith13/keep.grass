@@ -18,6 +18,7 @@ namespace keep.grass
 
 		public MainPage(App app)
 		{
+			Title = "keep.grass";
 			Content = new StackLayout { 
 				Children =
 				{
