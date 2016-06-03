@@ -15,6 +15,7 @@ namespace keep.grass
 			(
 				new MainPage(this)
 			);
+			MainPage.Title = "keep.grass";
 		}
 
 		protected override void OnStart()
