@@ -2,43 +2,19 @@
 
 using Xamarin.Forms;
 
-using keep.grass.Helpers;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace keep.grass
 {
 	public class App : Application
 	{
-		NavigationPage navigation;
-		Label UserLabel = new Label();
-		Label LastActivityStampLabel = new Label();
-		Label LeftTimeLabel = new Label();
-		DateTime LastPublicActivity;
-
-		Task UpdateLeftTimeTask = null;
+		public NavigationPage navigation;
 
 		public App()
 		{
 			// The root page of your application
 			MainPage = navigation = new NavigationPage
 			(
-				new ContentPage {
-					Content = new StackLayout {
-						VerticalOptions = LayoutOptions.Center,
-						Children = {
-							UserLabel,
-							LastActivityStampLabel,
-							LeftTimeLabel,
-							new Button {
-								Text = "Settings",
-								Command = new Command(o => navigation.PushAsync(new SettingsPage())),
-							},
-						}
-					}
-				}
+				new MainPage(this)
 			);
-			UpdateInfoAsync().Wait(0);
 		}
 
 		protected override void OnStart()
@@ -52,81 +28,8 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
-			UpdateInfoAsync().Wait(0);
 		}
 
-		protected async Task UpdateInfoAsync()
-		{
-			var User = Settings.UserName;
-			if (!String.IsNullOrWhiteSpace(User))
-			{
-				UserLabel.Text = "User: " + User;
-				UserLabel.TextColor = Color.Default;
-
-				LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
-				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
-
-				if (null == UpdateLeftTimeTask)
-				{
-					UpdateLeftTimeTask = new Task
-					(
-						() =>
-						{
-							while(true)
-							{
-								Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
-								Task.Delay(100).Wait();
-							}
-						}
-					);
-					UpdateLeftTimeTask.Start();
-				}
-			}
-			else
-			{
-				UserLabel.Text = "User: unspecified";
-				UserLabel.TextColor = Color.Default;
-				LastPublicActivity = default(DateTime);
-				LastActivityStampLabel.Text = "";
-				LeftTimeLabel.Text = "";
-			}
-		}
-
-		protected void UpdateLeftTime()
-		{
-			if (default(DateTime) != LastPublicActivity)
-			{
-				var LeftTime = LastPublicActivity.AddHours(24) - DateTime.Now;
-				LeftTimeLabel.Text = "Left Time: " + LeftTime.ToString("hh\\:mm\\:ss");
-				if (LeftTime < TimeSpan.FromHours(0))
-				{
-					LeftTimeLabel.TextColor = Color.Red;
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(3))
-				{
-					LeftTimeLabel.TextColor = Color.FromHex("FF8000");
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(6))
-				{
-					LeftTimeLabel.TextColor = Color.FromHex("808000");
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(12))
-				{
-					LeftTimeLabel.TextColor = Color.Aqua;
-				}
-				else
-				{
-					LeftTimeLabel.TextColor = Color.Green;
-				}
-			}
-			else
-			{
-				LeftTimeLabel.Text = "";
-			}
-		}
 	}
 }
 
