@@ -9,10 +9,17 @@ namespace keep.grass
 	public class GitHub
 	{
 		static private string AtomUrlFormat = "https://github.com/{0}.atom";
-		static public string AtomUrl(string Id)
+		static public string GetAtomUrl(string Id)
 		{
 			return String.Format (AtomUrlFormat, Id);
 		}
+
+		static private string IconUrlFormat = "https://github.com/{0}.png";
+		static public string GetIconUrl(string Id)
+		{
+			return String.Format (IconUrlFormat, Id);
+		}
+
 		static public async Task<DateTime> GetLastPublicActivityAsync(string Id)
 		{
 			return await Task.Factory.StartNew<DateTime>
@@ -21,7 +28,7 @@ namespace keep.grass
 				DateTime.Parse
 				(
 					XDocument
-					.Load(AtomUrl(Id))
+					.Load(GetAtomUrl(Id))
 					.Descendants()
 					.Where(i => i.Name.LocalName == "updated")
 					.First()

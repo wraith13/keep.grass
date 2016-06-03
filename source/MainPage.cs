@@ -9,7 +9,7 @@ namespace keep.grass
 {
 	public class MainPage : ContentPage
 	{
-		TextCell UserLabel = new TextCell();
+		ImageCell UserLabel = new ImageCell();
 		TextCell LastActivityStampLabel = new TextCell();
 		TextCell LeftTimeLabel = new TextCell();
 		DateTime LastPublicActivity;
@@ -59,6 +59,7 @@ namespace keep.grass
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
+				UserLabel.ImageSource = GitHub.GetIconUrl(User);
 				UserLabel.Text = User;
 				UserLabel.TextColor = Color.Default;
 
@@ -83,6 +84,7 @@ namespace keep.grass
 			}
 			else
 			{
+				UserLabel.ImageSource = null;
 				UserLabel.Text = "unspecified";
 				UserLabel.TextColor = Color.Red;
 				LastPublicActivity = default(DateTime);
