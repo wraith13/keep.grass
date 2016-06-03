@@ -9,29 +9,42 @@ namespace keep.grass
 {
 	public class MainPage : ContentPage
 	{
-		Label UserLabel = new Label();
-		Label LastActivityStampLabel = new Label();
-		Label LeftTimeLabel = new Label();
+		TextCell UserLabel = new TextCell();
+		TextCell LastActivityStampLabel = new TextCell();
+		TextCell LeftTimeLabel = new TextCell();
 		DateTime LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;
 
 		public MainPage(App app)
 		{
-			Content = new StackLayout
-			{
-				VerticalOptions = LayoutOptions.Center,
+			Content = new StackLayout { 
 				Children =
 				{
-					UserLabel,
-					LastActivityStampLabel,
-					LeftTimeLabel,
+					new TableView
+					{
+						Root = new TableRoot
+						{
+							new TableSection("Github Account")
+							{
+								UserLabel,
+							},
+							new TableSection("Last Acitivity Stamp")
+							{
+								LastActivityStampLabel,
+							},
+							new TableSection("Left Time")
+							{
+								LeftTimeLabel,
+							},
+						}
+					},
 					new Button
 					{
 						Text = "Settings",
 						Command = new Command(o => app.navigation.PushAsync(new SettingsPage())),
 					},
-				}
+				},
 			};
 		}
 
@@ -46,11 +59,11 @@ namespace keep.grass
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
-				UserLabel.Text = "User: " + User;
+				UserLabel.Text = User;
 				UserLabel.TextColor = Color.Default;
 
 				LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
-				LastActivityStampLabel.Text = "Last Updated: " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				LastActivityStampLabel.Text = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
 				if (null == UpdateLeftTimeTask)
 				{
@@ -70,8 +83,8 @@ namespace keep.grass
 			}
 			else
 			{
-				UserLabel.Text = "User: unspecified";
-				UserLabel.TextColor = Color.Default;
+				UserLabel.Text = "unspecified";
+				UserLabel.TextColor = Color.Red;
 				LastPublicActivity = default(DateTime);
 				LastActivityStampLabel.Text = "";
 				LeftTimeLabel.Text = "";
@@ -83,7 +96,7 @@ namespace keep.grass
 			if (default(DateTime) != LastPublicActivity)
 			{
 				var LeftTime = LastPublicActivity.AddHours(24) - DateTime.Now;
-				LeftTimeLabel.Text = "Left Time: " + LeftTime.ToString("hh\\:mm\\:ss");
+				LeftTimeLabel.Text = LeftTime.ToString("hh\\:mm\\:ss");
 				if (LeftTime < TimeSpan.FromHours(0))
 				{
 					LeftTimeLabel.TextColor = Color.Red;
