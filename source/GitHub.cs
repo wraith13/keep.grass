@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace keep.grass
 {
-	public class Grass
+	public class GitHub
 	{
 		static private string AtomUrlFormat = "https://github.com/{0}.atom";
 		static public string AtomUrl(string Id)

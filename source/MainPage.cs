@@ -62,7 +62,7 @@ namespace keep.grass
 				UserLabel.Text = User;
 				UserLabel.TextColor = Color.Default;
 
-				LastPublicActivity = await Grass.GetLastPublicActivityAsync(User);
+				LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 				LastActivityStampLabel.Text = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
 				if (null == UpdateLeftTimeTask)
