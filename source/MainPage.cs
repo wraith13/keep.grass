@@ -19,6 +19,10 @@ namespace keep.grass
 		public MainPage(App app)
 		{
 			Title = "keep.grass";
+
+			var Command = new Command(o => app.navigation.PushAsync(new SettingsPage()));
+			UserLabel.Command = Command;
+
 			Content = new StackLayout { 
 				Children =
 				{
@@ -43,7 +47,7 @@ namespace keep.grass
 					new Button
 					{
 						Text = "Settings",
-						Command = new Command(o => app.navigation.PushAsync(new SettingsPage())),
+						Command = Command,
 					},
 				},
 			};
