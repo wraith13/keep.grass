@@ -9,6 +9,8 @@ namespace keep.grass
 {
 	public class MainPage : ContentPage
 	{
+		App Root;
+
 		ImageCell UserLabel = new ImageCell();
 		TextCell LastActivityStampLabel = new TextCell();
 		TextCell LeftTimeLabel = new TextCell();
@@ -16,11 +18,12 @@ namespace keep.grass
 
 		Task UpdateLeftTimeTask = null;
 
-		public MainPage(App app)
+		public MainPage(App AppRoot)
 		{
+			Root = AppRoot;
 			Title = "keep.grass";
 
-			var Command = new Command(o => app.navigation.PushAsync(new SettingsPage()));
+			var Command = new Command(o => Root.Navigation.PushAsync(new SettingsPage(Root)));
 			UserLabel.Command = Command;
 
 			Content = new StackLayout { 
@@ -59,15 +62,40 @@ namespace keep.grass
 			UpdateInfoAsync().Wait(0);
 		}
 
-		protected async Task UpdateInfoAsync()
+		public async Task UpdateInfoAsync()
 		{
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
-				UserLabel.ImageSource = GitHub.GetIconUrl(User);
-				UserLabel.Text = User;
-				UserLabel.TextColor = Color.Default;
-			
+				if (UserLabel.Text != User)
+				{
+					UserLabel.ImageSource = GitHub.GetIconUrl(User);
+					UserLabel.Text = User;
+					UserLabel.TextColor = Color.Default;
+					ClearActiveInfo();
+					await UpdateLastPublicActivityAsync();
+				}
+			}
+			else
+			{
+				UserLabel.ImageSource = null;
+				UserLabel.Text = "unspecified";
+				UserLabel.TextColor = Color.Red;
+				ClearActiveInfo();
+			}
+		}
+		public void ClearActiveInfo()
+		{
+			LastPublicActivity = default(DateTime);
+			LastActivityStampLabel.Text = "";
+			LeftTimeLabel.Text = "";
+		}
+
+		public async Task UpdateLastPublicActivityAsync()
+		{
+			var User = Settings.UserName;
+			if (!String.IsNullOrWhiteSpace(User))
+			{
 				LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 				LastActivityStampLabel.Text = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -86,15 +114,6 @@ namespace keep.grass
 					);
 					UpdateLeftTimeTask.Start();
 				}
-			}
-			else
-			{
-				UserLabel.ImageSource = null;
-				UserLabel.Text = "unspecified";
-				UserLabel.TextColor = Color.Red;
-				LastPublicActivity = default(DateTime);
-				LastActivityStampLabel.Text = "";
-				LeftTimeLabel.Text = "";
 			}
 		}
 

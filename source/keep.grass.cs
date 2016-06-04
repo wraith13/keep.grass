@@ -6,14 +6,15 @@ namespace keep.grass
 {
 	public class App : Application
 	{
-		public NavigationPage navigation;
+		public NavigationPage Navigation;
+		public MainPage Main;
 
 		public App()
 		{
 			// The root page of your application
-			MainPage = navigation = new NavigationPage
+			MainPage = Navigation = new NavigationPage
 			(
-				new MainPage(this)
+				Main = new MainPage(this)
 			);
 			MainPage.Title = "keep.grass";
 		}
@@ -29,8 +30,13 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
+			Main.UpdateLastPublicActivityAsync().Wait(0);
 		}
 
+		public void OnChangeSettings()
+		{
+			Main.UpdateInfoAsync().Wait(0);
+		}
 	}
 }
 

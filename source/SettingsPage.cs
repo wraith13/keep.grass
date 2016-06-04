@@ -9,11 +9,13 @@ namespace keep.grass
 {
 	public class SettingsPage : ContentPage
 	{
+		App Root;
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
 
-		public SettingsPage()
+		public SettingsPage(App AppRoot)
 		{
+			Root = AppRoot;
 			Title = "Settings";
 			Content = new StackLayout { 
 				Children =
@@ -73,6 +75,7 @@ namespace keep.grass
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
+			Root.OnChangeSettings();
 		}
 	}
 }
