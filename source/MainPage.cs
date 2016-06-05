@@ -23,8 +23,7 @@ namespace keep.grass
 			Root = AppRoot;
 			Title = "keep.grass";
 
-			var Command = new Command(o => Root.Navigation.PushAsync(new SettingsPage(Root)));
-			UserLabel.Command = Command;
+			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
 
 			Content = new StackLayout { 
 				Children =
@@ -50,7 +49,7 @@ namespace keep.grass
 					new Button
 					{
 						Text = "Settings",
-						Command = Command,
+						Command = UserLabel.Command,
 					},
 				},
 			};
@@ -59,6 +58,7 @@ namespace keep.grass
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+			Root.ShowSettingsButtonOnToolbar();
 			UpdateInfoAsync().Wait(0);
 		}
 

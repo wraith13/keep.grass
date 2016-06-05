@@ -61,6 +61,9 @@ namespace keep.grass
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+
+			Root.HideSettingsButtonOnToolbar();
+
 			UserNameCell.Text = Settings.UserName;
 			foreach(var cell in AlertSwitchCellList)
 			{
