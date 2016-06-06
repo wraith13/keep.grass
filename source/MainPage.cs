@@ -48,8 +48,8 @@ namespace keep.grass
 					},
 					new Button
 					{
-						Text = "Settings",
-						Command = UserLabel.Command,
+						Text = "Update",
+						Command = new Command(o => UpdateLastPublicActivityAsync().Wait(0)),
 					},
 				},
 			};
