@@ -1,6 +1,8 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Plugin.LocalNotifications;
+using keep.grass.Helpers;
 
 namespace keep.grass
 {
@@ -72,6 +74,53 @@ namespace keep.grass
 		public void OnChangeSettings()
 		{
 			Main.UpdateInfoAsync().Wait(0);
+			UpdateAlerts();
+		}
+
+		public void UpdateAlerts()
+		{
+			if
+			(
+				String.IsNullOrWhiteSpace(Settings.UserName) ||
+				default(DateTime) == Main.LastPublicActivity
+			)
+			{
+				CancelAllAlerts();
+			}
+			else
+			{
+				var Limit = Main.LastPublicActivity.AddHours(24);
+				var LastPublicActivityInfo = "Last Acitivity Stamp: " +Main.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				var Now = DateTime.Now;
+				int i = 0;
+				foreach(var Span in Settings.AlertTimeSpanTable)
+				{
+					++i;
+					var AlertStamp = Limit.Add(Span);
+					if (Settings.GetAlert(Span) && Now < AlertStamp)
+					{
+						CrossLocalNotifications.Current.Show
+						(
+							Settings.AlertTimeSpanToDisplayName(Span),
+							LastPublicActivityInfo,
+							i,
+							AlertStamp
+						);
+					}
+					else
+					{
+						CrossLocalNotifications.Current.Cancel(i);
+					}
+				}
+			}
+		}
+		public void CancelAllAlerts()
+		{
+			int i = 0;
+			foreach(var Span in Settings.AlertTimeSpanTable)
+			{
+				CrossLocalNotifications.Current.Cancel(++i);
+			}
 		}
 	}
 }

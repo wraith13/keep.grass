@@ -14,7 +14,7 @@ namespace keep.grass
 		ImageCell UserLabel = new ImageCell();
 		TextCell LastActivityStampLabel = new TextCell();
 		TextCell LeftTimeLabel = new TextCell();
-		DateTime LastPublicActivity;
+		public DateTime LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;
 
@@ -97,7 +97,12 @@ namespace keep.grass
 			if (!String.IsNullOrWhiteSpace(User))
 			{
 				LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
-				LastActivityStampLabel.Text = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				var NewStamp = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				if (LastActivityStampLabel.Text != NewStamp)
+				{
+					LastActivityStampLabel.Text = NewStamp;
+					Root.UpdateAlerts();
+				}
 
 				if (null == UpdateLeftTimeTask)
 				{
