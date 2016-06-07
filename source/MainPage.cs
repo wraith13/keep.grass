@@ -58,7 +58,6 @@ namespace keep.grass
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			Root.ShowSettingsButtonOnToolbar();
 			UpdateInfoAsync().Wait(0);
 		}
 

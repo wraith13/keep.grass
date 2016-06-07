@@ -19,6 +19,7 @@ namespace keep.grass
 				Main = new MainPage(this)
 			);
 			MainPage.Title = "keep.grass";
+			ShowSettingsButtonOnToolbar();
 		}
 
 		protected override void OnStart()
@@ -68,6 +69,7 @@ namespace keep.grass
 
 		public void ShowSettingsPage()
 		{
+			HideSettingsButtonOnToolbar();
 			Navigation.PushAsync(new SettingsPage(this));
 		}
 

@@ -62,8 +62,6 @@ namespace keep.grass
 		{
 			base.OnAppearing();
 
-			Root.HideSettingsButtonOnToolbar();
-
 			UserNameCell.Text = Settings.UserName;
 			foreach(var cell in AlertSwitchCellList)
 			{
@@ -79,6 +77,7 @@ namespace keep.grass
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
 			Root.OnChangeSettings();
+			Root.ShowSettingsButtonOnToolbar();
 		}
 	}
 }
