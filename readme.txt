@@ -32,6 +32,24 @@
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ■
+■  利用している Xamarin の Plugin
+■
+
+■Xam.Plugins.Settings
+https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Settings
+https://www.nuget.org/packages/Xam.Plugins.Settings/
+
+■Xam.Plugins.Notifier
+https://github.com/edsnider/Xamarin.Plugins
+https://www.nuget.org/packages/Xam.Plugins.Notifier/
+
+■Xam.Plugins.Forms.ImageCircle
+https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/ImageCircle
+https://www.nuget.org/packages/Xam.Plugins.Forms.ImageCircle
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■
 ■  ライセンス
 ■
 
