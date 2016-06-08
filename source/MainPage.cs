@@ -24,6 +24,7 @@ namespace keep.grass
 			Title = "keep.grass";
 
 			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
+			LastActivityStampLabel.Command = new Command(o => UpdateLastPublicActivityAsync().Wait(0));
 
 			Content = new StackLayout { 
 				Children =
@@ -49,7 +50,7 @@ namespace keep.grass
 					new Button
 					{
 						Text = "Update",
-						Command = new Command(o => UpdateLastPublicActivityAsync().Wait(0)),
+						Command = LastActivityStampLabel.Command,
 					},
 				},
 			};
