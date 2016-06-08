@@ -98,7 +98,7 @@ namespace keep.grass
 				foreach(var Span in Settings.AlertTimeSpanTable)
 				{
 					++i;
-					var AlertStamp = Limit.Add(Span);
+					var AlertStamp = Limit.Add(-Span);
 					if (Settings.GetAlert(Span) && Now < AlertStamp)
 					{
 						CrossLocalNotifications.Current.Show
