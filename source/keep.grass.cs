@@ -84,15 +84,15 @@ namespace keep.grass
 			if
 			(
 				String.IsNullOrWhiteSpace(Settings.UserName) ||
-				default(DateTime) == Main.LastPublicActivity
+				null == Main.LastPublicActivity
 			)
 			{
 				CancelAllAlerts();
 			}
 			else
 			{
-				var Limit = Main.LastPublicActivity.AddHours(24);
-				var LastPublicActivityInfo = "Last Acitivity Stamp: " +Main.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				var Limit = Main.LastPublicActivity.Value.AddHours(24);
+				var LastPublicActivityInfo = "Last Acitivity Stamp: " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach(var Span in Settings.AlertTimeSpanTable)

@@ -14,7 +14,7 @@ namespace keep.grass
 		ImageCell UserLabel = new ImageCell();
 		TextCell LastActivityStampLabel = new TextCell();
 		TextCell LeftTimeLabel = new TextCell();
-		public DateTime LastPublicActivity;
+		public DateTime ? LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;
 
@@ -86,7 +86,7 @@ namespace keep.grass
 		}
 		public void ClearActiveInfo()
 		{
-			LastPublicActivity = default(DateTime);
+			LastPublicActivity = null;
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -96,12 +96,22 @@ namespace keep.grass
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
-				LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
-				var NewStamp = LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
-				if (LastActivityStampLabel.Text != NewStamp)
+				try
 				{
-					LastActivityStampLabel.Text = NewStamp;
-					Root.UpdateAlerts();
+					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
+					var NewStamp = LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+					if (LastActivityStampLabel.Text != NewStamp)
+					{
+						LastActivityStampLabel.Text = NewStamp;
+						LastActivityStampLabel.TextColor = Color.Default;
+						Root.UpdateAlerts();
+					}
+				}
+				catch
+				{
+					LastPublicActivity = null;
+					LastActivityStampLabel.Text = "Error";
+					LastActivityStampLabel.TextColor = Color.Red;
 				}
 
 				if (null == UpdateLeftTimeTask)
@@ -124,9 +134,9 @@ namespace keep.grass
 
 		protected void UpdateLeftTime()
 		{
-			if (default(DateTime) != LastPublicActivity)
+			if (null != LastPublicActivity)
 			{
-				var LeftTime = LastPublicActivity.AddHours(24) - DateTime.Now;
+				var LeftTime = LastPublicActivity.Value.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				if (LeftTime < TimeSpan.FromHours(0))
 				{
