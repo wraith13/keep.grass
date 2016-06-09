@@ -92,7 +92,7 @@ namespace keep.grass
 			else
 			{
 				var Limit = Main.LastPublicActivity.Value.AddHours(24);
-				var LastPublicActivityInfo = "Last Acitivity Stamp: " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+				var LastPublicActivityInfo = "Last Stamp: " +Main.LastPublicActivity.Value.ToString("HH:mm");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach(var Span in Settings.AlertTimeSpanTable)
@@ -103,8 +103,8 @@ namespace keep.grass
 					{
 						CrossLocalNotifications.Current.Show
 						(
-							Settings.AlertTimeSpanToDisplayName(Span),
-							LastPublicActivityInfo,
+							"keep.grass",
+							Settings.AlertTimeSpanToDisplayName(Span) +",\r\n" +LastPublicActivityInfo,
 							i,
 							AlertStamp
 						);
