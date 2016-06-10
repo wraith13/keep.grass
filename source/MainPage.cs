@@ -12,8 +12,8 @@ namespace keep.grass
 		App Root;
 
 		ImageCell UserLabel = new ImageCell();
-		TextCell LastActivityStampLabel = new TextCell();
-		TextCell LeftTimeLabel = new TextCell();
+		ActivityIndicatorTextCell LastActivityStampLabel = new ActivityIndicatorTextCell();
+		ActivityIndicatorTextCell LeftTimeLabel = new ActivityIndicatorTextCell();
 		public DateTime ? LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;
