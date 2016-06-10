@@ -98,6 +98,8 @@ namespace keep.grass
 			{
 				try
 				{
+					LastActivityStampLabel.ShowIndicator();
+					LeftTimeLabel.ShowIndicator();
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 					var NewStamp = LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 					if (LastActivityStampLabel.Text != NewStamp)
@@ -113,6 +115,8 @@ namespace keep.grass
 					LastActivityStampLabel.Text = "Error";
 					LastActivityStampLabel.TextColor = Color.Red;
 				}
+				LastActivityStampLabel.ShowText();
+				LeftTimeLabel.ShowText();
 
 				if (null == UpdateLeftTimeTask)
 				{

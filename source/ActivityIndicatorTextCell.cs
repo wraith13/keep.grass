@@ -11,14 +11,30 @@ namespace keep.grass
 
 		public ActivityIndicatorTextCell() :base()
 		{
-			View = new StackLayout
-			{
+			View = new StackLayout {
+				VerticalOptions = LayoutOptions.Center,
+				Padding = new Thickness (20, 12, 0, 12),
 				Children =
 				{
 					Indicator,
 					TextLabel,
-				}
+				},
 			};
+			Indicator.VerticalOptions = LayoutOptions.Center;
+			TextLabel.VerticalOptions = LayoutOptions.Center;
+		}
+
+		public void ShowText()
+		{
+			Indicator.IsRunning = false;
+			Indicator.IsVisible = false;
+			TextLabel.IsVisible = true;
+		}
+		public void ShowIndicator ()
+		{
+			Indicator.IsRunning = true;
+			Indicator.IsVisible = true;
+			TextLabel.IsVisible = false;
 		}
 
 		private Command CommandValue = null;
