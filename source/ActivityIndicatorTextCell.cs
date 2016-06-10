@@ -21,10 +21,25 @@ namespace keep.grass
 			};
 		}
 
+		private Command CommandValue = null;
 		public Command Command
 		{
-			set;
-			get;
+			set
+			{
+				CommandValue = value;
+			}
+			get
+			{
+				return CommandValue;
+			}
+		}
+		protected override void OnTapped()
+		{
+			base.OnTapped();
+			if (null != CommandValue)
+			{
+				CommandValue.Execute(this);
+			}
 		}
 
 		public String Text
