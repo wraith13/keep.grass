@@ -4,7 +4,7 @@
 ■
 
 このアプリは github 上の Contributions つまりネット上での俗称である「草」
-を途切らせることのないように Android Wear で Public Activity の最新の
+を途切らせることのないようにスマートフォンで Public Activity の最新の
 タイムスタンプとそこから24時間が経過してしまうまでの残り時間を確認する為の
 アプリです。
 
@@ -25,6 +25,15 @@
 
 ■.\source
 　→ ソースディレクトリです。
+
+■.\source\keep.grass.sln
+　→ Mac版 Xamarin Studio 用のソリューションファイルです。
+　　Xamarin Studio では UWP アプリケーションをビルドできないので
+　　このソリューションファイルには UWP プロジェクトは含まれていません。
+
+■.\source\keep.grass.uwp.sln
+　→ Visual Studio 用のソリューションファイルです。
+　　全てのプロジェクトを含みます。
 
 ■.\resource
 　→ 素材ディレクトリです。
