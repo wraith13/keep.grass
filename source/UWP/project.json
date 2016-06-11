@@ -1,9 +1,10 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Xam.Plugins.Forms.ImageCircle": "1.4.1",
     "Xam.Plugins.Notifier": "2.0.2",
     "Xam.Plugins.Settings": "2.1.0",
-    "Xamarin.Forms": "2.0.0.6482"
+    "Xamarin.Forms": "2.2.0.45"
   },
   "frameworks": {
     "uap10.0": {}
