@@ -23,7 +23,9 @@ namespace keep.grass
 					TextLabel,
 				},
 			};
-			Image.VerticalOptions = LayoutOptions.Center;
+            Image.HeightRequest = 48;
+            Image.WidthRequest = 48;
+            Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 		}
 
