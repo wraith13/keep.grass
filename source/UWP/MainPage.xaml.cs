@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using ImageCircle.Forms.Plugin.UWP;
+
 namespace keep.grass.UWP
 {
     public sealed partial class MainPage
@@ -20,6 +22,7 @@ namespace keep.grass.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            ImageCircleRenderer.Init();
 
             LoadApplication(new keep.grass.App());
         }
