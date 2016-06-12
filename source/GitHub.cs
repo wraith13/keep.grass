@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Xml;
+using System.Net.Http;
 using System.Xml.Linq;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,19 +22,29 @@ namespace keep.grass
 
 		static public async Task<DateTime> GetLastPublicActivityAsync(string Id)
 		{
-			return await Task.Factory.StartNew<DateTime>
-			(
-				() =>
-				DateTime.Parse
-				(
-					XDocument
-					.Load(GetAtomUrl(Id))
-					.Descendants()
-					.Where(i => i.Name.LocalName == "updated")
-					.First()
-					.Value
-				)
-			);
+			using (var http = new HttpClient())
+			{
+				using (var response = await http.GetAsync(GetAtomUrl(Id)))
+				{
+					using (var content = response.Content)
+					{
+						var stream = await content.ReadAsStreamAsync();
+						return await Task.Factory.StartNew<DateTime>
+						(
+							() =>
+							DateTime.Parse
+							(
+								XDocument
+								.Load(stream)
+								.Descendants()
+								.Where(i => i.Name.LocalName == "updated")
+								.First()
+								.Value
+							)
+						);
+					}
+				}
+			}
 		}
 	}
 }
