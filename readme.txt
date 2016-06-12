@@ -41,8 +41,11 @@
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ■
-■  利用している Xamarin の Plugin
+■  利用している Xamarin の Plugin 等
 ■
+
+■Microsoft HTTP Client Libraries
+https://www.nuget.org/packages/Microsoft.Net.Http/
 
 ■Xam.Plugins.Settings
 https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Settings
