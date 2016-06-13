@@ -10,9 +10,11 @@ namespace keep.grass
 	{
 		public NavigationPage Navigation;
 		public MainPage Main;
+		public PlatformSettingsBase PlatformSettings;
 
-		public App()
+		public App(PlatformSettingsBase aPlatformSettings)
 		{
+			PlatformSettings = aPlatformSettings;
 			// The root page of your application
 			MainPage = Navigation = new NavigationPage
 			(
