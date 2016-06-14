@@ -7,13 +7,13 @@ using keep.grass.Helpers;
 
 namespace keep.grass
 {
-	public class SettingsPage : ContentPage
+	public class AlphaSettingsPage : ContentPage
 	{
-		App Root;
+		AlphaApp Root;
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
 
-		public SettingsPage(App AppRoot)
+		public AlphaSettingsPage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
 			Title = "Settings";

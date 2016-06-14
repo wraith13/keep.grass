@@ -22,7 +22,7 @@ namespace keep.grass.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 			ImageCircleRenderer.Init();
 
-			LoadApplication(new App());
+			LoadApplication(AlphaFactory.makeApp());
 		}
 	}
 }

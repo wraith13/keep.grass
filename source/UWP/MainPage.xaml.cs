@@ -24,7 +24,7 @@ namespace keep.grass.UWP
             this.InitializeComponent();
             ImageCircleRenderer.Init();
 
-            LoadApplication(new keep.grass.App());
+            LoadApplication(keep.grass.AlphaFactory.makeApp());
         }
     }
 }

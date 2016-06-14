@@ -6,12 +6,12 @@ using keep.grass.Helpers;
 
 namespace keep.grass
 {
-	public class App : Application
+	public class AlphaApp : Application
 	{
 		public NavigationPage Navigation;
-		public MainPage Main;
+		public AlphaMainPage Main;
 
-		public App()
+		public AlphaApp()
 		{
 			// The root page of your application
 			MainPage = Navigation = new NavigationPage

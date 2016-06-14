@@ -1,43 +1,32 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using ImageCircle.Forms.Plugin.Abstractions;
 
 namespace keep.grass
 {
-	public class ActivityIndicatorTextCell :ViewCell
+	public class AlphaCircleImageCell : ViewCell
 	{
-		ActivityIndicator Indicator = new ActivityIndicator();
+		CircleImage Image = new CircleImage();
 		Label TextLabel = new Label();
 
-		public ActivityIndicatorTextCell() :base()
+		public AlphaCircleImageCell() : base()
 		{
 			View = new StackLayout
 			{
 				Orientation = StackOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.Center,
-				Padding = new Thickness(20, 0, 0, 0),
+				Padding = new Thickness(20, 2, 0, 2),
 				Children =
 				{
-					Indicator,
+					Image,
 					TextLabel,
 				},
 			};
-			Indicator.VerticalOptions = LayoutOptions.Center;
-			Indicator.HorizontalOptions = LayoutOptions.Center;
+            Image.HeightRequest = 48;
+            Image.WidthRequest = 48;
+            Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
-		}
-
-		public void ShowText()
-		{
-			Indicator.IsRunning = false;
-			Indicator.IsVisible = false;
-			TextLabel.IsVisible = true;
-		}
-		public void ShowIndicator()
-		{
-			Indicator.IsRunning = true;
-			Indicator.IsVisible = true;
-			TextLabel.IsVisible = false;
 		}
 
 		private Command CommandValue = null;
@@ -58,6 +47,18 @@ namespace keep.grass
 			if (null != CommandValue)
 			{
 				CommandValue.Execute(this);
+			}
+		}
+
+		public ImageSource ImageSource
+		{
+			get
+			{
+				return Image.Source;
+			}
+			set
+			{
+				Image.Source = value;
 			}
 		}
 

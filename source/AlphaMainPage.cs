@@ -7,18 +7,18 @@ using keep.grass.Helpers;
 
 namespace keep.grass
 {
-	public class MainPage : ContentPage
+	public class AlphaMainPage : ContentPage
 	{
-		App Root;
+		AlphaApp Root;
 
-		CircleImageCell UserLabel = new CircleImageCell();
-		ActivityIndicatorTextCell LastActivityStampLabel = new ActivityIndicatorTextCell();
-		ActivityIndicatorTextCell LeftTimeLabel = new ActivityIndicatorTextCell();
+		AlphaCircleImageCell UserLabel = AlphaFactory.makeCircleImageCell();
+		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.makeActivityIndicatorTextCell();
+		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.makeActivityIndicatorTextCell();
 		public DateTime ? LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;
 
-		public MainPage(App AppRoot)
+		public AlphaMainPage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
 			Title = "keep.grass";
