@@ -116,6 +116,22 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.29.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.58.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.87.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.80.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.57.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.114.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.180.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.40.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.50.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.100.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.72.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.144.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.76.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.152.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.167.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
