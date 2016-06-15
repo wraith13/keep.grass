@@ -7,7 +7,14 @@ namespace keep.grass
 
 		public AlphaFactory()
 		{
-			instance = this;
+		}
+		protected static void Init(AlphaFactory app)
+		{
+			instance = app;
+		}
+		public static void Init()
+		{
+			Init(new AlphaFactory());
 		}
 		public static AlphaFactory Get()
 		{

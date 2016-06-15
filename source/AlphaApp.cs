@@ -16,7 +16,7 @@ namespace keep.grass
 			// The root page of your application
 			MainPage = Navigation = new NavigationPage
 			(
-				Main = new MainPage(this)
+				Main = AlphaFactory.makeMainPage(this)
 			);
 			MainPage.Title = "keep.grass";
 			ShowSettingsButtonOnToolbar();
@@ -70,7 +70,7 @@ namespace keep.grass
 		public void ShowSettingsPage()
 		{
 			HideSettingsButtonOnToolbar();
-			Navigation.PushAsync(new SettingsPage(this));
+			Navigation.PushAsync(AlphaFactory.makeSettingsPage(this));
 		}
 
 		public void OnChangeSettings()

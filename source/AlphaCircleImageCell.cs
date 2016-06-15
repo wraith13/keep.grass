@@ -23,8 +23,11 @@ namespace keep.grass
 					TextLabel,
 				},
 			};
-            Image.HeightRequest = 48;
-            Image.WidthRequest = 48;
+
+			//この指定はUWP版としての継承先へ移動すること
+            //Image.HeightRequest = 48;
+            //Image.WidthRequest = 48;
+
             Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 		}
