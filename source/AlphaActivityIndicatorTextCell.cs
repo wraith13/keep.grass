@@ -6,12 +6,13 @@ namespace keep.grass
 {
 	public class AlphaActivityIndicatorTextCell :ViewCell
 	{
+		protected StackLayout Layout;
 		ActivityIndicator Indicator = new ActivityIndicator();
 		Label TextLabel = new Label();
 
 		public AlphaActivityIndicatorTextCell() :base()
 		{
-			View = new StackLayout
+			View = Layout = new StackLayout
 			{
 				Orientation = StackOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.Center,
