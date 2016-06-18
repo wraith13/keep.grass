@@ -7,11 +7,6 @@ namespace keep.grass.iOS
 		{
 			AlphaFactory.Init(new CustomFactory());
 		}
-
-		public override AlphaActivityIndicatorTextCell makeCustomActivityIndicatorTextCell()
-		{
-			return new CustomActivityIndicatorTextCell();
-		}
 	}
 }
 

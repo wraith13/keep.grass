@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System.Linq;
+
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
 
@@ -12,16 +14,19 @@ namespace keep.grass
 
 		public AlphaCircleImageCell() : base()
 		{
-			View = new StackLayout
+			View = new AlphaGrid
 			{
-				Orientation = StackOrientation.Horizontal,
-				VerticalOptions = LayoutOptions.Center,
-				Padding = new Thickness(20, 2, 0, 2),
-				Children =
+				SingleChild = new StackLayout
 				{
-					Image,
-					TextLabel,
-				},
+					Orientation = StackOrientation.Horizontal,
+					VerticalOptions = LayoutOptions.Center,
+					Padding = new Thickness(20, 2, 0, 2),
+					Children =
+					{
+						Image,
+						TextLabel,
+					},
+				}
 			};
 
 			//この指定はUWP版としての継承先へ移動すること

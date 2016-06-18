@@ -45,7 +45,7 @@ namespace keep.grass
 							{
 								LeftTimeLabel,
 							},
-						}
+						},
 					},
 					new Button
 					{
