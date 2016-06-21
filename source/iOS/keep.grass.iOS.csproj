@@ -145,8 +145,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="CustomFactory.cs" />
-    <Compile Include="CustomApp.cs" />
+    <Compile Include="OmegaFactory.cs" />
+    <Compile Include="OmegaApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.1024.png" />

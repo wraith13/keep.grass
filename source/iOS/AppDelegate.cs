@@ -16,7 +16,7 @@ namespace keep.grass.iOS
 			global::Xamarin.Forms.Forms.Init();
 			ImageCircleRenderer.Init();
 
-			CustomFactory.Init();
+			OmegaFactory.Init();
 
 			LoadApplication(AlphaFactory.makeApp());
 

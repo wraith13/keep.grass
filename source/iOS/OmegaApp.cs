@@ -1,9 +1,9 @@
 ﻿using System;
 namespace keep.grass.iOS
 {
-	public class CustomApp : AlphaApp
+	public class OmegaApp : AlphaApp
 	{
-		public CustomApp()
+		public OmegaApp()
 		{
 		}
 

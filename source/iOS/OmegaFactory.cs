@@ -1,11 +1,11 @@
 ﻿using System;
 namespace keep.grass.iOS
 {
-	public class CustomFactory : AlphaFactory
+	public class OmegaFactory : AlphaFactory
 	{
 		public new static void Init()
 		{
-			AlphaFactory.Init(new CustomFactory());
+			AlphaFactory.Init(new OmegaFactory());
 		}
 	}
 }
