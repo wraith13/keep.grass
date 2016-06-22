@@ -29,12 +29,11 @@ namespace keep.grass
 								(
 									UserNameCell = new EntryCell
 									{
-										Label = "User Name",
-										Text = "",
+										Label = "User ID",
 									}
 								),
 							},
-							new TableSection("Alerts")
+							new TableSection("Notifications")
 							{
 								(
 									AlertSwitchCellList = Settings.AlertTimeSpanTable.Select

@@ -40,6 +40,20 @@ namespace keep.grass.Helpers
 			}
 		}
 
+		private const string LanguageKey = "Language";
+		private static readonly string LanguageDefault = string.Empty;
+		public static string Language
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<string>(LanguageKey, LanguageDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(LanguageKey, value);
+			}
+		}
+
 		private const string UserNameKey = "UserName";
 		private static readonly string UserNameDefault = string.Empty;
 		public static string UserName
@@ -86,24 +100,24 @@ namespace keep.grass.Helpers
 				return String.Format("{0} hours left", left.TotalHours);
 			}
 			else
-				if (TimeSpan.FromHours(1) == left)
-				{
-					return "1 hour left";
-				}
-				else
-					if (TimeSpan.FromMinutes(1) < left)
-					{
-						return String.Format("{0} minutes left", left.TotalMinutes);
-					}
-					else
-						if (TimeSpan.FromMinutes(1) == left)
-						{
-							return "1 minute left";
-						}
-						else
-						{
-							return "Just 24 hours later";
-						}
+			if (TimeSpan.FromHours(1) == left)
+			{
+				return "1 hour left";
+			}
+			else
+			if (TimeSpan.FromMinutes(1) < left)
+			{
+				return String.Format("{0} minutes left", left.TotalMinutes);
+			}
+			else
+			if (TimeSpan.FromMinutes(1) == left)
+			{
+				return "1 minute left";
+			}
+			else
+			{
+				return "Just 24 hours later";
+			}
 		}
 		public static string AlertTimeSpanToSettingKey(TimeSpan left)
 		{

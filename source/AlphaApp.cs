@@ -10,16 +10,22 @@ namespace keep.grass
 	{
 		public NavigationPage Navigation;
 		public AlphaMainPage Main;
+		public Languages.AlphaLanguage L;
 
 		public AlphaApp()
 		{
-			// The root page of your application
+			L = AlphaFactory.
 			MainPage = Navigation = new NavigationPage
 			(
 				Main = AlphaFactory.makeMainPage(this)
 			);
 			MainPage.Title = "keep.grass";
 			ShowSettingsButtonOnToolbar();
+		}
+
+		public String getLanguage()
+		{
+			return "ja";
 		}
 
 		protected override void OnStart()

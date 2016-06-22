@@ -30,6 +30,15 @@ namespace keep.grass
 			return new AlphaApp();
 		}
 
+		public static Languages.AlphaLanguage makeLanguage(AlphaApp Root)
+		{
+			return instance.makeCustomLanguage(Root);
+		}
+		public virtual Languages.AlphaLanguage makeCustomLanguage(AlphaApp Root)
+		{
+			return new Languages.AlphaLanguage(Root);
+		}
+
 		public static AlphaMainPage makeMainPage(AlphaApp Root)
 		{
 			return instance.makeCustomMainPage(Root);
