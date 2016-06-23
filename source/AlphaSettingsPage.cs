@@ -13,13 +13,33 @@ namespace keep.grass
 		public Languages.AlphaLanguage L;
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
-		Cell
+		TextCell LanguageLabel = null;
 
 		public AlphaSettingsPage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
 			L = Root.L;
 			Title = L["Settings"];
+			UserNameCell = new EntryCell
+			{
+				Label = L["User ID"],
+			};
+			AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
+			(
+				i => new KeyValuePair<TimeSpan, SwitchCell>
+				(
+					i,
+					new SwitchCell
+					{
+						Text = Settings.AlertTimeSpanToDisplayName(L, i),
+						On = Settings.GetAlert(i),
+					}
+				)
+			)
+			.ToArray();
+			LanguageLabel = new TextCell
+			{
+			};
 			Content = new StackLayout { 
 				Children =
 				{
@@ -29,40 +49,16 @@ namespace keep.grass
 						{
 							new TableSection(L["Github Account"])
 							{
-								(
-									UserNameCell = new EntryCell
-									{
-										Label = L["User ID"],
-									}
-								),
+								UserNameCell,
 							},
 							new TableSection(L["Notifications"])
 							{
-								(
-									AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
-									(
-										i => new KeyValuePair<TimeSpan, SwitchCell>
-										(
-											i,
-											new SwitchCell
-											{
-												Text = Settings.AlertTimeSpanToDisplayName(L, i),
-												On = Settings.GetAlert(i),
-											}
-										)
-									)
-									.ToArray()
-								)
-								.Select(i => i.Value)
+								AlertSwitchCellList.Select(i => i.Value)
 							},
-							/*
 							new TableSection(L["Language"])
 							{
-								new EntryCell
-								{
-								}
+								LanguageLabel,
 							}
-							*/
 						}
 					},
 				},
@@ -77,6 +73,7 @@ namespace keep.grass
 			{
 				cell.Value.On = Settings.GetAlert(cell.Key);
 			}
+			LanguageLabel.Text = L.DisplayNames[L.Get()]; 
 		}
 		protected override void OnDisappearing()
 		{

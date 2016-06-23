@@ -7,6 +7,7 @@ namespace keep.grass.Languages
 {
 	public class AlphaLanguage
 	{
+		AlphaApp Root;
 		Dictionary<string, Dictionary<string, string>> master = new Dictionary<string, Dictionary<string, string>>
 		{
 			{
@@ -44,14 +45,18 @@ namespace keep.grass.Languages
 			{ "ja", "日本語" },
 		};
 
-		public AlphaLanguage(AlphaApp Root)
+		public Dictionary<string, string> DisplayNames
 		{
-			var SettingLanguage = Settings.Language;
-			if (String.IsNullOrWhiteSpace(SettingLanguage))
+			get
 			{
-				SettingLanguage = Root.getLanguage();
+				return names;
 			}
-			Set(SettingLanguage);
+		}
+
+		public AlphaLanguage(AlphaApp AppRoot)
+		{
+			Root = AppRoot;
+			Set(Get());
 		}
 		public string this[string key]
 		{
@@ -64,6 +69,15 @@ namespace keep.grass.Languages
 				}
 				return value;
 			}
+		}
+		public String Get()
+		{
+			var value = Settings.Language;
+			if (String.IsNullOrWhiteSpace(value))
+			{
+				value = Root.getLanguage();
+			}
+			return value;
 		}
 		public void Set(String lang)
 		{
