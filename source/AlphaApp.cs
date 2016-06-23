@@ -14,7 +14,7 @@ namespace keep.grass
 
 		public AlphaApp()
 		{
-			L = AlphaFactory.
+			L = AlphaFactory.makeLanguage(this);
 			MainPage = Navigation = new NavigationPage
 			(
 				Main = AlphaFactory.makeMainPage(this)
@@ -23,7 +23,7 @@ namespace keep.grass
 			ShowSettingsButtonOnToolbar();
 		}
 
-		public String getLanguage()
+		public virtual String getLanguage()
 		{
 			return "ja";
 		}
@@ -54,7 +54,7 @@ namespace keep.grass
 				(
 					new ToolbarItem
 					(
-						"Settings",
+						L["Settings"],
 						null,
 						() =>
 						{
@@ -98,7 +98,7 @@ namespace keep.grass
 			else
 			{
 				var Limit = Main.LastPublicActivity.Value.AddHours(24);
-				var LastPublicActivityInfo = "Last Stamp: " +Main.LastPublicActivity.Value.ToString("HH:mm");
+				var LastPublicActivityInfo = L["Last Stamp: "] +Main.LastPublicActivity.Value.ToString("HH:mm");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach(var Span in Settings.AlertTimeSpanTable)
@@ -109,7 +109,7 @@ namespace keep.grass
 					{
 						ShowAlerts
 						(
-							Settings.AlertTimeSpanToDisplayName(Span),
+							Settings.AlertTimeSpanToDisplayName(L, Span),
 							LastPublicActivityInfo,
 							i,
 							AlertStamp

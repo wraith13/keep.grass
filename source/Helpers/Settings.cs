@@ -93,30 +93,30 @@ namespace keep.grass.Helpers
 			TimeSpan.FromHours(12),
 			TimeSpan.FromHours(18),
 		};
-		public static string AlertTimeSpanToDisplayName(TimeSpan left)
+		public static string AlertTimeSpanToDisplayName(Languages.AlphaLanguage L, TimeSpan left)
 		{
 			if (TimeSpan.FromHours(1) < left)
 			{
-				return String.Format("{0} hours left", left.TotalHours);
+				return String.Format(L["{0} hours left"], left.TotalHours);
 			}
 			else
 			if (TimeSpan.FromHours(1) == left)
 			{
-				return "1 hour left";
+				return L["1 hour left"];
 			}
 			else
 			if (TimeSpan.FromMinutes(1) < left)
 			{
-				return String.Format("{0} minutes left", left.TotalMinutes);
+				return String.Format(L["{0} minutes left"], left.TotalMinutes);
 			}
 			else
 			if (TimeSpan.FromMinutes(1) == left)
 			{
-				return "1 minute left";
+				return L["1 minute left"];
 			}
 			else
 			{
-				return "Just 24 hours later";
+				return L["Just 24 hours later"];
 			}
 		}
 		public static string AlertTimeSpanToSettingKey(TimeSpan left)

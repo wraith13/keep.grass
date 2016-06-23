@@ -29,7 +29,10 @@ namespace keep.grass.Languages
 					{ "1 hour left", "残り 1 時間" },
 					{ "{0} minutes left", "残り {0} 分" },
 					{ "1 minute left", "残り 1 分" },
-					{ "Just 24 hours later", "24時間経過" }
+					{ "Just 24 hours later", "24時間経過" },
+					{ "unspecified", "未指定" },
+					{ "Error", "エラー" },
+					{ "Language", "言語" }
 				}
 			}
 		};

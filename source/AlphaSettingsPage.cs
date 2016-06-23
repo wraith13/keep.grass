@@ -10,13 +10,16 @@ namespace keep.grass
 	public class AlphaSettingsPage : ContentPage
 	{
 		AlphaApp Root;
+		public Languages.AlphaLanguage L;
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
+		Cell
 
 		public AlphaSettingsPage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
-			Title = "Settings";
+			L = Root.L;
+			Title = L["Settings"];
 			Content = new StackLayout { 
 				Children =
 				{
@@ -24,16 +27,16 @@ namespace keep.grass
 					{
 						Root = new TableRoot
 						{
-							new TableSection("Github Account")
+							new TableSection(L["Github Account"])
 							{
 								(
 									UserNameCell = new EntryCell
 									{
-										Label = "User ID",
+										Label = L["User ID"],
 									}
 								),
 							},
-							new TableSection("Notifications")
+							new TableSection(L["Notifications"])
 							{
 								(
 									AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
@@ -43,7 +46,7 @@ namespace keep.grass
 											i,
 											new SwitchCell
 											{
-												Text = Settings.AlertTimeSpanToDisplayName(i),
+												Text = Settings.AlertTimeSpanToDisplayName(L, i),
 												On = Settings.GetAlert(i),
 											}
 										)
@@ -52,6 +55,14 @@ namespace keep.grass
 								)
 								.Select(i => i.Value)
 							},
+							/*
+							new TableSection(L["Language"])
+							{
+								new EntryCell
+								{
+								}
+							}
+							*/
 						}
 					},
 				},

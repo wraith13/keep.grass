@@ -10,6 +10,7 @@ namespace keep.grass
 	public class AlphaMainPage : ContentPage
 	{
 		AlphaApp Root;
+		public Languages.AlphaLanguage L;
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.makeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.makeActivityIndicatorTextCell();
@@ -21,6 +22,7 @@ namespace keep.grass
 		public AlphaMainPage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
+			L = Root.L;
 			Title = "keep.grass";
 
 			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
@@ -33,15 +35,15 @@ namespace keep.grass
 					{
 						Root = new TableRoot
 						{
-							new TableSection("Github Account")
+							new TableSection(L["Github Account"])
 							{
 								UserLabel,
 							},
-							new TableSection("Last Acitivity Stamp")
+							new TableSection(L["Last Acitivity Stamp"])
 							{
 								LastActivityStampLabel,
 							},
-							new TableSection("Left Time")
+							new TableSection(L["Left Time"])
 							{
 								LeftTimeLabel,
 							},
@@ -49,7 +51,7 @@ namespace keep.grass
 					},
 					new Button
 					{
-						Text = "Update",
+						Text = L["Update"],
 						Command = LastActivityStampLabel.Command,
 					},
 				},
@@ -79,7 +81,7 @@ namespace keep.grass
 			else
 			{
 				UserLabel.ImageSource = null;
-				UserLabel.Text = "unspecified";
+				UserLabel.Text = L["unspecified"];
 				UserLabel.TextColor = Color.Red;
 				ClearActiveInfo();
 			}
@@ -112,7 +114,7 @@ namespace keep.grass
 				catch
 				{
 					LastPublicActivity = null;
-					LastActivityStampLabel.Text = "Error";
+					LastActivityStampLabel.Text = L["Error"];
 					LastActivityStampLabel.TextColor = Color.Red;
 				}
 				LastActivityStampLabel.ShowText();
