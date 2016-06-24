@@ -13,7 +13,7 @@ namespace keep.grass
 		public Languages.AlphaLanguage L;
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
-		TextCell LanguageLabel = null;
+		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage(AlphaApp AppRoot)
 		{
@@ -37,9 +37,7 @@ namespace keep.grass
 				)
 			)
 			.ToArray();
-			LanguageLabel = new TextCell
-			{
-			};
+			LanguageCell = AlphaFactory.makeAlphaPickerCell();
 			Content = new StackLayout { 
 				Children =
 				{
@@ -57,7 +55,7 @@ namespace keep.grass
 							},
 							new TableSection(L["Language"])
 							{
-								LanguageLabel,
+								LanguageCell
 							}
 						}
 					},
@@ -73,7 +71,11 @@ namespace keep.grass
 			{
 				cell.Value.On = Settings.GetAlert(cell.Key);
 			}
-			LanguageLabel.Text = L.DisplayNames[L.Get()]; 
+
+			foreach (var i in L.DisplayNames.Select(i => i.Value))
+			{
+				LanguageCell.Items.Add(i);
+			}
 		}
 		protected override void OnDisappearing()
 		{

@@ -74,6 +74,15 @@ namespace keep.grass
 		{
 			return new AlphaCircleImageCell();
 		}
+
+		public static AlphaPickerCell makeAlphaPickerCell()
+		{
+			return instance.makeCustomAlphaPickerCell();
+		}
+		public virtual AlphaPickerCell makeCustomAlphaPickerCell()
+		{
+			return new AlphaPickerCell();
+		}
 	}
 }
 
