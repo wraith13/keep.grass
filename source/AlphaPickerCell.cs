@@ -6,6 +6,7 @@ namespace keep.grass
 {
 	public class AlphaPickerCell : ViewCell
 	{
+		Label TextLabel = new Label();
 		public Picker Picker = new Picker();
 
 		public AlphaPickerCell() : base()
@@ -19,31 +20,20 @@ namespace keep.grass
 					Padding = new Thickness(20, 0, 0, 0),
 					Children =
 					{
+						TextLabel,
 						Picker,
 					},
 				}
 			};
+			TextLabel.VerticalOptions = LayoutOptions.Center;
+			Picker.IsVisible = false;
+			Picker.SelectedIndexChanged += (sender, e) => TextLabel.Text = Picker.Items[Picker.SelectedIndex];
 		}
 
-		private Command CommandValue = null;
-		public Command Command
-		{
-			set
-			{
-				CommandValue = value;
-			}
-			get
-			{
-				return CommandValue;
-			}
-		}
 		protected override void OnTapped()
 		{
 			base.OnTapped();
-			if (null != CommandValue)
-			{
-				CommandValue.Execute(this);
-			}
+			Picker.Focus();
 		}
 
 		public String Title
