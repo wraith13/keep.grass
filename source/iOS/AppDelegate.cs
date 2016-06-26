@@ -18,7 +18,7 @@ namespace keep.grass.iOS
 
 			OmegaFactory.Init();
 
-			LoadApplication(AlphaFactory.makeApp());
+			LoadApplication(AlphaFactory.MakeApp());
 
 			// copy from http://www.knowing.net/index.php/2014/07/03/local-notifications-in-ios-8-with-xamarin/
 			var settings = UIUserNotificationSettings.GetSettingsForTypes

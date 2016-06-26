@@ -24,7 +24,7 @@ namespace keep.grass.Droid
 
 			AlphaFactory.Init();
 
-			LoadApplication(AlphaFactory.makeApp());
+			LoadApplication(AlphaFactory.MakeApp());
 		}
 	}
 }

@@ -12,9 +12,9 @@ namespace keep.grass
 		AlphaApp Root;
 		public Languages.AlphaLanguage L;
 
-		AlphaCircleImageCell UserLabel = AlphaFactory.makeCircleImageCell();
-		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.makeActivityIndicatorTextCell();
-		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.makeActivityIndicatorTextCell();
+		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
+		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		public DateTime ? LastPublicActivity;
 
 		Task UpdateLeftTimeTask = null;

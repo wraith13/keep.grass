@@ -14,10 +14,10 @@ namespace keep.grass
 
 		public AlphaApp()
 		{
-			L = AlphaFactory.makeLanguage(this);
+			L = AlphaFactory.MakeLanguage(this);
 			MainPage = Navigation = new NavigationPage
 			(
-				Main = AlphaFactory.makeMainPage(this)
+				Main = AlphaFactory.MakeMainPage(this)
 			);
 			MainPage.Title = "keep.grass";
 			ShowSettingsButtonOnToolbar();
@@ -76,7 +76,7 @@ namespace keep.grass
 		public void ShowSettingsPage()
 		{
 			HideSettingsButtonOnToolbar();
-			Navigation.PushAsync(AlphaFactory.makeSettingsPage(this));
+			Navigation.PushAsync(AlphaFactory.MakeSettingsPage(this));
 		}
 
 		public void OnChangeSettings()

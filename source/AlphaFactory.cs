@@ -21,65 +21,65 @@ namespace keep.grass
 			return instance;
 		}
 
-		public static AlphaApp makeApp()
+		public static AlphaApp MakeApp()
 		{
-			return instance.makeCustomApp();
+			return instance.MakeCustomApp();
 		}
-		public virtual AlphaApp makeCustomApp()
+		public virtual AlphaApp MakeCustomApp()
 		{
 			return new AlphaApp();
 		}
 
-		public static Languages.AlphaLanguage makeLanguage(AlphaApp Root)
+		public static Languages.AlphaLanguage MakeLanguage(AlphaApp Root)
 		{
-			return instance.makeCustomLanguage(Root);
+			return instance.MakeCustomLanguage(Root);
 		}
-		public virtual Languages.AlphaLanguage makeCustomLanguage(AlphaApp Root)
+		public virtual Languages.AlphaLanguage MakeCustomLanguage(AlphaApp Root)
 		{
 			return new Languages.AlphaLanguage(Root);
 		}
 
-		public static AlphaMainPage makeMainPage(AlphaApp Root)
+		public static AlphaMainPage MakeMainPage(AlphaApp Root)
 		{
-			return instance.makeCustomMainPage(Root);
+			return instance.MakeCustomMainPage(Root);
 		}
-		public virtual AlphaMainPage makeCustomMainPage(AlphaApp Root)
+		public virtual AlphaMainPage MakeCustomMainPage(AlphaApp Root)
 		{
 			return new AlphaMainPage(Root);
 		}
 
-		public static AlphaSettingsPage makeSettingsPage(AlphaApp Root)
+		public static AlphaSettingsPage MakeSettingsPage(AlphaApp Root)
 		{
-			return instance.makeCustomSettingsPage(Root);
+			return instance.MakeCustomSettingsPage(Root);
 		}
-		public virtual AlphaSettingsPage makeCustomSettingsPage(AlphaApp Root)
+		public virtual AlphaSettingsPage MakeCustomSettingsPage(AlphaApp Root)
 		{
 			return new AlphaSettingsPage(Root);
 		}
 
-		public static AlphaActivityIndicatorTextCell makeActivityIndicatorTextCell()
+		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()
 		{
-			return instance.makeCustomActivityIndicatorTextCell();
+			return instance.MakeCustomActivityIndicatorTextCell();
 		}
-		public virtual AlphaActivityIndicatorTextCell makeCustomActivityIndicatorTextCell()
+		public virtual AlphaActivityIndicatorTextCell MakeCustomActivityIndicatorTextCell()
 		{
 			return new AlphaActivityIndicatorTextCell();
 		}
 
-		public static AlphaCircleImageCell makeCircleImageCell()
+		public static AlphaCircleImageCell MakeCircleImageCell()
 		{
-			return instance.makeCustomCircleImageCell();
+			return instance.MakeCustomCircleImageCell();
 		}
-		public virtual AlphaCircleImageCell makeCustomCircleImageCell()
+		public virtual AlphaCircleImageCell MakeCustomCircleImageCell()
 		{
 			return new AlphaCircleImageCell();
 		}
 
-		public static AlphaPickerCell makeAlphaPickerCell()
+		public static AlphaPickerCell MakeAlphaPickerCell()
 		{
-			return instance.makeCustomAlphaPickerCell();
+			return instance.MakeCustomAlphaPickerCell();
 		}
-		public virtual AlphaPickerCell makeCustomAlphaPickerCell()
+		public virtual AlphaPickerCell MakeCustomAlphaPickerCell()
 		{
 			return new AlphaPickerCell();
 		}
