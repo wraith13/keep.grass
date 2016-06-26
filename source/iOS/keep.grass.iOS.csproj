@@ -147,6 +147,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="OmegaFactory.cs" />
     <Compile Include="OmegaApp.cs" />
+    <Compile Include="OmegaPickerCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.1024.png" />

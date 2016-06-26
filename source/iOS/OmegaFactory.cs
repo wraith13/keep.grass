@@ -7,6 +7,11 @@ namespace keep.grass.iOS
 		{
 			AlphaFactory.Init(new OmegaFactory());
 		}
+
+		public override AlphaPickerCell MakeOmegaPickerCell()
+		{
+			return new OmegaPickerCell();
+		}
 	}
 }
 

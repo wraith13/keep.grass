@@ -75,11 +75,11 @@ namespace keep.grass
 			return new AlphaCircleImageCell();
 		}
 
-		public static AlphaPickerCell MakeAlphaPickerCell()
+		public static AlphaPickerCell MakePickerCell()
 		{
-			return instance.MakeOmegaAlphaPickerCell();
+			return instance.MakeOmegaPickerCell();
 		}
-		public virtual AlphaPickerCell MakeOmegaAlphaPickerCell()
+		public virtual AlphaPickerCell MakeOmegaPickerCell()
 		{
 			return new AlphaPickerCell();
 		}

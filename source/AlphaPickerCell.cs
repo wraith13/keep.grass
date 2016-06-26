@@ -6,7 +6,6 @@ namespace keep.grass
 {
 	public class AlphaPickerCell : ViewCell
 	{
-		Label TextLabel = new Label();
 		public Picker Picker = new Picker();
 
 		public AlphaPickerCell() : base()
@@ -20,14 +19,10 @@ namespace keep.grass
 					Padding = new Thickness(20, 0, 0, 0),
 					Children =
 					{
-						TextLabel,
 						Picker,
 					},
 				}
 			};
-			TextLabel.VerticalOptions = LayoutOptions.Center;
-			Picker.IsVisible = false;
-			Picker.SelectedIndexChanged += (sender, e) => TextLabel.Text = Picker.Items[Picker.SelectedIndex];
 		}
 
 		protected override void OnTapped()

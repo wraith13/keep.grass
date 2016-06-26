@@ -37,7 +37,7 @@ namespace keep.grass
 				)
 			)
 			.ToArray();
-			LanguageCell = AlphaFactory.MakeAlphaPickerCell();
+			LanguageCell = AlphaFactory.MakePickerCell();
 			Content = new StackLayout { 
 				Children =
 				{
