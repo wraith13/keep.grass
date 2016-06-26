@@ -26,7 +26,7 @@ namespace keep.grass.UWP
 
             AlphaFactory.Init();
 
-            LoadApplication(keep.grass.AlphaFactory.makeApp());
+            LoadApplication(keep.grass.AlphaFactory.MakeApp());
         }
     }
 }
