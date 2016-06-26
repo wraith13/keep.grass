@@ -23,63 +23,63 @@ namespace keep.grass
 
 		public static AlphaApp MakeApp()
 		{
-			return instance.MakeCustomApp();
+			return instance.MakeOmegaApp();
 		}
-		public virtual AlphaApp MakeCustomApp()
+		public virtual AlphaApp MakeOmegaApp()
 		{
 			return new AlphaApp();
 		}
 
 		public static Languages.AlphaLanguage MakeLanguage(AlphaApp Root)
 		{
-			return instance.MakeCustomLanguage(Root);
+			return instance.MakeOmegaLanguage(Root);
 		}
-		public virtual Languages.AlphaLanguage MakeCustomLanguage(AlphaApp Root)
+		public virtual Languages.AlphaLanguage MakeOmegaLanguage(AlphaApp Root)
 		{
 			return new Languages.AlphaLanguage(Root);
 		}
 
 		public static AlphaMainPage MakeMainPage(AlphaApp Root)
 		{
-			return instance.MakeCustomMainPage(Root);
+			return instance.MakeOmegaMainPage(Root);
 		}
-		public virtual AlphaMainPage MakeCustomMainPage(AlphaApp Root)
+		public virtual AlphaMainPage MakeOmegaMainPage(AlphaApp Root)
 		{
 			return new AlphaMainPage(Root);
 		}
 
 		public static AlphaSettingsPage MakeSettingsPage(AlphaApp Root)
 		{
-			return instance.MakeCustomSettingsPage(Root);
+			return instance.MakeOmegaSettingsPage(Root);
 		}
-		public virtual AlphaSettingsPage MakeCustomSettingsPage(AlphaApp Root)
+		public virtual AlphaSettingsPage MakeOmegaSettingsPage(AlphaApp Root)
 		{
 			return new AlphaSettingsPage(Root);
 		}
 
 		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()
 		{
-			return instance.MakeCustomActivityIndicatorTextCell();
+			return instance.MakeOmegaActivityIndicatorTextCell();
 		}
-		public virtual AlphaActivityIndicatorTextCell MakeCustomActivityIndicatorTextCell()
+		public virtual AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
 		{
 			return new AlphaActivityIndicatorTextCell();
 		}
 
 		public static AlphaCircleImageCell MakeCircleImageCell()
 		{
-			return instance.MakeCustomCircleImageCell();
+			return instance.MakeOmegaCircleImageCell();
 		}
-		public virtual AlphaCircleImageCell MakeCustomCircleImageCell()
+		public virtual AlphaCircleImageCell MakeOmegaCircleImageCell()
 		{
 			return new AlphaCircleImageCell();
 		}
 
 		public static AlphaPickerCell MakeAlphaPickerCell()
 		{
-			return instance.MakeCustomAlphaPickerCell();
+			return instance.MakeOmegaAlphaPickerCell();
 		}
-		public virtual AlphaPickerCell MakeCustomAlphaPickerCell()
+		public virtual AlphaPickerCell MakeOmegaAlphaPickerCell()
 		{
 			return new AlphaPickerCell();
 		}
