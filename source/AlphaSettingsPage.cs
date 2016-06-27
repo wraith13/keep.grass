@@ -72,10 +72,23 @@ namespace keep.grass
 				cell.Value.On = Settings.GetAlert(cell.Key);
 			}
 
+			var Language = Settings.Language;
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
 			{
 				LanguageCell.Items.Add(i);
 			}
+			LanguageCell.Picker.SelectedIndex = L.DisplayNames
+				.Select
+				(
+					(value, index) => new
+					{
+						value = value.Key,
+						index = index,
+					}
+				)
+				.Where(i => i.value == Language)
+				.Select(i => i.index)
+				.FirstOrDefault();
 		}
 		protected override void OnDisappearing()
 		{
