@@ -72,7 +72,7 @@ namespace keep.grass
 				cell.Value.On = Settings.GetAlert(cell.Key);
 			}
 
-			var Language = Settings.Language;
+			var Language = L.Get();
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
 			{
 				LanguageCell.Items.Add(i);
@@ -80,9 +80,9 @@ namespace keep.grass
 			LanguageCell.Picker.SelectedIndex = L.DisplayNames
 				.Select
 				(
-					(value, index) => new
+					(i, index) => new
 					{
-						value = value.Key,
+						value = i.Key,
 						index = index,
 					}
 				)
