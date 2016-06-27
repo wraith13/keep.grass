@@ -49,6 +49,18 @@ namespace keep.grass
 				return Picker.Items;
 			}
 		}
+
+		public int SelectedIndex
+		{
+			get
+			{
+				return Picker.SelectedIndex;
+			}
+			set
+			{
+				Picker.SelectedIndex = value;
+			}
+		}
 	}
 }
 

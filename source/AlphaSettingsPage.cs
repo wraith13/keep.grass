@@ -77,7 +77,7 @@ namespace keep.grass
 			{
 				LanguageCell.Items.Add(i);
 			}
-			LanguageCell.Picker.SelectedIndex = L.DisplayNames
+			LanguageCell.SelectedIndex = L.DisplayNames
 				.Select
 				(
 					(i, index) => new
