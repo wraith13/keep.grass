@@ -6,8 +6,8 @@ namespace keep.grass
 {
 	public class AlphaActivityIndicatorTextCell :ViewCell
 	{
-		ActivityIndicator Indicator = new ActivityIndicator();
-		Label TextLabel = new Label();
+		protected ActivityIndicator Indicator = new ActivityIndicator();
+		protected Label TextLabel = new Label();
 
 		public AlphaActivityIndicatorTextCell() :base()
 		{
@@ -25,12 +25,12 @@ namespace keep.grass
 					},
 				}
 			};
-			Indicator.VerticalOptions = LayoutOptions.Center;
+            Indicator.VerticalOptions = LayoutOptions.Center;
 			Indicator.HorizontalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 		}
 
-		public void ShowText()
+        public void ShowText()
 		{
 			Indicator.IsRunning = false;
 			Indicator.IsVisible = false;

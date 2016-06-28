@@ -99,6 +99,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OmegaActivityIndicatorTextCell.cs" />
     <Compile Include="OmegaApp.cs" />
     <Compile Include="OmegaFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

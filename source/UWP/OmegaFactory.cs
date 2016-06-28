@@ -17,5 +17,9 @@ namespace keep.grass.UWP
         {
             return new OmegaApp();
         }
+        public override AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
+        {
+            return new OmegaActivityIndicatorTextCell();
+        }
     }
 }
