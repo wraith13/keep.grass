@@ -41,6 +41,7 @@ namespace keep.grass.Languages
 
 		Dictionary<string, string> names = new Dictionary<string, string>
 		{
+			{ "", "System Default" },
 			{ "en", "English" },
 			{ "ja", "日本語" },
 		};
