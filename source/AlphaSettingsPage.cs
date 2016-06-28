@@ -78,17 +78,8 @@ namespace keep.grass
 				LanguageCell.Items.Add(i);
 			}
 			LanguageCell.SelectedIndex = L.DisplayNames
-				.Select
-				(
-					(i, index) => new
-					{
-						value = i.Key,
-						index = index,
-					}
-				)
-				.Where(i => i.value == Language)
-				.Select(i => i.index)
-				.FirstOrDefault();
+				.Select(i => i.Key)
+				.IndexOf(Language);
 		}
 		protected override void OnDisappearing()
 		{
