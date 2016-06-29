@@ -21,5 +21,9 @@ namespace keep.grass.UWP
         {
             return new OmegaActivityIndicatorTextCell();
         }
+        public override AlphaCircleImageCell MakeOmegaCircleImageCell()
+        {
+            return new OmegaCircleImageCell();
+        }
     }
 }

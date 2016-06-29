@@ -9,8 +9,8 @@ namespace keep.grass
 {
 	public class AlphaCircleImageCell : ViewCell
 	{
-		CircleImage Image = new CircleImage();
-		Label TextLabel = new Label();
+		protected CircleImage Image = new CircleImage();
+		protected Label TextLabel = new Label();
 
 		public AlphaCircleImageCell() : base()
 		{
@@ -28,10 +28,6 @@ namespace keep.grass
 					},
 				}
 			};
-
-			//この指定はUWP版としての継承先へ移動すること
-            //Image.HeightRequest = 48;
-            //Image.WidthRequest = 48;
 
             Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
