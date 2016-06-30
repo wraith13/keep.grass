@@ -107,7 +107,7 @@ namespace keep.grass
 					var AlertStamp = Limit.Add(-Span);
 					if (Settings.GetAlert(Span) && Now < AlertStamp)
 					{
-						ShowAlerts
+						ShowAlert
 						(
 							Settings.AlertTimeSpanToDisplayName(L, Span),
 							LastPublicActivityInfo,
@@ -117,12 +117,12 @@ namespace keep.grass
 					}
 					else
 					{
-						CrossLocalNotifications.Current.Cancel(i);
+                        CancelAlert(i);
 					}
 				}
 			}
 		}
-		public virtual void ShowAlerts(string title, string body, int id, DateTime notifyTime)
+		public virtual void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
 			CrossLocalNotifications.Current.Show
 			(
@@ -132,12 +132,16 @@ namespace keep.grass
 				notifyTime
 			);
 		}
-		public void CancelAllAlerts()
+        public virtual void CancelAlert(int id)
+        {
+            CrossLocalNotifications.Current.Cancel(id);
+        }
+        public void CancelAllAlerts()
 		{
 			int i = 0;
 			foreach(var Span in Settings.AlertTimeSpanTable)
 			{
-				CrossLocalNotifications.Current.Cancel(++i);
+                CancelAlert(++i);
 			}
 		}
 	}

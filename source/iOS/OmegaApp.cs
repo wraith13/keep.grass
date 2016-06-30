@@ -14,9 +14,9 @@ namespace keep.grass.iOS
 			return NSLocale.PreferredLanguages[0].Split('-')[0];
 		}
 
-		public override void ShowAlerts(string title, string body, int id, DateTime notifyTime)
+		public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
-			base.ShowAlerts
+			base.ShowAlert
 		    (
 				"keep.grass",
 				title + ",\r\n" + body,

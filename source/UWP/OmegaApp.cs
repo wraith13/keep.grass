@@ -19,10 +19,17 @@ namespace keep.grass.UWP
             return Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Split('-')[0];
         }
 
-        public override void ShowAlerts(string title, string body, int id, DateTime notifyTime)
+        string MakeToastId(int id)
+        {
+            return "Toast" + id.ToString();
+        }
+
+        public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
         {
             //  こんなコードを自前で用意しない為に Plugin.LocalNotifications を導入したのだが。。。
             //  UWP にも対応してるハズなのになぜか動作してくれない。
+
+            CancelAlert(id);
 
             //  base code https://msdn.microsoft.com/ja-jp/library/windows/desktop/windows.ui.notifications.scheduledtoastnotification?cs-save-lang=1&cs-lang=csharp#code-snippet-1
 
@@ -34,10 +41,22 @@ namespace keep.grass.UWP
 
             // Create the toast notification object.
             var toast = new ScheduledToastNotification(toastXml, notifyTime);
-            toast.Id = "Toast" + id.ToString();
+            toast.Id = MakeToastId(id);
 
             // Add to the schedule.
             ToastNotificationManager.CreateToastNotifier().AddToSchedule(toast);
+        }
+        public override void CancelAlert(int id)
+        {
+            var ToastId = MakeToastId(id);
+            var Manager = ToastNotificationManager
+                .CreateToastNotifier();
+            foreach (var toast in Manager
+                .GetScheduledToastNotifications()
+                .Where(t => t.Id == ToastId))
+            {
+                Manager.RemoveFromSchedule(toast);
+            }
         }
     }
 }
