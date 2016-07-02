@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Windows.UI.Notifications;
 
+using keep.grass.Helpers;
+
 namespace keep.grass.UWP
 {
     public class OmegaApp : AlphaApp
@@ -19,6 +21,27 @@ namespace keep.grass.UWP
             return Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Split('-')[0];
         }
 
+        public override void UpdateAlerts()
+        {
+            base.UpdateAlerts();
+
+            if
+            (
+                String.IsNullOrWhiteSpace(Settings.UserName) ||
+                null == Main.LastPublicActivity
+            )
+            {
+                TileUpdateManager.GetTemplateContent(TileTemplateType.TileWidePeekImageAndText02);
+            }
+            else
+            {
+                var Limit = Main.LastPublicActivity.Value.AddHours(24);
+                var LastPublicActivityInfo = L["Last Stamp: "] + Main.LastPublicActivity.Value.ToString("HH:mm");
+
+                TileUpdateManager.GetTemplateContent(TileTemplateType.TileWidePeekImageAndText02);
+
+            }
+        }
         string MakeToastId(int id)
         {
             return "Toast" + id.ToString();

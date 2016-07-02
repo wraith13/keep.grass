@@ -85,7 +85,7 @@ namespace keep.grass
 			UpdateAlerts();
 		}
 
-		public void UpdateAlerts()
+		public virtual void UpdateAlerts()
 		{
 			if
 			(
