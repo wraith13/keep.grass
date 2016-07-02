@@ -89,6 +89,8 @@ namespace keep.grass
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
+			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
+
 			Root.OnChangeSettings();
 			Root.ShowSettingsButtonOnToolbar();
 		}
