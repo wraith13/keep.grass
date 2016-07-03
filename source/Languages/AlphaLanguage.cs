@@ -82,7 +82,8 @@ namespace keep.grass.Languages
 		}
 		public void Set(String lang)
 		{
-			current = master[lang];
+			current = null;
+			master.TryGetValue(lang, out current);
 		}
 	}
 }
