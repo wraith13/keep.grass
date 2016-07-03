@@ -13,6 +13,11 @@ namespace keep.grass
 			Root = AppRoot;
 			L = Root.L;
 			Title = L["information"];
+			var twitter = AlphaFactory.MakeCircleImageCell();
+			twitter.ImageSource = GitHub.GetIconUrl("wraith13");
+			twitter.Text = "@wraith13";
+			twitter.Command = new Command(o => Device.OpenUri(new Uri("https://twitter.com/wraith13")));
+
 			Content = new StackLayout
 			{
 				Children =
@@ -30,10 +35,7 @@ namespace keep.grass
 							},
 							new TableSection(L["Auther"])
 							{
-								new TextCell
-								{
-									Text = "https://twitter.com/wraith13",
-								}
+								twitter
 							},
 							new TableSection(L["Github Repository"])
 							{
