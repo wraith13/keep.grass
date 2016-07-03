@@ -64,9 +64,9 @@ namespace keep.grass.Languages
 			get
 			{
 				var value = key;
-				if (null != current)
+				if (null != current && current.ContainsKey(key))
 				{
-					current.TryGetValue(key, out value);
+					value = current[key];
 				}
 				return value;
 			}
