@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 using Windows.UI.Notifications;
 
@@ -31,15 +32,20 @@ namespace keep.grass.UWP
                 null == Main.LastPublicActivity
             )
             {
-                TileUpdateManager.GetTemplateContent(TileTemplateType.TileWidePeekImageAndText02);
             }
             else
             {
                 var Limit = Main.LastPublicActivity.Value.AddHours(24);
                 var LastPublicActivityInfo = L["Last Stamp: "] + Main.LastPublicActivity.Value.ToString("HH:mm");
 
-                TileUpdateManager.GetTemplateContent(TileTemplateType.TileWidePeekImageAndText02);
-
+                //var xml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150PeekImageAndText02);
+                var xml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150Text02);
+                xml.GetElementsByTagName("text")[0].AppendChild(xml.CreateTextNode(Settings.UserName));
+                xml.GetElementsByTagName("text")[1].AppendChild(xml.CreateTextNode(LastPublicActivityInfo));
+                //((XmlElement)xml.GetElementsByTagName("image")[0]).SetAttribute("src", GitHub.GetIconUrl(Settings.UserName));
+                var notification = new TileNotification(xml);
+                notification.ExpirationTime = Main.LastPublicActivity.Value.AddHours(24);
+                TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
             }
         }
         string MakeToastId(int id)
