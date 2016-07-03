@@ -56,6 +56,14 @@ namespace keep.grass
 							new TableSection(L["Language"])
 							{
 								LanguageCell
+							},
+							new TableSection("information")
+							{
+								new TextCell
+								{
+									Text = L["keep.grass"],
+									Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage(Root))),
+								}
 							}
 						}
 					},

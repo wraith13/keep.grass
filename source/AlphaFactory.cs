@@ -57,6 +57,15 @@ namespace keep.grass
 			return new AlphaSettingsPage(Root);
 		}
 
+		public static AlphaInfoPage MakeInfoPage(AlphaApp Root)
+		{
+			return instance.MakeOmegaInfoPage(Root);
+		}
+		public virtual AlphaInfoPage MakeOmegaInfoPage(AlphaApp Root)
+		{
+			return new AlphaInfoPage(Root);
+		}
+
 		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()
 		{
 			return instance.MakeOmegaActivityIndicatorTextCell();
