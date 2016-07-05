@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 using keep.grass.Helpers;
 
@@ -111,11 +112,12 @@ namespace keep.grass
 						Root.UpdateAlerts();
 					}
 				}
-				catch
+				catch(Exception err)
 				{
-					LastPublicActivity = null;
-					LastActivityStampLabel.Text = L["Error"];
-					LastActivityStampLabel.TextColor = Color.Red;
+                    Debug.WriteLine(err);
+                    LastPublicActivity = null;
+                    LastActivityStampLabel.Text = L["Error"];
+                    LastActivityStampLabel.TextColor = Color.Red;
 				}
 				LastActivityStampLabel.ShowText();
 				LeftTimeLabel.ShowText();
