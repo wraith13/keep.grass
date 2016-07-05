@@ -59,6 +59,11 @@ https://www.nuget.org/packages/Xam.Plugins.Notifier/
 https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/ImageCircle
 https://www.nuget.org/packages/Xam.Plugins.Forms.ImageCircle
 
+■NotificationsExtensions.Win10
+https://github.com/WindowsNotifications/NotificationsExtensions
+https://www.nuget.org/packages/NotificationsExtensions.Win10
+→ UWP 版でのみ使用
+
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ■

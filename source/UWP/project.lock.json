@@ -262,6 +262,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.0",
@@ -2036,6 +2044,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        }
+      },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -3718,6 +3734,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        }
+      },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -5367,6 +5391,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
         }
       },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -7054,6 +7086,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        }
+      },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -8703,6 +8743,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
         }
       },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -10388,6 +10436,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions.Win10/14332.0.1": {
+        "compile": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/Windows/NotificationsExtensions.winmd": {}
         }
       },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
@@ -12410,6 +12466,32 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "NotificationsExtensions.Win10/14332.0.1": {
+      "sha512": "lw7O9/Whadt1aO1qtVVQzbwCaW3KvdOG8F6u3XE5Rn5i5BWSJFetUAkMzlw5/JF8zQk+2DCi3WFHtZzHzxypqA==",
+      "type": "package",
+      "files": [
+        "NotificationsExtensions.Win10.14332.0.1.nupkg.sha512",
+        "NotificationsExtensions.Win10.nuspec",
+        "build/Windows/NotificationsExtensions.Win10.targets",
+        "build/native/NotificationsExtensions.Win10.targets",
+        "lib/Windows/NotificationsExtensions.pdb",
+        "lib/Windows/NotificationsExtensions.pri",
+        "lib/Windows/NotificationsExtensions.winmd",
+        "lib/Windows/NotificationsExtensions.winmd.xml",
+        "lib/Windows/NotificationsExtensions.xml",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.XML",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.dll",
+        "lib/dotnet/NotificationsExtensions.Win10.NETCore.pdb",
+        "lib/native/NotificationsExtensions.pdb",
+        "lib/native/NotificationsExtensions.pri",
+        "lib/native/NotificationsExtensions.winmd",
+        "lib/native/NotificationsExtensions.winmd.xml",
+        "lib/native/NotificationsExtensions.xml",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.XML",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.dll",
+        "lib/portable-net45+sl50+win+wpa81+wp80/NotificationsExtensions.Win10.Portable.pdb"
       ]
     },
     "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -15448,6 +15530,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
+      "NotificationsExtensions.Win10 >= 14332.0.1",
       "Xam.Plugins.Forms.ImageCircle >= 1.4.1",
       "Xam.Plugins.Notifier >= 2.0.2",
       "Xam.Plugins.Settings >= 2.1.0",
