@@ -57,7 +57,7 @@ namespace keep.grass
 							{
 								LanguageCell
 							},
-							new TableSection("information")
+							new TableSection(L["Information"])
 							{
 								new TextCell
 								{

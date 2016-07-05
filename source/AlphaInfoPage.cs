@@ -12,7 +12,7 @@ namespace keep.grass
 		{
 			Root = AppRoot;
 			L = Root.L;
-			Title = L["information"];
+			Title = L["Information"];
 
 			var version = AlphaFactory.MakeCircleImageCell();
 			version.ImageSource = "https://raw.githubusercontent.com/wraith13/keep.grass/master/source/iOS/Resources/Images.xcassets/AppIcons.appiconset/keep.grass.180.png";

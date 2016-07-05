@@ -33,7 +33,11 @@ namespace keep.grass.Languages
 					{ "Just 24 hours later", "24時間経過" },
 					{ "unspecified", "未指定" },
 					{ "Error", "エラー" },
-					{ "Language", "言語" }
+					{ "Language", "言語" },
+					{ "Information", "情報" },
+					{ "Version", "バージョン" },
+					{ "Auther", "作者" },
+					{ "Github Repository", "Github リポジトリ" }
 				}
 			}
 		};
