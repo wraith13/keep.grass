@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 
 using Windows.UI.Notifications;
+using NotificationsExtensions.Tiles;
 
 using keep.grass.Helpers;
 
@@ -35,17 +36,51 @@ namespace keep.grass.UWP
             }
             else
             {
-                var Limit = Main.LastPublicActivity.Value.AddHours(24);
-                var LastPublicActivityInfo = L["Last Stamp: "] + Main.LastPublicActivity.Value.ToString("HH:mm");
-
-                //var xml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150PeekImageAndText02);
-                var xml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileWide310x150Text02);
-                xml.GetElementsByTagName("text")[0].AppendChild(xml.CreateTextNode(Settings.UserName));
-                xml.GetElementsByTagName("text")[1].AppendChild(xml.CreateTextNode(LastPublicActivityInfo));
-                //((XmlElement)xml.GetElementsByTagName("image")[0]).SetAttribute("src", GitHub.GetIconUrl(Settings.UserName));
-                var notification = new TileNotification(xml);
-                notification.ExpirationTime = Main.LastPublicActivity.Value.AddHours(24);
-                TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+                var binding = new TileBinding()
+                {
+                    Branding = TileBranding.NameAndLogo,
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage
+                        {
+                            Source = "Assets/TileBackGround.png",
+                        },
+                        Children =
+                        {
+                            new TileText()
+                            {
+                                Text = Settings.UserName,
+                                Style = TileTextStyle.Body,
+                            },
+                            new TileText()
+                            {
+                                Text = L["Last Stamp: "] + Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm"),
+                                Wrap = true,
+                                Style = TileTextStyle.CaptionSubtle,
+                            },
+                        },
+                    },
+                };
+                ;
+                TileUpdateManager.CreateTileUpdaterForApplication().Update
+                (
+                    new TileNotification
+                    (
+                        new TileContent()
+                        {
+                            Visual = new TileVisual()
+                            {
+                                TileMedium = binding,
+                                TileWide = binding,
+                                TileLarge = binding
+                            }
+                        }
+                        .GetXml()
+                    )
+                    {
+                        ExpirationTime = Main.LastPublicActivity.Value.AddHours(24),
+                    }
+                );
             }
         }
         string MakeToastId(int id)
