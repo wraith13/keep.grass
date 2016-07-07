@@ -61,7 +61,7 @@ namespace keep.grass.Languages
 		public AlphaLanguage(AlphaApp AppRoot)
 		{
 			Root = AppRoot;
-			Set(Get());
+			Update();
 		}
 		public string this[string key]
 		{
@@ -74,6 +74,10 @@ namespace keep.grass.Languages
 				}
 				return value;
 			}
+		}
+		public void Update()
+		{
+			Set(Get());
 		}
 		public String Get()
 		{

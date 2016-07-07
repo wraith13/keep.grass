@@ -81,7 +81,7 @@ namespace keep.grass
 
 		public void OnChangeSettings()
 		{
-			L.Set(Settings.Language);
+			L.Update();
 			Main.UpdateInfoAsync().Wait(0);
 			UpdateAlerts();
 		}
