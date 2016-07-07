@@ -7,6 +7,7 @@ using System.Xml;
 
 using Windows.UI.Notifications;
 using NotificationsExtensions.Tiles;
+using NotificationsExtensions.Toasts;
 
 using keep.grass.Helpers;
 
@@ -95,20 +96,31 @@ namespace keep.grass.UWP
 
             CancelAlert(id);
 
-            //  base code https://msdn.microsoft.com/ja-jp/library/windows/desktop/windows.ui.notifications.scheduledtoastnotification?cs-save-lang=1&cs-lang=csharp#code-snippet-1
-
-            // Set up the notification text.
-            var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText02);
-            var strings = toastXml.GetElementsByTagName("text");
-            strings[0].AppendChild(toastXml.CreateTextNode(title));
-            strings[1].AppendChild(toastXml.CreateTextNode(body));
-
-            // Create the toast notification object.
-            var toast = new ScheduledToastNotification(toastXml, notifyTime);
-            toast.Id = MakeToastId(id);
-
-            // Add to the schedule.
-            ToastNotificationManager.CreateToastNotifier().AddToSchedule(toast);
+            ToastNotificationManager.CreateToastNotifier().AddToSchedule
+            (
+                new ScheduledToastNotification
+                (
+                    new ToastContent
+                    {
+                        Visual = new ToastVisual
+                        {
+                            TitleText = new ToastText()
+                            {
+                                Text = title,
+                            },
+                            BodyTextLine1 = new ToastText()
+                            {
+                                Text = body,
+                            },
+                        },
+                    }
+                    .GetXml(),
+                    notifyTime
+                )
+                {
+                    Id = MakeToastId(id),
+                }
+            );
         }
         public override void CancelAlert(int id)
         {
