@@ -83,7 +83,7 @@ namespace keep.grass
 			{
 				UserLabel.ImageSource = null;
 				UserLabel.Text = L["unspecified"];
-				UserLabel.TextColor = Color.Red;
+				UserLabel.TextColor = Color.Gray;
 				ClearActiveInfo();
 			}
 		}
