@@ -24,7 +24,7 @@ namespace keep.grass.Languages
 					{ "Notifications", "通知" },
 					{ "Last Acitivity Stamp", "最終アクティビティ日時" },
 					{ "Left Time", "残り時間" },
-					{ "Last Stamp: ", "最終時刻: " },
+					{ "Last Stamp", "最終時刻: " },
 					{ "User ID", "ユーザーID" },
 					{ "{0} hours left", "残り {0} 時間" },
 					{ "1 hour left", "残り 1 時間" },

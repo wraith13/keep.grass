@@ -99,7 +99,7 @@ namespace keep.grass
 			else
 			{
 				var Limit = Main.LastPublicActivity.Value.AddHours(24);
-				var LastPublicActivityInfo = L["Last Stamp: "] +Main.LastPublicActivity.Value.ToString("HH:mm");
+				var LastPublicActivityInfo = L["Last Acitivity Stamp"] +": " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach(var Span in Settings.AlertTimeSpanTable)
