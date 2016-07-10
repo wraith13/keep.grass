@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Java.Util;
 using Android.App;
 using Android.Content;
+using Android.OS;
+using Xamarin.Forms;
 
 namespace keep.grass.Droid
 {
@@ -16,27 +19,45 @@ namespace keep.grass.Droid
 			return Locale.Default.ToString().Split('_')[0];
 		}
 
+		public AlarmManager GetAlarmManager()
+		{
+			return ((AlarmManager)Forms.Context.GetSystemService(Context.AlarmService));
+		}
+		public PendingIntent MakeAlarmIntent(string title, string body, int id)
+		{
+			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
+			if (null != body)
+			{
+				alarmIntent.PutExtra("message", body);
+			}
+			if (null != title)
+			{
+				alarmIntent.PutExtra("title", title);
+			}
+			var result = PendingIntent.GetBroadcast
+          	(
+				Forms.Context,
+				id,
+				alarmIntent,
+				PendingIntentFlags.UpdateCurrent
+			);
+			return result;
+		}
 		public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
-			var builder = new Notification.Builder(Xamarin.Forms.Forms.Context);
-			builder.SetContentTitle(title);
-			builder.SetContentText(body);
-			builder.SetGroup("keep.grass.alert");
-			//builder.SetLargeIcon();
-
-			var notification = builder.Build();
-			var notificationIntent = new Intent(Xamarin.Forms.Forms.Context, typeof(MainActivity));
-			notificationIntent.PutExtra(NotificationPublisher.NOTIFICATION_ID, 1);
-		    notificationIntent.PutExtra(NotificationPublisher.NOTIFICATION, notification);
-		    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-			long futureInMillis = SystemClock.elapsedRealtime() + delay;
-			AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-			alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
-		
+			GetAlarmManager().Set
+            (
+	            AlarmType.ElapsedRealtime,
+	            SystemClock.ElapsedRealtime() +(long)((notifyTime -DateTime.Now).TotalMilliseconds),
+				MakeAlarmIntent(title, body, id)
+           );
 		}
 		public override void CancelAlert(int id)
 		{
+			GetAlarmManager().Cancel
+            (
+				MakeAlarmIntent(null, null, id)
+			);
 		}
 	}
 }

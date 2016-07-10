@@ -113,6 +113,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="OmegaFactory.cs" />
     <Compile Include="OmegaApp.cs" />
+    <Compile Include="AlarmReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
