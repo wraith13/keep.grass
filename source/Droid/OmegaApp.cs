@@ -23,16 +23,17 @@ namespace keep.grass.Droid
 		{
 			return ((AlarmManager)Forms.Context.GetSystemService(Context.AlarmService));
 		}
-		public PendingIntent MakeAlarmIntent(string title, string body, int id)
+		public PendingIntent MakeAlarmIntent(int id, string title = null, string body = null)
 		{
 			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
-			if (null != body)
-			{
-				alarmIntent.PutExtra("message", body);
-			}
+			alarmIntent.PutExtra("id", id);
 			if (null != title)
 			{
 				alarmIntent.PutExtra("title", title);
+			}
+			if (null != body)
+			{
+				alarmIntent.PutExtra("message", body);
 			}
 			var result = PendingIntent.GetBroadcast
           	(
@@ -49,14 +50,14 @@ namespace keep.grass.Droid
             (
 	            AlarmType.ElapsedRealtime,
 	            SystemClock.ElapsedRealtime() +(long)((notifyTime -DateTime.Now).TotalMilliseconds),
-				MakeAlarmIntent(title, body, id)
+				MakeAlarmIntent(id, title, body)
            );
 		}
 		public override void CancelAlert(int id)
 		{
 			GetAlarmManager().Cancel
             (
-				MakeAlarmIntent(null, null, id)
+				MakeAlarmIntent(id)
 			);
 		}
 	}
