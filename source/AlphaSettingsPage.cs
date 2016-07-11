@@ -92,7 +92,7 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			Settings.UserName = UserNameCell.Text;
+			Settings.UserName = UserNameCell.Text.Trim();
 			foreach(var cell in AlertSwitchCellList)
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
