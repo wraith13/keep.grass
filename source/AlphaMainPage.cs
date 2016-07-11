@@ -67,6 +67,7 @@ namespace keep.grass
 
 		public async Task UpdateInfoAsync()
 		{
+			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
@@ -96,6 +97,7 @@ namespace keep.grass
 
 		public async Task UpdateLastPublicActivityAsync()
 		{
+			Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync");
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
@@ -105,6 +107,7 @@ namespace keep.grass
 					LeftTimeLabel.ShowIndicator();
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 					var NewStamp = LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+					Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync::NewStamp = " +NewStamp);
 					if (LastActivityStampLabel.Text != NewStamp)
 					{
 						LastActivityStampLabel.Text = NewStamp;
@@ -114,8 +117,8 @@ namespace keep.grass
 				}
 				catch(Exception err)
 				{
-                    Debug.WriteLine(err);
-                    LastPublicActivity = null;
+					Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync::catch::err" +err.ToString());
+					LastPublicActivity = null;
                     LastActivityStampLabel.Text = L["Error"];
                     LastActivityStampLabel.TextColor = Color.Red;
 				}
@@ -174,6 +177,7 @@ namespace keep.grass
 			{
 				LeftTimeLabel.Text = "";
 			}
+			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
 	}
 }

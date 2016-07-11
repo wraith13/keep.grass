@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 using Plugin.LocalNotifications;
 using keep.grass.Helpers;
+using System.Diagnostics;
 
 namespace keep.grass
 {
@@ -94,10 +95,12 @@ namespace keep.grass
 				null == Main.LastPublicActivity
 			)
 			{
+				Debug.WriteLine("AlphaApp::CancelAllAlerts");
 				CancelAllAlerts();
 			}
 			else
 			{
+				Debug.WriteLine("AlphaApp::UpdateAlerts");
 				var Limit = Main.LastPublicActivity.Value.AddHours(24);
 				var LastPublicActivityInfo = L["Last Acitivity Stamp"] +": " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 				var Now = DateTime.Now;
