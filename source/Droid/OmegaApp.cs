@@ -25,7 +25,7 @@ namespace keep.grass.Droid
 		}
 		public PendingIntent MakeAlarmIntent(int id, string title = null, string body = null)
 		{
-			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
+			var alarmIntent = new Intent(Forms.Context, typeof(AlarmWakefulReceiver));
 			alarmIntent.PutExtra("id", id);
 			if (null != title)
 			{

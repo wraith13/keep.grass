@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Diagnostics;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
 using Xamarin.Forms;
 
 namespace keep.grass.Droid
 {
-	[BroadcastReceiver]
-	public class AlarmReceiver : BroadcastReceiver
+	[Service]
+	public class AlarmIntentService :IntentService
 	{
-		public override void OnReceive(Context context, Intent intent)
+		protected override void OnHandleIntent(Intent intent)
+		{
+			Debug.WriteLine("AlarmIntentService::OnHandleIntent()");
+			try
+			{
+				ShowNotification(ApplicationContext, intent);
+			}
+			finally
+			{
+				Android.Support.V4.Content.WakefulBroadcastReceiver.CompleteWakefulIntent(intent);
+			}
+		}
+		public void ShowNotification(Context context, Intent intent)
 		{
 			var id = intent.GetIntExtra("id", 0);
 			var title = intent.GetStringExtra("title");
@@ -44,7 +47,7 @@ namespace keep.grass.Droid
 			builder.SetDefaults(NotificationDefaults.All);
 			builder.SetAutoCancel(true);
 
-			((NotificationManager)context.GetSystemService(Service.NotificationService))
+			((NotificationManager)context.GetSystemService(NotificationService))
 				.Notify(id, builder.Build());
 		}
 	}
