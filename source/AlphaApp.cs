@@ -21,7 +21,6 @@ namespace keep.grass
 				Main = AlphaFactory.MakeMainPage(this)
 			);
 			MainPage.Title = "keep.grass";
-			ShowSettingsButtonOnToolbar();
 		}
 
 		public virtual String getLanguage()
@@ -43,40 +42,8 @@ namespace keep.grass
 			Main.UpdateLastPublicActivityAsync().Wait(0);
 		}
 
-		public bool IsShowSettingsButtonOnToolbar()
-		{
-			return 0 != Navigation.ToolbarItems.Count;
-		}
-		public void ShowSettingsButtonOnToolbar()
-		{
-			if (!IsShowSettingsButtonOnToolbar())
-			{
-				Navigation.ToolbarItems.Add
-				(
-					new ToolbarItem
-					(
-						L["Settings"],
-						null,
-						() =>
-						{
-							ShowSettingsPage();
-						}
-					)
-				);
-			}
-		}
-
-		public void HideSettingsButtonOnToolbar()
-		{
-			if (IsShowSettingsButtonOnToolbar())
-			{
-				Navigation.ToolbarItems.RemoveAt(0);
-			}
-		}
-
 		public void ShowSettingsPage()
 		{
-			HideSettingsButtonOnToolbar();
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage(this));
 		}
 

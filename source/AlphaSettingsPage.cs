@@ -100,7 +100,6 @@ namespace keep.grass
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
 
 			Root.OnChangeSettings();
-			Root.ShowSettingsButtonOnToolbar();
 		}
 	}
 }

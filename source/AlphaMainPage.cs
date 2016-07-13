@@ -55,6 +55,11 @@ namespace keep.grass
 						Text = L["Update"],
 						Command = LastActivityStampLabel.Command,
 					},
+					new Button
+					{
+						Text = L["Settings"],
+						Command = UserLabel.Command,
+					},
 				},
 			};
 		}
