@@ -104,6 +104,12 @@ namespace keep.grass
 			UpdateInfoAsync().Wait(0);
 		}
 
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
+			UpdateLeftTimeTask = null;
+		}
+
 		public async Task UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
@@ -117,6 +123,10 @@ namespace keep.grass
 					UserLabel.TextColor = Color.Default;
 					ClearActiveInfo();
 					await UpdateLastPublicActivityAsync();
+				}
+				else
+				{
+					StartUpdateLeftTimeTask();
 				}
 			}
 			else
@@ -163,22 +173,26 @@ namespace keep.grass
 				}
 				LastActivityStampLabel.ShowText();
 				LeftTimeLabel.ShowText();
+				StartUpdateLeftTimeTask();
+			}
+		}
 
-				if (null == UpdateLeftTimeTask)
-				{
-					UpdateLeftTimeTask = new Task
-					(
-						() =>
+		protected void StartUpdateLeftTimeTask()
+		{
+			if (null == UpdateLeftTimeTask)
+			{
+				UpdateLeftTimeTask = new Task
+				(
+					() =>
+					{
+						while (null != UpdateLeftTimeTask)
 						{
-							while(true)
-							{
-								Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
-								Task.Delay(100).Wait();
-							}
+							Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+							Task.Delay(100).Wait();
 						}
-					);
-					UpdateLeftTimeTask.Start();
-				}
+					}
+				);
+				UpdateLeftTimeTask.Start();
 			}
 		}
 
@@ -215,6 +229,7 @@ namespace keep.grass
 			else
 			{
 				LeftTimeLabel.Text = "";
+				UpdateLeftTimeTask = null;
 			}
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
