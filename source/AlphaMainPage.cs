@@ -194,7 +194,7 @@ namespace keep.grass
 						while (null != UpdateLeftTimeTask)
 						{
 							Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
-							Task.Delay(100).Wait();
+							Task.Delay(1000 -DateTime.Now.Millisecond).Wait();
 						}
 					}
 				);
