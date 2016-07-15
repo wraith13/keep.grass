@@ -107,7 +107,7 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			UpdateLeftTimeTask = null;
+			StopUpdateLeftTimeTask();
 		}
 
 		public async Task UpdateInfoAsync()
@@ -177,7 +177,7 @@ namespace keep.grass
 			}
 		}
 
-		protected void StartUpdateLeftTimeTask()
+		public void StartUpdateLeftTimeTask()
 		{
 			if (null == UpdateLeftTimeTask)
 			{
@@ -194,6 +194,10 @@ namespace keep.grass
 				);
 				UpdateLeftTimeTask.Start();
 			}
+		}
+		public void StopUpdateLeftTimeTask()
+		{
+			UpdateLeftTimeTask = null;
 		}
 
 		protected void UpdateLeftTime()
@@ -229,7 +233,7 @@ namespace keep.grass
 			else
 			{
 				LeftTimeLabel.Text = "";
-				UpdateLeftTimeTask = null;
+				StopUpdateLeftTimeTask();
 			}
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}

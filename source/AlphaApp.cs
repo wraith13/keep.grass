@@ -35,6 +35,7 @@ namespace keep.grass
 		protected override void OnSleep()
 		{
 			// Handle when your app sleeps
+			Main.StopUpdateLeftTimeTask();
 		}
 		protected override void OnResume()
 		{
