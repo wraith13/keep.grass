@@ -29,6 +29,11 @@ namespace keep.grass
 			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
 			LastActivityStampLabel.Command = new Command(o => UpdateLastPublicActivityAsync().Wait(0));
 
+			Rebuild();
+		}
+
+		public void Rebuild()
+		{
 			var ButtonGrid = new Grid
 			{
 				HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -72,7 +77,8 @@ namespace keep.grass
 				1, 0
 			);
 
-			Content = new StackLayout { 
+			Content = new StackLayout
+			{
 				Children =
 				{
 					new TableView

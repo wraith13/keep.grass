@@ -23,6 +23,12 @@ namespace keep.grass
 			MainPage.Title = "keep.grass";
 		}
 
+		public void RebuildMainPage()
+		{
+			Debug.WriteLine("AlphaApp::RebuildMainPage");
+			Main.Rebuild();
+		}
+
 		public virtual String getLanguage()
 		{
 			return "ja";

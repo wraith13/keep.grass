@@ -97,8 +97,13 @@ namespace keep.grass
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
 			}
+			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
-
+			if (OldLanguage != L.Get())
+			{
+				L.Update();
+				Root.RebuildMainPage();
+			}
 			Root.OnChangeSettings();
 		}
 	}
