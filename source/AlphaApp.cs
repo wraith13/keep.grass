@@ -1,13 +1,12 @@
 ﻿using System;
 
 using Xamarin.Forms;
-using Plugin.LocalNotifications;
 using keep.grass.Helpers;
 using System.Diagnostics;
 
 namespace keep.grass
 {
-	public class AlphaApp : Application
+	public abstract class AlphaApp : Application
 	{
 		public NavigationPage Navigation;
 		public AlphaMainPage Main;
@@ -100,20 +99,9 @@ namespace keep.grass
 				}
 			}
 		}
-		public virtual void ShowAlert(string title, string body, int id, DateTime notifyTime)
-		{
-			CrossLocalNotifications.Current.Show
-			(
-				title,
-				body,
-				id,
-				notifyTime
-			);
-		}
-        public virtual void CancelAlert(int id)
-        {
-            CrossLocalNotifications.Current.Cancel(id);
-        }
+		public abstract void ShowAlert(string title, string body, int id, DateTime notifyTime);
+		public abstract void CancelAlert(int id);
+
         public void CancelAllAlerts()
 		{
 			int i = 0;

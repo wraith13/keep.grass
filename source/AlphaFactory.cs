@@ -1,7 +1,7 @@
 ﻿using System;
 namespace keep.grass
 {
-	public class AlphaFactory
+	public abstract class AlphaFactory
 	{
 		static AlphaFactory instance = null;
 
@@ -12,10 +12,6 @@ namespace keep.grass
 		{
 			instance = app;
 		}
-		public static void Init()
-		{
-			Init(new AlphaFactory());
-		}
 		public static AlphaFactory Get()
 		{
 			return instance;
@@ -25,10 +21,7 @@ namespace keep.grass
 		{
 			return instance.MakeOmegaApp();
 		}
-		public virtual AlphaApp MakeOmegaApp()
-		{
-			return new AlphaApp();
-		}
+		public abstract AlphaApp MakeOmegaApp();
 
 		public static Languages.AlphaLanguage MakeLanguage(AlphaApp Root)
 		{
