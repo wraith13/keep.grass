@@ -17,6 +17,7 @@ namespace keep.grass
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		public DateTime ? LastPublicActivity;
+		DateTime LastCheckStamp = default(DateTime);
 
 		Task UpdateLeftTimeTask = null;
 
@@ -150,6 +151,14 @@ namespace keep.grass
 			LeftTimeLabel.Text = "";
 		}
 
+		public async Task AutoUpdateLastPublicActivityAsync()
+		{
+			Debug.WriteLine("AlphaMainPage::AutoUpdateInfoAsync");
+			if (TimeSpan.FromSeconds(60) < DateTime.Now - LastCheckStamp)
+			{
+				await UpdateLastPublicActivityAsync();
+			}
+		}
 		public async Task UpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync");
@@ -158,6 +167,7 @@ namespace keep.grass
 			{
 				try
 				{
+					LastCheckStamp = DateTime.Now;
 					LastActivityStampLabel.ShowIndicator();
 					LeftTimeLabel.ShowIndicator();
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);

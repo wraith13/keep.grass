@@ -45,7 +45,7 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
-			Main.UpdateLastPublicActivityAsync().Wait(0);
+			Main.AutoUpdateLastPublicActivityAsync().Wait(0);
 		}
 
 		public void ShowSettingsPage()
