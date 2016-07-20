@@ -1799,16 +1799,6 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        }
-      },
       "Xam.Plugins.Settings/2.1.0": {
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -3492,16 +3482,6 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        }
-      },
       "Xam.Plugins.Settings/2.1.0": {
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -5141,16 +5121,6 @@
         "runtime": {
           "lib/UAP10/ImageCircle.Forms.Plugin.Abstractions.dll": {},
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
-        }
-      },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
         }
       },
       "Xam.Plugins.Settings/2.1.0": {
@@ -6844,16 +6814,6 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        }
-      },
       "Xam.Plugins.Settings/2.1.0": {
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -8493,16 +8453,6 @@
         "runtime": {
           "lib/UAP10/ImageCircle.Forms.Plugin.Abstractions.dll": {},
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
-        }
-      },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
         }
       },
       "Xam.Plugins.Settings/2.1.0": {
@@ -10196,16 +10146,6 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        }
-      },
       "Xam.Plugins.Settings/2.1.0": {
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -11845,16 +11785,6 @@
         "runtime": {
           "lib/UAP10/ImageCircle.Forms.Plugin.Abstractions.dll": {},
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
-        }
-      },
-      "Xam.Plugins.Notifier/2.0.2": {
-        "compile": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
-        },
-        "runtime": {
-          "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll": {},
-          "lib/UAP10/Plugin.LocalNotifications.dll": {}
         }
       },
       "Xam.Plugins.Settings/2.1.0": {
@@ -15222,58 +15152,6 @@
         "lib/wpa81/ImageCircle.Forms.Plugin.WindowsPhoneRT.xml"
       ]
     },
-    "Xam.Plugins.Notifier/2.0.2": {
-      "sha512": "I3HVB5ZmMVMqhYwqaPHMHhElHYDGN0Hy6suCODvahf25EATFzl/UOa4U4KDSqXkLvIAVbUdhpByYHqTYSuAE/Q==",
-      "type": "package",
-      "files": [
-        "Xam.Plugins.Notifier.2.0.2.nupkg.sha512",
-        "Xam.Plugins.Notifier.nuspec",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.dll",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.pdb",
-        "lib/MonoAndroid10/Plugin.LocalNotifications.xml",
-        "lib/MonoTouch10/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/MonoTouch10/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/MonoTouch10/Plugin.LocalNotifications.dll",
-        "lib/MonoTouch10/Plugin.LocalNotifications.xml",
-        "lib/UAP10/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/UAP10/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/UAP10/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/UAP10/Plugin.LocalNotifications.dll",
-        "lib/UAP10/Plugin.LocalNotifications.pdb",
-        "lib/UAP10/Plugin.LocalNotifications.xml",
-        "lib/Xamarin.iOS10/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/Xamarin.iOS10/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/Xamarin.iOS10/Plugin.LocalNotifications.dll",
-        "lib/Xamarin.iOS10/Plugin.LocalNotifications.xml",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.pdb",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.LocalNotifications.xml",
-        "lib/win8/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/win8/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/win8/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/win8/Plugin.LocalNotifications.dll",
-        "lib/win8/Plugin.LocalNotifications.pdb",
-        "lib/win8/Plugin.LocalNotifications.xml",
-        "lib/wp8/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/wp8/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/wp8/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/wp8/Plugin.LocalNotifications.dll",
-        "lib/wp8/Plugin.LocalNotifications.pdb",
-        "lib/wp8/Plugin.LocalNotifications.xml",
-        "lib/wpa81/Plugin.LocalNotifications.Abstractions.dll",
-        "lib/wpa81/Plugin.LocalNotifications.Abstractions.pdb",
-        "lib/wpa81/Plugin.LocalNotifications.Abstractions.xml",
-        "lib/wpa81/Plugin.LocalNotifications.dll",
-        "lib/wpa81/Plugin.LocalNotifications.pdb",
-        "lib/wpa81/Plugin.LocalNotifications.xml"
-      ]
-    },
     "Xam.Plugins.Settings/2.1.0": {
       "sha512": "quBuIfhmcYN6V1hZTV7a3ODiNqdT0Zv+U/zQdOSQnLQhVd+U+HojacD4TYm+CzUz9+FxUEDpH8aTXHDRyzdZTg==",
       "type": "package",
@@ -15529,7 +15407,6 @@
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
       "NotificationsExtensions.Win10 >= 14332.0.2",
       "Xam.Plugins.Forms.ImageCircle >= 1.4.1",
-      "Xam.Plugins.Notifier >= 2.0.2",
       "Xam.Plugins.Settings >= 2.1.0",
       "Xamarin.Forms >= 2.3.0.107"
     ],
