@@ -12,7 +12,16 @@ using ImageCircle.Forms.Plugin.Droid;
 
 namespace keep.grass.Droid
 {
-	[Activity(Label = "keep.grass", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[
+		Activity
+		(
+			Label = "keep.grass",
+			Icon = "@drawable/icon",
+			MainLauncher = true,
+			ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+			Theme = "@android:style/Theme.Holo.Light"
+		)
+	]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate(Bundle bundle)
