@@ -110,6 +110,19 @@ namespace keep.grass
                 CancelAlert(++i);
 			}
 		}
+
+		public virtual ImageSource GetApplicationImageSource()
+		{
+			return "https://raw.githubusercontent.com/wraith13/keep.grass/master/source/iOS/Resources/Images.xcassets/AppIcons.appiconset/keep.grass.180.png";
+		}
+		public virtual ImageSource GetWraithImageSource()
+		{
+			return GitHub.GetIconUrl("wraith13");
+		}
+		public virtual ImageSource GetGitHubImageSource()
+		{
+			return "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png";
+		}
 	}
 }
 

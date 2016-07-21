@@ -15,16 +15,16 @@ namespace keep.grass
 			Title = L["Information"];
 
 			var version = AlphaFactory.MakeCircleImageCell();
-			version.ImageSource = "https://raw.githubusercontent.com/wraith13/keep.grass/master/source/iOS/Resources/Images.xcassets/AppIcons.appiconset/keep.grass.180.png";
+			version.ImageSource = Root.GetApplicationImageSource();
 			version.Text = "1.00.000";
 
 			var twitter = AlphaFactory.MakeCircleImageCell();
-			twitter.ImageSource = GitHub.GetIconUrl("wraith13");
+			twitter.ImageSource = Root.GetWraithImageSource();
 			twitter.Text = "@wraith13";
 			twitter.Command = new Command(o => Device.OpenUri(new Uri("https://twitter.com/wraith13")));
 
 			var github = AlphaFactory.MakeCircleImageCell();
-			github.ImageSource = "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png";
+			github.ImageSource = Root.GetGitHubImageSource();
 			github.Text = "wraith13/keep.grass";
 			github.Command = new Command(o => Device.OpenUri(new Uri("https://github.com/wraith13/keep.grass")));
 
