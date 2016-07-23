@@ -82,4 +82,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\keep.grass.120.png" />
+    <EmbeddedResource Include="Images\wraith13.120.png" />
+    <EmbeddedResource Include="Images\GitHub-Mark.120.png" />
+  </ItemGroup>
 </Project>
