@@ -10,6 +10,7 @@ using NotificationsExtensions.Tiles;
 using NotificationsExtensions.Toasts;
 
 using keep.grass.Helpers;
+using Xamarin.Forms;
 
 namespace keep.grass.UWP
 {
@@ -133,6 +134,11 @@ namespace keep.grass.UWP
             {
                 Manager.RemoveFromSchedule(toast);
             }
+        }
+
+        public override ImageSource GetImageSource(string image)
+        {
+            return ImageSource.FromFile("Images/" + image);
         }
     }
 }

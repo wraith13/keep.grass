@@ -113,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\TileBackGround.png" />
+    <Content Include="Images\GitHub-Mark.120.png" />
+    <Content Include="Images\keep.grass.120.png" />
+    <Content Include="Images\wraith13.120.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
