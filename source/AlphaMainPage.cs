@@ -18,6 +18,7 @@ namespace keep.grass
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		public DateTime ? LastPublicActivity;
 		DateTime LastCheckStamp = default(DateTime);
+		TimeSpan NextCheckTimeSpan = default(TimeSpan);
 
 		Task UpdateLeftTimeTask = null;
 
@@ -28,7 +29,7 @@ namespace keep.grass
 			Title = "keep.grass";
 
 			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
-			LastActivityStampLabel.Command = new Command(o => UpdateLastPublicActivityAsync().Wait(0));
+			LastActivityStampLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
 
 			Rebuild();
 		}
@@ -129,7 +130,7 @@ namespace keep.grass
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					ClearActiveInfo();
-					await UpdateLastPublicActivityAsync();
+					await ManualUpdateLastPublicActivityAsync();
 				}
 				else
 				{
@@ -159,7 +160,13 @@ namespace keep.grass
 				await UpdateLastPublicActivityAsync();
 			}
 		}
-		public async Task UpdateLastPublicActivityAsync()
+		public async Task ManualUpdateLastPublicActivityAsync()
+		{
+			Debug.WriteLine("AlphaMainPage::ManualUpdateInfoAsync");
+			await UpdateLastPublicActivityAsync();
+			NextCheckTimeSpan = TimeSpan.FromSeconds(60);
+		}
+		private async Task UpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync");
 			var User = Settings.UserName;
@@ -203,7 +210,12 @@ namespace keep.grass
 					{
 						while (null != UpdateLeftTimeTask)
 						{
-							Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+							if (default(TimeSpan) < NextCheckTimeSpan && LastCheckStamp +NextCheckTimeSpan <= DateTime.Now)
+							{
+								NextCheckTimeSpan = TimeSpan.FromTicks((NextCheckTimeSpan.Ticks *3 /2));
+								Device.BeginInvokeOnMainThread(async () => await AutoUpdateLastPublicActivityAsync());
+							}
 							Task.Delay(1000 -DateTime.Now.Millisecond).Wait();
 						}
 					}
