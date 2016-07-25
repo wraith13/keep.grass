@@ -213,7 +213,14 @@ namespace keep.grass
 							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
 							if (default(TimeSpan) < NextCheckTimeSpan && LastCheckStamp +NextCheckTimeSpan <= DateTime.Now)
 							{
-								NextCheckTimeSpan = TimeSpan.FromTicks((NextCheckTimeSpan.Ticks *3 /2));
+								NextCheckTimeSpan = TimeSpan.FromTicks
+                            	(
+	                                Math.Min
+	                                (
+		                                (NextCheckTimeSpan +TimeSpan.FromMinutes(1)).Ticks +,
+		                                TimeSpan.FromMinutes(20).Ticks
+	                               	)
+                               	);
 								Device.BeginInvokeOnMainThread(async () => await AutoUpdateLastPublicActivityAsync());
 							}
 							Task.Delay(1000 -DateTime.Now.Millisecond).Wait();
