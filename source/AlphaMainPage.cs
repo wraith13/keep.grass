@@ -217,7 +217,7 @@ namespace keep.grass
                             	(
 	                                Math.Min
 	                                (
-		                                (NextCheckTimeSpan +TimeSpan.FromMinutes(1)).Ticks +,
+		                                (NextCheckTimeSpan +TimeSpan.FromMinutes(1)).Ticks,
 		                                TimeSpan.FromMinutes(20).Ticks
 	                               	)
                                	);
