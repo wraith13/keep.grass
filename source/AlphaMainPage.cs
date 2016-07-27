@@ -36,49 +36,6 @@ namespace keep.grass
 
 		public void Rebuild()
 		{
-			var ButtonGrid = new Grid
-			{
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.Center,
-				RowDefinitions =
-				{
-					new RowDefinition() { Height = GridLength.Auto }
-				},
-				ColumnDefinitions =
-				{
-					new ColumnDefinition
-					{
-						Width = new GridLength(1, GridUnitType.Star),
-					},
-					new ColumnDefinition
-					{
-						Width = new GridLength(1, GridUnitType.Star),
-					},
-				},
-			};
-			ButtonGrid.Children.Add
-			(
-				new Button
-				{
-					VerticalOptions = LayoutOptions.Center,
-					HorizontalOptions = LayoutOptions.FillAndExpand,
-					Text = L["Update"],
-					Command = LastActivityStampLabel.Command,
-				},
-				0, 0
-			);
-			ButtonGrid.Children.Add
-			(
-				new Button
-				{
-					VerticalOptions = LayoutOptions.Center,
-					HorizontalOptions = LayoutOptions.FillAndExpand,
-					Text = L["Settings"],
-					Command = UserLabel.Command,
-				},
-				1, 0
-			);
-
 			Content = new StackLayout
 			{
 				Children =
@@ -101,7 +58,23 @@ namespace keep.grass
 							},
 						},
 					},
-					ButtonGrid
+					new AlphaGrid().HorizontalJustificate
+					(
+						new Button
+						{
+							VerticalOptions = LayoutOptions.Center,
+							HorizontalOptions = LayoutOptions.FillAndExpand,
+							Text = L["Update"],
+							Command = LastActivityStampLabel.Command,
+						},
+						new Button
+						{
+							VerticalOptions = LayoutOptions.Center,
+							HorizontalOptions = LayoutOptions.FillAndExpand,
+							Text = L["Settings"],
+							Command = UserLabel.Command,
+						}
+					)
 				},
 			};
 		}
