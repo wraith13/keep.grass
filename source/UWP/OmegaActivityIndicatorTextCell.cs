@@ -11,7 +11,7 @@ namespace keep.grass.UWP
     {
         public OmegaActivityIndicatorTextCell()
         {
-            ((StackLayout)((AlphaGrid)View).Children.First()).Padding = new Thickness(20, 8, 20, 8);
+            ((StackLayout)((Grid)View).Children.First()).Padding = new Thickness(20, 8, 20, 8);
             View.SizeChanged += (sender, args) => AdjustIndicatorSize();
             Indicator.HeightRequest = 20;
             AdjustIndicatorSize();
