@@ -11,9 +11,9 @@ namespace keep.grass
 
 		public AlphaActivityIndicatorTextCell() :base()
 		{
-			View = new AlphaGrid
-			{
-				SingleChild = new StackLayout
+			View = new Grid().SetSingleChild
+			(
+				new StackLayout
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
@@ -24,7 +24,7 @@ namespace keep.grass
 						TextLabel,
 					},
 				}
-			};
+			);
             Indicator.VerticalOptions = LayoutOptions.Center;
 			Indicator.HorizontalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;

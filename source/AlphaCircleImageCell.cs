@@ -14,9 +14,9 @@ namespace keep.grass
 
 		public AlphaCircleImageCell() : base()
 		{
-			View = new AlphaGrid
-			{
-				SingleChild = new StackLayout
+			View = new Grid().SetSingleChild
+			(
+				new StackLayout
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
@@ -27,7 +27,7 @@ namespace keep.grass
 						TextLabel,
 					},
 				}
-			};
+			);
 
             Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;

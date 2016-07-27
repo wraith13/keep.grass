@@ -58,7 +58,7 @@ namespace keep.grass
 							},
 						},
 					},
-					new AlphaGrid().HorizontalJustificate
+					new Grid().HorizontalJustificate
 					(
 						new Button
 						{

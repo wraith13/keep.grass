@@ -39,7 +39,7 @@
     <Compile Include="AlphaActivityIndicatorTextCell.cs" />
     <Compile Include="AlphaCircleImageCell.cs" />
     <Compile Include="AlphaFactory.cs" />
-    <Compile Include="AlphaGrid.cs" />
+    <Compile Include="GridUtil.cs" />
     <Compile Include="Languages\AlphaLanguage.cs" />
     <Compile Include="AlphaPickerCell.cs" />
     <Compile Include="LinqEx.cs" />

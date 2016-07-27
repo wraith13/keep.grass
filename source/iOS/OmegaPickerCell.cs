@@ -9,9 +9,9 @@ namespace keep.grass.iOS
 
 		public OmegaPickerCell() : base()
 		{
-			View = new AlphaGrid
-			{
-				SingleChild = new StackLayout
+			View = new Grid().SetSingleChild
+			(
+				new StackLayout
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
@@ -22,7 +22,7 @@ namespace keep.grass.iOS
 						Picker,
 					},
 				}
-			};
+            );
 
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 			Picker.IsVisible = false;

@@ -10,9 +10,9 @@ namespace keep.grass
 
 		public AlphaPickerCell() : base()
 		{
-			View = new AlphaGrid
-			{
-				SingleChild = new StackLayout
+			View = new Grid().SetSingleChild
+			(
+				new StackLayout
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
@@ -22,7 +22,7 @@ namespace keep.grass
 						Picker,
 					},
 				}
-			};
+			);
 		}
 
 		protected override void OnTapped()
