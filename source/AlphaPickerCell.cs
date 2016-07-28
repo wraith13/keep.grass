@@ -10,7 +10,7 @@ namespace keep.grass
 
 		public AlphaPickerCell() : base()
 		{
-			View = new Grid().SetSingleChild
+            View = new Grid().SetSingleChild
 			(
 				new StackLayout
 				{
@@ -23,9 +23,10 @@ namespace keep.grass
 					},
 				}
 			);
-		}
+            Picker.WidthRequest = 240;
+        }
 
-		protected override void OnTapped()
+        protected override void OnTapped()
 		{
 			base.OnTapped();
 			Picker.Focus();
