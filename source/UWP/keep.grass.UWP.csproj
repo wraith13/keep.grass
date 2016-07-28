@@ -103,6 +103,7 @@
     <Compile Include="OmegaApp.cs" />
     <Compile Include="OmegaCircleImageCell.cs" />
     <Compile Include="OmegaFactory.cs" />
+    <Compile Include="OmegaSettingsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

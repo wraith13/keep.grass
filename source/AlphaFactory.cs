@@ -1,4 +1,6 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace keep.grass
 {
 	public abstract class AlphaFactory
@@ -41,11 +43,11 @@ namespace keep.grass
 			return new AlphaMainPage(Root);
 		}
 
-		public static AlphaSettingsPage MakeSettingsPage(AlphaApp Root)
+		public static ContentPage MakeSettingsPage(AlphaApp Root)
 		{
 			return instance.MakeOmegaSettingsPage(Root);
 		}
-		public virtual AlphaSettingsPage MakeOmegaSettingsPage(AlphaApp Root)
+		public virtual ContentPage MakeOmegaSettingsPage(AlphaApp Root)
 		{
 			return new AlphaSettingsPage(Root);
 		}
