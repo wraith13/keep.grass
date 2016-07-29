@@ -43,7 +43,7 @@ namespace keep.grass.UWP
                 {
                     Orientation = StackOrientation.Horizontal,
                     VerticalOptions = LayoutOptions.Center,
-                    Padding = new Thickness(20, 0, 20, 0),
+                    Padding = new Thickness(20, 0, 10, 0),
                     Children =
                     {
                         TextLabel,
