@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using keep.grass.Helpers;
 
-namespace keep.grass
+namespace keep.grass.UWP
 {
     public class OmegaSettingsPage : ContentPage
     {
         AlphaApp Root;
         public Languages.AlphaLanguage L;
         EntryCell UserNameCell = null;
-        KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
+        KeyValuePair<TimeSpan, OmegaSwitchCell>[] AlertSwitchCellList = null;
         AlphaPickerCell LanguageCell = null;
 
         public OmegaSettingsPage(AlphaApp AppRoot)
@@ -26,10 +26,10 @@ namespace keep.grass
             };
             AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
             (
-                i => new KeyValuePair<TimeSpan, SwitchCell>
+                i => new KeyValuePair<TimeSpan, OmegaSwitchCell>
                 (
                     i,
-                    new SwitchCell
+                    new OmegaSwitchCell
                     {
                         Text = Settings.AlertTimeSpanToDisplayName(L, i),
                         On = Settings.GetAlert(i),
