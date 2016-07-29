@@ -11,7 +11,7 @@ namespace keep.grass.UWP
     {
         AlphaApp Root;
         public Languages.AlphaLanguage L;
-        EntryCell UserNameCell = null;
+        OmegaEntryCell UserNameCell = null;
         KeyValuePair<TimeSpan, OmegaSwitchCell>[] AlertSwitchCellList = null;
         AlphaPickerCell LanguageCell = null;
 
@@ -20,7 +20,7 @@ namespace keep.grass.UWP
             Root = AppRoot;
             L = Root.L;
             Title = L["Settings"];
-            UserNameCell = new EntryCell
+            UserNameCell = new OmegaEntryCell
             {
                 Label = L["User ID"],
             };
@@ -66,9 +66,16 @@ namespace keep.grass.UWP
                             },
                             new TableSection(L["Information"])
                             {
-                                Information
+                                Information,
+                                new ViewCell
+                                {
+                                    View = new StackLayout
+                                    {
+                                        Padding = new Thickness(20, 10, 20, 10),
+                                    },
+                                }
                             }
-                        }
+                        },
                     },
                 },
             };

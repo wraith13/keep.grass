@@ -102,6 +102,7 @@
     <Compile Include="OmegaActivityIndicatorTextCell.cs" />
     <Compile Include="OmegaApp.cs" />
     <Compile Include="OmegaCircleImageCell.cs" />
+    <Compile Include="OmegaEntryCell.cs" />
     <Compile Include="OmegaFactory.cs" />
     <Compile Include="OmegaSettingsPage.cs" />
     <Compile Include="OmegaSwitchCell.cs" />

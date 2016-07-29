@@ -7,12 +7,12 @@ using Xamarin.Forms;
 
 namespace keep.grass.UWP
 {
-    class OmegaSwitchCell :ViewCell
+    class OmegaEntryCell : ViewCell
     {
         protected Label TextLabel = new Label();
-        protected Switch OnSwitch = new Switch();
+        protected Entry TextEntry = new Entry();
 
-        public string Text
+        public string Label
         {
             get
             {
@@ -23,20 +23,20 @@ namespace keep.grass.UWP
                 TextLabel.Text = value;
             }
         }
-        public bool On
+        public string Text
         {
             get
             {
-                return OnSwitch.IsToggled;
+                return TextEntry.Text;
             }
             set
             {
-                OnSwitch.IsToggled = value;
+                TextEntry.Text = value;
             }
         }
 
-        public OmegaSwitchCell() : base()
-		{
+        public OmegaEntryCell() : base()
+        {
             View = new Grid().SetSingleChild
             (
                 new StackLayout
@@ -47,15 +47,16 @@ namespace keep.grass.UWP
                     Children =
                     {
                         TextLabel,
-                        OnSwitch,
+                        TextEntry,
                     },
                 }
             );
 
-            TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+            TextLabel.HorizontalOptions = LayoutOptions.Start;
             TextLabel.VerticalOptions = LayoutOptions.Center;
-            OnSwitch.HorizontalOptions = LayoutOptions.End;
-            OnSwitch.VerticalOptions = LayoutOptions.Center;
+            TextEntry.HorizontalOptions = LayoutOptions.EndAndExpand;
+            TextEntry.VerticalOptions = LayoutOptions.Center;
+            TextEntry.WidthRequest = 240;
         }
     }
 }
