@@ -56,7 +56,7 @@ https://github.com/edsnider/Xamarin.Plugins
 https://www.nuget.org/packages/Xam.Plugins.Notifier/
 
 ■Xam.Plugins.Forms.ImageCircle
-https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/ImageCircle
+https://github.com/jamesmontemagno/ImageCirclePlugin
 https://www.nuget.org/packages/Xam.Plugins.Forms.ImageCircle
 
 ■NotificationsExtensions.Win10
