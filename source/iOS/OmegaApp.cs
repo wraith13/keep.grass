@@ -49,6 +49,10 @@ namespace keep.grass.iOS
 				UIApplication.SharedApplication.CancelLocalNotification(notification);
 			}
 		}
+		public override void CancelAllAlerts()
+		{
+			UIApplication.SharedApplication.CancelAllLocalNotifications();
+		}
 	}
 }
 

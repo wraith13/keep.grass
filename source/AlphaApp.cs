@@ -39,12 +39,11 @@ namespace keep.grass
 		}
 		protected override void OnSleep()
 		{
-			// Handle when your app sleeps
 			Main.StopUpdateLeftTimeTask();
 		}
 		protected override void OnResume()
 		{
-			// Handle when your app resumes
+			UpdateAlerts();
 			Main.AutoUpdateLastPublicActivityAsync().Wait(0);
 		}
 
@@ -62,6 +61,7 @@ namespace keep.grass
 
 		public virtual void UpdateAlerts()
 		{
+			CancelAllAlerts();
 			if
 			(
 				String.IsNullOrWhiteSpace(Settings.UserName) ||
@@ -69,7 +69,6 @@ namespace keep.grass
 			)
 			{
 				Debug.WriteLine("AlphaApp::CancelAllAlerts");
-				CancelAllAlerts();
 			}
 			else
 			{
@@ -102,7 +101,7 @@ namespace keep.grass
 		public abstract void ShowAlert(string title, string body, int id, DateTime notifyTime);
 		public abstract void CancelAlert(int id);
 
-        public void CancelAllAlerts()
+		public virtual void CancelAllAlerts()
 		{
 			int i = 0;
 			foreach(var Span in Settings.AlertTimeSpanTable)
