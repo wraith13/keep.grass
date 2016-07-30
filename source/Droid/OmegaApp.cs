@@ -60,6 +60,10 @@ namespace keep.grass.Droid
 				MakeAlarmIntent(id)
 			);
 		}
+		public override void CancelAllAlerts()
+		{
+			((NotificationManager)Forms.Context.GetSystemService(Context.NotificationService)).CancelAll();
+		}
 	}
 }
 
