@@ -135,6 +135,17 @@ namespace keep.grass.UWP
                 Manager.RemoveFromSchedule(toast);
             }
         }
+        public override void CancelAllAlerts()
+        {
+            ToastNotificationManager.History.Clear();
+            var Manager = ToastNotificationManager
+                .CreateToastNotifier();
+            foreach (var toast in Manager
+                .GetScheduledToastNotifications())
+            {
+                Manager.RemoveFromSchedule(toast);
+            }
+        }
 
         public override ImageSource GetImageSource(string image)
         {
