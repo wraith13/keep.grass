@@ -47,6 +47,11 @@ namespace keep.grass
 			Main.AutoUpdateLastPublicActivityAsync().Wait(0);
 		}
 
+		public void ShowMainPage()
+		{
+			Navigation.PopToRootAsync();
+		}
+
 		public void ShowSettingsPage()
 		{
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage(this));

@@ -11,6 +11,7 @@ namespace keep.grass.iOS
 	[Register("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
 	{
+		AlphaApp App;
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
@@ -18,7 +19,7 @@ namespace keep.grass.iOS
 
 			OmegaFactory.Init();
 
-			LoadApplication(AlphaFactory.MakeApp());
+			LoadApplication(App = AlphaFactory.MakeApp());
 
 			// copy from http://www.knowing.net/index.php/2014/07/03/local-notifications-in-ios-8-with-xamarin/
 			var settings = UIUserNotificationSettings.GetSettingsForTypes
@@ -31,6 +32,11 @@ namespace keep.grass.iOS
 			UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
 
 			return base.FinishedLaunching(app, options);
+		}
+
+		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
+		{
+			App.ShowMainPage();
 		}
 	}
 }
