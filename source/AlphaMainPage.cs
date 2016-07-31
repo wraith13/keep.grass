@@ -231,7 +231,7 @@ namespace keep.grass
 				else
 				if (LeftTime < TimeSpan.FromHours(12))
 				{
-					LeftTimeLabel.TextColor = Color.Aqua;
+					LeftTimeLabel.TextColor = Color.Blue;
 				}
 				else
 				{
