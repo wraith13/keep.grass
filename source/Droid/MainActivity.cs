@@ -24,6 +24,7 @@ namespace keep.grass.Droid
 	]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
+		AlphaApp App;
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
@@ -33,7 +34,17 @@ namespace keep.grass.Droid
 
 			OmegaFactory.Init();
 
-			LoadApplication(AlphaFactory.MakeApp());
+			LoadApplication(App = AlphaFactory.MakeApp());
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+
+			if (0 < this.Intent.GetIntExtra("id", -1))
+			{
+				//App.ShowMainPage();
+			}
 		}
 	}
 }

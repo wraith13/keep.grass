@@ -27,6 +27,9 @@ namespace keep.grass.Droid
 			var title = intent.GetStringExtra("title");
 			var body = intent.GetStringExtra("message");
 
+			var main_intent = new Intent(context, typeof(MainActivity));
+			main_intent.PutExtra("id", id);
+
 			var builder = new Notification.Builder(Forms.Context);
 			//builder.SetGroup("keep.grass");
 			builder.SetTicker(title);
@@ -38,7 +41,7 @@ namespace keep.grass.Droid
 				(
 					context,
 					id,
-					new Intent(context, typeof(MainActivity)),
+					main_intent,
 					PendingIntentFlags.UpdateCurrent
 				)
 			);
