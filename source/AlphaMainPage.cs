@@ -30,6 +30,7 @@ namespace keep.grass
 
 			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
 			LastActivityStampLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
+			LeftTimeLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
 
 			Rebuild();
 		}
