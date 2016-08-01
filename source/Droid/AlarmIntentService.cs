@@ -28,6 +28,7 @@ namespace keep.grass.Droid
 			var body = intent.GetStringExtra("message");
 
 			var main_intent = new Intent(context, typeof(MainActivity));
+			main_intent.PutExtra("type", "alarm");
 			main_intent.PutExtra("id", id);
 
 			var builder = new Notification.Builder(Forms.Context);

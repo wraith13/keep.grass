@@ -41,9 +41,10 @@ namespace keep.grass.Droid
 		{
 			base.OnResume();
 
-			if (0 < this.Intent.GetIntExtra("id", -1))
+			if ("alarm" == (Intent.GetStringExtra("type") ?? ""))
 			{
-				//App.ShowMainPage();
+				Intent.RemoveExtra("type");
+				App.ShowMainPage();
 			}
 		}
 	}
