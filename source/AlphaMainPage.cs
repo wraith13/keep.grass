@@ -178,6 +178,7 @@ namespace keep.grass
 						LastActivityStampLabel.TextColor = Color.Default;
 						Root.UpdateAlerts();
 					}
+					Settings.IsValidUserName = true;
 				}
 				catch(Exception err)
 				{
@@ -260,7 +261,14 @@ namespace keep.grass
 			else
 			{
 				LeftTimeLabel.Text = "";
-				StopUpdateLeftTimeTask();
+				if (Settings.IsValidUserName)
+				{
+					NextCheckTimeSpan = TimeSpan.FromSeconds(60);
+				}
+				else
+				{
+					StopUpdateLeftTimeTask();
+				}
 			}
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}

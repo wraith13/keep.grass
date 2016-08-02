@@ -68,6 +68,21 @@ namespace keep.grass.Helpers
 			}
 		}
 
+		private const string IsValidUserNameKey = "IsValidUserName";
+		private static readonly bool IsValidUserNameDefault = false;
+		public static bool IsValidUserName
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<bool>(IsValidUserNameKey, IsValidUserNameDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(IsValidUserNameKey, value);
+			}
+		}
+
+
 		public static T Get<T>(string Key, T DefaultValue)
 		{
 			return AppSettings.GetValueOrDefault<T>(Key, DefaultValue);
