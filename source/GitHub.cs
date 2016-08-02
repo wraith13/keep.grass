@@ -16,6 +16,12 @@ namespace keep.grass
 			return String.Format(ProfileUrlFormat, Id);
 		}
 
+		static private string AcitivityUrlFormat = BaseUrl + "/{0}?tab=activity";
+		static public string GetAcitivityUrl(string Id)
+		{
+			return String.Format(AcitivityUrlFormat, Id);
+		}
+
 		static private string AtomUrlFormat = BaseUrl + "/{0}.atom";
 		static public string GetAtomUrl(string Id)
 		{

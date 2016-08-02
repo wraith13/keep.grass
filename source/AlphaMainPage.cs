@@ -38,7 +38,16 @@ namespace keep.grass
 					}
 				}
 			);
-			LastActivityStampLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
+			LastActivityStampLabel.Command = new Command
+			(
+				o =>
+				{
+					if (!String.IsNullOrWhiteSpace(UserLabel.Text))
+					{
+						Device.OpenUri(new Uri(GitHub.GetAcitivityUrl(UserLabel.Text)));
+					}
+				}
+			);
 			LeftTimeLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
 
 			Rebuild();
@@ -75,7 +84,7 @@ namespace keep.grass
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Update"],
-							Command = LastActivityStampLabel.Command,
+							Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0)),
 						},
 						new Button
 						{
