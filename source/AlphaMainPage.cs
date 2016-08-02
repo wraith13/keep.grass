@@ -28,7 +28,16 @@ namespace keep.grass
 			L = Root.L;
 			Title = "keep.grass";
 
-			UserLabel.Command = new Command(o => Root.ShowSettingsPage());
+			UserLabel.Command = new Command
+			(
+				o =>
+				{
+					if (!String.IsNullOrWhiteSpace(UserLabel.Text))
+					{
+						Device.OpenUri(new Uri(GitHub.GetProfileUrl(UserLabel.Text)));
+					}
+				}
+			);
 			LastActivityStampLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
 			LeftTimeLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
 
@@ -73,7 +82,7 @@ namespace keep.grass
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Settings"],
-							Command = UserLabel.Command,
+							Command = new Command(o => Root.ShowSettingsPage()),
 						}
 					)
 				},

@@ -8,13 +8,21 @@ namespace keep.grass
 {
 	public class GitHub
 	{
-		static private string AtomUrlFormat = "https://github.com/{0}.atom";
+		static private string BaseUrl = "https://github.com";
+
+		static private string ProfileUrlFormat = BaseUrl +"/{0}";
+		static public string GetProfileUrl(string Id)
+		{
+			return String.Format(ProfileUrlFormat, Id);
+		}
+
+		static private string AtomUrlFormat = BaseUrl + "/{0}.atom";
 		static public string GetAtomUrl(string Id)
 		{
 			return String.Format (AtomUrlFormat, Id);
 		}
 
-		static private string IconUrlFormat = "https://github.com/{0}.png";
+		static private string IconUrlFormat = BaseUrl + "/{0}.png";
 		static public string GetIconUrl(string Id)
 		{
 			return String.Format (IconUrlFormat, Id);
