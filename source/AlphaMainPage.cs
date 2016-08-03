@@ -16,6 +16,7 @@ namespace keep.grass
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+		ProgressBar ProgressBar = new ProgressBar();
 		public DateTime ? LastPublicActivity;
 		DateTime LastCheckStamp = default(DateTime);
 		TimeSpan NextCheckTimeSpan = default(TimeSpan);
@@ -49,6 +50,7 @@ namespace keep.grass
 				}
 			);
 			LeftTimeLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
+			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
 			Rebuild();
 		}
@@ -77,6 +79,10 @@ namespace keep.grass
 							},
 						},
 					},
+					new Grid().HorizontalJustificate
+					(
+						ProgressBar
+					),
 					new Grid().HorizontalJustificate
 					(
 						new Button
@@ -228,12 +234,13 @@ namespace keep.grass
 			UpdateLeftTimeTask = null;
 		}
 
-		protected void UpdateLeftTime()
+		protected async void UpdateLeftTime()
 		{
 			if (null != LastPublicActivity)
 			{
 				var LeftTime = LastPublicActivity.Value.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
+				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
 				if (LeftTime < TimeSpan.FromHours(0))
 				{
 					LeftTimeLabel.TextColor = Color.Red;
