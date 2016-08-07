@@ -83,6 +83,7 @@ namespace keep.grass
 			}
 
 			var Language = Settings.Language ?? "";
+			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
 			{
 				LanguageCell.Items.Add(i);
