@@ -86,7 +86,10 @@ namespace keep.grass
 			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
 			{
-				LanguageCell.Items.Add(i);
+				if (!LanguageCell.Items.Where(j => j == i).Any())
+				{
+					LanguageCell.Items.Add(i);
+				}
 			}
 			LanguageCell.SelectedIndex = L.DisplayNames
 				.Select(i => i.Key)
