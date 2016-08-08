@@ -6,8 +6,8 @@ namespace keep.grass
 {
 	public class ResponsiveLayout : StackLayout
 	{
-		public int MaxColumnWidth;
-		public int MinColumnWidth;
+		public double MaxColumnWidth;
+		public double MinColumnWidth;
 
 		public List<Layout> BlockList = new List<Layout>();
 		public List<StackLayout> ColumnStackList = new List<StackLayout>();
@@ -19,6 +19,11 @@ namespace keep.grass
 
 		public void Response()
 		{
+			var ColumnSize =
+				MaxColumnWidth <= Width ?
+					1:
+					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
+			
 			ColumnStackList.Clear();
 			ColumnStackList.Add
 			(
