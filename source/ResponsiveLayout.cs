@@ -16,6 +16,21 @@ namespace keep.grass
 		{
 			Orientation = StackOrientation.Horizontal;
 		}
+
+		public void Response()
+		{
+			ColumnStackList.Clear();
+			ColumnStackList.Add
+			(
+				new StackLayout
+				{
+					Children =
+					{
+						BlockList.FirstOrDefault(),
+					}
+				}
+			);
+		}
 	}
 }
 
