@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace keep.grass
@@ -19,21 +20,35 @@ namespace keep.grass
 
 		public void Response()
 		{
-			var ColumnSize =
+			var MaxColumnSize =
 				MaxColumnWidth <= Width ?
 					1:
 					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
 			
-			ColumnStackList.Clear();
-			ColumnStackList.Add
-			(
-				new StackLayout
-				{
-					Children =
+			var ColumnSize = 0;
+			do
+			{
+				++ColumnSize;
+
+				ColumnStackList.Clear();
+
+
+				ColumnStackList.Add
+				(
+					new StackLayout
 					{
+						Children =
+						{
 						BlockList.FirstOrDefault(),
+						}
 					}
-				}
+				);
+				
+			}
+			while
+			(
+				Height < ColumnStackList.Select(i => i.Height).Sum() &&
+				ColumnSize < MaxColumnSize
 			);
 		}
 	}
