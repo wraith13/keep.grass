@@ -29,21 +29,16 @@ namespace keep.grass
 			do
 			{
 				++ColumnSize;
-
 				ColumnStackList.Clear();
-
-
-				ColumnStackList.Add
-				(
-					new StackLayout
+				for (var i = 0; i < ColumnSize; ++i)
+				{
+					var CurrentStack = new StackLayout();
+					foreach (var Block in BlockList.Where((v, index) => i == index % ColumnSize))
 					{
-						Children =
-						{
-						BlockList.FirstOrDefault(),
-						}
+						CurrentStack.Children.Add(Block);
 					}
-				);
-				
+					ColumnStackList.Add(CurrentStack);
+				}
 			}
 			while
 			(
