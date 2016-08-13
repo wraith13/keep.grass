@@ -189,7 +189,7 @@ namespace keep.grass
 				catch(Exception err)
 				{
 					Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync::catch::err" +err.ToString());
-					LastPublicActivity = null;
+					//LastPublicActivity = null;
                     LastActivityStampLabel.Text = L["Error"];
                     LastActivityStampLabel.TextColor = Color.Red;
 				}
