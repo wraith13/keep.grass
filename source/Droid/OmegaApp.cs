@@ -64,6 +64,11 @@ namespace keep.grass.Droid
 		{
 			((NotificationManager)Forms.Context.GetSystemService(Context.NotificationService)).CancelAll();
 		}
+		public override Uri GetApplicationStoreUri()
+		{
+			//	暫定実装。これは実際には twitter 公式アプリの URL
+			return new Uri("https://play.google.com/store/apps/details?id=com.twitter.android&hl=ja");
+		}
 	}
 }
 
