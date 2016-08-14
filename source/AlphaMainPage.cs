@@ -241,29 +241,13 @@ namespace keep.grass
 				var LeftTime = LastPublicActivity.Value.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
-				if (LeftTime < TimeSpan.FromHours(0))
-				{
-					LeftTimeLabel.TextColor = Color.Red;
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(3))
-				{
-					LeftTimeLabel.TextColor = Color.FromHex("FF8000");
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(6))
-				{
-					LeftTimeLabel.TextColor = Color.FromHex("808000");
-				}
-				else
-				if (LeftTime < TimeSpan.FromHours(12))
-				{
-					LeftTimeLabel.TextColor = Color.Blue;
-				}
-				else
-				{
-					LeftTimeLabel.TextColor = Color.Green;
-				}
+
+				double LeftTimeRate = Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours /24.0));
+				byte red = (byte)(255.0 * (1.0 - LeftTimeRate));
+				byte green = (byte)(255.0 *Math.Min(0.5, LeftTimeRate));
+				byte blue = 0;
+				
+				LeftTimeLabel.TextColor = Color.FromRgb(red, green, blue);
 			}
 			else
 			{
