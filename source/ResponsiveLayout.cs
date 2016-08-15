@@ -28,11 +28,11 @@ namespace keep.grass
 					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
 			
 			var ColumnSize = 0;
-			Children.Clear();
-			//ColumnStackList.Clear();
 			do
 			{
 				++ColumnSize;
+				Children.Clear();
+				//ColumnStackList.Clear();
 				for (var i = 0; i < ColumnSize; ++i)
 				{
 					var CurrentStack = new StackLayout();
