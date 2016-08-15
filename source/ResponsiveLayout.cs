@@ -11,11 +11,13 @@ namespace keep.grass
 		public double MinColumnWidth;
 
 		public List<Layout> BlockList = new List<Layout>();
-		public List<StackLayout> ColumnStackList = new List<StackLayout>();
+		//public List<StackLayout> ColumnStackList = new List<StackLayout>();
 
 		public ResponsiveLayout()
 		{
 			Orientation = StackOrientation.Horizontal;
+			HorizontalOptions = LayoutOptions.Center;
+			VerticalOptions = LayoutOptions.CenterAndExpand;
 		}
 
 		public void Response()
@@ -26,10 +28,11 @@ namespace keep.grass
 					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
 			
 			var ColumnSize = 0;
+			Children.Clear();
+			//ColumnStackList.Clear();
 			do
 			{
 				++ColumnSize;
-				ColumnStackList.Clear();
 				for (var i = 0; i < ColumnSize; ++i)
 				{
 					var CurrentStack = new StackLayout();
@@ -37,7 +40,8 @@ namespace keep.grass
 					{
 						CurrentStack.Children.Add(Block);
 					}
-					ColumnStackList.Add(CurrentStack);
+					//ColumnStackList.Add(CurrentStack);
+					Children.Add(CurrentStack);
 				}
 			}
 			while
