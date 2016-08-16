@@ -46,7 +46,7 @@ namespace keep.grass
 			}
 			while
 			(
-				Height < ColumnStackList.Select(i => i.Height).Sum() &&
+				Height < Children.Select(i => i.Height).Sum() &&
 				ColumnSize < MaxColumnSize
 			);
 		}
