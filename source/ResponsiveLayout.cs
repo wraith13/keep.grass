@@ -49,6 +49,13 @@ namespace keep.grass
 				Height < Children.Select(i => i.Height).Sum() &&
 				ColumnSize < MaxColumnSize
 			);
+
+			var ColumnWidth = Math.Min(Width / ColumnSize, MaxColumnWidth);
+			foreach(var i in Children)
+			{
+				i.MinimumWidthRequest = MinColumnWidth;
+				i.WidthRequest = ColumnWidth;
+			}
 		}
 	}
 }
