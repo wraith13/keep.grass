@@ -11,7 +11,6 @@ namespace keep.grass
 		public double MinColumnWidth;
 
 		public List<Layout> BlockList = new List<Layout>();
-		//public List<StackLayout> ColumnStackList = new List<StackLayout>();
 
 		public ResponsiveLayout()
 		{
@@ -32,7 +31,6 @@ namespace keep.grass
 			{
 				++ColumnSize;
 				Children.Clear();
-				//ColumnStackList.Clear();
 				for (var i = 0; i < ColumnSize; ++i)
 				{
 					var CurrentStack = new StackLayout();
@@ -40,7 +38,6 @@ namespace keep.grass
 					{
 						CurrentStack.Children.Add(Block);
 					}
-					//ColumnStackList.Add(CurrentStack);
 					Children.Add(CurrentStack);
 				}
 			}
