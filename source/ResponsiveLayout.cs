@@ -5,50 +5,67 @@ using Xamarin.Forms;
 
 namespace keep.grass
 {
-	public class ResponsiveCore
+	public class ResponsiveEelement
+	{
+	}
+	public class ResponsiveBlock
+	{
+		public double Width { get; }
+		public double Height { get; }
+	}
+	public abstract class ResponsiveContainer
 	{
 		public double MaxColumnWidth;
 		public double MinColumnWidth;
 
-		public List<Layout> BlockList = new List<Layout>();
+		public List<ResponsiveEelement> Elements = new List<ResponsiveEelement>();
+		public List<ResponsiveBlock> Blocks = new List<ResponsiveBlock>();
 
-		public ResponsiveCore()
+		public ResponsiveContainer()
 		{
-			Orientation = StackOrientation.Horizontal;
-			HorizontalOptions = LayoutOptions.Center;
-			VerticalOptions = LayoutOptions.CenterAndExpand;
+			//Orientation = StackOrientation.Horizontal;
+			//HorizontalOptions = LayoutOptions.Center;
+			//VerticalOptions = LayoutOptions.CenterAndExpand;
 		}
 
-		public void Response(Element element)
+		public abstract double Width { get; }
+		public abstract double Height { get; }
+
+		public virtual ResponsiveBlock MakeBlock(IEnumerable<ResponsiveEelement> BlockElements)
+		{
+			return new ResponsiveBlock(BlockElements);
+		}
+		public void Response()
 		{
 			var MaxColumnSize =
-				MaxColumnWidth <= element.Width ?
+				MaxColumnWidth <= Width ?
 					1:
-					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
+					Math.Min((int)(Width /MinColumnWidth), Elements.Count);
 			
 			var ColumnSize = 0;
 			do
 			{
 				++ColumnSize;
-				Children.Clear();
+				Blocks.Clear();
 				for (var i = 0; i < ColumnSize; ++i)
 				{
-					var CurrentStack = new StackLayout();
-					foreach (var Block in BlockList.Where((v, index) => i == index % ColumnSize))
-					{
-						CurrentStack.Children.Add(Block);
-					}
-					Children.Add(CurrentStack);
+					Blocks.Add
+			      	(
+			      		MakeBlock
+				      	(
+				      		Elements.Where((v, index) => i == index % ColumnSize)
+				     	)
+			     	);
 				}
 			}
 			while
 			(
-				Height < Children.Select(i => i.Height).Sum() &&
+				Height < Blocks.Select(i => i.Height).Sum() &&
 				ColumnSize < MaxColumnSize
 			);
 
 			var ColumnWidth = Math.Min(Width / ColumnSize, MaxColumnWidth);
-			foreach(var i in Children)
+			foreach(var i in Blocks)
 			{
 				i.MinimumWidthRequest = MinColumnWidth;
 				i.WidthRequest = ColumnWidth;
