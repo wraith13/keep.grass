@@ -5,24 +5,24 @@ using Xamarin.Forms;
 
 namespace keep.grass
 {
-	public class ResponsiveBase
+	public class ResponsiveCore
 	{
 		public double MaxColumnWidth;
 		public double MinColumnWidth;
 
 		public List<Layout> BlockList = new List<Layout>();
 
-		public ResponsiveBase()
+		public ResponsiveCore()
 		{
 			Orientation = StackOrientation.Horizontal;
 			HorizontalOptions = LayoutOptions.Center;
 			VerticalOptions = LayoutOptions.CenterAndExpand;
 		}
 
-		public void Response()
+		public void Response(Element element)
 		{
 			var MaxColumnSize =
-				MaxColumnWidth <= Width ?
+				MaxColumnWidth <= element.Width ?
 					1:
 					Math.Min((int)(Width /MinColumnWidth), BlockList.Count);
 			
@@ -58,7 +58,7 @@ namespace keep.grass
 	public class ResponsiveLayout : StackLayout
 	{
 	}
-	public class ResponsiveTableView : ResponsiveLayout
+	public class ResponsiveTableView : TableView
 	{
 		private List<TableSection> ChildrenValue = new List<TableSection>();
 		public IList<TableSection> Children
@@ -72,6 +72,9 @@ namespace keep.grass
 		public ResponsiveTableView
 		{
 		}
+	}
+	public class ResponsiveCell : ViewCell
+	{
 	}
 }
 
