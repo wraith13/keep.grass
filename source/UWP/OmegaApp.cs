@@ -147,11 +147,6 @@ namespace keep.grass.UWP
             }
         }
 
-        public override ImageSource GetImageSource(string image)
-        {
-            return ImageSource.FromFile("Images/" + image);
-        }
-
         public override Uri GetApplicationStoreUri()
         {
             //	暫定実装。これは実際には twitter 公式アプリの URL

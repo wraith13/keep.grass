@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 using keep.grass.Helpers;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace keep.grass
 {
@@ -117,7 +118,11 @@ namespace keep.grass
 
 		public virtual ImageSource GetImageSource(string image)
 		{
-			return ImageSource.FromResource("keep.grass.Images." +image);
+            return ImageSource.FromResource
+            (
+                "keep.grass.Images." +image,
+                typeof(AlphaApp).GetTypeInfo().Assembly
+            );
 		}
 		public virtual ImageSource GetApplicationImageSource()
 		{
