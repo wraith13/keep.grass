@@ -12,6 +12,13 @@ namespace keep.grass
 	{
 		public double Width { get; }
 		public double Height { get; }
+
+		public List<ResponsiveEelement> Elements = new List<ResponsiveEelement>();
+
+		public ResponsiveBlock(IEnumerable<ResponsiveEelement> aElements)
+		{
+			Elements.AddRange(aElements);
+		}
 	}
 	public abstract class ResponsiveContainer
 	{
