@@ -7,11 +7,26 @@ namespace keep.grass
 {
 	public class ResponsiveEelement
 	{
+		public double Width { get; }
+		public double Height { get; }
+
 	}
 	public class ResponsiveBlock
 	{
-		public double Width { get; }
-		public double Height { get; }
+		public double Width
+		{
+			get
+			{
+				return Elements.Select(i => i.Width).Max();
+			}
+		}
+		public double Height
+		{
+			get
+			{
+				return Elements.Select(i => i.Height).Sum();
+			}
+		}
 
 		public List<ResponsiveEelement> Elements = new List<ResponsiveEelement>();
 
