@@ -5,11 +5,13 @@ using Xamarin.Forms;
 
 namespace keep.grass
 {
-	public class ResponsiveEelement
+	public abstract class ResponsiveEelement
 	{
-		public double Width { get; }
-		public double Height { get; }
+		public abstract double Width { get; }
+		public abstract double Height { get; }
 
+		public abstract double MinimumWidthRequest { set; }
+		public abstract double WidthRequest { set; }
 	}
 	public class ResponsiveBlock
 	{
@@ -25,6 +27,27 @@ namespace keep.grass
 			get
 			{
 				return Elements.Select(i => i.Height).Sum();
+			}
+		}
+
+		public double MinimumWidthRequest
+		{
+			set
+			{
+				foreach(var i in Elements)
+				{
+					i.MinimumWidthRequest = value;
+				}
+			}
+		}
+		public double WidthRequest
+		{
+			set
+			{
+				foreach (var i in Elements)
+				{
+					i.WidthRequest = value;
+				}
 			}
 		}
 
