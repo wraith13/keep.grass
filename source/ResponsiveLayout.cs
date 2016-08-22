@@ -117,6 +117,52 @@ namespace keep.grass
 			}
 		}
 	}
+	public class ResponsiveViewElement<viewT> :ResponsiveEelement where viewT :View
+	{
+		viewT view;
+		public ResponsiveViewElement(viewT a_view)
+		{
+			view = a_view;
+		}
+
+		public override double Width
+		{
+			get
+			{
+				return view.Width;
+			}
+		}
+		public override double Height
+		{
+			get
+			{
+				return view.Height;
+			}
+		}
+
+		public override double MinimumWidthRequest
+		{
+			set
+			{
+				view.MinimumWidthRequest = value;
+			}
+		}
+		public override double WidthRequest
+		{
+			set
+			{
+				view.WidthRequest = value;
+			}
+		}
+
+		public viewT View
+		{
+			get
+			{
+				return view;
+			}
+		}
+	}
 	public class ResponsiveLayout : StackLayout
 	{
 	}
