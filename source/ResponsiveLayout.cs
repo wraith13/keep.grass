@@ -12,6 +12,8 @@ namespace keep.grass
 
 		public abstract double MinimumWidthRequest { set; }
 		public abstract double WidthRequest { set; }
+
+		public virtual void Response() { }
 	}
 	public class ResponsiveBlock
 	{
@@ -56,6 +58,13 @@ namespace keep.grass
 		public ResponsiveBlock(IEnumerable<ResponsiveEelement> aElements)
 		{
 			Elements.AddRange(aElements);
+		}
+		public void Response()
+		{
+			foreach (var i in Elements)
+			{
+				i.Response();
+			}
 		}
 	}
 	public abstract class ResponsiveContainer
@@ -114,6 +123,7 @@ namespace keep.grass
 			{
 				i.MinimumWidthRequest = MinColumnWidth;
 				i.WidthRequest = ColumnWidth;
+				i.Response();
 			}
 		}
 	}
