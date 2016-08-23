@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using Foundation;
@@ -30,8 +31,31 @@ namespace keep.grass.iOS
 					new NSSet()
 				);
 			UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+			UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
 
 			return base.FinishedLaunching(app, options);
+		}
+
+		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
+		{
+			Debug.WriteLine("AppDelegate::PerformFetch::DateTime.Now: " +DateTime.Now.ToString());
+			base.PerformFetch(application, completionHandler);
+
+			//	暫定実装。PCL側のコードの構造を大幅に修正して UI 要素に引き摺られない形にすること。
+			var LastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
+			App?.Main?.AutoUpdateLastPublicActivityAsync().Wait();
+			var NewLastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
+			Debug.WriteLine("AppDelegate::PerformFetch::NewLastActivityStampLabel: " +NewLastActivityStampLabel);
+			completionHandler
+			(
+				App.L["Error"] == NewLastActivityStampLabel ?
+					UIBackgroundFetchResult.Failed :
+					(
+						LastActivityStampLabel == NewLastActivityStampLabel ?
+							UIBackgroundFetchResult.NoData :
+							UIBackgroundFetchResult.NewData
+					)
+			);
 		}
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)

@@ -14,7 +14,8 @@ namespace keep.grass
 		public Languages.AlphaLanguage L;
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+		//	この public は現状の iOS の background fetch からカンニングする為。不要になればこの public 指定は除去すること。
+		public AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		ProgressBar ProgressBar = new ProgressBar();
 		public DateTime ? LastPublicActivity;
