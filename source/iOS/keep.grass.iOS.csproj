@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.1024.png" />
+    <BundleResource Include="Resources\keep.grass.180.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
