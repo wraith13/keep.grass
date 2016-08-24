@@ -38,14 +38,10 @@ namespace keep.grass.iOS
 
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
-			Debug.WriteLine("AppDelegate::PerformFetch::DateTime.Now: " +DateTime.Now.ToString());
-			base.PerformFetch(application, completionHandler);
-
 			//	暫定実装。PCL側のコードの構造を大幅に修正して UI 要素に引き摺られない形にすること。
 			var LastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
 			App?.Main?.AutoUpdateLastPublicActivityAsync().Wait();
 			var NewLastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
-			Debug.WriteLine("AppDelegate::PerformFetch::NewLastActivityStampLabel: " +NewLastActivityStampLabel);
 			completionHandler
 			(
 				App.L["Error"] == NewLastActivityStampLabel ?
