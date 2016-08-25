@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using keep.grass.Helpers;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -12,6 +13,10 @@ namespace keep.grass
 		public NavigationPage Navigation;
 		public AlphaMainPage Main;
 		public Languages.AlphaLanguage L;
+
+		public DateTime? LastPublicActivity;
+		DateTime LastCheckStamp = default(DateTime);
+		TimeSpan NextCheckTimeSpan = default(TimeSpan);
 
 		public AlphaApp()
 		{
@@ -65,13 +70,65 @@ namespace keep.grass
 			UpdateAlerts();
 		}
 
+		public async Task AutoUpdateLastPublicActivityAsync()
+		{
+			Debug.WriteLine("AlphaApp::AutoUpdateInfoAsync");
+			if (TimeSpan.FromSeconds(60) < DateTime.Now - LastCheckStamp)
+			{
+				await UpdateLastPublicActivityAsync();
+			}
+		}
+		public async Task ManualUpdateLastPublicActivityAsync()
+		{
+			Debug.WriteLine("AlphaApp::ManualUpdateInfoAsync");
+			await UpdateLastPublicActivityAsync();
+			NextCheckTimeSpan = TimeSpan.FromSeconds(60);
+		}
+		private async Task UpdateLastPublicActivityAsync()
+		{
+			Debug.WriteLine("AlphaApp::UpdateLastPublicActivityAsync");
+			var User = Settings.UserName;
+			if (!String.IsNullOrWhiteSpace(User))
+			{
+				try
+				{
+					LastCheckStamp = DateTime.Now;
+
+					LastActivityStampLabel.ShowIndicator();
+					LeftTimeLabel.ShowIndicator();
+
+					var OldLastPublicActivity = LastPublicActivity ?? default(DateTime);
+					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
+					Debug.WriteLine("AlphaApp::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+
+					if (OldLastPublicActivity != (LastPublicActivity ?? default(DateTime)))
+					{
+						LastActivityStampLabel.Text = Root.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+						LastActivityStampLabel.TextColor = Color.Default;
+
+						UpdateAlerts();
+					}
+					Settings.IsValidUserName = true;
+				}
+				catch (Exception err)
+				{
+					Debug.WriteLine("AlphaApp::UpdateLastPublicActivityAsync::catch::err" + err.ToString());
+					//LastPublicActivity = null;
+					LastActivityStampLabel.Text = L["Error"];
+					LastActivityStampLabel.TextColor = Color.Red;
+				}
+				LastActivityStampLabel.ShowText();
+				LeftTimeLabel.ShowText();
+				StartUpdateLeftTimeTask();
+			}
+		}
 		public virtual void UpdateAlerts()
 		{
 			CancelAllAlerts();
 			if
 			(
 				String.IsNullOrWhiteSpace(Settings.UserName) ||
-				null == Main.LastPublicActivity
+				null == LastPublicActivity
 			)
 			{
 				Debug.WriteLine("AlphaApp::CancelAllAlerts");
@@ -79,8 +136,8 @@ namespace keep.grass
 			else
 			{
 				Debug.WriteLine("AlphaApp::UpdateAlerts");
-				var Limit = Main.LastPublicActivity.Value.AddHours(24);
-				var LastPublicActivityInfo = L["Last Acitivity Stamp"] +": " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+				var Limit = LastPublicActivity.Value.AddHours(24);
+				var LastPublicActivityInfo = L["Last Acitivity Stamp"] +": " +LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach(var Span in Settings.AlertTimeSpanTable)

@@ -18,9 +18,6 @@ namespace keep.grass
 		public AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		ProgressBar ProgressBar = new ProgressBar();
-		public DateTime ? LastPublicActivity;
-		DateTime LastCheckStamp = default(DateTime);
-		TimeSpan NextCheckTimeSpan = default(TimeSpan);
 
 		Task UpdateLeftTimeTask = null;
 
@@ -129,7 +126,7 @@ namespace keep.grass
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					ClearActiveInfo();
-					await ManualUpdateLastPublicActivityAsync();
+					await Root.ManualUpdateLastPublicActivityAsync();
 				}
 				else
 				{
@@ -146,58 +143,9 @@ namespace keep.grass
 		}
 		public void ClearActiveInfo()
 		{
-			LastPublicActivity = null;
+			Root.LastPublicActivity = null;
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
-		}
-
-		public async Task AutoUpdateLastPublicActivityAsync()
-		{
-			Debug.WriteLine("AlphaMainPage::AutoUpdateInfoAsync");
-			if (TimeSpan.FromSeconds(60) < DateTime.Now - LastCheckStamp)
-			{
-				await UpdateLastPublicActivityAsync();
-			}
-		}
-		public async Task ManualUpdateLastPublicActivityAsync()
-		{
-			Debug.WriteLine("AlphaMainPage::ManualUpdateInfoAsync");
-			await UpdateLastPublicActivityAsync();
-			NextCheckTimeSpan = TimeSpan.FromSeconds(60);
-		}
-		private async Task UpdateLastPublicActivityAsync()
-		{
-			Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync");
-			var User = Settings.UserName;
-			if (!String.IsNullOrWhiteSpace(User))
-			{
-				try
-				{
-					LastCheckStamp = DateTime.Now;
-					LastActivityStampLabel.ShowIndicator();
-					LeftTimeLabel.ShowIndicator();
-					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
-					var NewStamp = LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
-					Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync::NewStamp = " +NewStamp);
-					if (LastActivityStampLabel.Text != NewStamp)
-					{
-						LastActivityStampLabel.Text = NewStamp;
-						LastActivityStampLabel.TextColor = Color.Default;
-						Root.UpdateAlerts();
-					}
-					Settings.IsValidUserName = true;
-				}
-				catch(Exception err)
-				{
-					Debug.WriteLine("AlphaMainPage::UpdateLastPublicActivityAsync::catch::err" +err.ToString());
-					//LastPublicActivity = null;
-                    LastActivityStampLabel.Text = L["Error"];
-                    LastActivityStampLabel.TextColor = Color.Red;
-				}
-				LastActivityStampLabel.ShowText();
-				LeftTimeLabel.ShowText();
-				StartUpdateLeftTimeTask();
-			}
 		}
 
 		public void StartUpdateLeftTimeTask()
@@ -237,9 +185,9 @@ namespace keep.grass
 
 		protected async void UpdateLeftTime()
 		{
-			if (null != LastPublicActivity)
+			if (null != Root.LastPublicActivity)
 			{
-				var LeftTime = LastPublicActivity.Value.AddHours(24) - DateTime.Now;
+				var LeftTime = Root.LastPublicActivity.Value.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
 
@@ -255,7 +203,7 @@ namespace keep.grass
 				LeftTimeLabel.Text = "";
 				if (Settings.IsValidUserName)
 				{
-					NextCheckTimeSpan = TimeSpan.FromSeconds(60);
+					Root.NextCheckTimeSpan = TimeSpan.FromSeconds(60);
 				}
 				else
 				{
