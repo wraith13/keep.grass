@@ -14,8 +14,7 @@ namespace keep.grass
 		public Languages.AlphaLanguage L;
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-		//	この public は現状の iOS の background fetch からカンニングする為。不要になればこの public 指定は除去すること。
-		public AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		ProgressBar ProgressBar = new ProgressBar();
 
@@ -47,7 +46,7 @@ namespace keep.grass
 					}
 				}
 			);
-			LeftTimeLabel.Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0));
+			LeftTimeLabel.Command = new Command(async o => await Root.ManualUpdateLastPublicActivityAsync());
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
 			Rebuild();
@@ -88,7 +87,7 @@ namespace keep.grass
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Update"],
-							Command = new Command(o => ManualUpdateLastPublicActivityAsync().Wait(0)),
+							Command = new Command(async o => await Root.ManualUpdateLastPublicActivityAsync()),
 						},
 						new Button
 						{
@@ -159,18 +158,6 @@ namespace keep.grass
 						while (null != UpdateLeftTimeTask)
 						{
 							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
-							if (default(TimeSpan) < NextCheckTimeSpan && LastCheckStamp +NextCheckTimeSpan <= DateTime.Now)
-							{
-								NextCheckTimeSpan = TimeSpan.FromTicks
-                            	(
-	                                Math.Min
-	                                (
-		                                (NextCheckTimeSpan +TimeSpan.FromMinutes(1)).Ticks,
-		                                TimeSpan.FromMinutes(20).Ticks
-	                               	)
-                               	);
-								Device.BeginInvokeOnMainThread(async () => await AutoUpdateLastPublicActivityAsync());
-							}
 							Task.Delay(1000 -DateTime.Now.Millisecond).Wait();
 						}
 					}
@@ -202,10 +189,6 @@ namespace keep.grass
 			{
 				LeftTimeLabel.Text = "";
 				if (Settings.IsValidUserName)
-				{
-					Root.NextCheckTimeSpan = TimeSpan.FromSeconds(60);
-				}
-				else
 				{
 					StopUpdateLeftTimeTask();
 				}

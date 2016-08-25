@@ -97,11 +97,11 @@ namespace keep.grass
 					LastActivityStampLabel.ShowIndicator();
 					LeftTimeLabel.ShowIndicator();
 
-					var OldLastPublicActivity = LastPublicActivity ?? default(DateTime);
+					var OldLastPublicActivity = LastPublicActivity;
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
 					Debug.WriteLine("AlphaApp::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss"));
 
-					if (OldLastPublicActivity != (LastPublicActivity ?? default(DateTime)))
+					if (OldLastPublicActivity != LastPublicActivity)
 					{
 						LastActivityStampLabel.Text = Root.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 						LastActivityStampLabel.TextColor = Color.Default;
