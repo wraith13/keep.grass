@@ -94,6 +94,7 @@ namespace keep.grass
 				{
 					LastCheckStamp = DateTime.Now;
 
+					OnStartQuery();
 					LastActivityStampLabel.ShowIndicator();
 					LeftTimeLabel.ShowIndicator();
 
@@ -117,10 +118,22 @@ namespace keep.grass
 					LastActivityStampLabel.Text = L["Error"];
 					LastActivityStampLabel.TextColor = Color.Red;
 				}
+				finally
+				{
+					OnEndQuery();
+				}
 				LastActivityStampLabel.ShowText();
 				LeftTimeLabel.ShowText();
 				StartUpdateLeftTimeTask();
 			}
+		}
+		public void OnStartQuery()
+		{
+			Main?.OnStartQuery();
+		}
+		public void OnEndQuery()
+		{
+			Main?.OnEndQuery();
 		}
 		public virtual void UpdateAlerts()
 		{
