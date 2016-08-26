@@ -15,12 +15,7 @@ namespace keep.grass.iOS
 		AlphaApp App;
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			global::Xamarin.Forms.Forms.Init();
-			ImageCircleRenderer.Init();
-
-			OmegaFactory.Init();
-
-			LoadApplication(App = AlphaFactory.MakeApp());
+			LoadApplication(MakeSureApp());
 
 			// copy from http://www.knowing.net/index.php/2014/07/03/local-notifications-in-ios-8-with-xamarin/
 			var settings = UIUserNotificationSettings.GetSettingsForTypes
@@ -36,8 +31,22 @@ namespace keep.grass.iOS
 			return base.FinishedLaunching(app, options);
 		}
 
+		public AlphaApp MakeSureApp()
+		{
+			if (null == App)
+			{
+				global::Xamarin.Forms.Forms.Init();
+				ImageCircleRenderer.Init();
+				OmegaFactory.Init();
+				App = AlphaFactory.MakeApp();
+			}
+			return App;
+		}
+
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
+			MakeSureApp();
+
 			//	暫定実装。PCL側のコードの構造を大幅に修正して UI 要素に引き摺られない形にすること。
 			var LastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
 			App?.Main?.AutoUpdateLastPublicActivityAsync().Wait();
@@ -56,7 +65,7 @@ namespace keep.grass.iOS
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
 		{
-			App.ShowMainPage();
+			MakeSureApp().ShowMainPage();
 		}
 	}
 }
