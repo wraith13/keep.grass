@@ -113,6 +113,28 @@ namespace keep.grass
 			StopUpdateLeftTimeTask();
 		}
 
+		public void OnStartQuery()
+		{
+			LastActivityStampLabel.ShowIndicator();
+			LeftTimeLabel.ShowIndicator();
+		}
+		public void OnUpdateLastPublicActivity()
+		{
+			LastActivityStampLabel.Text = Root.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+			LastActivityStampLabel.TextColor = Color.Default;
+		}
+		public void OnErrorInQuery()
+		{
+			LastActivityStampLabel.Text = L["Error"];
+			LastActivityStampLabel.TextColor = Color.Red;
+		}
+		public void OnEndQuery()
+		{
+			LastActivityStampLabel.ShowText();
+			LeftTimeLabel.ShowText();
+			StartUpdateLeftTimeTask();
+		}
+
 		public async Task UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");

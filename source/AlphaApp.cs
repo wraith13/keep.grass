@@ -50,7 +50,7 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			UpdateAlerts();
-			Main.AutoUpdateLastPublicActivityAsync().Wait(0);
+			AutoUpdateLastPublicActivityAsync().Wait(0);
 		}
 
 		public void ShowMainPage()
@@ -95,8 +95,6 @@ namespace keep.grass
 					LastCheckStamp = DateTime.Now;
 
 					OnStartQuery();
-					LastActivityStampLabel.ShowIndicator();
-					LeftTimeLabel.ShowIndicator();
 
 					var OldLastPublicActivity = LastPublicActivity;
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
@@ -104,36 +102,37 @@ namespace keep.grass
 
 					if (OldLastPublicActivity != LastPublicActivity)
 					{
-						LastActivityStampLabel.Text = Root.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
-						LastActivityStampLabel.TextColor = Color.Default;
-
-						UpdateAlerts();
+						OnUpdateLastPublicActivity();
 					}
 					Settings.IsValidUserName = true;
 				}
 				catch (Exception err)
 				{
 					Debug.WriteLine("AlphaApp::UpdateLastPublicActivityAsync::catch::err" + err.ToString());
-					//LastPublicActivity = null;
-					LastActivityStampLabel.Text = L["Error"];
-					LastActivityStampLabel.TextColor = Color.Red;
+					OnErrorInQuery();
 				}
 				finally
 				{
 					OnEndQuery();
 				}
-				LastActivityStampLabel.ShowText();
-				LeftTimeLabel.ShowText();
-				StartUpdateLeftTimeTask();
 			}
 		}
 		public void OnStartQuery()
 		{
-			Main?.OnStartQuery();
+			Main.OnStartQuery();
+		}
+		public void OnUpdateLastPublicActivity()
+		{
+			UpdateAlerts();
+			Main.OnUpdateLastPublicActivity();
+		}
+		public void OnErrorInQuery()
+		{
+			Main.OnErrorInQuery();
 		}
 		public void OnEndQuery()
 		{
-			Main?.OnEndQuery();
+			Main.OnEndQuery();
 		}
 		public virtual void UpdateAlerts()
 		{
