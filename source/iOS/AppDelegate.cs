@@ -46,21 +46,11 @@ namespace keep.grass.iOS
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
 			MakeSureApp();
+			App.AutoUpdateLastPublicActivityAsync().Wait();
 
-			//	暫定実装。PCL側のコードの構造を大幅に修正して UI 要素に引き摺られない形にすること。
-			var LastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
-			App?.Main?.AutoUpdateLastPublicActivityAsync().Wait();
-			var NewLastActivityStampLabel = App?.Main?.LastActivityStampLabel.Text ?? "null";
-			completionHandler
-			(
-				App.L["Error"] == NewLastActivityStampLabel ?
-					UIBackgroundFetchResult.Failed :
-					(
-						LastActivityStampLabel == NewLastActivityStampLabel ?
-							UIBackgroundFetchResult.NoData :
-							UIBackgroundFetchResult.NewData
-					)
-			);
+			completionHandler(UIBackgroundFetchResult.NoData);
+			//	UIBackgroundFetchResult.NewData を返すと呼ばれなくなるフシがあるので必ず UIBackgroundFetchResult.NoData
+			//	を返しておくようにしてみる。
 		}
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
