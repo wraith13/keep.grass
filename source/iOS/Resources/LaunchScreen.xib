@@ -11,26 +11,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="keep.grass" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX" misplaced="YES">
-                    <rect key="frame" x="19" y="292" width="441" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="center" id="2" translatesAutoresizingMaskIntoConstraints="NO" image="keep.grass.180.png" misplaced="YES">
-                    <rect key="frame" x="180" y="123" width="120" height="120"/>
-                    <constraints>
-                        <constraint id="9" firstAttribute="width" secondItem="2" secondAttribute="height" multiplier="1:1"/>
-                    </constraints>
+                    <rect key="frame" x="180" y="180" width="120" height="120"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
                 <constraint id="10" firstItem="2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX"/>
-                <constraint id="15" firstItem="kId-c2-rCX" firstAttribute="top" secondItem="2" secondAttribute="bottom" constant="45"/>
-                <constraint id="21" firstItem="2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="123"/>
+                <constraint id="38" firstItem="iN0-l3-epB" firstAttribute="centerY" secondItem="2" secondAttribute="centerY"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
