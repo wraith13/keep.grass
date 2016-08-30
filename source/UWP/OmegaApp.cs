@@ -32,7 +32,7 @@ namespace keep.grass.UWP
             if
             (
                 String.IsNullOrWhiteSpace(Settings.UserName) ||
-                null == Main.LastPublicActivity
+                null == LastPublicActivity
             )
             {
             }
@@ -56,7 +56,7 @@ namespace keep.grass.UWP
                             },
                             new TileText()
                             {
-                                Text = L["Last Stamp"] +": " +Main.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm"),
+                                Text = L["Last Stamp"] +": " +LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm"),
                                 Wrap = true,
                                 Style = TileTextStyle.CaptionSubtle,
                             },
@@ -80,7 +80,7 @@ namespace keep.grass.UWP
                         .GetXml()
                     )
                     {
-                        ExpirationTime = Main.LastPublicActivity.Value.AddHours(24),
+                        ExpirationTime = LastPublicActivity.Value.AddHours(24),
                     }
                 );
             }
