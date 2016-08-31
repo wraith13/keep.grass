@@ -40,7 +40,7 @@ namespace keep.grass.UWP
         }
     }
 
-    class BackgroundUpdateLastPublicActivityTask : IBackgroundTask
+    public class BackgroundUpdateLastPublicActivityTask : IBackgroundTask
     {
         public void Run(IBackgroundTaskInstance taskInstance)
         {

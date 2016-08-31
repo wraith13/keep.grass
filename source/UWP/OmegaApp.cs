@@ -11,6 +11,9 @@ using NotificationsExtensions.Toasts;
 
 using keep.grass.Helpers;
 using Xamarin.Forms;
+using Windows.ApplicationModel.Background;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace keep.grass.UWP
 {
@@ -83,6 +86,23 @@ namespace keep.grass.UWP
                         ExpirationTime = LastPublicActivity.Value.AddHours(24),
                     }
                 );
+
+                Debug.Write("BackgroundUpdateLastPublicActivityTask: " +typeof(BackgroundUpdateLastPublicActivityTask).FullName);
+                var BackgroundUpdateTaskName = "UpdateLastPublicActivity";
+                if
+                (
+                    !BackgroundTaskRegistration.AllTasks
+                        .Where(i => i.Value.Name == BackgroundUpdateTaskName)
+                        .Any()
+                )
+                {
+                    var builder = new BackgroundTaskBuilder();
+                    builder.Name = BackgroundUpdateTaskName;
+                    builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
+                    builder.SetTrigger(new TimeTrigger(41, false));
+                    builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                    builder.Register();
+                }
             }
         }
         string MakeToastId(int id)
