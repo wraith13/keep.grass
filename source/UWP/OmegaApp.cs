@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-using Windows.ApplicationModel.Background;
 using Windows.UI.Notifications;
 using NotificationsExtensions.Tiles;
 using NotificationsExtensions.Toasts;
@@ -151,14 +150,6 @@ namespace keep.grass.UWP
         public override Uri GetApplicationStoreUri()
         {
             return new Uri("https://www.microsoft.com/store/apps/9nblggh51p1m");
-        }
-    }
-
-    class BackgroundUpdateLastPublicActivityTask : IBackgroundTask
-    {
-        public void Run(IBackgroundTaskInstance taskInstance)
-        {
-            throw new NotImplementedException();
         }
     }
 }
