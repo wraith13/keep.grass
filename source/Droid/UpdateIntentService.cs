@@ -7,11 +7,11 @@ using Xamarin.Forms;
 namespace keep.grass.Droid
 {
 	[Service]
-	public class AlarmIntentService :IntentService
+	public class UpdateIntentService :IntentService
 	{
 		protected override void OnHandleIntent(Intent intent)
 		{
-			Debug.WriteLine("AlarmIntentService::OnHandleIntent()");
+			Debug.WriteLine("UpdateIntentService::OnHandleIntent()");
 			try
 			{
 				ShowNotification(ApplicationContext, intent);
