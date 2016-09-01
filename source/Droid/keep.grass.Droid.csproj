@@ -114,6 +114,8 @@
     <Compile Include="OmegaApp.cs" />
     <Compile Include="AlarmWakefulReceiver.cs" />
     <Compile Include="AlarmIntentService.cs" />
+    <Compile Include="UpdateWakefulReceiver.cs" />
+    <Compile Include="UpdateIntentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
