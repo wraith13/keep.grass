@@ -10,11 +10,7 @@ namespace keep.grass.Droid
 		public override void OnReceive(Context context, Intent intent)
 		{
 			Debug.WriteLine("UpdateWakefulReceiver::OnReceive()");
-			var intent2 = new Intent(context, typeof(UpdateIntentService));
-			intent2.PutExtra("id", intent.GetIntExtra("id", 0));
-			intent2.PutExtra("title", intent.GetStringExtra("title"));
-			intent2.PutExtra("message", intent.GetStringExtra("message"));
-			StartWakefulService(context, intent2);
+			StartWakefulService(context, new Intent(context, typeof(UpdateIntentService)));
 		}
 	}
 }
