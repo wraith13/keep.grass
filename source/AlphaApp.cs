@@ -20,7 +20,7 @@ namespace keep.grass
 
 		public AlphaApp()
 		{
-			L = AlphaFactory.MakeLanguage(this);
+			L = AlphaFactory.MakeLanguage();
 			MainPage = Navigation = new NavigationPage
 			(
 				Main = AlphaFactory.MakeMainPage(this)

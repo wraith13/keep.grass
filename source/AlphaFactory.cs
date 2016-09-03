@@ -25,7 +25,7 @@ namespace keep.grass
 		}
 		public abstract AlphaApp MakeOmegaApp();
 
-		public static Languages.AlphaLanguage MakeLanguage(AlphaApp Root)
+		public static Languages.AlphaLanguage MakeLanguage()
 		{
 			return instance.MakeOmegaLanguage();
 		}
