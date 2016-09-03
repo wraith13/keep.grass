@@ -27,11 +27,11 @@ namespace keep.grass
 
 		public static Languages.AlphaLanguage MakeLanguage(AlphaApp Root)
 		{
-			return instance.MakeOmegaLanguage(Root);
+			return instance.MakeOmegaLanguage();
 		}
-		public virtual Languages.AlphaLanguage MakeOmegaLanguage(AlphaApp Root)
+		public virtual Languages.AlphaLanguage MakeOmegaLanguage()
 		{
-			return new Languages.AlphaLanguage(Root);
+			return new Languages.AlphaLanguage();
 		}
 
 		public static AlphaMainPage MakeMainPage(AlphaApp Root)

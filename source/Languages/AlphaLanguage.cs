@@ -7,7 +7,6 @@ namespace keep.grass.Languages
 {
 	public class AlphaLanguage
 	{
-		AlphaApp Root;
 		Dictionary<string, Dictionary<string, string>> master = new Dictionary<string, Dictionary<string, string>>
 		{
 			{
@@ -58,9 +57,8 @@ namespace keep.grass.Languages
 			}
 		}
 
-		public AlphaLanguage(AlphaApp AppRoot)
+		public AlphaLanguage()
 		{
-			Root = AppRoot;
 			Update();
 		}
 		public string this[string key]
@@ -92,6 +90,11 @@ namespace keep.grass.Languages
 		{
 			current = null;
 			master.TryGetValue(lang, out current);
+		}
+
+		public virtual String getLanguage()
+		{
+			return "ja";
 		}
 	}
 }

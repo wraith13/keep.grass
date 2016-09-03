@@ -34,11 +34,6 @@ namespace keep.grass
 			Main.Rebuild();
 		}
 
-		public virtual String getLanguage()
-		{
-			return "ja";
-		}
-
 		protected override void OnStart()
 		{
 			// Handle when your app starts
