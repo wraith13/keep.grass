@@ -5,29 +5,44 @@ namespace keep.grass
 {
 	public abstract class AlphaFactory
 	{
-		static AlphaFactory instance = null;
+		static AlphaFactory Instance = null;
+		AlphaDomain Domain = null;
+		AlphaApp App = null;
+		Languages.AlphaLanguage Language = null;
 
 		public AlphaFactory()
 		{
 		}
-		protected static void Init(AlphaFactory app)
+		protected static void Init(AlphaFactory Factory)
 		{
-			instance = app;
+			Instance = Factory;
 		}
 		public static AlphaFactory Get()
 		{
-			return instance;
+			return Instance;
+		}
+
+		public static AlphaDomain MakeDomain()
+		{
+			return Instance.Domain ??
+           		(Instance.Domain = Instance.MakeOmegaDomain());
+		}
+		public virtual AlphaDomain MakeOmegaDomain()
+		{
+			return new AlphaDomain();
 		}
 
 		public static AlphaApp MakeApp()
 		{
-			return instance.MakeOmegaApp();
+			return Instance.App ??
+           		(Instance.App = Instance.MakeOmegaApp());
 		}
 		public abstract AlphaApp MakeOmegaApp();
 
 		public static Languages.AlphaLanguage MakeLanguage()
 		{
-			return instance.MakeOmegaLanguage();
+			return Instance.Language ??
+           		(Instance.Language = Instance.MakeOmegaLanguage());
 		}
 		public virtual Languages.AlphaLanguage MakeOmegaLanguage()
 		{
@@ -36,7 +51,7 @@ namespace keep.grass
 
 		public static AlphaMainPage MakeMainPage(AlphaApp Root)
 		{
-			return instance.MakeOmegaMainPage(Root);
+			return Instance.MakeOmegaMainPage(Root);
 		}
 		public virtual AlphaMainPage MakeOmegaMainPage(AlphaApp Root)
 		{
@@ -45,7 +60,7 @@ namespace keep.grass
 
 		public static ContentPage MakeSettingsPage(AlphaApp Root)
 		{
-			return instance.MakeOmegaSettingsPage(Root);
+			return Instance.MakeOmegaSettingsPage(Root);
 		}
 		public virtual ContentPage MakeOmegaSettingsPage(AlphaApp Root)
 		{
@@ -54,7 +69,7 @@ namespace keep.grass
 
 		public static AlphaInfoPage MakeInfoPage(AlphaApp Root)
 		{
-			return instance.MakeOmegaInfoPage(Root);
+			return Instance.MakeOmegaInfoPage(Root);
 		}
 		public virtual AlphaInfoPage MakeOmegaInfoPage(AlphaApp Root)
 		{
@@ -63,7 +78,7 @@ namespace keep.grass
 
 		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()
 		{
-			return instance.MakeOmegaActivityIndicatorTextCell();
+			return Instance.MakeOmegaActivityIndicatorTextCell();
 		}
 		public virtual AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
 		{
@@ -72,7 +87,7 @@ namespace keep.grass
 
 		public static AlphaCircleImageCell MakeCircleImageCell()
 		{
-			return instance.MakeOmegaCircleImageCell();
+			return Instance.MakeOmegaCircleImageCell();
 		}
 		public virtual AlphaCircleImageCell MakeOmegaCircleImageCell()
 		{
@@ -81,7 +96,7 @@ namespace keep.grass
 
 		public static AlphaPickerCell MakePickerCell()
 		{
-			return instance.MakeOmegaPickerCell();
+			return Instance.MakeOmegaPickerCell();
 		}
 		public virtual AlphaPickerCell MakeOmegaPickerCell()
 		{
