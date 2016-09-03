@@ -24,17 +24,14 @@ namespace keep.grass.Droid
 	]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
-		AlphaApp App;
+		static AlphaApp App;
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-			ImageCircleRenderer.Init();
 
-			OmegaFactory.Init();
-
-			LoadApplication(App = AlphaFactory.MakeApp());
+			LoadApplication(MakeSureApp());
 		}
 
 		protected override void OnResume()
@@ -46,6 +43,18 @@ namespace keep.grass.Droid
 				Intent.RemoveExtra("type");
 				App.ShowMainPage();
 			}
+		}
+
+		public static AlphaApp MakeSureApp()
+		{
+			if (null != App)
+			{
+				//global::Xamarin.Forms.Forms.Init(this, bundle);
+				ImageCircleRenderer.Init();
+				OmegaFactory.Init();
+				App = AlphaFactory.MakeApp();
+			}
+			return App;
 		}
 	}
 }
