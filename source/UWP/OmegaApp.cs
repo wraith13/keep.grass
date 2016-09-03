@@ -23,11 +23,6 @@ namespace keep.grass.UWP
         {
         }
 
-        public override string getLanguage()
-        {
-            return Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Split('-')[0];
-        }
-
         public override void UpdateAlerts()
         {
             base.UpdateAlerts();
