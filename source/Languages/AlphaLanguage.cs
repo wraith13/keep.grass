@@ -82,7 +82,7 @@ namespace keep.grass.Languages
 			var value = Settings.Language;
 			if (String.IsNullOrWhiteSpace(value))
 			{
-				value = Root.getLanguage();
+				value = getLanguage();
 			}
 			return value;
 		}
