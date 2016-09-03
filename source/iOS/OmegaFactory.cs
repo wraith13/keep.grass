@@ -12,6 +12,10 @@ namespace keep.grass.iOS
 		{
 			return new OmegaApp();
 		}
+		public override Languages.AlphaLanguage MakeOmegaLanguage()
+		{
+			return new OmegaLanguage();
+		}
 		public override AlphaPickerCell MakeOmegaPickerCell()
 		{
 			return new OmegaPickerCell();

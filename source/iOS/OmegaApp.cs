@@ -12,11 +12,6 @@ namespace keep.grass.iOS
 		{
 		}
 
-		public override string getLanguage()
-		{
-			return NSLocale.PreferredLanguages[0].Split('-')[0];
-		}
-
 		public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
 			CancelAlert(id);
