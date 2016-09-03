@@ -14,11 +14,6 @@ namespace keep.grass.Droid
 		{
 		}
 
-		public override string getLanguage()
-		{
-			return Locale.Default.ToString().Split('_')[0];
-		}
-
 		public AlarmManager GetAlarmManager()
 		{
 			return ((AlarmManager)Forms.Context.GetSystemService(Context.AlarmService));

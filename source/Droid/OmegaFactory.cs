@@ -12,6 +12,10 @@ namespace keep.grass.Droid
 		{
 			return new OmegaApp();
 		}
+		public override Languages.AlphaLanguage MakeOmegaLanguage()
+		{
+			return new OmegaLanguage();
+		}
 	}
 }
 
