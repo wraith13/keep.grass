@@ -7,7 +7,7 @@ namespace keep.grass
 {
 	public abstract class AlphaDomain
 	{
-		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+		protected Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
 
 		public DateTime? LastPublicActivity;
 		DateTime LastCheckStamp = default(DateTime);

@@ -10,11 +10,18 @@ namespace keep.grass.UWP
 {
     public class OmegaFactory : AlphaFactory
     {
-        public new static void Init()
+        public static void MakeSureInit()
         {
-            AlphaFactory.Init(new OmegaFactory());
+            if (null == AlphaFactory.Get())
+            {
+                AlphaFactory.Init(new OmegaFactory());
+            }
         }
 
+        public override AlphaDomain MakeOmegaDomain()
+        {
+            return new OmegaDomain();
+        }
         public override AlphaApp MakeOmegaApp()
         {
             return new OmegaApp();
@@ -23,9 +30,9 @@ namespace keep.grass.UWP
         {
             return new OmegaLanguage();
         }
-        public override ContentPage MakeOmegaSettingsPage(AlphaApp Root)
+        public override ContentPage MakeOmegaSettingsPage()
         {
-            return new OmegaSettingsPage(Root);
+            return new OmegaSettingsPage();
         }
         public override AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
         {

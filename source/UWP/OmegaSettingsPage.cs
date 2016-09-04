@@ -9,16 +9,14 @@ namespace keep.grass.UWP
 {
     public class OmegaSettingsPage : ContentPage
     {
-        AlphaApp Root;
-        public Languages.AlphaLanguage L;
+        AlphaApp Root = AlphaFactory.MakeApp();
+        Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
         OmegaEntryCell UserNameCell = null;
         KeyValuePair<TimeSpan, OmegaSwitchCell>[] AlertSwitchCellList = null;
         AlphaPickerCell LanguageCell = null;
 
-        public OmegaSettingsPage(AlphaApp AppRoot)
+        public OmegaSettingsPage()
         {
-            Root = AppRoot;
-            L = Root.L;
             Title = L["Settings"];
             UserNameCell = new OmegaEntryCell
             {
@@ -42,7 +40,7 @@ namespace keep.grass.UWP
             var Information = AlphaFactory.MakeCircleImageCell();
             Information.ImageSource = Root.GetApplicationImageSource();
             Information.Text = L["keep.grass"];
-            Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage(Root)));
+            Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()));
 
             Content = new StackLayout
             {
