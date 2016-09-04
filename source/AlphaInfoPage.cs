@@ -5,13 +5,11 @@ namespace keep.grass
 {
 	public class AlphaInfoPage : ContentPage
 	{
-		AlphaApp Root;
-		public Languages.AlphaLanguage L;
+		AlphaApp Root = AlphaFactory.MakeApp();
+		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
 
-		public AlphaInfoPage(AlphaApp AppRoot)
+		public AlphaInfoPage()
 		{
-			Root = AppRoot;
-			L = Root.L;
 			Title = L["Information"];
 
 			var version = AlphaFactory.MakeCircleImageCell();

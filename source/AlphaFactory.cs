@@ -27,11 +27,12 @@ namespace keep.grass
 			return Instance.Domain ??
            		(Instance.Domain = Instance.MakeOmegaDomain());
 		}
-		public virtual AlphaDomain MakeOmegaDomain()
-		{
-			return new AlphaDomain();
-		}
+		public abstract AlphaDomain MakeOmegaDomain();
 
+		public static AlphaApp GetApp()
+		{
+			return Instance.App;
+		}
 		public static AlphaApp MakeApp()
 		{
 			return Instance.App ??
@@ -49,31 +50,31 @@ namespace keep.grass
 			return new Languages.AlphaLanguage();
 		}
 
-		public static AlphaMainPage MakeMainPage(AlphaApp Root)
+		public static AlphaMainPage MakeMainPage()
 		{
-			return Instance.MakeOmegaMainPage(Root);
+			return Instance.MakeOmegaMainPage();
 		}
-		public virtual AlphaMainPage MakeOmegaMainPage(AlphaApp Root)
+		public virtual AlphaMainPage MakeOmegaMainPage()
 		{
-			return new AlphaMainPage(Root);
-		}
-
-		public static ContentPage MakeSettingsPage(AlphaApp Root)
-		{
-			return Instance.MakeOmegaSettingsPage(Root);
-		}
-		public virtual ContentPage MakeOmegaSettingsPage(AlphaApp Root)
-		{
-			return new AlphaSettingsPage(Root);
+			return new AlphaMainPage();
 		}
 
-		public static AlphaInfoPage MakeInfoPage(AlphaApp Root)
+		public static ContentPage MakeSettingsPage()
 		{
-			return Instance.MakeOmegaInfoPage(Root);
+			return Instance.MakeOmegaSettingsPage();
 		}
-		public virtual AlphaInfoPage MakeOmegaInfoPage(AlphaApp Root)
+		public virtual ContentPage MakeOmegaSettingsPage()
 		{
-			return new AlphaInfoPage(Root);
+			return new AlphaSettingsPage();
+		}
+
+		public static AlphaInfoPage MakeInfoPage()
+		{
+			return Instance.MakeOmegaInfoPage();
+		}
+		public virtual AlphaInfoPage MakeOmegaInfoPage()
+		{
+			return new AlphaInfoPage();
 		}
 
 		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()

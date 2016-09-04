@@ -9,16 +9,15 @@ namespace keep.grass
 {
 	public class AlphaSettingsPage : ContentPage
 	{
-		AlphaApp Root;
-		public Languages.AlphaLanguage L;
+		AlphaApp Root = AlphaFactory.MakeApp();
+		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
 		AlphaPickerCell LanguageCell = null;
 
-		public AlphaSettingsPage(AlphaApp AppRoot)
+		public AlphaSettingsPage()
 		{
-			Root = AppRoot;
-			L = Root.L;
 			Title = L["Settings"];
 			UserNameCell = new EntryCell
 			{
@@ -42,7 +41,7 @@ namespace keep.grass
 			var Information = AlphaFactory.MakeCircleImageCell();
 			Information.ImageSource = Root.GetApplicationImageSource();
 			Information.Text = L["keep.grass"];
-			Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage(Root)));
+			Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()));
 
 			Content = new StackLayout { 
 				Children =

@@ -10,8 +10,8 @@ namespace keep.grass
 {
 	public class AlphaMainPage : ContentPage
 	{
-		AlphaApp Root;
-		public Languages.AlphaLanguage L;
+		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+		AlphaDomain Domain = AlphaFactory.MakeDomain();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -20,10 +20,8 @@ namespace keep.grass
 
 		Task UpdateLeftTimeTask = null;
 
-		public AlphaMainPage(AlphaApp AppRoot)
+		public AlphaMainPage()
 		{
-			Root = AppRoot;
-			L = Root.L;
 			Title = "keep.grass";
 
 			UserLabel.Command = new Command
@@ -46,7 +44,7 @@ namespace keep.grass
 					}
 				}
 			);
-			LeftTimeLabel.Command = new Command(async o => await Root.ManualUpdateLastPublicActivityAsync());
+			LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
 			Rebuild();
@@ -87,14 +85,14 @@ namespace keep.grass
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Update"],
-							Command = new Command(async o => await Root.ManualUpdateLastPublicActivityAsync()),
+							Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
 						},
 						new Button
 						{
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Settings"],
-							Command = new Command(o => Root.ShowSettingsPage()),
+							Command = new Command(o => AlphaFactory.MakeApp().ShowSettingsPage()),
 						}
 					)
 				},
@@ -120,7 +118,7 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			LastActivityStampLabel.Text = Root.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+			LastActivityStampLabel.Text = Domain.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
 			LastActivityStampLabel.TextColor = Color.Default;
 		}
 		public void OnErrorInQuery()
@@ -147,7 +145,7 @@ namespace keep.grass
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					ClearActiveInfo();
-					await Root.ManualUpdateLastPublicActivityAsync();
+					await Domain.ManualUpdateLastPublicActivityAsync();
 				}
 				else
 				{
@@ -164,7 +162,7 @@ namespace keep.grass
 		}
 		public void ClearActiveInfo()
 		{
-			Root.LastPublicActivity = null;
+			Domain.LastPublicActivity = null;
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -194,9 +192,9 @@ namespace keep.grass
 
 		protected async void UpdateLeftTime()
 		{
-			if (null != Root.LastPublicActivity)
+			if (null != Domain.LastPublicActivity)
 			{
-				var LeftTime = Root.LastPublicActivity.Value.AddHours(24) - DateTime.Now;
+				var LeftTime = Domain.LastPublicActivity.Value.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
 
