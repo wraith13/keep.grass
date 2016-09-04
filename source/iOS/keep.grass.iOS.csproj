@@ -143,6 +143,7 @@
     <Compile Include="OmegaApp.cs" />
     <Compile Include="OmegaPickerCell.cs" />
     <Compile Include="OmegaLanguage.cs" />
+    <Compile Include="OmegaDomain.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images.xcassets\AppIcons.appiconset\keep.grass.1024.png" />

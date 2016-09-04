@@ -3,11 +3,18 @@ namespace keep.grass.iOS
 {
 	public class OmegaFactory : AlphaFactory
 	{
-		public new static void Init()
+		public static void MakeSureInit()
 		{
-			AlphaFactory.Init(new OmegaFactory());
+			if (null == AlphaFactory.Get())
+			{
+				AlphaFactory.Init(new OmegaFactory());
+			}
 		}
 
+		public override AlphaDomain MakeOmegaDomain()
+		{
+			return new OmegaDomain();
+		}
 		public override AlphaApp MakeOmegaApp()
 		{
 			return new OmegaApp();
