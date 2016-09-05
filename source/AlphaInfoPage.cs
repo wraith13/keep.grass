@@ -5,8 +5,8 @@ namespace keep.grass
 {
 	public class AlphaInfoPage : ContentPage
 	{
-		AlphaApp Root = AlphaFactory.MakeApp();
-		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+		AlphaApp Root = AlphaFactory.MakeSureApp();
+		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		public AlphaInfoPage()
 		{

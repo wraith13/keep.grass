@@ -9,8 +9,8 @@ namespace keep.grass
 {
 	public class AlphaSettingsPage : ContentPage
 	{
-		AlphaApp Root = AlphaFactory.MakeApp();
-		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+		AlphaApp Root = AlphaFactory.MakeSureApp();
+		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		EntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;

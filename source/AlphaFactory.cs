@@ -22,7 +22,7 @@ namespace keep.grass
 			return Instance;
 		}
 
-		public static AlphaDomain MakeDomain()
+		public static AlphaDomain MakeSureDomain()
 		{
 			return Instance.Domain ??
            		(Instance.Domain = Instance.MakeOmegaDomain());
@@ -33,14 +33,14 @@ namespace keep.grass
 		{
 			return Instance.App;
 		}
-		public static AlphaApp MakeApp()
+		public static AlphaApp MakeSureApp()
 		{
 			return Instance.App ??
            		(Instance.App = Instance.MakeOmegaApp());
 		}
 		public abstract AlphaApp MakeOmegaApp();
 
-		public static Languages.AlphaLanguage MakeLanguage()
+		public static Languages.AlphaLanguage MakeSureLanguage()
 		{
 			return Instance.Language ??
            		(Instance.Language = Instance.MakeOmegaLanguage());

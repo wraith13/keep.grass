@@ -10,8 +10,8 @@ namespace keep.grass
 {
 	public class AlphaMainPage : ContentPage
 	{
-		Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
-		AlphaDomain Domain = AlphaFactory.MakeDomain();
+		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -92,7 +92,7 @@ namespace keep.grass
 							VerticalOptions = LayoutOptions.Center,
 							HorizontalOptions = LayoutOptions.FillAndExpand,
 							Text = L["Settings"],
-							Command = new Command(o => AlphaFactory.MakeApp().ShowSettingsPage()),
+							Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
 						}
 					)
 				},

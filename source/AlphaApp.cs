@@ -12,7 +12,7 @@ namespace keep.grass
 	{
 		public NavigationPage Navigation;
 		public AlphaMainPage Main;
-		AlphaDomain Domain = AlphaFactory.MakeDomain();
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		public AlphaApp()
 		{
@@ -55,7 +55,7 @@ namespace keep.grass
 
 		public void OnChangeSettings()
 		{
-			AlphaFactory.MakeLanguage().Update();
+			AlphaFactory.MakeSureLanguage().Update();
 			Main.UpdateInfoAsync().Wait(0);
 			Domain.UpdateAlerts();
 		}
