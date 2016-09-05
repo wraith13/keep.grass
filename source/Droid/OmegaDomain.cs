@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -8,15 +9,22 @@ namespace keep.grass.Droid
 {
 	public class OmegaDomain : AlphaDomain
 	{
-		//	このクラス内の Forms.Context の代わりに外部から Context を指定する形にすること！
+		public ThreadLocal<Context> ThreadContext = new ThreadLocal<Context>(() => null);
+		public Context Context
+		{
+			get
+			{
+				return ThreadContext.Value ?? Forms.Context;
+			}
+		}
 
 		public AlarmManager GetAlarmManager()
 		{
-			return ((AlarmManager)Forms.Context.GetSystemService(Context.AlarmService));
+			return ((AlarmManager)Context.GetSystemService(Context.AlarmService));
 		}
 		public PendingIntent MakeAlarmIntent(int id, string title = null, string body = null)
 		{
-			var alarmIntent = new Intent(Forms.Context, typeof(AlarmWakefulReceiver));
+			var alarmIntent = new Intent(Context, typeof(AlarmWakefulReceiver));
 			alarmIntent.PutExtra("id", id);
 			if (null != title)
 			{
