@@ -52,7 +52,7 @@ namespace keep.grass.Droid
 				//global::Xamarin.Forms.Forms.Init(this, bundle);
 				ImageCircleRenderer.Init();
 				OmegaFactory.MakeSureInit();
-				App = AlphaFactory.MakeApp();
+				App = AlphaFactory.MakeSureApp();
 			}
 			return App;
 		}
