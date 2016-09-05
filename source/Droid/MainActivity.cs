@@ -47,7 +47,7 @@ namespace keep.grass.Droid
 
 		public static AlphaApp MakeSureApp()
 		{
-			if (null != App)
+			if (null == App)
 			{
 				//global::Xamarin.Forms.Forms.Init(this, bundle);
 				ImageCircleRenderer.Init();
