@@ -117,6 +117,7 @@
     <Compile Include="UpdateWakefulReceiver.cs" />
     <Compile Include="UpdateIntentService.cs" />
     <Compile Include="OmegaLanguage.cs" />
+    <Compile Include="OmegaDomain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
