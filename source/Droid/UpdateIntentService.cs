@@ -23,6 +23,17 @@ namespace keep.grass.Droid
 		}
 		public void UpdateLastPublicActivity(Context context, Intent intent)
 		{
+			OmegaFactory.MakeSureInit();
+			var Domain = AlphaFactory.MakeSureDomain() as OmegaDomain;
+			try
+			{
+				Domain.ThreadContext.Value = context;
+				Domain.AutoUpdateLastPublicActivityAsync().Wait();
+			}
+			finally
+			{
+				Domain.ThreadContext.Value = null;
+			}
 		}
 	}
 }
