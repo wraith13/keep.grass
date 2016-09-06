@@ -18,6 +18,8 @@ namespace keep.grass.Droid
 			}
 		}
 
+		const int BaseUpdateId = 1000;
+
 		public AlarmManager GetAlarmManager()
 		{
 			return ((AlarmManager)Context.GetSystemService(Context.AlarmService));
@@ -35,7 +37,7 @@ namespace keep.grass.Droid
 				alarmIntent.PutExtra("message", body);
 			}
 			var result = PendingIntent.GetBroadcast
-			  (
+		  	(
 				Forms.Context,
 				id,
 				alarmIntent,
@@ -45,18 +47,39 @@ namespace keep.grass.Droid
 		}
 		public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
+			var alertAt = SystemClock.ElapsedRealtime() + (long)((notifyTime - DateTime.Now).TotalMilliseconds);
 			GetAlarmManager().Set
 			(
 				AlarmType.ElapsedRealtime,
-				SystemClock.ElapsedRealtime() + (long)((notifyTime - DateTime.Now).TotalMilliseconds),
+				alertAt,
 				MakeAlarmIntent(id, title, body)
-		   );
+		   	);
+			if (TimeSpan.FromSeconds(300) <= notifyTime -DateTime.Now)
+			{
+				var updateAt = alertAt - (long)TimeSpan.FromSeconds(120).TotalMilliseconds;
+				GetAlarmManager().Set
+				(
+					AlarmType.ElapsedRealtime,
+					updateAt,
+					PendingIntent.GetBroadcast
+					(
+						Forms.Context,
+						id + BaseUpdateId,
+						new Intent(Context, typeof(UpdateWakefulReceiver)),
+						PendingIntentFlags.UpdateCurrent
+					)
+			   );
+			}
 		}
 		public override void CancelAlert(int id)
 		{
 			GetAlarmManager().Cancel
 			(
 				MakeAlarmIntent(id)
+			);
+			GetAlarmManager().Cancel
+			(
+				MakeAlarmIntent(id +BaseUpdateId)
 			);
 		}
 		public override void CancelAllAlerts()
