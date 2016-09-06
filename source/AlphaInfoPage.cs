@@ -15,7 +15,13 @@ namespace keep.grass
 			var version = AlphaFactory.MakeCircleImageCell();
 			version.ImageSource = Root.GetApplicationImageSource();
 			version.Text = "1.00.000";
-			version.Command = new Command(o => Device.OpenUri(Root.GetApplicationStoreUri()));
+			version.Command = new Command
+			(
+				o => Device.OpenUri
+				(
+					AlphaFactory.MakeSureDomain().GetApplicationStoreUri()
+				)
+			);
 
 			var twitter = AlphaFactory.MakeCircleImageCell();
 			twitter.ImageSource = Root.GetWraithImageSource();

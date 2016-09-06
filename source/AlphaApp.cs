@@ -80,11 +80,6 @@ namespace keep.grass
 		{
 			return GetImageSource("GitHub-Mark.120.png");
 		}
-
-		public virtual Uri GetApplicationStoreUri()
-		{
-			return null;
-		}
 	}
 }
 

@@ -132,6 +132,11 @@ namespace keep.grass
 				CancelAlert(++i);
 			}
 		}
+
+		public virtual Uri GetApplicationStoreUri()
+		{
+			return null;
+		}
 	}
 }
 
