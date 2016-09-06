@@ -11,7 +11,6 @@ namespace keep.grass
 
 		public DateTime? LastPublicActivity;
 		DateTime LastCheckStamp = default(DateTime);
-		TimeSpan NextCheckTimeSpan = default(TimeSpan);
 
 		public AlphaDomain()
 		{
@@ -20,7 +19,7 @@ namespace keep.grass
 		public async Task AutoUpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaDomain::AutoUpdateInfoAsync");
-			if (TimeSpan.FromSeconds(60) < DateTime.Now - LastCheckStamp)
+			if (TimeSpan.FromSeconds(300) < DateTime.Now - LastCheckStamp)
 			{
 				await UpdateLastPublicActivityAsync();
 			}
@@ -29,7 +28,7 @@ namespace keep.grass
 		{
 			Debug.WriteLine("AlphaDomain::ManualUpdateInfoAsync");
 			await UpdateLastPublicActivityAsync();
-			NextCheckTimeSpan = TimeSpan.FromSeconds(60);
+			//NextCheckTimeSpan = TimeSpan.FromSeconds(60);
 		}
 		private async Task UpdateLastPublicActivityAsync()
 		{
@@ -39,7 +38,7 @@ namespace keep.grass
 			{
 				try
 				{
-					LastCheckStamp = DateTime.Now;
+					//LastCheckStamp = DateTime.Now;
 
 					OnStartQuery();
 
