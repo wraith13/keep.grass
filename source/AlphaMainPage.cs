@@ -118,7 +118,7 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			LastActivityStampLabel.Text = Domain.LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+			LastActivityStampLabel.Text = Domain.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 			LastActivityStampLabel.TextColor = Color.Default;
 		}
 		public void OnErrorInQuery()
@@ -162,7 +162,7 @@ namespace keep.grass
 		}
 		public void ClearActiveInfo()
 		{
-			Domain.LastPublicActivity = null;
+			Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -192,9 +192,9 @@ namespace keep.grass
 
 		protected async void UpdateLeftTime()
 		{
-			if (null != Domain.LastPublicActivity)
+			if (default(DateTime) != Domain.LastPublicActivity)
 			{
-				var LeftTime = Domain.LastPublicActivity.Value.AddHours(24) - DateTime.Now;
+				var LeftTime = Domain.LastPublicActivity.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
 

@@ -9,7 +9,7 @@ namespace keep.grass
 	{
 		protected Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		public DateTime? LastPublicActivity;
+		public DateTime LastPublicActivity = default(DateTime);
 		DateTime LastCheckStamp = default(DateTime);
 
 		public AlphaDomain()
@@ -44,7 +44,7 @@ namespace keep.grass
 
 					var OldLastPublicActivity = LastPublicActivity;
 					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
-					Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+					Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss"));
 
 					if (OldLastPublicActivity != LastPublicActivity)
 					{
@@ -87,7 +87,7 @@ namespace keep.grass
 			if
 			(
 				String.IsNullOrWhiteSpace(Settings.UserName) ||
-				null == LastPublicActivity
+				default(DateTime) == LastPublicActivity
 			)
 			{
 				Debug.WriteLine("AlphaDomain::CancelAllAlerts");
@@ -95,8 +95,8 @@ namespace keep.grass
 			else
 			{
 				Debug.WriteLine("AlphaDomain::UpdateAlerts");
-				var Limit = LastPublicActivity.Value.AddHours(24);
-				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + LastPublicActivity.Value.ToString("yyyy-MM-dd HH:mm:ss");
+				var Limit = LastPublicActivity.AddHours(24);
+				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach (var Span in Settings.AlertTimeSpanTable)
