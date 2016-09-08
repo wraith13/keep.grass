@@ -9,8 +9,8 @@ namespace keep.grass.UWP
 {
     public class OmegaSettingsPage : ContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeApp();
-        Languages.AlphaLanguage L = AlphaFactory.MakeLanguage();
+        AlphaApp Root = AlphaFactory.MakeSureApp();
+        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
         OmegaEntryCell UserNameCell = null;
         KeyValuePair<TimeSpan, OmegaSwitchCell>[] AlertSwitchCellList = null;
         AlphaPickerCell LanguageCell = null;

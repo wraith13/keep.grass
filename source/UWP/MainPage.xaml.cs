@@ -34,7 +34,7 @@ namespace keep.grass.UWP
             {
                 ImageCircleRenderer.Init();
                 OmegaFactory.MakeSureInit();
-                App = keep.grass.AlphaFactory.MakeApp();
+                App = keep.grass.AlphaFactory.MakeSureApp();
             }
             return App;
         }
@@ -46,7 +46,7 @@ namespace keep.grass.UWP
         {
             var Deferral = taskInstance.GetDeferral();
             OmegaFactory.MakeSureInit();
-            AlphaFactory.MakeDomain()
+            AlphaFactory.MakeSureDomain()
                 .AutoUpdateLastPublicActivityAsync()
                 .ContinueWith
                 (
