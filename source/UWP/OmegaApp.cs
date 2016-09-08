@@ -17,10 +17,5 @@ namespace keep.grass.UWP
         public OmegaApp()
         {
         }
-
-        public override Uri GetApplicationStoreUri()
-        {
-            return new Uri("https://www.microsoft.com/store/apps/9nblggh51p1m");
-        }
     }
 }
