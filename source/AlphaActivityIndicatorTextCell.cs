@@ -28,7 +28,9 @@ namespace keep.grass
             Indicator.VerticalOptions = LayoutOptions.Center;
 			Indicator.HorizontalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
-		}
+
+            Indicator.IsVisible = false;
+        }
 
         public void ShowText()
 		{
