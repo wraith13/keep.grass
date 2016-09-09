@@ -24,26 +24,8 @@ namespace keep.grass
 		{
 			Title = "keep.grass";
 
-			UserLabel.Command = new Command
-			(
-				o =>
-				{
-					if (!String.IsNullOrWhiteSpace(UserLabel.Text))
-					{
-						Device.OpenUri(new Uri(GitHub.GetProfileUrl(UserLabel.Text)));
-					}
-				}
-			);
-			LastActivityStampLabel.Command = new Command
-			(
-				o =>
-				{
-					if (!String.IsNullOrWhiteSpace(UserLabel.Text))
-					{
-						Device.OpenUri(new Uri(GitHub.GetAcitivityUrl(UserLabel.Text)));
-					}
-				}
-			);
+			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
+			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
