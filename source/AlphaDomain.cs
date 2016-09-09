@@ -9,11 +9,23 @@ namespace keep.grass
 	{
 		protected Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		public DateTime LastPublicActivity = default(DateTime);
+		private DateTime LastPublicActivityCache;
+		public DateTime LastPublicActivity
+		{
+			set
+			{
+				Settings.LastPublicActivity = LastPublicActivityCache = value;
+			}
+			get
+			{
+				return LastPublicActivityCache;
+			}
+		}
 		DateTime LastCheckStamp = default(DateTime);
 
 		public AlphaDomain()
 		{
+			LastPublicActivityCache = Settings.LastPublicActivity;
 		}
 
 		public async Task AutoUpdateLastPublicActivityAsync()

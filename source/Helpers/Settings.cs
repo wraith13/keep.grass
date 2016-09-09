@@ -82,6 +82,19 @@ namespace keep.grass.Helpers
 			}
 		}
 
+		private const string LastPublicActivityKey = "LastPublicActivity";
+		private static readonly DateTime LastPublicActivityDefault = default(DateTime);
+		public static DateTime LastPublicActivity
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<DateTime>(LastPublicActivityKey, LastPublicActivityDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<DateTime>(LastPublicActivityKey, value);
+			}
+		}
 
 		public static T Get<T>(string Key, T DefaultValue)
 		{
