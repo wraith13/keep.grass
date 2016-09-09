@@ -55,7 +55,6 @@ namespace keep.grass.UWP
                         Deferral.Complete();
                     }
                 );
-            throw new NotImplementedException();
         }
     }
 }
