@@ -82,14 +82,11 @@ namespace keep.grass
 			//VerticalOptions = LayoutOptions.CenterAndExpand;
 		}
 
-		public abstract double Width { get; }
-		public abstract double Height { get; }
-
 		public virtual ResponsiveBlock MakeBlock(IEnumerable<ResponsiveEelement> BlockElements)
 		{
 			return new ResponsiveBlock(BlockElements);
 		}
-		public void Response()
+		public void Response(double Width, double Height)
 		{
 			var MaxColumnSize =
 				MaxColumnWidth <= Width ?
@@ -176,7 +173,7 @@ namespace keep.grass
 	public class ResponsiveLayout : StackLayout
 	{
 	}
-	public class ResponsiveTableView : TableView
+	public class ResponsiveTableView : ResponsiveViewElement<TableView>
 	{
 		private List<TableSection> ChildrenValue = new List<TableSection>();
 		public IList<TableSection> Children
@@ -187,7 +184,7 @@ namespace keep.grass
 			}
 		}
 
-		public ResponsiveTableView
+		public ResponsiveTableView(TableView a_view) :base(a_view)
 		{
 		}
 	}
