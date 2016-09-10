@@ -88,6 +88,10 @@ namespace keep.grass.UWP
                     builder.SetTrigger(new TimeTrigger(41, false));
                     builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
                     builder.Register();
+                    Task.Run
+                    (
+                        async () => await BackgroundExecutionManager.RequestAccessAsync()
+                    );
                 }
             }
         }
