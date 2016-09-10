@@ -40,13 +40,6 @@ namespace keep.grass
 		protected override void OnResume()
 		{
 			Domain.UpdateAlerts();
-			Task
-				.Delay(TimeSpan.FromMilliseconds(3000))
-				.ContinueWith
-				(
-					async (t) => await Domain.AutoUpdateLastPublicActivityAsync(),
-					TaskScheduler.FromCurrentSynchronizationContext()
-				);
 		}
 
 		public void ShowMainPage()
