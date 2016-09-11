@@ -82,15 +82,21 @@ namespace keep.grass.UWP
                         .Any()
                 )
                 {
-                    var builder = new BackgroundTaskBuilder();
-                    builder.Name = BackgroundUpdateTaskName;
-                    builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
-                    builder.SetTrigger(new TimeTrigger(41, false));
-                    builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-                    builder.Register();
                     Task.Run
                     (
                         async () => await BackgroundExecutionManager.RequestAccessAsync()
+                    )
+                    .ContinueWith
+                    (
+                        t =>
+                        {
+                            var builder = new BackgroundTaskBuilder();
+                            builder.Name = BackgroundUpdateTaskName;
+                            builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
+                            builder.SetTrigger(new TimeTrigger(41, false));
+                            builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                            builder.Register();
+                        }
                     );
                 }
             }
