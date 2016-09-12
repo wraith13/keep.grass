@@ -97,17 +97,16 @@ namespace keep.grass
 			do
 			{
 				++ColumnSize;
-				Blocks.Clear();
-				for (var i = 0; i < ColumnSize; ++i)
-				{
-					Blocks.Add
-			      	(
-			      		MakeBlock
-				      	(
-				      		Elements.Where((v, index) => i == index % ColumnSize)
-				     	)
-			     	);
-				}
+                Blocks = Enumerable
+                    .Range(0, ++ColumnSize)
+                    .Select
+                    (
+                        i => MakeBlock
+                        (
+                            Elements.Where((v, index) => i == index % ColumnSize)
+                        )
+                    )
+                    .ToList();
 			}
 			while
 			(
