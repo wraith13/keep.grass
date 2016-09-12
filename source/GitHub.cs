@@ -34,29 +34,26 @@ namespace keep.grass
 			return String.Format (IconUrlFormat, Id);
 		}
 
-		static public async Task<DateTime> GetLastPublicActivityAsync(string Id)
+		static public async Task<DateTime> GetLastPublicActivityAsync(HttpClient HttpClient, string Id)
 		{
-			using (var http = new HttpClient())
+			using (var response = await HttpClient.GetAsync(GetAtomUrl(Id)))
 			{
-				using (var response = await http.GetAsync(GetAtomUrl(Id)))
+				using (var content = response.Content)
 				{
-					using (var content = response.Content)
-					{
-						var stream = await content.ReadAsStreamAsync();
-						return await Task.Factory.StartNew<DateTime>
+					var stream = await content.ReadAsStreamAsync();
+					return await Task.Factory.StartNew<DateTime>
+					(
+						() =>
+						DateTime.Parse
 						(
-							() =>
-							DateTime.Parse
-							(
-								XDocument
-								.Load(stream)
-								.Descendants()
-								.Where(i => i.Name.LocalName == "updated")
-								.First()
-								.Value
-							)
-						);
-					}
+							XDocument
+							.Load(stream)
+							.Descendants()
+							.Where(i => i.Name.LocalName == "updated")
+							.First()
+							.Value
+						)
+					);
 				}
 			}
 		}

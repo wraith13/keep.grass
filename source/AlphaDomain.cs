@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Threading.Tasks;
 using keep.grass.Helpers;
 
@@ -8,6 +9,7 @@ namespace keep.grass
 	public abstract class AlphaDomain
 	{
 		protected Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+		protected HttpClient HttpClient = new HttpClient();
 
 		private DateTime LastPublicActivityCache;
 		public DateTime LastPublicActivity
@@ -55,7 +57,7 @@ namespace keep.grass
 					OnStartQuery();
 
 					var OldLastPublicActivity = LastPublicActivity;
-					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(User);
+					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(HttpClient, User);
 					Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss"));
 
 					if (OldLastPublicActivity != LastPublicActivity)
