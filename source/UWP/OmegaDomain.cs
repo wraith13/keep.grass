@@ -90,7 +90,7 @@ namespace keep.grass.UWP
                         var builder = new BackgroundTaskBuilder();
                         builder.Name = BackgroundUpdateTaskName;
                         builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
-                        builder.SetTrigger(new TimeTrigger(41, false));
+                        builder.SetTrigger(new TimeTrigger(15, false));
                         builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
                         builder.Register();
                     }
