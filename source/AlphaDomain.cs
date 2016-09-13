@@ -23,7 +23,6 @@ namespace keep.grass
 				return LastPublicActivityCache;
 			}
 		}
-		DateTime LastCheckStamp = default(DateTime);
 
 		public AlphaDomain()
 		{
@@ -33,16 +32,12 @@ namespace keep.grass
 		public async Task AutoUpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaDomain::AutoUpdateInfoAsync");
-			if (TimeSpan.FromSeconds(300) < DateTime.Now - LastCheckStamp)
-			{
-				await UpdateLastPublicActivityAsync();
-			}
+			await UpdateLastPublicActivityAsync();
 		}
 		public async Task ManualUpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaDomain::ManualUpdateInfoAsync");
 			await UpdateLastPublicActivityAsync();
-			//NextCheckTimeSpan = TimeSpan.FromSeconds(60);
 		}
 		private async Task UpdateLastPublicActivityAsync()
 		{
@@ -52,8 +47,6 @@ namespace keep.grass
 			{
 				try
 				{
-					//LastCheckStamp = DateTime.Now;
-
 					OnStartQuery();
 
 					var OldLastPublicActivity = LastPublicActivity;
