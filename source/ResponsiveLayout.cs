@@ -13,7 +13,17 @@ namespace keep.grass
 		public abstract double MinimumWidthRequest { set; }
 		public abstract double WidthRequest { set; }
 
-		public virtual void Response() { }
+        public virtual ResponsiveContainer AsContainer { get { return null; } }
+
+        public void Response()
+        {
+            //  これは絶対に null になる・・・
+            var Container = AsContainer;
+            if (null != Container)
+            {
+                Container.Response(Width, Height);
+            }
+        }
 	}
 	public class ResponsiveBlock
 	{
