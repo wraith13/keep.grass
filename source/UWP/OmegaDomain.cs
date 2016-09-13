@@ -75,30 +75,26 @@ namespace keep.grass.UWP
 
                 Debug.Write("BackgroundUpdateLastPublicActivityTask: " + typeof(BackgroundUpdateLastPublicActivityTask).FullName);
                 var BackgroundUpdateTaskName = "UpdateLastPublicActivity";
-                if
-                (
-                    !BackgroundTaskRegistration.AllTasks
-                        .Where(i => i.Value.Name == BackgroundUpdateTaskName)
-                        .Any()
-                )
+                foreach(var task in BackgroundTaskRegistration.AllTasks.Where(i => i.Value.Name == BackgroundUpdateTaskName))
                 {
-                    Task.Run
-                    (
-                        async () => await BackgroundExecutionManager.RequestAccessAsync()
-                    )
-                    .ContinueWith
-                    (
-                        t =>
-                        {
-                            var builder = new BackgroundTaskBuilder();
-                            builder.Name = BackgroundUpdateTaskName;
-                            builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
-                            builder.SetTrigger(new TimeTrigger(41, false));
-                            builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
-                            builder.Register();
-                        }
-                    );
+                    task.Value.Unregister(true);
                 }
+                Task.Run
+                (
+                    async () => await BackgroundExecutionManager.RequestAccessAsync()
+                )
+                .ContinueWith
+                (
+                    t =>
+                    {
+                        var builder = new BackgroundTaskBuilder();
+                        builder.Name = BackgroundUpdateTaskName;
+                        builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
+                        builder.SetTrigger(new TimeTrigger(41, false));
+                        builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                        builder.Register();
+                    }
+                );
             }
         }
         string MakeToastId(int id)
