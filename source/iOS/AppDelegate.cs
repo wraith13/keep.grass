@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
@@ -38,7 +39,7 @@ namespace keep.grass.iOS
 				global::Xamarin.Forms.Forms.Init();
 				ImageCircleRenderer.Init();
 				OmegaFactory.MakeSureInit();
-				App = AlphaFactory.MakeApp();
+				App = AlphaFactory.MakeSureApp();
 			}
 			return App;
 		}
@@ -46,11 +47,13 @@ namespace keep.grass.iOS
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
 			OmegaFactory.MakeSureInit();
-			AlphaFactory.MakeDomain().AutoUpdateLastPublicActivityAsync().Wait();
-
-			completionHandler(UIBackgroundFetchResult.NoData);
-			//	UIBackgroundFetchResult.NewData を返すと呼ばれなくなるフシがあるので必ず UIBackgroundFetchResult.NoData
-			//	を返しておくようにしてみる。
+			AlphaFactory.MakeSureDomain().AutoUpdateLastPublicActivityAsync().ContinueWith
+	        (
+	            t =>
+					completionHandler(UIBackgroundFetchResult.NoData)
+					//	UIBackgroundFetchResult.NewData を返すと呼ばれなくなるフシがあるので必ず UIBackgroundFetchResult.NoData
+					//	を返しておくようにしてみる。
+           	);
 		}
 
 		public override void ReceivedLocalNotification(UIApplication application, UILocalNotification notification)
