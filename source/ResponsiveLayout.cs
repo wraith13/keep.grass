@@ -17,7 +17,6 @@ namespace keep.grass
 
         public void Response()
         {
-            //  これは絶対に null になる・・・
             var Container = AsContainer;
             if (null != Container)
             {
