@@ -4,7 +4,7 @@
     "NotificationsExtensions.Win10": "14332.0.2",
     "Xam.Plugins.Forms.ImageCircle": "1.6.1",
     "Xam.Plugins.Settings": "2.1.0",
-    "Xamarin.Forms": "2.3.1.114"
+    "Xamarin.Forms": "2.3.2.127"
   },
   "frameworks": {
     "uap10.0": {}
