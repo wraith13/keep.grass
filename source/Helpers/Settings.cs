@@ -176,5 +176,49 @@ namespace keep.grass.Helpers
 			Set(AlertTimeSpanToSettingKey(Key), NewValue);
 		}
 
+		public static TimeSpan[] AlertDailyTimeTable = new[]
+		{
+			TimeSpan.FromHours(0),
+			TimeSpan.FromHours(1),
+			TimeSpan.FromHours(2),
+			TimeSpan.FromHours(3),
+			TimeSpan.FromHours(4),
+			TimeSpan.FromHours(5),
+			TimeSpan.FromHours(6),
+			TimeSpan.FromHours(7),
+			TimeSpan.FromHours(8),
+			TimeSpan.FromHours(9),
+			TimeSpan.FromHours(10),
+			TimeSpan.FromHours(11),
+			TimeSpan.FromHours(12),
+			TimeSpan.FromHours(13),
+			TimeSpan.FromHours(14),
+			TimeSpan.FromHours(15),
+			TimeSpan.FromHours(16),
+			TimeSpan.FromHours(17),
+			TimeSpan.FromHours(18),
+			TimeSpan.FromHours(19),
+			TimeSpan.FromHours(20),
+			TimeSpan.FromHours(21),
+			TimeSpan.FromHours(22),
+			TimeSpan.FromHours(23),
+		};
+		public static string AlertDailyTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan Time)
+		{
+			return String.Format("{0:D2}:{1:D2}", Time.Hours, Time.Minutes);
+		}
+		public static string AlertDailyTimeToSettingKey(TimeSpan Time)
+		{
+			return String.Format("daily{0:D2}{1:D2}", Time.Hours, Time.Minutes);
+		}
+		public static bool GetDailyAlert(TimeSpan key)
+		{
+			return Get(AlertDailyTimeToSettingKey(key), false);
+		}
+		public static void SetDailyAlert(TimeSpan Key, bool NewValue)
+		{
+			Set(AlertDailyTimeToSettingKey(Key), NewValue);
+		}
+
 	}
 }
