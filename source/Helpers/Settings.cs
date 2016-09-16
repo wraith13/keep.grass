@@ -205,7 +205,7 @@ namespace keep.grass.Helpers
 		};
 		public static string AlertDailyTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan Time)
 		{
-			return String.Format("{0:D2}:{1:D2}", Time.Hours, Time.Minutes);
+			return String.Format(L["Every day at {0:D2}:{1:D2}"], Time.Hours, Time.Minutes);
 		}
 		public static string AlertDailyTimeToSettingKey(TimeSpan Time)
 		{
