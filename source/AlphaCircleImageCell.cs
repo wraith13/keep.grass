@@ -7,9 +7,9 @@ using ImageCircle.Forms.Plugin.Abstractions;
 
 namespace keep.grass
 {
-	public class AlphaCircleImageCell : ViewCell
+    public class AlphaCircleImageCell : ViewCell
 	{
-		protected CircleImage Image = new CircleImage();
+		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label TextLabel = new Label();
 
 		public AlphaCircleImageCell() : base()

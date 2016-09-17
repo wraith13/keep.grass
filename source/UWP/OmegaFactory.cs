@@ -42,5 +42,9 @@ namespace keep.grass.UWP
         {
             return new OmegaCircleImageCell();
         }
+        public override Image MakeOmegaCircleImage()
+        {
+            return new Image();
+        }
     }
 }

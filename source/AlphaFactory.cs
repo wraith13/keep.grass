@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using ImageCircle.Forms.Plugin.Abstractions;
 
 namespace keep.grass
 {
@@ -103,6 +104,15 @@ namespace keep.grass
 		{
 			return new AlphaPickerCell();
 		}
-	}
+
+        public static Image MakeCircleImage()
+        {
+            return Instance.MakeOmegaCircleImage();
+        }
+        public virtual Image MakeOmegaCircleImage()
+        {
+            return new CircleImage();
+        }
+    }
 }
 
