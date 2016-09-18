@@ -137,7 +137,7 @@ namespace keep.grass
 						var LeftTime = Limit - AlertStamp;
 						ShowAlert
 						(
-							Settings.AlertTimeSpanToDisplayName(L, LeftTime),
+							Settings.AlertLeftTimeToDisplayName(L, LeftTime),
 							LastPublicActivityInfo,
 							i,
 							AlertStamp
