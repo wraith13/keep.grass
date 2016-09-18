@@ -27,6 +27,7 @@
       <Extensions>
         <Extension Category="windows.backgroundTasks" EntryPoint="keep.grass.UWP.BackgroundUpdateLastPublicActivityTask">
           <BackgroundTasks>
+            <Task Type="systemEvent" />
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
