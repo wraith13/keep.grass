@@ -13,7 +13,8 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		EntryCell UserNameCell = null;
-		KeyValuePair<TimeSpan, SwitchCell>[] AlertSwitchCellList = null;
+		KeyValuePair<TimeSpan, SwitchCell>[] LeftTimeAlertSwitchCellList = null;
+		KeyValuePair<TimeSpan, SwitchCell>[] DailyAlertSwitchCellList = null;
 		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage()
@@ -23,7 +24,7 @@ namespace keep.grass
 			{
 				Label = L["User ID"],
 			};
-			AlertSwitchCellList = Settings.AlertTimeSpanTable.Select
+			LeftTimeAlertSwitchCellList = Settings.AlertTimeSpanTable.Select
 			(
 				i => new KeyValuePair<TimeSpan, SwitchCell>
 				(
@@ -31,6 +32,19 @@ namespace keep.grass
 					new SwitchCell
 					{
 						Text = Settings.AlertTimeSpanToDisplayName(L, i),
+						On = Settings.GetAlert(i),
+					}
+				)
+			)
+			.ToArray();
+			DailyAlertSwitchCellList = Settings.AlertDailyTimeTable.Select
+			(
+				i => new KeyValuePair<TimeSpan, SwitchCell>
+				(
+					i,
+					new SwitchCell
+					{
+						Text = Settings.AlertDailyTimeToDisplayName(L, i),
 						On = Settings.GetAlert(i),
 					}
 				)
@@ -56,7 +70,13 @@ namespace keep.grass
 							},
 							new TableSection(L["Notifications"])
 							{
-								AlertSwitchCellList.Select(i => i.Value)
+								new []
+								{
+									LeftTimeAlertSwitchCellList,
+									DailyAlertSwitchCellList
+								}
+								.SelectMany(i => i)
+								.Select(i => i.Value)
 							},
 							new TableSection(L["Language"])
 							{
@@ -76,9 +96,13 @@ namespace keep.grass
 			base.OnAppearing();
 
 			UserNameCell.Text = Settings.UserName;
-			foreach(var cell in AlertSwitchCellList)
+			foreach(var cell in LeftTimeAlertSwitchCellList)
 			{
 				cell.Value.On = Settings.GetAlert(cell.Key);
+			}
+			foreach (var cell in DailyAlertSwitchCellList)
+			{
+				cell.Value.On = Settings.GetDailyAlert(cell.Key);
 			}
 
 			var Language = Settings.Language ?? "";
@@ -103,9 +127,13 @@ namespace keep.grass
 				Settings.UserName = NewUserName;
 				Settings.IsValidUserName = false;
 			}
-			foreach(var cell in AlertSwitchCellList)
+			foreach(var cell in LeftTimeAlertSwitchCellList)
 			{
 				Settings.SetAlert(cell.Key, cell.Value.On);
+			}
+			foreach (var cell in DailyAlertSwitchCellList)
+			{
+				Settings.SetDailyAlert(cell.Key, cell.Value.On);
 			}
 			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);

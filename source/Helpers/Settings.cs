@@ -163,6 +163,18 @@ namespace keep.grass.Helpers
 				return L["Just 24 hours later"];
 			}
 		}
+		public static string AlertLeftTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan left)
+		{
+			if (0 <= left.Ticks)
+			{
+				return String.Format(L["{0:D2}{1:D2} left"], left.Hours, left.Minutes);
+			}
+			else
+			{
+				var over = -left;
+				return String.Format(L["{0:D2}{1:D2} over"], over.Hours, over.Minutes);
+			}
+		}
 		public static string AlertTimeSpanToSettingKey(TimeSpan left)
 		{
 			return String.Format("alert{0}{1}", left.Hours, left.Minutes);

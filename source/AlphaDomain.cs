@@ -109,12 +109,35 @@ namespace keep.grass
 				foreach (var Span in Settings.AlertTimeSpanTable)
 				{
 					++i;
-					var AlertStamp = Limit.Add(-Span);
+					var AlertStamp = Limit -Span;
 					if (Settings.GetAlert(Span) && Now < AlertStamp)
 					{
 						ShowAlert
 						(
 							Settings.AlertTimeSpanToDisplayName(L, Span),
+							LastPublicActivityInfo,
+							i,
+							AlertStamp
+						);
+					}
+					else
+					{
+						CancelAlert(i);
+					}
+				}
+				i = 100;
+				foreach (var Span in Settings.AlertDailyTimeTable)
+				{
+					++i;
+					if (Settings.GetDailyAlert(Span))
+					{
+						var AlertStamp = (Now.TimeOfDay < Span ? Now: Now.AddDays(1))
+							-Now.TimeOfDay
+							+Span;
+						var LeftTime = Limit - AlertStamp;
+						ShowAlert
+						(
+							Settings.AlertTimeSpanToDisplayName(L, LeftTime),
 							LastPublicActivityInfo,
 							i,
 							AlertStamp
