@@ -167,12 +167,12 @@ namespace keep.grass.Helpers
 		{
 			if (0 <= left.Ticks)
 			{
-				return String.Format(L["{0:D2}{1:D2} left"], left.Hours, left.Minutes);
+				return String.Format(L["{0:D2}:{1:D2} left"], left.Hours, left.Minutes);
 			}
 			else
 			{
 				var over = -left;
-				return String.Format(L["{0:D2}{1:D2} over"], over.Hours, over.Minutes);
+				return String.Format(L["{0:D2}:{1:D2} over"], over.Hours, over.Minutes);
 			}
 		}
 		public static string AlertTimeSpanToSettingKey(TimeSpan left)
