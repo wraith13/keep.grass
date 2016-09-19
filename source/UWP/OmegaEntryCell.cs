@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace keep.grass.UWP
 {
-    class OmegaEntryCell : ViewCell
+    class OmegaEntryCell : ViewCell, VoidEntryCell
     {
         protected Label TextLabel = new Label();
         protected Entry TextEntry = new Entry();
@@ -33,6 +33,10 @@ namespace keep.grass.UWP
             {
                 TextEntry.Text = value;
             }
+        }
+        public Cell AsCell()
+        {
+            return this;
         }
 
         public OmegaEntryCell() : base()

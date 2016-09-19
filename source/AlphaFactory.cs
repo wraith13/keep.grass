@@ -113,6 +113,14 @@ namespace keep.grass
         {
             return new CircleImage();
         }
+        public static VoidEntryCell MakeEntryCell()
+        {
+            return Instance.MakeOmegaEntryCell();
+        }
+        public virtual VoidEntryCell MakeOmegaEntryCell()
+        {
+            return new AlphaEntryCell();
+        }
     }
 }
 

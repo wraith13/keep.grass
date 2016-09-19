@@ -12,7 +12,7 @@ namespace keep.grass
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		EntryCell UserNameCell = null;
+        VoidEntryCell UserNameCell = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] LeftTimeAlertSwitchCellList = null;
 		KeyValuePair<TimeSpan, SwitchCell>[] DailyAlertSwitchCellList = null;
 		AlphaPickerCell LanguageCell = null;
@@ -20,10 +20,8 @@ namespace keep.grass
 		public AlphaSettingsPage()
 		{
 			Title = L["Settings"];
-			UserNameCell = new EntryCell
-			{
-				Label = L["User ID"],
-			};
+            UserNameCell = AlphaFactory.MakeEntryCell();
+            UserNameCell.Label = L["User ID"];
 			LeftTimeAlertSwitchCellList = Settings.AlertTimeSpanTable.Select
 			(
 				i => new KeyValuePair<TimeSpan, SwitchCell>
@@ -66,7 +64,7 @@ namespace keep.grass
 						{
 							new TableSection(L["Github Account"])
 							{
-								UserNameCell,
+								UserNameCell.AsCell(),
 							},
 							new TableSection(L["Notifications"])
 							{
