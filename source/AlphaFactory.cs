@@ -121,6 +121,21 @@ namespace keep.grass
         {
             return new AlphaEntryCell();
         }
+        public static VoidSwitchCell MakeSwitchCell()
+        {
+            return Instance.MakeOmegaSwitchCell();
+        }
+        public static VoidSwitchCell MakeSwitchCell(string Text, bool On)
+        {
+            var result = MakeSwitchCell();
+            result.Text = Text;
+            result.On = On;
+            return result;
+        }
+        public virtual VoidSwitchCell MakeOmegaSwitchCell()
+        {
+            return new AlphaSwitchCell();
+        }
     }
 }
 

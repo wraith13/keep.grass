@@ -13,8 +13,8 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         VoidEntryCell UserNameCell = null;
-		KeyValuePair<TimeSpan, SwitchCell>[] LeftTimeAlertSwitchCellList = null;
-		KeyValuePair<TimeSpan, SwitchCell>[] DailyAlertSwitchCellList = null;
+		KeyValuePair<TimeSpan, VoidSwitchCell>[] LeftTimeAlertSwitchCellList = null;
+		KeyValuePair<TimeSpan, VoidSwitchCell>[] DailyAlertSwitchCellList = null;
 		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage()
@@ -24,27 +24,27 @@ namespace keep.grass
             UserNameCell.Label = L["User ID"];
 			LeftTimeAlertSwitchCellList = Settings.AlertTimeSpanTable.Select
 			(
-				i => new KeyValuePair<TimeSpan, SwitchCell>
+				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
 				(
 					i,
-					new SwitchCell
-					{
-						Text = Settings.AlertTimeSpanToDisplayName(L, i),
-						On = Settings.GetAlert(i),
-					}
+                    AlphaFactory.MakeSwitchCell
+                    (
+                        Text: Settings.AlertTimeSpanToDisplayName(L, i),
+                        On: Settings.GetAlert(i)
+                    )
 				)
 			)
 			.ToArray();
 			DailyAlertSwitchCellList = Settings.AlertDailyTimeTable.Select
 			(
-				i => new KeyValuePair<TimeSpan, SwitchCell>
+				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
 				(
 					i,
-					new SwitchCell
-					{
-						Text = Settings.AlertDailyTimeToDisplayName(L, i),
-						On = Settings.GetAlert(i),
-					}
+                    AlphaFactory.MakeSwitchCell
+                    (
+                        Text: Settings.AlertDailyTimeToDisplayName(L, i),
+                        On: Settings.GetDailyAlert(i)
+                    )
 				)
 			)
 			.ToArray();
@@ -74,7 +74,7 @@ namespace keep.grass
 									DailyAlertSwitchCellList
 								}
 								.SelectMany(i => i)
-								.Select(i => i.Value)
+								.Select(i => i.Value.AsCell())
 							},
 							new TableSection(L["Language"])
 							{

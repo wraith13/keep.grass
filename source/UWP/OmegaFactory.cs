@@ -30,10 +30,6 @@ namespace keep.grass.UWP
         {
             return new OmegaLanguage();
         }
-        //public override ContentPage MakeOmegaSettingsPage()
-        //{
-        //    return new OmegaSettingsPage();
-        //}
         public override AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
         {
             return new OmegaActivityIndicatorTextCell();
@@ -49,6 +45,10 @@ namespace keep.grass.UWP
         public override VoidEntryCell MakeOmegaEntryCell()
         {
             return new OmegaEntryCell();
+        }
+        public override VoidSwitchCell MakeOmegaSwitchCell()
+        {
+            return new OmegaSwitchCell();
         }
     }
 }

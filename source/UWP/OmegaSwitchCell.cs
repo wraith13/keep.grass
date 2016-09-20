@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace keep.grass.UWP
 {
-    class OmegaSwitchCell :ViewCell
+    class OmegaSwitchCell :ViewCell, VoidSwitchCell
     {
         protected Label TextLabel = new Label();
         protected Switch OnSwitch = new Switch();
@@ -33,6 +33,10 @@ namespace keep.grass.UWP
             {
                 OnSwitch.IsToggled = value;
             }
+        }
+        public Cell AsCell()
+        {
+            return this;
         }
 
         public OmegaSwitchCell() : base()
