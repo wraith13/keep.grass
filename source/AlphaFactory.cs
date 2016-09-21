@@ -91,6 +91,14 @@ namespace keep.grass
 		{
 			return Instance.MakeOmegaCircleImageCell();
 		}
+		public static AlphaCircleImageCell MakeCircleImageCell(ImageSource ImageSource, string Text, Command Command)
+		{
+			var result = MakeCircleImageCell();
+			result.ImageSource = ImageSource;
+			result.Text = Text;
+			result.Command = Command;
+			return result;
+		}
 		public virtual AlphaCircleImageCell MakeOmegaCircleImageCell()
 		{
 			return new AlphaCircleImageCell();
@@ -109,7 +117,7 @@ namespace keep.grass
         {
             return Instance.MakeOmegaCircleImage();
         }
-        public virtual Image MakeOmegaCircleImage()
+		public virtual Image MakeOmegaCircleImage()
         {
             return new CircleImage();
         }

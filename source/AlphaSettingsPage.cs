@@ -22,11 +22,6 @@ namespace keep.grass
             UserNameCell.Label = L["User ID"];
 			LanguageCell = AlphaFactory.MakePickerCell();
 
-			var Information = AlphaFactory.MakeCircleImageCell();
-			Information.ImageSource = Root.GetApplicationImageSource();
-			Information.Text = L["keep.grass"];
-			Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()));
-
 			Content = new StackLayout
 			{
 				Children =
@@ -58,7 +53,12 @@ namespace keep.grass
 							},
 							new TableSection(L["Information"])
 							{
-								Information
+								AlphaFactory.MakeCircleImageCell
+								(
+									ImageSource: Root.GetApplicationImageSource(),
+									Text: L["keep.grass"],
+									Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+								),
 							}
 						}
 					},
