@@ -21,6 +21,8 @@ namespace keep.grass.Languages
 					{ "Update", "更新" },
 					{ "Github Account", "Githubアカウント" },
 					{ "Notifications", "通知" },
+					{ "Alert by Left Time", "残り時間による通知" },
+					{ "Daily Alert", "定時通知" },
 					{ "Last Acitivity Stamp", "最終アクティビティ日時" },
 					{ "Left Time", "残り時間" },
 					{ "Last Stamp", "最終時刻: " },

@@ -13,8 +13,6 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         VoidEntryCell UserNameCell = null;
-		KeyValuePair<TimeSpan, VoidSwitchCell>[] LeftTimeAlertSwitchCellList = null;
-		KeyValuePair<TimeSpan, VoidSwitchCell>[] DailyAlertSwitchCellList = null;
 		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage()
@@ -22,32 +20,6 @@ namespace keep.grass
 			Title = L["Settings"];
             UserNameCell = AlphaFactory.MakeEntryCell();
             UserNameCell.Label = L["User ID"];
-			LeftTimeAlertSwitchCellList = Settings.AlertTimeSpanTable.Select
-			(
-				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
-				(
-					i,
-                    AlphaFactory.MakeSwitchCell
-                    (
-                        Text: Settings.AlertTimeSpanToDisplayName(L, i),
-                        On: Settings.GetAlert(i)
-                    )
-				)
-			)
-			.ToArray();
-			DailyAlertSwitchCellList = Settings.AlertDailyTimeTable.Select
-			(
-				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
-				(
-					i,
-                    AlphaFactory.MakeSwitchCell
-                    (
-                        Text: Settings.AlertDailyTimeToDisplayName(L, i),
-                        On: Settings.GetDailyAlert(i)
-                    )
-				)
-			)
-			.ToArray();
 			LanguageCell = AlphaFactory.MakePickerCell();
 
 			var Information = AlphaFactory.MakeCircleImageCell();
@@ -55,7 +27,8 @@ namespace keep.grass
 			Information.Text = L["keep.grass"];
 			Information.Command = new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()));
 
-			Content = new StackLayout { 
+			Content = new StackLayout
+			{
 				Children =
 				{
 					new TableView
@@ -68,13 +41,16 @@ namespace keep.grass
 							},
 							new TableSection(L["Notifications"])
 							{
-								new []
+								new TextCell
 								{
-									LeftTimeAlertSwitchCellList,
-									DailyAlertSwitchCellList
+									Text = L["Alert by Left Time"],
+									Command = new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage())),
+								},
+								new TextCell
+								{
+									Text = L["Daily Alert"],
+									Command = new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage())),
 								}
-								.SelectMany(i => i)
-								.Select(i => i.Value.AsCell())
 							},
 							new TableSection(L["Language"])
 							{
@@ -94,14 +70,6 @@ namespace keep.grass
 			base.OnAppearing();
 
 			UserNameCell.Text = Settings.UserName;
-			foreach(var cell in LeftTimeAlertSwitchCellList)
-			{
-				cell.Value.On = Settings.GetAlert(cell.Key);
-			}
-			foreach (var cell in DailyAlertSwitchCellList)
-			{
-				cell.Value.On = Settings.GetDailyAlert(cell.Key);
-			}
 
 			var Language = Settings.Language ?? "";
 			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
@@ -124,14 +92,6 @@ namespace keep.grass
 			{
 				Settings.UserName = NewUserName;
 				Settings.IsValidUserName = false;
-			}
-			foreach(var cell in LeftTimeAlertSwitchCellList)
-			{
-				Settings.SetAlert(cell.Key, cell.Value.On);
-			}
-			foreach (var cell in DailyAlertSwitchCellList)
-			{
-				Settings.SetDailyAlert(cell.Key, cell.Value.On);
 			}
 			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
