@@ -36,16 +36,16 @@ namespace keep.grass
 							},
 							new TableSection(L["Notifications"])
 							{
-								new TextCell
-								{
-									Text = L["Alert by Left Time"],
-									Command = new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage())),
-								},
-								new TextCell
-								{
-									Text = L["Daily Alert"],
-									Command = new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage())),
-								}
+								AlphaFactory.MakeCircleImageCell
+								(
+									Text: L["Alert by Left Time"],
+									Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
+					           	),
+								AlphaFactory.MakeCircleImageCell
+								(
+									Text: L["Daily Alert"],
+									Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
+								)
 							},
 							new TableSection(L["Language"])
 							{

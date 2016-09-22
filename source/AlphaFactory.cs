@@ -93,8 +93,13 @@ namespace keep.grass
 		}
 		public static AlphaCircleImageCell MakeCircleImageCell(ImageSource ImageSource, string Text, Command Command)
 		{
-			var result = MakeCircleImageCell();
+			var result = MakeCircleImageCell(Text, Command);
 			result.ImageSource = ImageSource;
+			return result;
+		}
+		public static AlphaCircleImageCell MakeCircleImageCell(string Text, Command Command)
+		{
+			var result = MakeCircleImageCell();
 			result.Text = Text;
 			result.Command = Command;
 			return result;
