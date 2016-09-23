@@ -29,6 +29,7 @@ namespace keep.grass
 				}
 			);
 
+            Image.IsVisible = null != Image.Source;
             Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 		}
@@ -63,8 +64,9 @@ namespace keep.grass
 			set
 			{
 				Image.Source = value;
-			}
-		}
+                Image.IsVisible = null != Image.Source;
+            }
+        }
 
 		public String Text
 		{
