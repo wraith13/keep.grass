@@ -10,6 +10,7 @@ namespace keep.grass.UWP
     {
         public OmegaCircleImageCell()
         {
+            View.HeightRequest = 48;
             Image.HeightRequest = 48;
             Image.WidthRequest = 48;
         }
