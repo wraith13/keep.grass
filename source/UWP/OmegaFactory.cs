@@ -38,10 +38,11 @@ namespace keep.grass.UWP
         {
             return new OmegaCircleImageCell();
         }
-        public override Image MakeOmegaCircleImage()
-        {
-            return new Image();
-        }
+        //  Xam.Plugins.Forms.ImageCircle が原因でまた異常終了するようになったらここのコードを有効にすること
+        //public override Image MakeOmegaCircleImage()
+        //{
+        //    return new Image();
+        //}
         public override VoidEntryCell MakeOmegaEntryCell()
         {
             return new OmegaEntryCell();
