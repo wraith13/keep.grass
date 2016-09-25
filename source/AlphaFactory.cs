@@ -34,10 +34,14 @@ namespace keep.grass
 		{
 			return Instance.App;
 		}
+		public static AlphaApp SetApp(AlphaApp app)
+		{
+			return Instance.App = app;
+		}
 		public static AlphaApp MakeSureApp()
 		{
 			return Instance.App ??
-           		(Instance.App = Instance.MakeOmegaApp());
+           		SetApp(Instance.MakeOmegaApp());
 		}
 		public abstract AlphaApp MakeOmegaApp();
 

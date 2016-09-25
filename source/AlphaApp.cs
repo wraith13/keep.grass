@@ -16,6 +16,8 @@ namespace keep.grass
 
 		public AlphaApp()
 		{
+			AlphaFactory.SetApp(this);
+
 			MainPage = Navigation = new NavigationPage
 			(
 				Main = AlphaFactory.MakeMainPage()
@@ -78,6 +80,10 @@ namespace keep.grass
 		public virtual ImageSource GetGitHubImageSource()
 		{
 			return GetImageSource("GitHub-Mark.120.png");
+		}
+		public virtual ImageSource GetRightImageSource()
+		{
+			return GetImageSource("right.120.png");
 		}
 	}
 }
