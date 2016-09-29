@@ -3,7 +3,7 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "NotificationsExtensions.Win10": "14332.0.2",
     "Xam.Plugins.Forms.ImageCircle": "1.8.0.5",
-    "Xam.Plugins.Settings": "2.1.0",
+    "Xam.Plugins.Settings": "2.5.1",
     "Xamarin.Forms": "2.3.2.127"
   },
   "frameworks": {
