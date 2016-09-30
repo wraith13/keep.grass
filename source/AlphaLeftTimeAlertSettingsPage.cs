@@ -61,11 +61,19 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
+			bool IsChanged = false;
 			foreach(var cell in LeftTimeAlertSwitchCellList)
 			{
-				Settings.SetAlert(cell.Key, cell.Value.On);
+				if (Settings.GetAlert(cell.Key) != cell.Value.On)
+				{
+					Settings.SetAlert(cell.Key, cell.Value.On);
+					IsChanged = true;
+				}
 			}
-			Root.OnChangeSettings();
+			if (IsChanged)
+			{
+				Root.OnChangeSettings();
+			}
 		}
 	}
 }
