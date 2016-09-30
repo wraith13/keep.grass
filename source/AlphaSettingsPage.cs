@@ -87,21 +87,27 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
+            bool IsChanged = false;
 			var NewUserName = UserNameCell.Text.Trim();
 			if (Settings.UserName != NewUserName)
 			{
 				Settings.UserName = NewUserName;
 				Settings.IsValidUserName = false;
-			}
+                IsChanged = true;
+            }
 			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
 			if (OldLanguage != L.Get())
 			{
 				L.Update();
 				Root.RebuildMainPage();
-			}
-			Root.OnChangeSettings();
-		}
+                IsChanged = true;
+            }
+            if (IsChanged)
+            {
+                Root.OnChangeSettings();
+            }
+        }
 	}
 }
 
