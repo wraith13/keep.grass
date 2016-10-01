@@ -31,7 +31,8 @@ namespace keep.grass
 			)
 			.ToArray();
 
-			Content = new StackLayout { 
+			Content = new StackLayout
+			{ 
 				Children =
 				{
 					new TableView

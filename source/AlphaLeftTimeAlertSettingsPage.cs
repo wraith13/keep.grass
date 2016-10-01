@@ -13,7 +13,6 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		KeyValuePair<TimeSpan, VoidSwitchCell>[] LeftTimeAlertSwitchCellList = null;
-		AlphaPickerCell LanguageCell = null;
 
 		public AlphaLeftTimeSettingsPage()
 		{
@@ -32,7 +31,8 @@ namespace keep.grass
 			)
 			.ToArray();
 
-			Content = new StackLayout { 
+			Content = new StackLayout
+			{ 
 				Children =
 				{
 					new TableView
