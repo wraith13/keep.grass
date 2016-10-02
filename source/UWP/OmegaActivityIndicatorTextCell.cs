@@ -11,9 +11,34 @@ namespace keep.grass.UWP
     {
         public OmegaActivityIndicatorTextCell()
         {
-            ((StackLayout)((Grid)View).Children.First()).Padding = new Thickness(20, 8, 20, 8);
+            View = new Grid().SetSingleChild
+            (
+                new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    VerticalOptions = LayoutOptions.Center,
+                    Children =
+                    {
+                        new StackLayout
+                        {
+                            Orientation = StackOrientation.Horizontal,
+                            VerticalOptions = LayoutOptions.Center,
+                            HorizontalOptions = LayoutOptions.StartAndExpand,
+                            Padding = new Thickness(20, 8, 20, 8),
+                            Children =
+                            {
+                                Indicator,
+                                TextLabel,
+                            },
+                        },
+                        RefreshImage,
+                    },
+                }
+            );
             View.SizeChanged += (sender, args) => AdjustIndicatorSize();
             Indicator.HeightRequest = 20;
+            RefreshImage.HeightRequest = 48;
+            RefreshImage.WidthRequest = 48;
             AdjustIndicatorSize();
         }
 
