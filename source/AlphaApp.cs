@@ -85,6 +85,10 @@ namespace keep.grass
 		{
 			return GetImageSource("right.120.png");
 		}
+		public virtual ImageSource GetRefreshImageSource()
+		{
+			return GetImageSource("refresh.120.png");
+		}
 	}
 }
 

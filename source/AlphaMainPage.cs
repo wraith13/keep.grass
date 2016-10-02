@@ -26,7 +26,7 @@ namespace keep.grass
 
 			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
-			LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
+			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
 			Rebuild();

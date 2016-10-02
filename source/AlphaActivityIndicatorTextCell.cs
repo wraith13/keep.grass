@@ -8,6 +8,7 @@ namespace keep.grass
 	{
 		protected ActivityIndicator Indicator = new ActivityIndicator();
 		protected Label TextLabel = new Label();
+		protected Image RefreshImage = new Image();
 
 		public AlphaActivityIndicatorTextCell() :base()
 		{
@@ -22,12 +23,18 @@ namespace keep.grass
 					{
 						Indicator,
 						TextLabel,
+						RefreshImage,
 					},
 				}
 			);
             Indicator.VerticalOptions = LayoutOptions.Center;
 			Indicator.HorizontalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
+			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+			RefreshImage.VerticalOptions = LayoutOptions.Center;
+			RefreshImage.HorizontalOptions = LayoutOptions.End;
+			RefreshImage.Source = AlphaFactory.GetApp().GetRefreshImageSource();
+			RefreshImage.IsVisible = null != CommandValue;
 
             Indicator.IsVisible = false;
         }
@@ -37,12 +44,14 @@ namespace keep.grass
 			Indicator.IsRunning = false;
 			Indicator.IsVisible = false;
 			TextLabel.IsVisible = true;
+			RefreshImage.IsVisible = null != CommandValue;
 		}
 		public void ShowIndicator()
 		{
 			Indicator.IsRunning = true;
 			Indicator.IsVisible = true;
 			TextLabel.IsVisible = false;
+			RefreshImage.IsVisible = false;
 		}
 
 		private Command CommandValue = null;
@@ -51,6 +60,7 @@ namespace keep.grass
 			set
 			{
 				CommandValue = value;
+				RefreshImage.IsVisible = null != CommandValue;
 			}
 			get
 			{
