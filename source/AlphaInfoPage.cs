@@ -31,7 +31,8 @@ namespace keep.grass
 										(
 											AlphaFactory.MakeSureDomain().GetApplicationStoreUri()
 										)
-									)
+									),
+						            OptionImageSource: Root.GetExportImageSource()
 								),
 							},
 							new TableSection(L["Auther"])
@@ -40,7 +41,8 @@ namespace keep.grass
 								(
 									ImageSource: Root.GetWraithImageSource(),
 									Text: "@wraith13",
-									Command: new Command(o => Device.OpenUri(new Uri("https://twitter.com/wraith13")))
+									Command: new Command(o => Device.OpenUri(new Uri("https://twitter.com/wraith13"))),
+									OptionImageSource: Root.GetExportImageSource()
 								),
 							},
 							new TableSection(L["Github Repository"])
@@ -49,7 +51,8 @@ namespace keep.grass
 								(
 									ImageSource: Root.GetGitHubImageSource(),
 									Text: "wraith13/keep.grass",
-									Command: new Command(o => Device.OpenUri(new Uri("https://github.com/wraith13/keep.grass")))
+									Command: new Command(o => Device.OpenUri(new Uri("https://github.com/wraith13/keep.grass"))),
+									OptionImageSource: Root.GetExportImageSource()
 								),
 							},
 						}

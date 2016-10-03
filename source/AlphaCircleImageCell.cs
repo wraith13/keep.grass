@@ -12,7 +12,7 @@ namespace keep.grass
 		protected Image
 		Image = AlphaFactory.MakeCircleImage();
 		protected Label TextLabel = new Label();
-		protected Image RightImage = new Image();
+		protected Image OptionImage = new Image();
 
 		public AlphaCircleImageCell() : base()
 		{
@@ -27,7 +27,7 @@ namespace keep.grass
 					{
 						Image,
 						TextLabel,
-						RightImage,
+						OptionImage,
 					},
 				}
 			);
@@ -36,10 +36,10 @@ namespace keep.grass
             Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
-			RightImage.VerticalOptions = LayoutOptions.Center;
-			RightImage.HorizontalOptions = LayoutOptions.End;
-			RightImage.Source = AlphaFactory.GetApp().GetRightImageSource();
-			RightImage.IsVisible = null != CommandValue;
+			OptionImage.VerticalOptions = LayoutOptions.Center;
+			OptionImage.HorizontalOptions = LayoutOptions.End;
+			OptionImage.Source = AlphaFactory.GetApp().GetRightImageSource();
+			OptionImage.IsVisible = null != CommandValue;
 		}
 
 		private Command CommandValue = null;
@@ -48,7 +48,7 @@ namespace keep.grass
 			set
 			{
 				CommandValue = value;
-				RightImage.IsVisible = null != CommandValue;
+				OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
 			}
 			get
 			{
@@ -97,6 +97,18 @@ namespace keep.grass
 			set
 			{
 				TextLabel.TextColor = value;
+			}
+		}
+		public ImageSource OptionImageSource
+		{
+			get
+			{
+				return OptionImage.Source;
+			}
+			set
+			{
+				OptionImage.Source = value;
+				OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
 			}
 		}
 	}
