@@ -16,7 +16,7 @@ namespace keep.grass
 
 		public AlphaLeftTimeSettingsPage()
 		{
-			Title = L["Notifications"];
+			Title = L["Alert by Left Time"];
 			LeftTimeAlertSwitchCellList = Settings.AlertTimeSpanTable.Select
 			(
 				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
@@ -39,7 +39,7 @@ namespace keep.grass
 					{
 						Root = new TableRoot
 						{
-							new TableSection(L["Alert by Left Time"])
+							new TableSection()
 							{
 								LeftTimeAlertSwitchCellList
 									.Select(i => i.Value.AsCell())

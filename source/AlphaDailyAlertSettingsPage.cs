@@ -16,7 +16,7 @@ namespace keep.grass
 
 		public AlphaDailyAlertSettingsPage()
 		{
-			Title = L["Notifications"];
+			Title = L["Daily Alert"];
 			DailyAlertSwitchCellList = Settings.AlertDailyTimeTable.Select
 			(
 				i => new KeyValuePair<TimeSpan, VoidSwitchCell>
@@ -39,7 +39,7 @@ namespace keep.grass
 					{
 						Root = new TableRoot
 						{
-							new TableSection(L["Daily Alert"])
+							new TableSection()
 							{
 								DailyAlertSwitchCellList
 								.Select(i => i.Value.AsCell())
