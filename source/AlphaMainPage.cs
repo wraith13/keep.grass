@@ -13,6 +13,8 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
+		double BuiltWidth;
+
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -32,8 +34,15 @@ namespace keep.grass
 			Rebuild();
 		}
 
+		protected override void OnSizeAllocated(double width, double height)
+		{
+			base.OnSizeAllocated(width, height);
+			Debug.WriteLine(string.Format("OnSizeAllocated(width:{0},height:{1});", width, height));
+		}
+
 		public void Rebuild()
 		{
+			BuiltWidth = Width;
 			Content = new StackLayout
 			{
 				Children =
