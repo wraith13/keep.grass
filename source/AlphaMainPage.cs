@@ -13,8 +13,8 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		double BuiltWidth = 0.0;
-		double BuiltHeight = 0.0;
+		int BuiltWidth = 0;
+		int BuiltHeight = 0;
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -39,7 +39,7 @@ namespace keep.grass
 		{
 			base.OnSizeAllocated(width, height);
 			Debug.WriteLine(string.Format("OnSizeAllocated(width:{0},height:{1});", width, height));
-			if (BuiltWidth != width || BuiltHeight != height)
+			if (BuiltWidth != (int)width || BuiltHeight != (int)height)
 			{
 				Rebuild();
 			}
@@ -48,8 +48,8 @@ namespace keep.grass
 		public void Rebuild()
 		{
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
-			BuiltWidth = Width;
-			BuiltHeight = Height;
+			BuiltWidth = (int)Width;
+			BuiltHeight = (int)Height;
 			Content = new StackLayout
 			{
 				Children =
