@@ -50,10 +50,34 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 			BuiltWidth = (int)Width;
 			BuiltHeight = (int)Height;
+
+			var ProgressBarFrame = new Grid().HorizontalJustificate
+			(
+				ProgressBar
+		 	);
+			var ButtonFrame = new Grid().HorizontalJustificate
+			(
+				new Button
+				{
+					VerticalOptions = LayoutOptions.Center,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
+					Text = L["Update"],
+					Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
+				},
+				new Button
+				{
+					VerticalOptions = LayoutOptions.Center,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
+					Text = L["Settings"],
+					Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
+				}
+			);
+
 			if (BuiltWidth <= BuiltHeight)
 			{
 				Content = new StackLayout
 				{
+					Spacing = 0.0,
 					Children =
 					{
 						new TableView
@@ -74,27 +98,8 @@ namespace keep.grass
 								},
 							},
 						},
-						new Grid().HorizontalJustificate
-						(
-							ProgressBar
-						),
-						new Grid().HorizontalJustificate
-						(
-							new Button
-							{
-								VerticalOptions = LayoutOptions.Center,
-								HorizontalOptions = LayoutOptions.FillAndExpand,
-								Text = L["Update"],
-								Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
-							},
-							new Button
-							{
-								VerticalOptions = LayoutOptions.Center,
-								HorizontalOptions = LayoutOptions.FillAndExpand,
-								Text = L["Settings"],
-								Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
-							}
-						)
+						ProgressBarFrame,
+						ButtonFrame,
 					},
 				};
 			}
@@ -102,11 +107,14 @@ namespace keep.grass
 			{
 				Content = new StackLayout
 				{
+					Spacing = 0.0,
 					Children =
 					{
 						new StackLayout
 						{
 							Orientation = StackOrientation.Horizontal,
+							Spacing = 0.5,
+							BackgroundColor = Color.Gray,
 							Children =
 							{
 								new TableView
@@ -135,27 +143,8 @@ namespace keep.grass
 								},
 							},
 						},
-						new Grid().HorizontalJustificate
-						(
-							ProgressBar
-						),
-						new Grid().HorizontalJustificate
-						(
-							new Button
-							{
-								VerticalOptions = LayoutOptions.Center,
-								HorizontalOptions = LayoutOptions.FillAndExpand,
-								Text = L["Update"],
-								Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
-							},
-							new Button
-							{
-								VerticalOptions = LayoutOptions.Center,
-								HorizontalOptions = LayoutOptions.FillAndExpand,
-								Text = L["Settings"],
-								Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
-							}
-						)
+						ProgressBarFrame,
+						ButtonFrame,
 					},
 				};
 			}
