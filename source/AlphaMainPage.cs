@@ -50,51 +50,115 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 			BuiltWidth = (int)Width;
 			BuiltHeight = (int)Height;
-			Content = new StackLayout
+			if (BuiltWidth <= BuiltHeight)
 			{
-				Children =
+				Content = new StackLayout
 				{
-					new TableView
+					Children =
 					{
-						Root = new TableRoot
+						new TableView
 						{
-							new TableSection(L["Github Account"])
+							Root = new TableRoot
 							{
-								UserLabel,
-							},
-							new TableSection(L["Last Acitivity Stamp"])
-							{
-								LastActivityStampLabel,
-							},
-							new TableSection(L["Left Time"])
-							{
-								LeftTimeLabel,
+								new TableSection(L["Github Account"])
+								{
+									UserLabel,
+								},
+								new TableSection(L["Last Acitivity Stamp"])
+								{
+									LastActivityStampLabel,
+								},
+								new TableSection(L["Left Time"])
+								{
+									LeftTimeLabel,
+								},
 							},
 						},
+						new Grid().HorizontalJustificate
+						(
+							ProgressBar
+						),
+						new Grid().HorizontalJustificate
+						(
+							new Button
+							{
+								VerticalOptions = LayoutOptions.Center,
+								HorizontalOptions = LayoutOptions.FillAndExpand,
+								Text = L["Update"],
+								Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
+							},
+							new Button
+							{
+								VerticalOptions = LayoutOptions.Center,
+								HorizontalOptions = LayoutOptions.FillAndExpand,
+								Text = L["Settings"],
+								Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
+							}
+						)
 					},
-					new Grid().HorizontalJustificate
-					(
-						ProgressBar
-					),
-					new Grid().HorizontalJustificate
-					(
-						new Button
+				};
+			}
+			else
+			{
+				Content = new StackLayout
+				{
+					Children =
+					{
+						new StackLayout
 						{
-							VerticalOptions = LayoutOptions.Center,
-							HorizontalOptions = LayoutOptions.FillAndExpand,
-							Text = L["Update"],
-							Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
+							Orientation = StackOrientation.Horizontal,
+							Children =
+							{
+								new TableView
+								{
+									Root = new TableRoot
+									{
+										new TableSection(L["Github Account"])
+										{
+											UserLabel,
+										},
+									},
+								},
+								new TableView
+								{
+									Root = new TableRoot
+									{
+										new TableSection(L["Last Acitivity Stamp"])
+										{
+											LastActivityStampLabel,
+										},
+										new TableSection(L["Left Time"])
+										{
+											LeftTimeLabel,
+										},
+									},
+								},
+							},
 						},
-						new Button
-						{
-							VerticalOptions = LayoutOptions.Center,
-							HorizontalOptions = LayoutOptions.FillAndExpand,
-							Text = L["Settings"],
-							Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
-						}
-					)
-				},
-			};
+						new Grid().HorizontalJustificate
+						(
+							ProgressBar
+						),
+						new Grid().HorizontalJustificate
+						(
+							new Button
+							{
+								VerticalOptions = LayoutOptions.Center,
+								HorizontalOptions = LayoutOptions.FillAndExpand,
+								Text = L["Update"],
+								Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
+							},
+							new Button
+							{
+								VerticalOptions = LayoutOptions.Center,
+								HorizontalOptions = LayoutOptions.FillAndExpand,
+								Text = L["Settings"],
+								Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
+							}
+						)
+					},
+				};
+			}
 		}
 
 		protected override void OnAppearing()
