@@ -8,13 +8,10 @@ using keep.grass.Helpers;
 
 namespace keep.grass
 {
-	public class AlphaMainPage : ContentPage
+	public class AlphaMainPage : ResponsiveContentPage
 	{
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-
-		int BuiltWidth = 0;
-		int BuiltHeight = 0;
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -32,24 +29,13 @@ namespace keep.grass
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
 
-			//Rebuild();
+			//Build();
 		}
 
-		protected override void OnSizeAllocated(double width, double height)
+		public override void Build()
 		{
-			base.OnSizeAllocated(width, height);
-			Debug.WriteLine(string.Format("OnSizeAllocated(width:{0},height:{1});", width, height));
-			if (BuiltWidth != (int)width || BuiltHeight != (int)height)
-			{
-				Rebuild();
-			}
-		}
-
-		public void Rebuild()
-		{
+			base.Build();
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
-			BuiltWidth = (int)Width;
-			BuiltHeight = (int)Height;
 
 			var ProgressBarFrame = new Grid().HorizontalJustificate
 			(
@@ -73,7 +59,7 @@ namespace keep.grass
 				}
 			);
 
-			if (BuiltWidth <= BuiltHeight)
+			if (Width <= Height)
 			{
 				Content = new StackLayout
 				{

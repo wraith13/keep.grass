@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -198,6 +199,29 @@ namespace keep.grass
 	}
 	public class ResponsiveCell : ViewCell
 	{
+	}
+
+	public class ResponsiveContentPage : ContentPage
+	{
+		int BuiltWidth = 0;
+		int BuiltHeight = 0;
+
+		protected override void OnSizeAllocated(double width, double height)
+		{
+			base.OnSizeAllocated(width, height);
+			Debug.WriteLine(string.Format("OnSizeAllocated(width:{0},height:{1});", width, height));
+			if (BuiltWidth != (int)width || BuiltHeight != (int)height)
+			{
+				Build();
+			}
+		}
+
+		public virtual void Build()
+		{
+			Debug.WriteLine("ResponsiveContentPage.Build();");
+			BuiltWidth = (int)Width;
+			BuiltHeight = (int)Height;
+		}
 	}
 }
 

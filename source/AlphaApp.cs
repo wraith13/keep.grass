@@ -28,7 +28,7 @@ namespace keep.grass
 		public void RebuildMainPage()
 		{
 			Debug.WriteLine("AlphaApp::RebuildMainPage");
-			Main.Rebuild();
+			Main.Build();
 		}
 
 		protected override void OnStart()
