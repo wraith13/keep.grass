@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
+using System.Diagnostics;
 
 namespace keep.grass
 {
-	public class AlphaSettingsPage : ContentPage
+	public class AlphaSettingsPage : ResponsiveContentPage
 	{
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
@@ -18,52 +19,121 @@ namespace keep.grass
 		public AlphaSettingsPage()
 		{
 			Title = L["Settings"];
-            UserNameCell = AlphaFactory.MakeEntryCell();
-            UserNameCell.Label = L["User ID"];
+			UserNameCell = AlphaFactory.MakeEntryCell();
+			UserNameCell.Label = L["User ID"];
 			LanguageCell = AlphaFactory.MakePickerCell();
+		}
 
-			Content = new StackLayout
+		public override void Build()
+		{
+			base.Build();
+			Debug.WriteLine("AlphaSettingsPage.Rebuild();");
+
+			if (Width <= Height)
 			{
-				Children =
+				Content = new StackLayout
 				{
-					new TableView
+					Children =
 					{
-						Root = new TableRoot
+						new TableView
 						{
-							new TableSection(L["Github Account"])
+							Root = new TableRoot
 							{
-								UserNameCell.AsCell(),
+								new TableSection(L["Github Account"])
+								{
+									UserNameCell.AsCell(),
+								},
+								new TableSection(L["Notifications"])
+								{
+									AlphaFactory.MakeCircleImageCell
+									(
+										Text: L["Alert by Left Time"],
+										Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
+									   ),
+									AlphaFactory.MakeCircleImageCell
+									(
+										Text: L["Daily Alert"],
+										Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
+									)
+								},
+								new TableSection(L["Language"])
+								{
+									LanguageCell
+								},
+								new TableSection(L["Information"])
+								{
+									AlphaFactory.MakeCircleImageCell
+									(
+										ImageSource: Root.GetApplicationImageSource(),
+										Text: L["keep.grass"],
+										Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+									),
+								},
 							},
-							new TableSection(L["Notifications"])
-							{
-								AlphaFactory.MakeCircleImageCell
-								(
-									Text: L["Alert by Left Time"],
-									Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
-					           	),
-								AlphaFactory.MakeCircleImageCell
-								(
-									Text: L["Daily Alert"],
-									Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
-								)
-							},
-							new TableSection(L["Language"])
-							{
-								LanguageCell
-							},
-							new TableSection(L["Information"])
-							{
-								AlphaFactory.MakeCircleImageCell
-								(
-									ImageSource: Root.GetApplicationImageSource(),
-									Text: L["keep.grass"],
-									Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
-								),
-							}
-						}
+						},
 					},
-				},
-			};
+				};
+			}
+			else
+			{
+				Content = new StackLayout
+				{
+					Children =
+					{
+						new StackLayout
+						{
+							Orientation = StackOrientation.Horizontal,
+							Spacing = 0.5,
+							BackgroundColor = Color.Gray,
+							Children =
+							{
+								new TableView
+								{
+									Root = new TableRoot
+									{
+										new TableSection(L["Github Account"])
+										{
+											UserNameCell.AsCell(),
+										},
+										new TableSection(L["Language"])
+										{
+											LanguageCell
+										},
+									},
+								},
+								new TableView
+								{
+									Root = new TableRoot
+									{
+										new TableSection(L["Notifications"])
+										{
+											AlphaFactory.MakeCircleImageCell
+											(
+												Text: L["Alert by Left Time"],
+												Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
+											   ),
+											AlphaFactory.MakeCircleImageCell
+											(
+												Text: L["Daily Alert"],
+												Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
+											)
+										},
+										new TableSection(L["Information"])
+										{
+											AlphaFactory.MakeCircleImageCell
+											(
+												ImageSource: Root.GetApplicationImageSource(),
+												Text: L["keep.grass"],
+												Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+											),
+										},
+									},
+								},
+							},
+						},
+					},
+				};
+			}
 		}
 		protected override void OnAppearing()
 		{
