@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
+using System.Diagnostics;
 
 namespace keep.grass
 {
-	public class AlphaLeftTimeSettingsPage : ContentPage
+	public class AlphaLeftTimeSettingsPage : ResponsiveContentPage
 	{
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
@@ -31,23 +32,48 @@ namespace keep.grass
 			)
 			.ToArray();
 
-			Content = new StackLayout
-			{ 
-				Children =
-				{
-					new TableView
+		}
+		public IList<View> GetColumns(int ColumnCount)
+		{
+			var result = new List<View>();
+			var ElementPerColumn = LeftTimeAlertSwitchCellList.Count() / ColumnCount;
+			result.AddRange
+			(
+				Enumerable.Range(0, ColumnCount).Select
+				(
+					index => new TableView
 					{
 						Root = new TableRoot
 						{
 							new TableSection()
 							{
 								LeftTimeAlertSwitchCellList
+									.Skip(ElementPerColumn *index)
+									.Take(ElementPerColumn)
 									.Select(i => i.Value.AsCell())
 							},
 						}
-					},
-				},
+					}
+				)
+			);
+			return result;
+		}
+		public override void Build()
+		{
+			base.Build();
+			Debug.WriteLine("AlphaLeftTimeSettingsPage.Rebuild();");
+
+			var StackContent = new StackLayout
+			{
+				Orientation = StackOrientation.Horizontal,
+				Spacing = 0.0,
 			};
+			foreach (var i in GetColumns(Width <= Height ? 1: 2))
+			{
+				StackContent.Children.Add(i);
+			}
+			Content = StackContent;
+
 		}
 		protected override void OnAppearing()
 		{
