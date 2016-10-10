@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.Xamarin.Forms;
 
 using keep.grass.Helpers;
 
@@ -16,7 +21,11 @@ namespace keep.grass
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+#if WITH_PROGRESSBAR
 		ProgressBar ProgressBar = new ProgressBar();
+#endif
+		PieSeries Pie;
+		PlotView GraphView;
 
 		Task UpdateLeftTimeTask = null;
 
@@ -27,7 +36,9 @@ namespace keep.grass
 			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
+#if WITH_PROGRESSBAR
 			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
+#endif
 
 			//Build();
 		}
@@ -37,10 +48,63 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 
+			var GraphSize = new[] { Width, Height }.Min() * 0.6;
+
+			Pie = new PieSeries
+			{
+				TextColor = OxyColors.White,
+				StrokeThickness = 1.0,
+				StartAngle = 270,
+				AngleSpan = 360,
+				Slices = MakeSlices(TimeSpan.Zero, Color.Lime),
+			};
+			GraphView = new PlotView
+			{
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				WidthRequest = GraphSize,
+				HeightRequest = GraphSize,
+				Margin = new Thickness(24.0),
+				Model = new OxyPlot.PlotModel
+				{
+					Series =
+					{
+						Pie,
+					},
+				},
+			};
+			var GrahpFrame = new Grid().HorizontalJustificate
+			(
+				GraphView
+			);
+			GrahpFrame.BackgroundColor = Color.White;
+			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
+			var MainTable = new TableView
+			{
+				Root = new TableRoot
+							{
+								new TableSection(L["Github Account"])
+								{
+									UserLabel,
+								},
+								new TableSection(L["Last Acitivity Stamp"])
+								{
+									LastActivityStampLabel,
+								},
+								new TableSection(L["Left Time"])
+								{
+									LeftTimeLabel,
+								},
+							},
+			};
+#if WITH_PROGRESSBAR
+			ProgressBarFrame,
 			var ProgressBarFrame = new Grid().HorizontalJustificate
 			(
 				ProgressBar
 		 	);
+#endif
 			var ButtonFrame = new Grid().HorizontalJustificate
 			(
 				new Button
@@ -58,33 +122,21 @@ namespace keep.grass
 					Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
 				}
 			);
+			ButtonFrame.BackgroundColor = Color.White;
 
 			if (Width <= Height)
 			{
 				Content = new StackLayout
 				{
-					Spacing = 0.0,
+					Spacing = 0.5,
+					BackgroundColor = Color.Gray,
 					Children =
 					{
-						new TableView
-						{
-							Root = new TableRoot
-							{
-								new TableSection(L["Github Account"])
-								{
-									UserLabel,
-								},
-								new TableSection(L["Last Acitivity Stamp"])
-								{
-									LastActivityStampLabel,
-								},
-								new TableSection(L["Left Time"])
-								{
-									LeftTimeLabel,
-								},
-							},
-						},
+						GrahpFrame,
+						MainTable,
+#if WITH_PROGRESSBAR
 						ProgressBarFrame,
+#endif
 						ButtonFrame,
 					},
 				};
@@ -93,43 +145,23 @@ namespace keep.grass
 			{
 				Content = new StackLayout
 				{
-					Spacing = 0.0,
+					Spacing = 0.5,
+					BackgroundColor = Color.Gray,
 					Children =
 					{
 						new StackLayout
 						{
 							Orientation = StackOrientation.Horizontal,
 							Spacing = 0.5,
-							BackgroundColor = Color.Gray,
 							Children =
 							{
-								new TableView
-								{
-									Root = new TableRoot
-									{
-										new TableSection(L["Github Account"])
-										{
-											UserLabel,
-										},
-									},
-								},
-								new TableView
-								{
-									Root = new TableRoot
-									{
-										new TableSection(L["Last Acitivity Stamp"])
-										{
-											LastActivityStampLabel,
-										},
-										new TableSection(L["Left Time"])
-										{
-											LeftTimeLabel,
-										},
-									},
-								},
+								GrahpFrame,
+								MainTable,
 							},
 						},
+#if WITH_PROGRESSBAR
 						ProgressBarFrame,
+#endif
 						ButtonFrame,
 					},
 				};
@@ -202,6 +234,39 @@ namespace keep.grass
 			Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
+			Pie.Slices = MakeSlices(TimeSpan.Zero, Color.Lime);
+			GraphView.Model.InvalidatePlot(true);
+		}
+		public PieSlice[] MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
+		{
+			if (0 <= LeftTime.Ticks)
+			{
+				return new[]
+				{
+					new PieSlice(L["Elapsed Time"], TimeSpan.FromDays(1).Ticks -LeftTime.Ticks)
+					{
+						Fill = OxyColor.FromRgb(0xCC, 0xCC, 0xCC),
+					},
+					new PieSlice(L["Left Time"], LeftTime.Ticks)
+					{
+						Fill = LeftTimeColor.ToOxyColor(),
+					},
+				};
+			}
+			else
+			{
+				return new[]
+				{
+					new PieSlice(L["Elapsed Time"], 100)
+					{
+						Fill = OxyColor.FromRgb(0xEE, 0x11, 0x11),
+					},
+					new PieSlice(L["Left Time"], 0)
+					{
+						Fill = OxyColor.FromRgb(0xD6, 0xE6, 0x85),
+					},
+				};
+			}
 		}
 
 		public void StartUpdateLeftTimeTask()
@@ -227,20 +292,30 @@ namespace keep.grass
 			UpdateLeftTimeTask = null;
 		}
 
+#if WITH_PROGRESSBAR
 		protected async void UpdateLeftTime()
+#else
+		protected void UpdateLeftTime()
+#endif
 		{
 			if (default(DateTime) != Domain.LastPublicActivity)
 			{
 				var LeftTime = Domain.LastPublicActivity.AddHours(24) - DateTime.Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
+#if WITH_PROGRESSBAR
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
+#endif
 
 				double LeftTimeRate = Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours /24.0));
 				byte red = (byte)(255.0 * (1.0 - LeftTimeRate));
 				byte green = (byte)(255.0 *Math.Min(0.5, LeftTimeRate));
 				byte blue = 0;
-				
-				LeftTimeLabel.TextColor = Color.FromRgb(red, green, blue);
+				var LeftTimeColor = Color.FromRgb(red, green, blue);
+
+				LeftTimeLabel.TextColor = LeftTimeColor;
+
+				Pie.Slices = MakeSlices(LeftTime, LeftTimeColor);
+				GraphView.Model.InvalidatePlot(true);
 			}
 			else
 			{
