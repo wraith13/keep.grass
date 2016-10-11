@@ -30,6 +30,7 @@ namespace keep.grass.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+			global::OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer.Init();
 
 			LoadApplication(MakeSureApp());
 		}
