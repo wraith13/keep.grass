@@ -2,6 +2,7 @@
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using System;
+using System.Linq;
 
 namespace keep.grass.Helpers
 {
@@ -188,57 +189,14 @@ namespace keep.grass.Helpers
 			Set(AlertTimeSpanToSettingKey(Key), NewValue);
 		}
 
-		public static TimeSpan[] AlertDailyTimeTable = new[]
-		{
-			TimeSpan.FromHours(0.0),
-			TimeSpan.FromHours(0.5),
-			TimeSpan.FromHours(1.0),
-			TimeSpan.FromHours(1.5),
-			TimeSpan.FromHours(2.0),
-			TimeSpan.FromHours(2.5),
-			TimeSpan.FromHours(3.0),
-			TimeSpan.FromHours(3.5),
-			TimeSpan.FromHours(4.0),
-			TimeSpan.FromHours(4.5),
-			TimeSpan.FromHours(5.0),
-			TimeSpan.FromHours(5.5),
-			TimeSpan.FromHours(6.0),
-			TimeSpan.FromHours(6.5),
-			TimeSpan.FromHours(7.0),
-			TimeSpan.FromHours(7.5),
-			TimeSpan.FromHours(8.0),
-			TimeSpan.FromHours(8.5),
-			TimeSpan.FromHours(9.0),
-			TimeSpan.FromHours(9.5),
-			TimeSpan.FromHours(10.0),
-			TimeSpan.FromHours(10.5),
-			TimeSpan.FromHours(11.0),
-			TimeSpan.FromHours(11.5),
-			TimeSpan.FromHours(12.0),
-			TimeSpan.FromHours(12.5),
-			TimeSpan.FromHours(13.0),
-			TimeSpan.FromHours(13.5),
-			TimeSpan.FromHours(14.0),
-			TimeSpan.FromHours(14.5),
-			TimeSpan.FromHours(15.0),
-			TimeSpan.FromHours(15.5),
-			TimeSpan.FromHours(16.0),
-			TimeSpan.FromHours(16.5),
-			TimeSpan.FromHours(17.0),
-			TimeSpan.FromHours(17.5),
-			TimeSpan.FromHours(18.0),
-			TimeSpan.FromHours(18.5),
-			TimeSpan.FromHours(19.0),
-			TimeSpan.FromHours(19.5),
-			TimeSpan.FromHours(20.0),
-			TimeSpan.FromHours(20.5),
-			TimeSpan.FromHours(21.0),
-			TimeSpan.FromHours(21.5),
-			TimeSpan.FromHours(22.0),
-			TimeSpan.FromHours(22.5),
-			TimeSpan.FromHours(23.0),
-			TimeSpan.FromHours(23.5),
-		};
+		public static TimeSpan AlertDailyTimeUnit = TimeSpan.FromMinutes(30);
+		public static TimeSpan[] AlertDailyTimeTable = Enumerable.Range
+		(
+			0,
+			(int)(TimeSpan.FromDays(1).Ticks /AlertDailyTimeUnit.Ticks)
+		)
+		.Select(i => TimeSpan.FromTicks(i *AlertDailyTimeUnit.Ticks))
+		.ToArray();
 		public static string AlertDailyTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan Time)
 		{
 			return String.Format(L["Every day at {0:D2}:{1:D2}"], Time.Hours, Time.Minutes);
