@@ -82,6 +82,15 @@ namespace keep.grass
 			return new AlphaInfoPage();
 		}
 
+		public static VoidCircleGraph MakeCircleGraph()
+		{
+			return Instance.MakeOmegaCircleGraph();
+		}
+		public virtual VoidCircleGraph MakeOmegaCircleGraph()
+		{
+			return new AlphaCircleGraph();
+		}
+
 		public static AlphaActivityIndicatorTextCell MakeActivityIndicatorTextCell()
 		{
 			return Instance.MakeOmegaActivityIndicatorTextCell();
