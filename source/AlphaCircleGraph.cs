@@ -37,6 +37,21 @@ namespace keep.grass
 		public AlphaCircleGraph()
 		{
 		}
+		public PieSlice[] MakeSlices()
+		{
+			return Pies.Select
+			(
+				p => new PieSlice
+				(
+					p.Text,
+					p.Volume
+				)
+				{
+					Fill = p.Color.ToOxyColor(),
+				}
+			).ToArray();
+
+		}
 		public void Build(double Width, double Height)
 		{
 			var GraphSize = new[] { Width, Height }.Min() * 0.6;
@@ -46,7 +61,7 @@ namespace keep.grass
 				StrokeThickness = 1.0,
 				StartAngle = 270,
 				AngleSpan = 360,
-				//Slices = MakeSlices(TimeSpan.Zero, Color.Lime),
+				Slices = MakeSlices(),
 			};
 			GraphView = new PlotView
 			{
@@ -82,17 +97,7 @@ namespace keep.grass
 			set
 			{
 				Pies = value;
-				Pie.Slices = Pies.Select
-				(
-					p => new PieSlice
-					(
-						p.Text,
-						p.Volume
-					)
-					{
-						Fill = p.Color.ToOxyColor(),
-					}
-				).ToArray();
+				Pie.Slices = MakeSlices();
 				Update();
 			}
 		}
