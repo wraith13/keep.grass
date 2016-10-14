@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,8 +25,7 @@ namespace keep.grass
 #if WITH_PROGRESSBAR
 		ProgressBar ProgressBar = new ProgressBar();
 #endif
-		PieSeries Pie;
-		PlotView GraphView;
+		VoidCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
 
 		Task UpdateLeftTimeTask = null;
 
@@ -48,55 +48,25 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 
-			var GraphSize = new[] { Width, Height }.Min() * 0.6;
+			CircleGraph.Build(Width, Height);
 
-			Pie = new PieSeries
-			{
-				TextColor = OxyColors.White,
-				StrokeThickness = 1.0,
-				StartAngle = 270,
-				AngleSpan = 360,
-				Slices = MakeSlices(TimeSpan.Zero, Color.Lime),
-			};
-			GraphView = new PlotView
-			{
-				BackgroundColor = Color.White,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				WidthRequest = GraphSize,
-				HeightRequest = GraphSize,
-				Margin = new Thickness(24.0),
-				Model = new OxyPlot.PlotModel
-				{
-					Series =
-					{
-						Pie,
-					},
-				},
-			};
-			var GrahpFrame = new Grid().HorizontalJustificate
-			(
-				GraphView
-			);
-			GrahpFrame.BackgroundColor = Color.White;
-			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
 			var MainTable = new TableView
 			{
 				Root = new TableRoot
-							{
-								new TableSection(L["Github Account"])
-								{
-									UserLabel,
-								},
-								new TableSection(L["Last Acitivity Stamp"])
-								{
-									LastActivityStampLabel,
-								},
-								new TableSection(L["Left Time"])
-								{
-									LeftTimeLabel,
-								},
-							},
+				{
+					new TableSection(L["Github Account"])
+					{
+						UserLabel,
+					},
+					new TableSection(L["Last Acitivity Stamp"])
+					{
+						LastActivityStampLabel,
+					},
+					new TableSection(L["Left Time"])
+					{
+						LeftTimeLabel,
+					},
+				},
 			};
 #if WITH_PROGRESSBAR
 			ProgressBarFrame,
@@ -132,7 +102,7 @@ namespace keep.grass
 					BackgroundColor = Color.Gray,
 					Children =
 					{
-						GrahpFrame,
+						CircleGraph.AsView(),
 						MainTable,
 #if WITH_PROGRESSBAR
 						ProgressBarFrame,
@@ -155,7 +125,7 @@ namespace keep.grass
 							Spacing = 0.5,
 							Children =
 							{
-								GrahpFrame,
+								CircleGraph.AsView(),
 								MainTable,
 							},
 						},
@@ -234,22 +204,26 @@ namespace keep.grass
 			Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
-			Pie.Slices = MakeSlices(TimeSpan.Zero, Color.Lime);
-			GraphView.Model.InvalidatePlot(true);
+
+			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
 		}
-		public PieSlice[] MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
+		public IEnumerable<AlphaPie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
 			if (0 <= LeftTime.Ticks)
 			{
 				return new[]
 				{
-					new PieSlice(L["Elapsed Time"], TimeSpan.FromDays(1).Ticks -LeftTime.Ticks)
+					new AlphaPie
 					{
-						Fill = OxyColor.FromRgb(0xCC, 0xCC, 0xCC),
+						Text = L["Elapsed Time"],
+						Volume = TimeSpan.FromDays(1).Ticks -LeftTime.Ticks,
+						Color = Color.FromRgb(0xCC, 0xCC, 0xCC),
 					},
-					new PieSlice(L["Left Time"], LeftTime.Ticks)
+					new AlphaPie
 					{
-						Fill = LeftTimeColor.ToOxyColor(),
+						Text = L["Left Time"],
+						Volume = LeftTime.Ticks,
+						Color = LeftTimeColor,
 					},
 				};
 			}
@@ -257,13 +231,17 @@ namespace keep.grass
 			{
 				return new[]
 				{
-					new PieSlice(L["Elapsed Time"], 100)
+					new AlphaPie
 					{
-						Fill = OxyColor.FromRgb(0xEE, 0x11, 0x11),
+						Text = L["Elapsed Time"],
+						Volume = TimeSpan.FromDays(1).Ticks,
+						Color = Color.FromRgb(0xEE, 0x11, 0x11),
 					},
-					new PieSlice(L["Left Time"], 0)
+					new AlphaPie
 					{
-						Fill = OxyColor.FromRgb(0xD6, 0xE6, 0x85),
+						Text = L["Left Time"],
+						Volume = 0,
+						Color = Color.FromRgb(0xD6, 0xE6, 0x85),
 					},
 				};
 			}
@@ -314,8 +292,7 @@ namespace keep.grass
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
-				Pie.Slices = MakeSlices(LeftTime, LeftTimeColor);
-				GraphView.Model.InvalidatePlot(true);
+				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
 			}
 			else
 			{

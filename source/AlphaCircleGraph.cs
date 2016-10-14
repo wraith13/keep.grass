@@ -39,7 +39,8 @@ namespace keep.grass
 		}
 		public PieSlice[] MakeSlices()
 		{
-			return Pies.Select
+			return (Pies ?? new AlphaPie[] { })
+			.Select
 			(
 				p => new PieSlice
 				(
