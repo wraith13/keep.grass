@@ -12,23 +12,49 @@ using OxyPlot.Xamarin.Forms;
 
 namespace keep.grass
 {
-	public class AlphaPie
+	public interface VoidPie
 	{
-		public string Text { get; set; }
-		public double Volume { get; set; }
-		public Color Color { get; set; }
-		public string DisplayVolume { get; set; }
+		string Text { get; }
+		double Volume { get; }
+		Color Color { get; }
+		string DisplayVolume { get; }
 	}
 	public interface VoidCircleGraph
 	{
-		IEnumerable<AlphaPie> Data { get; set; }
+		IEnumerable<VoidPie> Data { get; set; }
 		void Build(double Width, double Height);
 		void Update();
 		View AsView();
 	}
+	public class NumberPie : VoidPie
+	{
+		public string Text { get; set; }
+		public double Value { get; set; }
+		public double Volume { get { return Value; } }
+		public Color Color { get; set; }
+		public string DisplayVolume { get { return Value.ToString(); } }
+	}
+	public class TimePie : VoidPie
+	{
+		public string Text { get; set; }
+		public TimeSpan Value { get; set; }
+		public double Volume { get { return Value.Ticks; } }
+		public Color Color { get; set; }
+		public string DisplayVolume { get { return TimeToString(Value); } }
+		public static string TimeToString(TimeSpan a)
+		{
+			return String.Format
+			(
+				"{0:D2}:{1:D2}:{2:D2}",
+				Math.Floor(a.TotalHours),
+				a.Minutes,
+				a.Seconds
+			);
+		}
+	}
 	public class AlphaCircleGraph :View, VoidCircleGraph
 	{
-		IEnumerable<AlphaPie> Pies;
+		IEnumerable<VoidPie> Pies;
 
 		PieSeries Pie;
 		PlotView GraphView;
@@ -39,7 +65,7 @@ namespace keep.grass
 		}
 		public PieSlice[] MakeSlices()
 		{
-			return (Pies ?? new AlphaPie[] { })
+			return (Pies ?? new VoidPie[] { })
 			.Select
 			(
 				p => new PieSlice
@@ -88,7 +114,7 @@ namespace keep.grass
 			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
 		}
 
-		public IEnumerable<AlphaPie> Data
+		public IEnumerable<VoidPie> Data
 		{
 			get
 			{

@@ -5,11 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
-using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Xamarin.Forms;
-
 using keep.grass.Helpers;
 
 namespace keep.grass
@@ -207,22 +202,22 @@ namespace keep.grass
 
 			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
 		}
-		public IEnumerable<AlphaPie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
+		public IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
 			if (0 <= LeftTime.Ticks)
 			{
 				return new[]
 				{
-					new AlphaPie
+					new TimePie
 					{
 						Text = L["Elapsed Time"],
-						Volume = TimeSpan.FromDays(1).Ticks -LeftTime.Ticks,
+						Value = TimeSpan.FromDays(1) -LeftTime,
 						Color = Color.FromRgb(0xCC, 0xCC, 0xCC),
 					},
-					new AlphaPie
+					new TimePie
 					{
 						Text = L["Left Time"],
-						Volume = LeftTime.Ticks,
+						Value = LeftTime,
 						Color = LeftTimeColor,
 					},
 				};
@@ -231,16 +226,16 @@ namespace keep.grass
 			{
 				return new[]
 				{
-					new AlphaPie
+					new TimePie
 					{
 						Text = L["Elapsed Time"],
-						Volume = TimeSpan.FromDays(1).Ticks,
+						Value = TimeSpan.FromDays(1),
 						Color = Color.FromRgb(0xEE, 0x11, 0x11),
 					},
-					new AlphaPie
+					new TimePie
 					{
 						Text = L["Left Time"],
-						Volume = 0,
+						Value = TimeSpan.FromTicks(0),
 						Color = Color.FromRgb(0xD6, 0xE6, 0x85),
 					},
 				};
