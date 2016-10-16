@@ -45,13 +45,7 @@ namespace keep.grass
 		public string DisplayVolume { get { return TimeToString(Value); } }
 		public static string TimeToString(TimeSpan a)
 		{
-			return String.Format
-			(
-				"{0:D2}:{1:D2}:{2:D2}",
-				Math.Floor(a.TotalHours),
-				a.Minutes,
-				a.Seconds
-			);
+			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
 	}
 #if USE_OXYPLOT
@@ -205,7 +199,8 @@ namespace keep.grass
 		}
 		public void Update()
 		{
-			var DrawGraphSize = (float)(GraphSize * 4);
+			var PhysicalPixelRate = 4.0f; // 数字は適当。本来はちゃんとデバイスの
+			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
 			var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
 			var Center = new SKPoint(DrawGraphSize /2.0f, DrawGraphSize /2.0f);
 			using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
@@ -248,6 +243,54 @@ namespace keep.grass
 								path.LineTo(Center.X, Center.Y);
 								path.Close();
 								canvas.DrawPath(path, paint);
+							}
+						}
+						StartAngle = NextAngle;
+					}
+
+					StartAngle = -90.0f;
+					foreach (var Pie in Pies)
+					{
+						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+						var NextAngle = StartAngle + CurrentAngle;
+						if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+						{
+							using (var paint = new SKPaint())
+							{
+								paint.IsAntialias = true;
+								paint.Color = ToSKColor(Pie.Color);
+								paint.StrokeCap = SKStrokeCap.Round;
+								using (var path = new SKPath())
+								{
+									paint.TextSize = 12.0f *PhysicalPixelRate;
+									paint.IsAntialias = true;
+									paint.Color = ToSKColor(Color.White);
+									paint.TextAlign = SKTextAlign.Center;
+
+									var CenterAngle = (StartAngle + NextAngle) / 2.0f;
+									var HalfRadius = Radius / 2.0f;
+
+									if (!String.IsNullOrWhiteSpace(Pie.Text))
+									{
+										canvas.DrawText
+										(
+											Pie.Text,
+											Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
+											Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) - (paint.TextSize / 2.0f),
+											paint
+										);
+									}
+									if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+									{
+										canvas.DrawText
+										(
+											Pie.DisplayVolume,
+											Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
+											Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) + (paint.TextSize / 2.0f),
+											paint
+										);
+									}
+								}
 							}
 						}
 						StartAngle = NextAngle;
