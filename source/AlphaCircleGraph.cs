@@ -146,8 +146,9 @@ namespace keep.grass
 	public class AlphaCircleGraph :VoidCircleGraph
 	{
 		IEnumerable<VoidPie> Pies;
-		Image Image;
 		double GraphSize;
+		Image Image;
+		Grid GrahpFrame;
 
 		public AlphaCircleGraph()
 		{
@@ -157,12 +158,20 @@ namespace keep.grass
 			GraphSize = new[] { Width, Height }.Min() * 0.6;
 			Image = new Image()
 			{
+				Margin = new Thickness(24),
 				WidthRequest = GraphSize,
 				HeightRequest = GraphSize,
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 			};
+			GrahpFrame = new Grid().HorizontalJustificate
+			(
+				Image
+			);
+			GrahpFrame.BackgroundColor = Color.White;
+			GrahpFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
+			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
 			Update();
 		}
 
@@ -180,37 +189,68 @@ namespace keep.grass
 			}
 		}
 
+		public static SKColor ToSKColor(Color c)
+		{
+			return new SKColor
+			(
+				(byte)(c.R *255),
+				(byte)(c.G *255),
+				(byte)(c.B *255),
+				(byte)(c.A *255)
+			);
+		}
+		public static double DegreeToRadian(double Degree)
+		{
+			return Degree * Math.PI / 180.0;
+		}
 		public void Update()
 		{
-			using (var surface = SKSurface.Create((int)GraphSize, (int)GraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
+			var DrawGraphSize = (float)(GraphSize * 4);
+			var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
+			var Center = new SKPoint(DrawGraphSize /2.0f, DrawGraphSize /2.0f);
+			using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
 			{
 				var canvas = surface.Canvas;
-				using (var paint = new SKPaint())
+				if (null == Pies || !Pies.Any())
 				{
-					paint.IsAntialias = true;
-					paint.Color = new SKColor(0x2c, 0x3e, 0x50);
-					paint.StrokeCap = SKStrokeCap.Round;
-
-					// create the Xamagon path
-					using (var path = new SKPath())
+					using (var paint = new SKPaint())
 					{
-						path.MoveTo(71.4311121f, 56f);
-						path.CubicTo(68.6763107f, 56.0058575f, 65.9796704f, 57.5737917f, 64.5928855f, 59.965729f);
-						path.LineTo(43.0238921f, 97.5342563f);
-						path.CubicTo(41.6587026f, 99.9325978f, 41.6587026f, 103.067402f, 43.0238921f, 105.465744f);
-						path.LineTo(64.5928855f, 143.034271f);
-						path.CubicTo(65.9798162f, 145.426228f, 68.6763107f, 146.994582f, 71.4311121f, 147f);
-						path.LineTo(114.568946f, 147f);
-						path.CubicTo(117.323748f, 146.994143f, 120.020241f, 145.426228f, 121.407172f, 143.034271f);
-						path.LineTo(142.976161f, 105.465744f);
-						path.CubicTo(144.34135f, 103.067402f, 144.341209f, 99.9325978f, 142.976161f, 97.5342563f);
-						path.LineTo(121.407172f, 59.965729f);
-						path.CubicTo(120.020241f, 57.5737917f, 117.323748f, 56.0054182f, 114.568946f, 56f);
-						path.LineTo(71.4311121f, 56f);
-						path.Close();
-
-						// draw the Xamagon path
-						canvas.DrawPath(path, paint);
+						paint.IsAntialias = true;
+						paint.Color =  ToSKColor(Color.Gray);
+						paint.StrokeCap = SKStrokeCap.Round;
+						using (var path = new SKPath())
+						{
+							path.AddCircle(Center.X, Center.Y, Radius);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+					}
+				}
+				else
+				{
+					var VolumeTotal = Pies.Select(Pie => Pie.Volume).Sum();
+					var StartAngle = -90.0f;
+					foreach (var Pie in Pies)
+					{
+						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+						var NextAngle = StartAngle + CurrentAngle;
+						using (var paint = new SKPaint())
+						{
+							paint.IsAntialias = true;
+							paint.Color = ToSKColor(Pie.Color);
+							paint.StrokeCap = SKStrokeCap.Round;
+							using (var path = new SKPath())
+							{
+								path.AddArc(SKRect.Create(Center.X -Radius, Center.Y - Radius, Radius *2.0f, Radius * 2.0f), StartAngle, CurrentAngle);
+								path.MoveTo(Center.X, Center.Y);
+								path.LineTo(Center.X + (Radius * (float)Math.Cos(DegreeToRadian(StartAngle))), Center.Y + (Radius * (float)Math.Sin(DegreeToRadian(StartAngle))));
+								path.LineTo(Center.X + (Radius * (float)Math.Cos(DegreeToRadian(NextAngle))), Center.Y + (Radius * (float)Math.Sin(DegreeToRadian(NextAngle))));
+								path.LineTo(Center.X, Center.Y);
+								path.Close();
+								canvas.DrawPath(path, paint);
+							}
+						}
+						StartAngle = NextAngle;
 					}
 				}
 				var ImageData = surface.Snapshot().Encode();
@@ -220,7 +260,7 @@ namespace keep.grass
 
 		public View AsView()
 		{
-			return Image;
+			return GrahpFrame;
 		}
 	}
 #endif
