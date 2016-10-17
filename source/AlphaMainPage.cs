@@ -216,7 +216,7 @@ namespace keep.grass
 					{
 						Text = L["Elapsed Time"],
 						Value = JustifiedElapsedTime,
-						Color = Color.FromRgb(0xCC, 0xCC, 0xCC),
+						Color = Color.FromRgb(0xAA, 0xAA, 0xAA),
 					},
 					new TimePie
 					{
