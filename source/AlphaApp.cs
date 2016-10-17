@@ -5,6 +5,7 @@ using keep.grass.Helpers;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace keep.grass
 {
@@ -92,6 +93,10 @@ namespace keep.grass
 		public virtual ImageSource GetExportImageSource()
 		{
 			return GetImageSource("export.120.png");
+		}
+		public virtual Stream GetFontStream()
+		{
+			return typeof(AlphaApp).GetTypeInfo().Assembly.GetManifestResourceStream("keep.grass.Fonts.NotoSansCJKjp-Regular.otf");
 		}
 	}
 }

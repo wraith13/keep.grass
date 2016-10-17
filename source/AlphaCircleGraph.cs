@@ -249,51 +249,61 @@ namespace keep.grass
 					}
 
 					StartAngle = -90.0f;
-					foreach (var Pie in Pies)
+					using (var FontSource = AlphaFactory.GetApp().GetFontStream())
 					{
-						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-						var NextAngle = StartAngle + CurrentAngle;
-						if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+						using (var FontStream = new SKManagedStream(FontSource))
 						{
-							using (var paint = new SKPaint())
+							using (var Font = SKTypeface.FromStream(FontStream))
 							{
-								paint.IsAntialias = true;
-								paint.Color = ToSKColor(Pie.Color);
-								paint.StrokeCap = SKStrokeCap.Round;
-								using (var path = new SKPath())
+								foreach (var Pie in Pies)
 								{
-									paint.TextSize = 12.0f *PhysicalPixelRate;
-									paint.IsAntialias = true;
-									paint.Color = ToSKColor(Color.White);
-									paint.TextAlign = SKTextAlign.Center;
-
-									var CenterAngle = (StartAngle + NextAngle) / 2.0f;
-									var HalfRadius = Radius / 2.0f;
-
-									if (!String.IsNullOrWhiteSpace(Pie.Text))
+									var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+									var NextAngle = StartAngle + CurrentAngle;
+									if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 									{
-										canvas.DrawText
-										(
-											Pie.Text,
-											Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
-											Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) - (paint.TextSize / 2.0f),
-											paint
-										);
+										using (var paint = new SKPaint())
+										{
+											paint.IsAntialias = true;
+											paint.Color = ToSKColor(Pie.Color);
+											paint.StrokeCap = SKStrokeCap.Round;
+											using (var path = new SKPath())
+											{
+												paint.TextSize = 14.0f * PhysicalPixelRate;
+												paint.IsAntialias = true;
+												paint.Color = ToSKColor(Color.White);
+												paint.TextAlign = SKTextAlign.Center;
+												paint.Typeface = Font;
+
+												var CenterAngle = (StartAngle + NextAngle) / 2.0f;
+												var HalfRadius = Radius / 2.0f;
+
+												if (!String.IsNullOrWhiteSpace(Pie.Text))
+												{
+													canvas.DrawText
+													(
+														Pie.Text,
+														Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
+														Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) - (paint.TextSize / 2.0f),
+														paint
+													);
+												}
+												if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+												{
+													canvas.DrawText
+													(
+														Pie.DisplayVolume,
+														Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
+														Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) + (paint.TextSize / 2.0f),
+														paint
+													);
+												}
+											}
+										}
 									}
-									if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
-									{
-										canvas.DrawText
-										(
-											Pie.DisplayVolume,
-											Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
-											Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) + (paint.TextSize / 2.0f),
-											paint
-										);
-									}
+									StartAngle = NextAngle;
 								}
 							}
 						}
-						StartAngle = NextAngle;
 					}
 				}
 				var ImageData = surface.Snapshot().Encode();
