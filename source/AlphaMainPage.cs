@@ -206,18 +206,22 @@ namespace keep.grass
 		{
 			if (0 <= LeftTime.Ticks)
 			{
+				//	※調整しておなかいと、表示上、経過時間と残り時間の合計が24時間より1秒足りない状態になってしまうので。
+				var JustifiedLeftTime = new TimeSpan(LeftTime.Days, +LeftTime.Hours, LeftTime.Minutes, LeftTime.Seconds);
+				var JustifiedElapsedTime = TimeSpan.FromDays(1) - JustifiedLeftTime;
+
 				return new[]
 				{
 					new TimePie
 					{
 						Text = L["Elapsed Time"],
-						Value = TimeSpan.FromDays(1) -LeftTime,
+						Value = JustifiedElapsedTime,
 						Color = Color.FromRgb(0xCC, 0xCC, 0xCC),
 					},
 					new TimePie
 					{
 						Text = L["Left Time"],
-						Value = LeftTime,
+						Value = JustifiedLeftTime,
 						Color = LeftTimeColor,
 					},
 				};
