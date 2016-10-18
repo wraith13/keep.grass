@@ -137,6 +137,17 @@ namespace keep.grass
 		}
 	}
 #else
+	public static class SkiaUtil
+	{
+		public static void MoveTo(this SKPath Path, SKPoint Point)
+		{
+			Path.MoveTo(Point.X, Point.Y);
+		}
+		public static void LineTo(this SKPath Path, SKPoint Point)
+		{
+			Path.LineTo(Point.X, Point.Y);
+		}
+	}
 	public class AlphaCircleGraph :VoidCircleGraph
 	{
 		IEnumerable<VoidPie> Pies;
@@ -156,8 +167,8 @@ namespace keep.grass
 				WidthRequest = GraphSize,
 				HeightRequest = GraphSize,
 				BackgroundColor = Color.White,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
 			};
 			GrahpFrame = new Grid().HorizontalJustificate
 			(
@@ -196,6 +207,14 @@ namespace keep.grass
 		public static double DegreeToRadian(double Degree)
 		{
 			return Degree * Math.PI / 180.0;
+		}
+		public static SKPoint AngleRadiusToPoint(float Angle, float Radius)
+		{
+			return new SKPoint
+			(
+				Radius * (float)Math.Cos(DegreeToRadian(Angle)),
+				Radius * (float)Math.Sin(DegreeToRadian(Angle))
+			);
 		}
 		public void Update()
 		{
@@ -237,10 +256,33 @@ namespace keep.grass
 							using (var path = new SKPath())
 							{
 								path.AddArc(SKRect.Create(Center.X -Radius, Center.Y - Radius, Radius *2.0f, Radius * 2.0f), StartAngle, CurrentAngle);
-								path.MoveTo(Center.X, Center.Y);
-								path.LineTo(Center.X + (Radius * (float)Math.Cos(DegreeToRadian(StartAngle))), Center.Y + (Radius * (float)Math.Sin(DegreeToRadian(StartAngle))));
-								path.LineTo(Center.X + (Radius * (float)Math.Cos(DegreeToRadian(NextAngle))), Center.Y + (Radius * (float)Math.Sin(DegreeToRadian(NextAngle))));
-								path.LineTo(Center.X, Center.Y);
+								path.MoveTo(Center);
+								path.LineTo(Center +AngleRadiusToPoint(StartAngle, Radius));
+								path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+								path.LineTo(Center);
+								path.Close();
+								canvas.DrawPath(path, paint);
+							}
+						}
+						StartAngle = NextAngle;
+					}
+
+					StartAngle = -90.0f;
+					foreach (var Pie in Pies)
+					{
+						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+						var NextAngle = StartAngle + CurrentAngle;
+						using (var paint = new SKPaint())
+						{
+							paint.IsAntialias = true;
+							paint.Color = ToSKColor(Color.White);
+							paint.StrokeCap = SKStrokeCap.Round;
+							paint.IsStroke = true;
+							paint.StrokeWidth = PhysicalPixelRate;
+							using (var path = new SKPath())
+							{
+								path.MoveTo(Center);
+								path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
 								path.Close();
 								canvas.DrawPath(path, paint);
 							}
@@ -276,14 +318,15 @@ namespace keep.grass
 
 												var CenterAngle = (StartAngle + NextAngle) / 2.0f;
 												var HalfRadius = Radius / 2.0f;
+												var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
 
 												if (!String.IsNullOrWhiteSpace(Pie.Text))
 												{
 													canvas.DrawText
 													(
 														Pie.Text,
-														Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
-														Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) - (paint.TextSize / 2.0f),
+														TextCenter.X,
+														TextCenter.Y - (paint.TextSize / 2.0f),
 														paint
 													);
 												}
@@ -292,8 +335,8 @@ namespace keep.grass
 													canvas.DrawText
 													(
 														Pie.DisplayVolume,
-														Center.X + (HalfRadius * (float)Math.Cos(DegreeToRadian(CenterAngle))),
-														Center.Y + (HalfRadius * (float)Math.Sin(DegreeToRadian(CenterAngle))) + (paint.TextSize / 2.0f),
+														TextCenter.X,
+														TextCenter.Y + (paint.TextSize / 2.0f),
 														paint
 													);
 												}
