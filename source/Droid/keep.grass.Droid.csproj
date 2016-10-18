@@ -110,6 +110,9 @@
     <Reference Include="OxyPlot.Xamarin.Forms.Platform.Android">
       <HintPath>..\packages\OxyPlot.Xamarin.Forms.1.0.0-unstable1983\lib\MonoAndroid10\OxyPlot.Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.54.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\keep.grass.csproj">
