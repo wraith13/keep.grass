@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 #if USE_OXYPLOT
 using OxyPlot;
@@ -218,139 +219,142 @@ namespace keep.grass
 		}
 		public void Update()
 		{
-			var PhysicalPixelRate = 4.0f; // 数字は適当。本来はちゃんとデバイスの
-			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-			var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
-			var Center = new SKPoint(DrawGraphSize /2.0f, DrawGraphSize /2.0f);
-			using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
+			if (null != Image)
 			{
-				var canvas = surface.Canvas;
-				if (null == Pies || !Pies.Any())
+				var PhysicalPixelRate = 4.0f; // 数字は適当。本来はちゃんとデバイスの
+				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
+				var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
+				var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+				using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
 				{
-					using (var paint = new SKPaint())
+					var canvas = surface.Canvas;
+					if (null == Pies || !Pies.Any())
 					{
-						paint.IsAntialias = true;
-						paint.Color =  ToSKColor(Color.Gray);
-						paint.StrokeCap = SKStrokeCap.Round;
-						using (var path = new SKPath())
-						{
-							path.AddCircle(Center.X, Center.Y, Radius);
-							path.Close();
-							canvas.DrawPath(path, paint);
-						}
-					}
-				}
-				else
-				{
-					var VolumeTotal = Pies.Select(Pie => Pie.Volume).Sum();
-					var StartAngle = -90.0f;
-					foreach (var Pie in Pies)
-					{
-						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-						var NextAngle = StartAngle + CurrentAngle;
 						using (var paint = new SKPaint())
 						{
 							paint.IsAntialias = true;
-							paint.Color = ToSKColor(Pie.Color);
+							paint.Color = ToSKColor(Color.Gray);
 							paint.StrokeCap = SKStrokeCap.Round;
 							using (var path = new SKPath())
 							{
-								path.AddArc(SKRect.Create(Center.X -Radius, Center.Y - Radius, Radius *2.0f, Radius * 2.0f), StartAngle, CurrentAngle);
-								path.MoveTo(Center);
-								path.LineTo(Center +AngleRadiusToPoint(StartAngle, Radius));
-								path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
-								path.LineTo(Center);
+								path.AddCircle(Center.X, Center.Y, Radius);
 								path.Close();
 								canvas.DrawPath(path, paint);
 							}
 						}
-						StartAngle = NextAngle;
 					}
-
-					StartAngle = -90.0f;
-					foreach (var Pie in Pies)
+					else
 					{
-						var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-						var NextAngle = StartAngle + CurrentAngle;
-						using (var paint = new SKPaint())
+						var VolumeTotal = Pies.Select(Pie => Pie.Volume).Sum();
+						var StartAngle = -90.0f;
+						foreach (var Pie in Pies)
 						{
-							paint.IsAntialias = true;
-							paint.Color = ToSKColor(Color.White);
-							paint.StrokeCap = SKStrokeCap.Round;
-							paint.IsStroke = true;
-							paint.StrokeWidth = PhysicalPixelRate;
-							using (var path = new SKPath())
+							var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+							var NextAngle = StartAngle + CurrentAngle;
+							using (var paint = new SKPaint())
 							{
-								path.MoveTo(Center);
-								path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
-								path.Close();
-								canvas.DrawPath(path, paint);
-							}
-						}
-						StartAngle = NextAngle;
-					}
-
-					StartAngle = -90.0f;
-					using (var FontSource = AlphaFactory.GetApp().GetFontStream())
-					{
-						using (var FontStream = new SKManagedStream(FontSource))
-						{
-							using (var Font = SKTypeface.FromStream(FontStream))
-							{
-								foreach (var Pie in Pies)
+								paint.IsAntialias = true;
+								paint.Color = ToSKColor(Pie.Color);
+								paint.StrokeCap = SKStrokeCap.Round;
+								using (var path = new SKPath())
 								{
-									var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-									var NextAngle = StartAngle + CurrentAngle;
-									if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+									path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), StartAngle, CurrentAngle);
+									path.MoveTo(Center);
+									path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+									path.LineTo(Center);
+									path.Close();
+									canvas.DrawPath(path, paint);
+								}
+							}
+							StartAngle = NextAngle;
+						}
+
+						StartAngle = -90.0f;
+						foreach (var Pie in Pies)
+						{
+							var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+							var NextAngle = StartAngle + CurrentAngle;
+							using (var paint = new SKPaint())
+							{
+								paint.IsAntialias = true;
+								paint.Color = ToSKColor(Color.White);
+								paint.StrokeCap = SKStrokeCap.Round;
+								paint.IsStroke = true;
+								paint.StrokeWidth = PhysicalPixelRate;
+								using (var path = new SKPath())
+								{
+									path.MoveTo(Center);
+									path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
+									path.Close();
+									canvas.DrawPath(path, paint);
+								}
+							}
+							StartAngle = NextAngle;
+						}
+
+						StartAngle = -90.0f;
+						using (var FontSource = AlphaFactory.GetApp().GetFontStream())
+						{
+							using (var FontStream = new SKManagedStream(FontSource))
+							{
+								using (var Font = SKTypeface.FromStream(FontStream))
+								{
+									foreach (var Pie in Pies)
 									{
-										using (var paint = new SKPaint())
+										var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
+										var NextAngle = StartAngle + CurrentAngle;
+										if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 										{
-											paint.IsAntialias = true;
-											paint.Color = ToSKColor(Pie.Color);
-											paint.StrokeCap = SKStrokeCap.Round;
-											using (var path = new SKPath())
+											using (var paint = new SKPaint())
 											{
-												paint.TextSize = 14.0f * PhysicalPixelRate;
 												paint.IsAntialias = true;
-												paint.Color = ToSKColor(Color.White);
-												paint.TextAlign = SKTextAlign.Center;
-												paint.Typeface = Font;
-
-												var CenterAngle = (StartAngle + NextAngle) / 2.0f;
-												var HalfRadius = Radius / 2.0f;
-												var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
-
-												if (!String.IsNullOrWhiteSpace(Pie.Text))
+												paint.Color = ToSKColor(Pie.Color);
+												paint.StrokeCap = SKStrokeCap.Round;
+												using (var path = new SKPath())
 												{
-													canvas.DrawText
-													(
-														Pie.Text,
-														TextCenter.X,
-														TextCenter.Y - (paint.TextSize / 2.0f),
-														paint
-													);
-												}
-												if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
-												{
-													canvas.DrawText
-													(
-														Pie.DisplayVolume,
-														TextCenter.X,
-														TextCenter.Y + (paint.TextSize / 2.0f),
-														paint
-													);
+													paint.TextSize = 14.0f * PhysicalPixelRate;
+													paint.IsAntialias = true;
+													paint.Color = ToSKColor(Color.White);
+													paint.TextAlign = SKTextAlign.Center;
+													paint.Typeface = Font;
+
+													var CenterAngle = (StartAngle + NextAngle) / 2.0f;
+													var HalfRadius = Radius / 2.0f;
+													var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
+
+													if (!String.IsNullOrWhiteSpace(Pie.Text))
+													{
+														canvas.DrawText
+														(
+															Pie.Text,
+															TextCenter.X,
+															TextCenter.Y - (paint.TextSize / 2.0f),
+															paint
+														);
+													}
+													if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+													{
+														canvas.DrawText
+														(
+															Pie.DisplayVolume,
+															TextCenter.X,
+															TextCenter.Y + (paint.TextSize / 2.0f),
+															paint
+														);
+													}
 												}
 											}
 										}
+										StartAngle = NextAngle;
 									}
-									StartAngle = NextAngle;
 								}
 							}
 						}
 					}
+					var ImageData = surface.Snapshot().Encode();
+					Image.Source = ImageSource.FromStream(() => ImageData.AsStream());
 				}
-				var ImageData = surface.Snapshot().Encode();
-				Image.Source = ImageSource.FromStream(() => ImageData.AsStream());
 			}
 		}
 
