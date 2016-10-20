@@ -217,15 +217,23 @@ namespace keep.grass
 				Radius * (float)Math.Sin(DegreeToRadian(Angle))
 			);
 		}
-		public void Update()
+        public virtual float GetPhysicalPixelRate()
+        {
+            return 4.0f; // この数字は適当。本来はちゃんとデバイスごとの物理解像度/論理解像度を取得するべき
+        }
+        public virtual SKColorType GetDeviceColorType()
+        {
+            return SKColorType.Rgba8888;
+        }
+        public void Update()
 		{
 			if (null != Image)
 			{
-				var PhysicalPixelRate = 4.0f; // 数字は適当。本来はちゃんとデバイスの
+				var PhysicalPixelRate = GetPhysicalPixelRate();
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
 				var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
 				var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
-				using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, SKColorType.Rgba8888, SKAlphaType.Premul))
+				using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, GetDeviceColorType(), SKAlphaType.Premul))
 				{
 					var canvas = surface.Canvas;
 					if (null == Pies || !Pies.Any())
@@ -353,7 +361,14 @@ namespace keep.grass
 						}
 					}
 					var ImageData = surface.Snapshot().Encode();
-					Image.Source = ImageSource.FromStream(() => ImageData.AsStream());
+
+                    Device.BeginInvokeOnMainThread
+                    (
+                        () =>
+                        {
+                            Image.Source = ImageSource.FromStream(() => ImageData.AsStream());
+                        }
+                    );
 				}
 			}
 		}
