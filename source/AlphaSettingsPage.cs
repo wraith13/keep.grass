@@ -89,6 +89,7 @@ namespace keep.grass
 							{
 								new TableView
 								{
+									BackgroundColor = Color.White,
 									Root = new TableRoot
 									{
 										new TableSection(L["Github Account"])
@@ -103,6 +104,7 @@ namespace keep.grass
 								},
 								new TableView
 								{
+									BackgroundColor = Color.White,
 									Root = new TableRoot
 									{
 										new TableSection(L["Notifications"])
