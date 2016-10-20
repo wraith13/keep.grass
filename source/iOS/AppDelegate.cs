@@ -37,7 +37,6 @@ namespace keep.grass.iOS
 			if (null == App)
 			{
 				global::Xamarin.Forms.Forms.Init();
-				global::OxyPlot.Xamarin.Forms.Platform.iOS.PlotViewRenderer.Init();
 				ImageCircleRenderer.Init();
 				OmegaFactory.MakeSureInit();
 				App = AlphaFactory.MakeSureApp();

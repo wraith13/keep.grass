@@ -101,18 +101,6 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="OxyPlot">
-      <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable1983\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\OxyPlot.dll</HintPath>
-    </Reference>
-    <Reference Include="OxyPlot.Xamarin.iOS">
-      <HintPath>..\packages\OxyPlot.Xamarin.iOS.1.0.0-unstable1983\lib\Xamarin.iOS10\OxyPlot.Xamarin.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="OxyPlot.Xamarin.Forms">
-      <HintPath>..\packages\OxyPlot.Xamarin.Forms.1.0.0-unstable1983\lib\Xamarin.iOS10\OxyPlot.Xamarin.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="OxyPlot.Xamarin.Forms.Platform.iOS">
-      <HintPath>..\packages\OxyPlot.Xamarin.Forms.1.0.0-unstable1983\lib\Xamarin.iOS10\OxyPlot.Xamarin.Forms.Platform.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="SkiaSharp">
       <HintPath>..\packages\SkiaSharp.1.54.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
     </Reference>
