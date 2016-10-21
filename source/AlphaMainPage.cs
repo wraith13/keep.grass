@@ -271,6 +271,15 @@ namespace keep.grass
 			UpdateLeftTimeTask = null;
 		}
 
+		public Color MakeLeftTimeColor(TimeSpan LeftTime)
+		{
+			double LeftTimeRate = Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours / 24.0));
+			byte red = (byte)(255.0 * (1.0 - LeftTimeRate));
+			byte green = (byte)(255.0 * Math.Min(0.5, LeftTimeRate));
+			byte blue = 0;
+			return  Color.FromRgb(red, green, blue);
+		}
+
 #if WITH_PROGRESSBAR
 		protected async void UpdateLeftTime()
 #else
@@ -284,12 +293,7 @@ namespace keep.grass
 #if WITH_PROGRESSBAR
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
 #endif
-
-				double LeftTimeRate = Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours /24.0));
-				byte red = (byte)(255.0 * (1.0 - LeftTimeRate));
-				byte green = (byte)(255.0 *Math.Min(0.5, LeftTimeRate));
-				byte blue = 0;
-				var LeftTimeColor = Color.FromRgb(red, green, blue);
+				var LeftTimeColor = MakeLeftTimeColor(LeftTime);
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
