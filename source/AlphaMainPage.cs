@@ -201,6 +201,7 @@ namespace keep.grass
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 
+			CircleGraph.SetStartAngle(0.0f);
 			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
 		}
 		public IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
@@ -292,6 +293,7 @@ namespace keep.grass
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
+				CircleGraph.SetStartAngle((float)((Domain.LastPublicActivity.TimeOfDay.Ticks *360) /TimeSpan.FromDays(1).Ticks));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
 			}
 			else

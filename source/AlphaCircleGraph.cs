@@ -25,6 +25,8 @@ namespace keep.grass
 	public interface VoidCircleGraph
 	{
 		IEnumerable<VoidPie> Data { get; set; }
+		void SetStartAngle(float NewStartAngle);
+
 		void Build(double Width, double Height);
 		void Update();
 		View AsView();
@@ -151,6 +153,7 @@ namespace keep.grass
 	}
 	public class AlphaCircleGraph :VoidCircleGraph
 	{
+		float StartAngle = 0.0f;
 		IEnumerable<VoidPie> Pies;
 		double GraphSize;
 		Image Image;
@@ -225,6 +228,18 @@ namespace keep.grass
         {
             return SKColorType.Rgba8888;
         }
+		public double GetTotalVolume()
+		{
+			return Pies.Select(Pie => Pie.Volume).Sum();
+		}
+		public float GetStartAngle()
+		{
+			return StartAngle - 90.0f;
+		}
+		public void SetStartAngle(float NewStartAngle)
+		{
+			StartAngle = NewStartAngle;
+		}
         public void Update()
 		{
 			if (null != Image)
@@ -253,12 +268,12 @@ namespace keep.grass
 					}
 					else
 					{
-						var VolumeTotal = Pies.Select(Pie => Pie.Volume).Sum();
-						var StartAngle = -90.0f;
+						var TotalVolume = GetTotalVolume();
+						var CurrentAngle = GetStartAngle();
 						foreach (var Pie in Pies)
 						{
-							var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-							var NextAngle = StartAngle + CurrentAngle;
+							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+							var NextAngle = CurrentAngle + CurrentAngleVolume;
 							using (var paint = new SKPaint())
 							{
 								paint.IsAntialias = true;
@@ -266,23 +281,23 @@ namespace keep.grass
 								paint.StrokeCap = SKStrokeCap.Round;
 								using (var path = new SKPath())
 								{
-									path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), StartAngle, CurrentAngle);
+									path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
 									path.MoveTo(Center);
-									path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
 									path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
 									path.LineTo(Center);
 									path.Close();
 									canvas.DrawPath(path, paint);
 								}
 							}
-							StartAngle = NextAngle;
+							CurrentAngle = NextAngle;
 						}
 
-						StartAngle = -90.0f;
+						CurrentAngle = GetStartAngle();
 						foreach (var Pie in Pies)
 						{
-							var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-							var NextAngle = StartAngle + CurrentAngle;
+							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+							var NextAngle = CurrentAngle + CurrentAngleVolume;
 							using (var paint = new SKPaint())
 							{
 								paint.IsAntialias = true;
@@ -293,15 +308,15 @@ namespace keep.grass
 								using (var path = new SKPath())
 								{
 									path.MoveTo(Center);
-									path.LineTo(Center + AngleRadiusToPoint(StartAngle, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
 									path.Close();
 									canvas.DrawPath(path, paint);
 								}
 							}
-							StartAngle = NextAngle;
+							CurrentAngle = NextAngle;
 						}
 
-						StartAngle = -90.0f;
+						CurrentAngle = GetStartAngle();
 						using (var FontSource = AlphaFactory.GetApp().GetFontStream())
 						{
 							using (var FontStream = new SKManagedStream(FontSource))
@@ -310,8 +325,8 @@ namespace keep.grass
 								{
 									foreach (var Pie in Pies)
 									{
-										var CurrentAngle = (float)((Pie.Volume / VolumeTotal) * 360.0);
-										var NextAngle = StartAngle + CurrentAngle;
+										var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+										var NextAngle = CurrentAngle + CurrentAngleVolume;
 										if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 										{
 											using (var paint = new SKPaint())
@@ -327,7 +342,7 @@ namespace keep.grass
 													paint.TextAlign = SKTextAlign.Center;
 													paint.Typeface = Font;
 
-													var CenterAngle = (StartAngle + NextAngle) / 2.0f;
+													var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
 													var HalfRadius = Radius / 2.0f;
 													var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
 
@@ -354,7 +369,7 @@ namespace keep.grass
 												}
 											}
 										}
-										StartAngle = NextAngle;
+										CurrentAngle = NextAngle;
 									}
 								}
 							}
