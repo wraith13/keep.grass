@@ -4,13 +4,7 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 
-#if USE_OXYPLOT
-using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Xamarin.Forms;
-#else
 using SkiaSharp;
-#endif
 
 
 namespace keep.grass
@@ -51,95 +45,6 @@ namespace keep.grass
 			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
 	}
-#if USE_OXYPLOT
-	public class AlphaCircleGraph :VoidCircleGraph
-	{
-		IEnumerable<VoidPie> Pies;
-
-		PieSeries Pie;
-		PlotView GraphView;
-		Grid GrahpFrame;
-
-		public AlphaCircleGraph()
-		{
-		}
-		public PieSlice[] MakeSlices()
-		{
-			return (Pies ?? new VoidPie[] { })
-			.Select
-			(
-				p => new PieSlice
-				(
-					p.Text,
-					p.Volume
-				)
-				{
-					Fill = p.Color.ToOxyColor(),
-				}
-			).ToArray();
-
-		}
-		public void Build(double Width, double Height)
-		{
-			var GraphSize = new[] { Width, Height }.Min() * 0.6;
-			Pie = new PieSeries
-			{
-				TextColor = OxyColors.White,
-				StrokeThickness = 1.0,
-				StartAngle = 270,
-				AngleSpan = 360,
-				Slices = MakeSlices(),
-			};
-			GraphView = new PlotView
-			{
-				BackgroundColor = Color.White,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				WidthRequest = GraphSize,
-				HeightRequest = GraphSize,
-				Margin = new Thickness(24.0),
-				Model = new OxyPlot.PlotModel
-				{
-					Series =
-					{
-						Pie,
-					},
-				},
-			};
-			GrahpFrame = new Grid().HorizontalJustificate
-			(
-				GraphView
-			);
-			GrahpFrame.BackgroundColor = Color.White;
-			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
-		}
-
-		public IEnumerable<VoidPie> Data
-		{
-			get
-			{
-				return Pies;
-			}
-
-			set
-			{
-				Pies = value;
-				Pie.Slices = MakeSlices();
-				Update();
-			}
-		}
-
-		public void Update()
-		{
-			GraphView.Model.InvalidatePlot(true);
-		}
-
-		public View AsView()
-		{
-			return GrahpFrame;
-		}
-	}
-#else
 	public static class SkiaUtil
 	{
 		public static void MoveTo(this SKPath Path, SKPoint Point)
@@ -393,5 +298,4 @@ namespace keep.grass
 			return GrahpFrame;
 		}
 	}
-#endif
 }
