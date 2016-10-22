@@ -66,6 +66,7 @@ namespace keep.grass
 	}
 	public class AlphaCircleGraph :VoidCircleGraph
 	{
+		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		double GraphSize;
 		float Margin = 24.0f;
@@ -136,7 +137,7 @@ namespace keep.grass
 		}
 		private float GetStartAngle()
 		{
-			return StartAngle - 90.0f;
+			return StartAngle +OriginAngle;
 		}
 		public void SetStartAngle(float NewStartAngle)
 		{
@@ -245,7 +246,7 @@ namespace keep.grass
 													paint.Typeface = Font;
 
 													var TextRadius = Radius +paint.TextSize;
-													var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle -90.0f, TextRadius);
+													var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle +OriginAngle, TextRadius);
 
 													canvas.DrawText
 													(
