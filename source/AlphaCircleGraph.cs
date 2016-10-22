@@ -45,6 +45,11 @@ namespace keep.grass
 			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
 	}
+	public class CircleGraphSatelliteText
+	{
+		public string Text { get; set; }
+		public float Angle { get; set; }
+	}
 	public static class SkiaUtil
 	{
 		public static void MoveTo(this SKPath Path, SKPoint Point)
