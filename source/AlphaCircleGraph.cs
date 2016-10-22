@@ -16,10 +16,18 @@ namespace keep.grass
 		Color Color { get; }
 		string DisplayVolume { get; }
 	}
+	public class CircleGraphSatelliteText
+	{
+		public string Text { get; set; }
+		public Color Color { get; set; }
+		public float Angle { get; set; }
+	}
 	public interface VoidCircleGraph
 	{
 		IEnumerable<VoidPie> Data { get; set; }
 		void SetStartAngle(float NewStartAngle);
+
+		IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 
 		void Build(double Width, double Height);
 		void Update();
@@ -45,11 +53,6 @@ namespace keep.grass
 			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
 	}
-	public class CircleGraphSatelliteText
-	{
-		public string Text { get; set; }
-		public float Angle { get; set; }
-	}
 	public static class SkiaUtil
 	{
 		public static void MoveTo(this SKPath Path, SKPoint Point)
@@ -64,8 +67,8 @@ namespace keep.grass
 	public class AlphaCircleGraph :VoidCircleGraph
 	{
 		float StartAngle = 0.0f;
-		IEnumerable<VoidPie> Pies;
 		double GraphSize;
+		float Margin = 24.0f;
 		Image Image;
 		Grid GrahpFrame;
 
@@ -74,10 +77,10 @@ namespace keep.grass
 		}
 		public void Build(double Width, double Height)
 		{
-			GraphSize = new[] { Width, Height }.Min() * 0.6;
+			GraphSize = (new[] { Width, Height }.Min() * 0.6) +(Margin *2.0f);
 			Image = new Image()
 			{
-				Margin = new Thickness(24),
+				Margin = new Thickness(0),
 				WidthRequest = GraphSize,
 				HeightRequest = GraphSize,
 				BackgroundColor = Color.White,
@@ -94,19 +97,8 @@ namespace keep.grass
 			Update();
 		}
 
-		public IEnumerable<VoidPie> Data
-		{
-			get
-			{
-				return Pies;
-			}
-
-			set
-			{
-				Pies = value;
-				Update();
-			}
-		}
+		public IEnumerable<VoidPie> Data { get; set; }
+		public IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 
 		public static SKColor ToSKColor(Color c)
 		{
@@ -140,9 +132,9 @@ namespace keep.grass
         }
 		public double GetTotalVolume()
 		{
-			return Pies.Select(Pie => Pie.Volume).Sum();
+			return Data.Select(Pie => Pie.Volume).Sum();
 		}
-		public float GetStartAngle()
+		private float GetStartAngle()
 		{
 			return StartAngle - 90.0f;
 		}
@@ -156,12 +148,12 @@ namespace keep.grass
 			{
 				var PhysicalPixelRate = GetPhysicalPixelRate();
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-				var Radius = (DrawGraphSize / 2.0f);// /1.6180339887f; // 1.6180339887f は黄金比 
+				var Radius = (DrawGraphSize / 2.0f) -(Margin *PhysicalPixelRate);
 				var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
 				using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, GetDeviceColorType(), SKAlphaType.Premul))
 				{
 					var canvas = surface.Canvas;
-					if (null == Pies || !Pies.Any())
+					if (null == Data || !Data.Any())
 					{
 						using (var paint = new SKPaint())
 						{
@@ -178,9 +170,10 @@ namespace keep.grass
 					}
 					else
 					{
+						//	パイ本体の描画
 						var TotalVolume = GetTotalVolume();
 						var CurrentAngle = GetStartAngle();
-						foreach (var Pie in Pies)
+						foreach (var Pie in Data)
 						{
 							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
 							var NextAngle = CurrentAngle + CurrentAngleVolume;
@@ -203,8 +196,9 @@ namespace keep.grass
 							CurrentAngle = NextAngle;
 						}
 
+						//	セパレーターの描画
 						CurrentAngle = GetStartAngle();
-						foreach (var Pie in Pies)
+						foreach (var Pie in Data)
 						{
 							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
 							var NextAngle = CurrentAngle + CurrentAngleVolume;
@@ -233,7 +227,40 @@ namespace keep.grass
 							{
 								using (var Font = SKTypeface.FromStream(FontStream))
 								{
-									foreach (var Pie in Pies)
+									//	周辺テキストの描画
+									if (null != SatelliteTexts)
+									{
+										foreach(var SatelliteText in SatelliteTexts)
+										{
+											if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
+											{
+												using (var paint = new SKPaint())
+												{
+													paint.IsAntialias = true;
+													paint.Color = ToSKColor(SatelliteText.Color);
+													paint.StrokeCap = SKStrokeCap.Round;
+													paint.TextSize = 14.0f * PhysicalPixelRate;
+													paint.IsAntialias = true;
+													paint.TextAlign = SKTextAlign.Center;
+													paint.Typeface = Font;
+
+													var TextRadius = Radius +paint.TextSize;
+													var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle -90.0f, TextRadius);
+
+													canvas.DrawText
+													(
+														SatelliteText.Text,
+														TextCenter.X,
+														TextCenter.Y + (paint.TextSize / 2.0f),
+														paint
+													);
+												}
+											}
+										}
+									}
+
+									//	パイ・テキストの描画
+									foreach (var Pie in Data)
 									{
 										var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
 										var NextAngle = CurrentAngle + CurrentAngleVolume;
@@ -242,7 +269,6 @@ namespace keep.grass
 											using (var paint = new SKPaint())
 											{
 												paint.IsAntialias = true;
-												paint.Color = ToSKColor(Pie.Color);
 												paint.StrokeCap = SKStrokeCap.Round;
 												using (var path = new SKPath())
 												{

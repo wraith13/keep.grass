@@ -203,6 +203,16 @@ namespace keep.grass
 
 			CircleGraph.SetStartAngle(0.0f);
 			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
+			CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
+			(
+				i => new CircleGraphSatelliteText
+				{
+					Text = i.ToString(),
+					Color = Color.Gray,
+					Angle = 360.0f *((float)(i) /24.0f),
+				}
+			);
+			CircleGraph.Update();
 		}
 		public IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
@@ -288,7 +298,10 @@ namespace keep.grass
 		{
 			if (default(DateTime) != Domain.LastPublicActivity)
 			{
-				var LeftTime = Domain.LastPublicActivity.AddHours(24) - DateTime.Now;
+				var Now = DateTime.Now;
+				var Today = Now.Date;
+				var LimitTime = Domain.LastPublicActivity.AddHours(24);
+				var LeftTime = LimitTime - Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 #if WITH_PROGRESSBAR
 				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
@@ -299,6 +312,34 @@ namespace keep.grass
 
 				CircleGraph.SetStartAngle((float)((Domain.LastPublicActivity.TimeOfDay.Ticks *360) /TimeSpan.FromDays(1).Ticks));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
+				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
+				(
+					i => new
+					{
+						Hour = i,
+						Time = Today +TimeSpan.FromHours(i),
+					}
+				)
+				.Select
+				(
+					i => new
+					{
+						Hour = i.Hour,
+			            Time = i.Time.Ticks < Domain.LastPublicActivity.Ticks ? i.Time +TimeSpan.FromDays(1): i.Time,
+					}
+				)
+				.Select
+				(
+					i => new CircleGraphSatelliteText
+					{
+						Text = i.Hour.ToString(),
+						Color = i.Time.Ticks < Now.Ticks ?
+		             		Color.Gray:
+							MakeLeftTimeColor(LimitTime -i.Time),
+						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
+					}
+				);
+				CircleGraph.Update();
 			}
 			else
 			{
