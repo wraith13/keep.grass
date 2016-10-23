@@ -195,13 +195,17 @@ namespace keep.grass
 				ClearActiveInfo();
 			}
 		}
+		public static float TimeToAngle(DateTime Time)
+		{
+			return (float)((Time.TimeOfDay.Ticks * 360) / TimeSpan.FromDays(1).Ticks);
+		}
 		public void ClearActiveInfo()
 		{
 			Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 
-			CircleGraph.SetStartAngle(0.0f);
+			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
 			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
 			CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
 			(
@@ -310,7 +314,7 @@ namespace keep.grass
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
-				CircleGraph.SetStartAngle((float)((Domain.LastPublicActivity.TimeOfDay.Ticks *360) /TimeSpan.FromDays(1).Ticks));
+				CircleGraph.SetStartAngle(TimeToAngle(Domain.LastPublicActivity));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
 				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
 				(
