@@ -104,6 +104,12 @@
     <Reference Include="SkiaSharp">
       <HintPath>..\packages\SkiaSharp.1.54.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
     </Reference>
+    <Reference Include="SkiaSharp.Views.iOS">
+      <HintPath>..\packages\SkiaSharp.Views.1.54.1-beta1\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.54.1-beta1\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\keep.grass.csproj">
