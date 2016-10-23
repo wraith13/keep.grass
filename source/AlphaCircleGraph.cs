@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 
 using SkiaSharp;
-
+using SkiaSharp.Views.Forms;
 
 namespace keep.grass
 {
@@ -64,22 +64,40 @@ namespace keep.grass
 			Path.LineTo(Point.X, Point.Y);
 		}
 	}
-	public class AlphaCircleGraph :VoidCircleGraph
+	public class AlphaCircleGraph :VoidCircleGraph, IDisposable
 	{
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		double GraphSize;
-		float Margin = 24.0f;
-		Image Image;
+		float Margin = 30.0f;
 		Grid GrahpFrame;
+		AlphaCircleGraphView CanvasView;
+
+		System.IO.Stream FontSource;
+		SKManagedStream FontStream;
+		SKTypeface Font;
 
 		public AlphaCircleGraph()
 		{
+			//	※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
+			FontSource = AlphaFactory.GetApp().GetFontStream();
+			FontStream = new SKManagedStream(FontSource);
+			Font = SKTypeface.FromStream(FontStream);
 		}
+		public void Dispose()
+		{
+			Font?.Dispose();
+			Font = null;
+			FontStream?.Dispose();
+			FontStream = null;
+			FontSource?.Dispose();
+			FontSource = null;
+		}
+
 		public void Build(double Width, double Height)
 		{
 			GraphSize = (new[] { Width, Height }.Min() * 0.6) +(Margin *2.0f);
-			Image = new Image()
+			CanvasView = new AlphaCircleGraphView(this)
 			{
 				Margin = new Thickness(0),
 				WidthRequest = GraphSize,
@@ -90,7 +108,7 @@ namespace keep.grass
 			};
 			GrahpFrame = new Grid().HorizontalJustificate
 			(
-				Image
+				CanvasView
 			);
 			GrahpFrame.BackgroundColor = Color.White;
 			GrahpFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
@@ -123,10 +141,6 @@ namespace keep.grass
 				Radius * (float)Math.Sin(DegreeToRadian(Angle))
 			);
 		}
-        public virtual float GetPhysicalPixelRate()
-        {
-            return 4.0f; // この数字は適当。本来はちゃんとデバイスごとの物理解像度/論理解像度を取得するべき
-        }
         public virtual SKColorType GetDeviceColorType()
         {
             return SKColorType.Rgba8888;
@@ -145,182 +159,173 @@ namespace keep.grass
 		}
         public void Update()
 		{
-			if (null != Image)
+			if (null != CanvasView)
 			{
-				var PhysicalPixelRate = GetPhysicalPixelRate();
-				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-				var Radius = (DrawGraphSize / 2.0f) -(Margin *PhysicalPixelRate);
-				var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
-				using (var surface = SKSurface.Create((int)DrawGraphSize, (int)DrawGraphSize, GetDeviceColorType(), SKAlphaType.Premul))
+				CanvasView.InvalidateSurface();
+			}
+		}
+
+		public void Draw(SKCanvas canvas)
+		{
+			canvas.Clear();
+			SKRect rect;
+			canvas.GetClipBounds(ref rect);
+			var PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
+			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
+			var Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
+			var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+
+			if (null == Data || !Data.Any())
+			{
+				using (var paint = new SKPaint())
 				{
-					var canvas = surface.Canvas;
-					if (null == Data || !Data.Any())
+					paint.IsAntialias = true;
+					paint.Color = ToSKColor(Color.Gray);
+					paint.StrokeCap = SKStrokeCap.Round;
+					using (var path = new SKPath())
+					{
+						path.AddCircle(Center.X, Center.Y, Radius);
+						path.Close();
+						canvas.DrawPath(path, paint);
+					}
+				}
+			}
+			else
+			{
+				//	パイ本体の描画
+				var TotalVolume = GetTotalVolume();
+				var CurrentAngle = GetStartAngle();
+				foreach (var Pie in Data)
+				{
+					var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+					var NextAngle = CurrentAngle + CurrentAngleVolume;
+					using (var paint = new SKPaint())
+					{
+						paint.IsAntialias = true;
+						paint.Color = ToSKColor(Pie.Color);
+						paint.StrokeCap = SKStrokeCap.Round;
+						using (var path = new SKPath())
+						{
+							path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
+							path.MoveTo(Center);
+							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+							path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+							path.LineTo(Center);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+					}
+					CurrentAngle = NextAngle;
+				}
+
+				//	セパレーターの描画
+				CurrentAngle = GetStartAngle();
+				foreach (var Pie in Data)
+				{
+					var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+					var NextAngle = CurrentAngle + CurrentAngleVolume;
+					using (var paint = new SKPaint())
+					{
+						paint.IsAntialias = true;
+						paint.Color = ToSKColor(Color.White);
+						paint.StrokeCap = SKStrokeCap.Round;
+						paint.IsStroke = true;
+						paint.StrokeWidth = PhysicalPixelRate;
+						using (var path = new SKPath())
+						{
+							path.MoveTo(Center);
+							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+					}
+					CurrentAngle = NextAngle;
+				}
+
+				CurrentAngle = GetStartAngle();
+				//	周辺テキストの描画
+				if (null != SatelliteTexts)
+				{
+					foreach (var SatelliteText in SatelliteTexts)
+					{
+						if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
+						{
+							using (var paint = new SKPaint())
+							{
+								paint.IsAntialias = true;
+								paint.Color = ToSKColor(SatelliteText.Color);
+								paint.StrokeCap = SKStrokeCap.Round;
+								paint.TextSize = 14.0f * PhysicalPixelRate;
+								paint.IsAntialias = true;
+								paint.TextAlign = SKTextAlign.Center;
+								paint.Typeface = Font;
+
+								var TextRadius = Radius + paint.TextSize;
+								var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle + OriginAngle, TextRadius);
+
+								canvas.DrawText
+								(
+									SatelliteText.Text,
+									TextCenter.X,
+									TextCenter.Y + (paint.TextSize / 2.0f),
+									paint
+								);
+								
+								paint.Typeface = null;
+							}
+						}
+					}
+				}
+
+				//	パイ・テキストの描画
+				foreach (var Pie in Data)
+				{
+					var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+					var NextAngle = CurrentAngle + CurrentAngleVolume;
+					if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 					{
 						using (var paint = new SKPaint())
 						{
 							paint.IsAntialias = true;
-							paint.Color = ToSKColor(Color.Gray);
 							paint.StrokeCap = SKStrokeCap.Round;
 							using (var path = new SKPath())
 							{
-								path.AddCircle(Center.X, Center.Y, Radius);
-								path.Close();
-								canvas.DrawPath(path, paint);
-							}
-						}
-					}
-					else
-					{
-						//	パイ本体の描画
-						var TotalVolume = GetTotalVolume();
-						var CurrentAngle = GetStartAngle();
-						foreach (var Pie in Data)
-						{
-							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
-							var NextAngle = CurrentAngle + CurrentAngleVolume;
-							using (var paint = new SKPaint())
-							{
-								paint.IsAntialias = true;
-								paint.Color = ToSKColor(Pie.Color);
-								paint.StrokeCap = SKStrokeCap.Round;
-								using (var path = new SKPath())
-								{
-									path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
-									path.MoveTo(Center);
-									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-									path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
-									path.LineTo(Center);
-									path.Close();
-									canvas.DrawPath(path, paint);
-								}
-							}
-							CurrentAngle = NextAngle;
-						}
-
-						//	セパレーターの描画
-						CurrentAngle = GetStartAngle();
-						foreach (var Pie in Data)
-						{
-							var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
-							var NextAngle = CurrentAngle + CurrentAngleVolume;
-							using (var paint = new SKPaint())
-							{
+								paint.TextSize = 14.0f * PhysicalPixelRate;
 								paint.IsAntialias = true;
 								paint.Color = ToSKColor(Color.White);
-								paint.StrokeCap = SKStrokeCap.Round;
-								paint.IsStroke = true;
-								paint.StrokeWidth = PhysicalPixelRate;
-								using (var path = new SKPath())
+								paint.TextAlign = SKTextAlign.Center;
+								paint.Typeface = Font;
+
+								var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
+								var HalfRadius = Radius / 2.0f;
+								var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
+
+								if (!String.IsNullOrWhiteSpace(Pie.Text))
 								{
-									path.MoveTo(Center);
-									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-									path.Close();
-									canvas.DrawPath(path, paint);
+									canvas.DrawText
+									(
+										Pie.Text,
+										TextCenter.X,
+										TextCenter.Y - (paint.TextSize / 2.0f),
+										paint
+									);
 								}
-							}
-							CurrentAngle = NextAngle;
-						}
-
-						CurrentAngle = GetStartAngle();
-						using (var FontSource = AlphaFactory.GetApp().GetFontStream())
-						{
-							using (var FontStream = new SKManagedStream(FontSource))
-							{
-								using (var Font = SKTypeface.FromStream(FontStream))
+								if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 								{
-									//	周辺テキストの描画
-									if (null != SatelliteTexts)
-									{
-										foreach(var SatelliteText in SatelliteTexts)
-										{
-											if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
-											{
-												using (var paint = new SKPaint())
-												{
-													paint.IsAntialias = true;
-													paint.Color = ToSKColor(SatelliteText.Color);
-													paint.StrokeCap = SKStrokeCap.Round;
-													paint.TextSize = 14.0f * PhysicalPixelRate;
-													paint.IsAntialias = true;
-													paint.TextAlign = SKTextAlign.Center;
-													paint.Typeface = Font;
-
-													var TextRadius = Radius +paint.TextSize;
-													var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle +OriginAngle, TextRadius);
-
-													canvas.DrawText
-													(
-														SatelliteText.Text,
-														TextCenter.X,
-														TextCenter.Y + (paint.TextSize / 2.0f),
-														paint
-													);
-												}
-											}
-										}
-									}
-
-									//	パイ・テキストの描画
-									foreach (var Pie in Data)
-									{
-										var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
-										var NextAngle = CurrentAngle + CurrentAngleVolume;
-										if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
-										{
-											using (var paint = new SKPaint())
-											{
-												paint.IsAntialias = true;
-												paint.StrokeCap = SKStrokeCap.Round;
-												using (var path = new SKPath())
-												{
-													paint.TextSize = 14.0f * PhysicalPixelRate;
-													paint.IsAntialias = true;
-													paint.Color = ToSKColor(Color.White);
-													paint.TextAlign = SKTextAlign.Center;
-													paint.Typeface = Font;
-
-													var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
-													var HalfRadius = Radius / 2.0f;
-													var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
-
-													if (!String.IsNullOrWhiteSpace(Pie.Text))
-													{
-														canvas.DrawText
-														(
-															Pie.Text,
-															TextCenter.X,
-															TextCenter.Y - (paint.TextSize / 2.0f),
-															paint
-														);
-													}
-													if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
-													{
-														canvas.DrawText
-														(
-															Pie.DisplayVolume,
-															TextCenter.X,
-															TextCenter.Y + (paint.TextSize / 2.0f),
-															paint
-														);
-													}
-												}
-											}
-										}
-										CurrentAngle = NextAngle;
-									}
+									canvas.DrawText
+									(
+										Pie.DisplayVolume,
+										TextCenter.X,
+										TextCenter.Y + (paint.TextSize / 2.0f),
+										paint
+									);
 								}
+
+								paint.Typeface = null;
 							}
 						}
 					}
-					var ImageData = surface.Snapshot().Encode();
-
-                    Device.BeginInvokeOnMainThread
-                    (
-                        () =>
-                        {
-                            Image.Source = ImageSource.FromStream(() => ImageData.AsStream());
-                        }
-                    );
+					CurrentAngle = NextAngle;
 				}
 			}
 		}
@@ -329,5 +334,19 @@ namespace keep.grass
 		{
 			return GrahpFrame;
 		}
+	}
+
+	class AlphaCircleGraphView : SKCanvasView
+	{
+		private AlphaCircleGraph Owner;
+		public AlphaCircleGraphView(AlphaCircleGraph aOwner)
+		{
+			Owner = aOwner;
+		}
+		protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
+		{
+			Owner.Draw(e.Surface.Canvas);
+		}
+
 	}
 }
