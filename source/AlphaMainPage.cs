@@ -230,15 +230,15 @@ namespace keep.grass
 				{
 					new TimePie
 					{
-						Text = L["Elapsed Time"],
-						Value = JustifiedElapsedTime,
-						Color = Color.FromRgb(0xAA, 0xAA, 0xAA),
-					},
-					new TimePie
-					{
 						Text = L["Left Time"],
 						Value = JustifiedLeftTime,
 						Color = LeftTimeColor,
+					},
+					new TimePie
+					{
+						Text = L["Elapsed Time"],
+						Value = JustifiedElapsedTime,
+						Color = Color.FromRgb(0xAA, 0xAA, 0xAA),
 					},
 				};
 			}
@@ -248,15 +248,15 @@ namespace keep.grass
 				{
 					new TimePie
 					{
-						Text = L["Elapsed Time"],
-						Value = TimeSpan.FromDays(1),
-						Color = Color.FromRgb(0xEE, 0x11, 0x11),
-					},
-					new TimePie
-					{
 						Text = L["Left Time"],
 						Value = TimeSpan.FromTicks(0),
 						Color = Color.FromRgb(0xD6, 0xE6, 0x85),
+					},
+					new TimePie
+					{
+						Text = L["Elapsed Time"],
+						Value = TimeSpan.FromDays(1),
+						Color = Color.FromRgb(0xEE, 0x11, 0x11),
 					},
 				};
 			}
@@ -314,7 +314,7 @@ namespace keep.grass
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
-				CircleGraph.SetStartAngle(TimeToAngle(Domain.LastPublicActivity));
+				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
 				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
 				(
@@ -337,9 +337,11 @@ namespace keep.grass
 					i => new CircleGraphSatelliteText
 					{
 						Text = i.Hour.ToString(),
-						Color = i.Time.Ticks < Now.Ticks ?
-		             		Color.Gray:
-							MakeLeftTimeColor(LimitTime -i.Time),
+						Color = LeftTime.Ticks <= 0 ?
+	                		MakeLeftTimeColor(LeftTime):
+							i.Time.Ticks < Now.Ticks ?
+		             			Color.Gray:
+								MakeLeftTimeColor(LimitTime -i.Time),
 						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
 					}
 				);
