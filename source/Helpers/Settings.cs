@@ -89,11 +89,20 @@ namespace keep.grass.Helpers
 		{
 			get
 			{
-				return AppSettings.GetValueOrDefault<DateTime>(LastPublicActivityKey, LastPublicActivityDefault);
+				var value = AppSettings.GetValueOrDefault<DateTime>(LastPublicActivityKey, LastPublicActivityDefault);
+				return value == LastPublicActivityDefault ?
+					value:
+					value.ToLocalTime();
 			}
 			set
 			{
-				AppSettings.AddOrUpdateValue<DateTime>(LastPublicActivityKey, value);
+				AppSettings.AddOrUpdateValue<DateTime>
+	           	(
+	           		LastPublicActivityKey,
+					value == LastPublicActivityDefault ?
+		           		value:
+			           	value.ToUniversalTime()
+	          	);
 			}
 		}
 
