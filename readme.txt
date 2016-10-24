@@ -21,7 +21,8 @@
 　→リリース用パッケージを作成するバッチファイル。
 
 ■.\LICENSE_1_0.txt
-　→このソフトウェアで採用しているライセンス
+　→このソフトウェア本体で採用しているライセンス。
+　→このソフトウェアが利用してる各種プラグイン等のライセンスはそれぞれで採用されているライセンスとなります。
 
 ■.\source
 　→ ソースディレクトリです。
@@ -51,10 +52,6 @@ https://www.nuget.org/packages/Microsoft.Net.Http/
 https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Settings
 https://www.nuget.org/packages/Xam.Plugins.Settings/
 
-■Xam.Plugins.Notifier
-https://github.com/edsnider/Xamarin.Plugins
-https://www.nuget.org/packages/Xam.Plugins.Notifier/
-
 ■Xam.Plugins.Forms.ImageCircle
 https://github.com/jamesmontemagno/ImageCirclePlugin
 https://www.nuget.org/packages/Xam.Plugins.Forms.ImageCircle
@@ -63,6 +60,20 @@ https://www.nuget.org/packages/Xam.Plugins.Forms.ImageCircle
 https://github.com/WindowsNotifications/NotificationsExtensions
 https://www.nuget.org/packages/NotificationsExtensions.Win10
 → UWP 版でのみ使用
+
+■SkiaSharp(.Views.Forms)
+https://github.com/mono/SkiaSharp
+https://www.nuget.org/packages/SkiaSharp.Views.Forms/
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+■
+■  利用している フォント
+■
+
+■Noto Sans CJK jp Regular
+https://www.google.com/get/noto/help/cjk/
+→グラフ描画内のテキスト為に使用
 
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
