@@ -132,6 +132,9 @@ namespace keep.grass
 					},
 				};
 			}
+
+			OnUpdateLastPublicActivity();
+			UpdateLeftTime();
 		}
 
 		protected override void OnAppearing()
@@ -179,7 +182,10 @@ namespace keep.grass
 					UserLabel.ImageSource = GitHub.GetIconUrl(User);
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
-					ClearActiveInfo();
+					if (!Settings.IsValidUserName)
+					{
+						ClearActiveInfo();
+					}
 					await Domain.ManualUpdateLastPublicActivityAsync();
 				}
 				else
@@ -205,18 +211,7 @@ namespace keep.grass
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 
-			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
-			CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
-			CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
-			(
-				i => new CircleGraphSatelliteText
-				{
-					Text = i.ToString(),
-					Color = Color.Gray,
-					Angle = 360.0f *((float)(i) /24.0f),
-				}
-			);
-			CircleGraph.Update();
+			UpdateLeftTime();
 		}
 		public IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
@@ -300,6 +295,7 @@ namespace keep.grass
 		protected void UpdateLeftTime()
 #endif
 		{
+			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
 			if (default(DateTime) != Domain.LastPublicActivity)
 			{
 				var Now = DateTime.Now;
@@ -345,16 +341,27 @@ namespace keep.grass
 						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
 					}
 				);
-				CircleGraph.Update();
 			}
 			else
 			{
 				LeftTimeLabel.Text = "";
-				if (Settings.IsValidUserName)
+				/*if (Settings.IsValidUserName)
 				{
 					StopUpdateLeftTimeTask();
-				}
+				}*/
+
+				CircleGraph.Data = MakeSlices(TimeSpan.Zero, Color.Lime);
+				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
+				(
+					i => new CircleGraphSatelliteText
+					{
+						Text = i.ToString(),
+						Color = Color.Gray,
+						Angle = 360.0f * ((float)(i) / 24.0f),
+					}
+				);
 			}
+			CircleGraph.Update();
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
 	}
