@@ -44,6 +44,12 @@ namespace keep.grass.iOS
 			return App;
 		}
 
+		public override void WillEnterForeground(UIApplication uiApplication)
+		{
+			base.WillEnterForeground(uiApplication);
+			App?.Main?.StartUpdateLeftTimeTask();
+		}
+
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
 			OmegaFactory.MakeSureInit();

@@ -23,6 +23,7 @@ namespace keep.grass
 		VoidCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
 
 		Task UpdateLeftTimeTask = null;
+		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
 
 		public AlphaMainPage()
 		{
@@ -141,6 +142,7 @@ namespace keep.grass
 		{
 			base.OnAppearing();
 			UpdateInfoAsync().Wait(0);
+			StartUpdateLeftTimeTask();
 		}
 
 		protected override void OnDisappearing()
@@ -187,10 +189,6 @@ namespace keep.grass
 						ClearActiveInfo();
 					}
 					await Domain.ManualUpdateLastPublicActivityAsync();
-				}
-				else
-				{
-					StartUpdateLeftTimeTask();
 				}
 			}
 			else
@@ -257,26 +255,41 @@ namespace keep.grass
 			}
 		}
 
-		public void StartUpdateLeftTimeTask()
+		public void StartUpdateLeftTimeTask(bool IsPersistently = true)
 		{
-			if (null == UpdateLeftTimeTask)
+			Debug.WriteLine("AlphaMainPage::StartUpdateLeftTimeTask");
+			if (null == UpdateLeftTimeTask || UpdateLeftTimeTaskLastStamp.AddMilliseconds(3000) < DateTime.Now)
 			{
+				Debug.WriteLine("AlphaMainPage::StartUpdateLeftTimeTask::kick!!!");
 				UpdateLeftTimeTask = new Task
 				(
 					() =>
 					{
 						while (null != UpdateLeftTimeTask)
 						{
+							UpdateLeftTimeTaskLastStamp = DateTime.Now;
 							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
-							Task.Delay(1000 -DateTime.Now.Millisecond).Wait();
+							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
 				);
 				UpdateLeftTimeTask.Start();
 			}
+			else
+			if (IsPersistently)
+			{
+				Task.Delay(TimeSpan.FromMilliseconds(5000)).ContinueWith
+				(
+					(t) =>
+					{
+						StartUpdateLeftTimeTask(false);
+					}
+			   );
+			}
 		}
 		public void StopUpdateLeftTimeTask()
 		{
+			Debug.WriteLine("AlphaMainPage::StopUpdateLeftTimeTask");
 			UpdateLeftTimeTask = null;
 		}
 
