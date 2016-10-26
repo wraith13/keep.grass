@@ -181,7 +181,13 @@ namespace keep.grass
 			{
 				if (UserLabel.Text != User)
 				{
-					UserLabel.ImageSource = GitHub.GetIconUrl(User);
+					var Binary = await Domain.HttpClient.GetByteArrayAsync(GitHub.GetIconUrl(User));
+					UserLabel.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
+					//	本来、こちらの下のコードで正常に動作しなければならないが、 UWP版を Windows Phone で
+					//	動作させた場合に画像が表示されない為、上のコードで問題を回避している。
+					//	なお、同じ UWP 版でも PC の Windows 10 であれば下のコードで正常に動作する。
+					//UserLabel.ImageSource = GitHub.GetIconUrl(User);
+
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					if (!Settings.IsValidUserName)

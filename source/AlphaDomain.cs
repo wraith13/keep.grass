@@ -9,7 +9,7 @@ namespace keep.grass
 	public abstract class AlphaDomain
 	{
 		protected Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-		protected HttpClient HttpClient = new HttpClient();
+		public HttpClient HttpClient = new HttpClient();
 
 		private DateTime LastPublicActivityCache;
 		public DateTime LastPublicActivity
