@@ -42,6 +42,7 @@ namespace keep.grass.Droid
 				Intent.RemoveExtra("type");
 				App.ShowMainPage();
 			}
+			App?.Main?.StartUpdateLeftTimeTask();
 		}
 
 		public static AlphaApp MakeSureApp()
