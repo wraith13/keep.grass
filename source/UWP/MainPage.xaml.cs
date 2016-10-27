@@ -20,7 +20,7 @@ namespace keep.grass.UWP
 {
     public sealed partial class MainPage
     {
-        static AlphaApp App;
+        public static AlphaApp App;
 
         public MainPage()
         {
