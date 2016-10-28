@@ -206,13 +206,21 @@ namespace keep.grass
 						paint.StrokeCap = SKStrokeCap.Round;
 						using (var path = new SKPath())
 						{
-							path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
-							path.MoveTo(Center);
-							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-							path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
-							path.LineTo(Center);
-							path.Close();
-							canvas.DrawPath(path, paint);
+							if (Pie.Volume < TotalVolume)
+							{
+								path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
+								path.MoveTo(Center);
+								path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+								path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+								path.LineTo(Center);
+								path.Close();
+								canvas.DrawPath(path, paint);
+							}
+							else
+							{
+								//	TotalVolume <= Pie.Volume な時に上の処理ではパイが描画されないことがある。
+								canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
+							}
 						}
 					}
 					CurrentAngle = NextAngle;
