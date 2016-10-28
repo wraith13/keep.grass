@@ -96,7 +96,7 @@ namespace keep.grass
 
 		public void Build(double Width, double Height)
 		{
-			GraphSize = (new[] { Width, Height }.Min() * 0.6) +(Margin *2.0f);
+			GraphSize = Math.Round((new[] { Width, Height }.Min() * 0.6) +(Margin *2.0f));
 			CanvasView = new AlphaCircleGraphView(this)
 			{
 				Margin = new Thickness(0),
