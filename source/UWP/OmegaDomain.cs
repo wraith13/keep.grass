@@ -95,6 +95,27 @@ namespace keep.grass.UWP
                         builder.Register();
                     }
                 );
+
+                var BackgroundUpdateTaskName2 = "UpdateLastPublicActivity2";
+                foreach (var task in BackgroundTaskRegistration.AllTasks.Where(i => i.Value.Name == BackgroundUpdateTaskName2))
+                {
+                    task.Value.Unregister(true);
+                }
+                Task.Run
+                (
+                    async () => await BackgroundExecutionManager.RequestAccessAsync()
+                )
+                .ContinueWith
+                (
+                    t =>
+                    {
+                        var builder = new BackgroundTaskBuilder();
+                        builder.Name = BackgroundUpdateTaskName2;
+                        builder.TaskEntryPoint = typeof(BackgroundUpdateLastPublicActivityTask).FullName;
+                        builder.SetTrigger(new SystemTrigger(SystemTriggerType.InternetAvailable, false));
+                        builder.Register();
+                    }
+                );
             }
         }
         string MakeToastId(int id)
