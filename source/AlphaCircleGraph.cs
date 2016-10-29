@@ -70,7 +70,7 @@ namespace keep.grass
 		float StartAngle = 0.0f;
 		double GraphSize;
 		float Margin = 30.0f;
-		Grid GrahpFrame;
+		StackLayout GraphFrame;
 		AlphaCircleGraphView CanvasView;
 
 		System.IO.Stream FontSource;
@@ -96,23 +96,34 @@ namespace keep.grass
 
 		public void Build(double Width, double Height)
 		{
-			GraphSize = Math.Round((new[] { Width, Height }.Min() * 0.6) +(Margin *2.0f));
+			var MinSide = new[] { Width, Height }.Min();
+			GraphSize = Math.Round((MinSide * 0.6) +(Margin *2.0f));
 			CanvasView = new AlphaCircleGraphView(this)
 			{
-				Margin = new Thickness(0),
+				Margin = new Thickness(0.0),
 				WidthRequest = GraphSize,
 				HeightRequest = GraphSize,
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 			};
-			GrahpFrame = new Grid().HorizontalJustificate
-			(
-				CanvasView
-			);
-			GrahpFrame.BackgroundColor = Color.White;
-			GrahpFrame.HorizontalOptions = LayoutOptions.FillAndExpand;
-			GrahpFrame.VerticalOptions = LayoutOptions.FillAndExpand;
+			var PaddingSize = new[] { (MinSide - 640) * 0.3, 0 }.Max();
+			GraphFrame = new StackLayout
+			{
+				Padding = new Thickness(PaddingSize),
+				Orientation = Width <= Height ?
+					StackOrientation.Vertical:
+					StackOrientation.Horizontal,
+				MinimumWidthRequest = GraphSize +PaddingSize,
+				MinimumHeightRequest = GraphSize +PaddingSize,
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Children =
+				{
+					CanvasView
+				},
+			};
 			Update();
 		}
 
@@ -340,7 +351,7 @@ namespace keep.grass
 
 		public View AsView()
 		{
-			return GrahpFrame;
+			return GraphFrame;
 		}
 	}
 
