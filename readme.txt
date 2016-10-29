@@ -49,7 +49,7 @@
 https://www.nuget.org/packages/Microsoft.Net.Http/
 
 ■Xam.Plugins.Settings
-https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Settings
+https://github.com/jamesmontemagno/SettingsPlugin
 https://www.nuget.org/packages/Xam.Plugins.Settings/
 
 ■Xam.Plugins.Forms.ImageCircle
