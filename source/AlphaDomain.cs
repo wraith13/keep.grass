@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using keep.grass.Helpers;
@@ -24,6 +25,16 @@ namespace keep.grass
 			}
 		}
 
+		private DateTime PreviousUpdateLastPublicActivityStamp = default(DateTime);
+		public DateTime NextUpdateLastPublicActivityStamp
+		{
+			get
+			{
+				return PreviousUpdateLastPublicActivityStamp
+					+TimeSpan.FromSeconds(300);
+			}
+		}
+
 		public AlphaDomain()
 		{
 			LastPublicActivityCache = Settings.LastPublicActivity;
@@ -31,8 +42,11 @@ namespace keep.grass
 
 		public async Task AutoUpdateLastPublicActivityAsync()
 		{
-			Debug.WriteLine("AlphaDomain::AutoUpdateInfoAsync");
-			await UpdateLastPublicActivityAsync();
+			//Debug.WriteLine("AlphaDomain::AutoUpdateInfoAsync");
+			if (NextUpdateLastPublicActivityStamp <= DateTime.Now)
+			{
+				await UpdateLastPublicActivityAsync();
+			}
 		}
 		public async Task ManualUpdateLastPublicActivityAsync()
 		{
@@ -42,6 +56,7 @@ namespace keep.grass
 		private async Task UpdateLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync");
+			PreviousUpdateLastPublicActivityStamp = DateTime.Now;
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{

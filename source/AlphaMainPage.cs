@@ -282,7 +282,7 @@ namespace keep.grass
 						while (null != UpdateLeftTimeTask)
 						{
 							UpdateLeftTimeTaskLastStamp = DateTime.Now;
-							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+							Device.BeginInvokeOnMainThread(async () => await UpdateLeftTime());
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
@@ -316,11 +316,7 @@ namespace keep.grass
 			return  Color.FromRgb(red, green, blue);
 		}
 
-#if WITH_PROGRESSBAR
-		protected async void UpdateLeftTime()
-#else
-		protected void UpdateLeftTime()
-#endif
+		protected async Task UpdateLeftTime()
 		{
 			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
 			if (default(DateTime) != Domain.LastPublicActivity)
@@ -368,6 +364,8 @@ namespace keep.grass
 						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
 					}
 				);
+
+				await Domain.AutoUpdateLastPublicActivityAsync();
 			}
 			else
 			{
