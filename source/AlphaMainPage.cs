@@ -95,7 +95,7 @@ namespace keep.grass
 			{
 				Content = new StackLayout
 				{
-					Spacing = 0.5,
+					Spacing = 1.0,
 					BackgroundColor = Color.Gray,
 					Children =
 					{
@@ -112,14 +112,14 @@ namespace keep.grass
 			{
 				Content = new StackLayout
 				{
-					Spacing = 0.5,
+					Spacing = 1.0,
 					BackgroundColor = Color.Gray,
 					Children =
 					{
 						new StackLayout
 						{
 							Orientation = StackOrientation.Horizontal,
-							Spacing = 0.5,
+							Spacing = 1.0,
 							Children =
 							{
 								CircleGraph.AsView(),
