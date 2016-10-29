@@ -43,6 +43,7 @@ namespace keep.grass
 				(
 					index => new TableView
 					{
+						BackgroundColor = Color.White,
 						Root = new TableRoot
 						{
 							new TableSection()
@@ -66,7 +67,8 @@ namespace keep.grass
 			var StackContent = new StackLayout
 			{
 				Orientation = StackOrientation.Horizontal,
-				Spacing = 0.0,
+				Spacing = 1.0,
+				BackgroundColor = Color.Gray,
 			};
 			foreach (var i in GetColumns(Width <= Height ? 1: 2))
 			{
