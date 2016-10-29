@@ -54,4 +54,7 @@ Global
 		{F33CF9EB-F3C5-4203-87ED-51992015E409}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{F33CF9EB-F3C5-4203-87ED-51992015E409}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 1.0
+	EndGlobalSection
 EndGlobal
