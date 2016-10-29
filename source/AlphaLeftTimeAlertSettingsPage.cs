@@ -70,7 +70,7 @@ namespace keep.grass
 				Spacing = 1.0,
 				BackgroundColor = Color.Gray,
 			};
-			foreach (var i in GetColumns(Width <= Height ? 1: 2))
+			foreach (var i in GetColumns((Width <= Height && Width < 640) ? 1: 2))
 			{
 				StackContent.Children.Add(i);
 			}
