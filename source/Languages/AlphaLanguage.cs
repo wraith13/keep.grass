@@ -42,7 +42,8 @@ namespace keep.grass.Languages
 					{ "Information", "情報" },
 					{ "Version", "バージョン" },
 					{ "Auther", "作者" },
-					{ "Github Repository", "Github リポジトリ" }
+					{ "Github Repository", "Github リポジトリ" },
+					{ "Built with", "利用技術" },
 				}
 			}
 		};
