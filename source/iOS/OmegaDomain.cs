@@ -46,8 +46,7 @@ namespace keep.grass.iOS
 
 		public override Uri GetApplicationStoreUri()
 		{
-			//	暫定実装。これは実際には twitter 公式アプリの URL
-			return new Uri("https://itunes.apple.com/jp/app/twitter/id333903271?mt=8");
+			return new Uri("https://itunes.apple.com/jp/app/keep.grass/id1170833136?mt=8");
 		}
 	}
 }
