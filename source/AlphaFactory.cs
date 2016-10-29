@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -167,6 +168,15 @@ namespace keep.grass
         public virtual VoidSwitchCell MakeOmegaSwitchCell()
         {
             return new AlphaSwitchCell();
+        }
+
+        public static async Task<ImageSource> MakeImageSourceFromUrl(string Url)
+        {
+            return await Instance.MakeOmegaImageSourceFromUrl(Url);
+        }
+        public virtual async Task<ImageSource> MakeOmegaImageSourceFromUrl(string Url)
+        {
+            return ImageSource.FromUri(new Uri(Url));
         }
     }
 }
