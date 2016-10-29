@@ -54,22 +54,131 @@ namespace keep.grass
 					OptionImageSource: Root.GetExportImageSource()
 				),
 			};
-
-			Content = new StackLayout
+			var BuiltWith = new TableSection(L["Built with"])
 			{
-				Children =
-				{
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Xamarin",
+					Command: new Command(o => Device.OpenUri(new Uri("https://www.xamarin.com"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Visual Studio",
+					Command: new Command(o => Device.OpenUri(new Uri("https://www.visualstudio.com/vs/"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Visual Studio Code",
+					Command: new Command(o => Device.OpenUri(new Uri("https://code.visualstudio.com/"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "GIMP",
+					Command: new Command(o => Device.OpenUri(new Uri("https://www.gimp.org"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Microsoft HTTP Client Lib.",
+					Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Net.Http/"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Settings Plugin",
+					Command: new Command(o => Device.OpenUri(new Uri("https://github.com/jamesmontemagno/SettingsPlugin"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Circle Image Control Plugin",
+					Command: new Command(o => Device.OpenUri(new Uri("https://github.com/jamesmontemagno/ImageCirclePlugin"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "NotificationsExtensions",
+					Command: new Command(o => Device.OpenUri(new Uri("https://github.com/WindowsNotifications/NotificationsExtensions"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "SkiaSharp(.Views.Forms)",
+					Command: new Command(o => Device.OpenUri(new Uri("https://github.com/mono/SkiaSharp"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+				AlphaFactory.MakeCircleImageCell
+				(
+					ImageSource: null,
+					Text: "Noto Sans CJK jp Regular",
+					Command: new Command(o => Device.OpenUri(new Uri("https://www.google.com/get/noto/help/cjk/"))),
+					OptionImageSource: Root.GetExportImageSource()
+				),
+			};
+
+			var StackContent = new StackLayout
+			{
+				Orientation = StackOrientation.Horizontal,
+				Spacing = 1.0,
+				BackgroundColor = Color.Gray,
+			};
+			if (Width <= Height)
+			{
+				StackContent.Children.Add
+	            (
 					new TableView
 					{
+						BackgroundColor = Color.White,
+						Root = new TableRoot
+							{
+								Version,
+								Auther,
+								Repository,
+								BuiltWith,
+							}
+					}
+	           );
+			}
+			else
+			{
+				StackContent.Children.Add
+				(
+					new TableView
+					{
+						BackgroundColor = Color.White,
 						Root = new TableRoot
 						{
 							Version,
 							Auther,
 							Repository,
 						}
-					},
-				},
-			};
+					}
+			   );
+				StackContent.Children.Add
+				(
+					new TableView
+					{
+						BackgroundColor = Color.White,
+						Root = new TableRoot
+						{
+							BuiltWith,
+						}
+					}
+				);
+			}
+			Content = StackContent;
 		}
 	}
 }
