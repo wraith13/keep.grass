@@ -11,6 +11,11 @@ namespace keep.grass
 	{
 		protected Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		public HttpClient HttpClient = new HttpClient();
+		public void RefreshHttpClient()
+		{
+			HttpClient?.Dispose();
+			HttpClient = new HttpClient();
+		}
 
 		private DateTime LastPublicActivityCache;
 		public DateTime LastPublicActivity
@@ -77,6 +82,7 @@ namespace keep.grass
 				catch (Exception err)
 				{
 					Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::catch::err" + err.ToString());
+					RefreshHttpClient();
 					OnErrorInQuery();
 				}
 				finally
