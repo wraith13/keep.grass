@@ -134,6 +134,10 @@ namespace keep.grass
 				};
 			}
 
+			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
+			LastActivityStampLabel.ShowText();
+			LeftTimeLabel.ShowText();
+
 			OnUpdateLastPublicActivity();
 			UpdateLeftTime();
 		}
