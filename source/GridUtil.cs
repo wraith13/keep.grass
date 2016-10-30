@@ -36,6 +36,25 @@ namespace keep.grass
 
 			return grid;
 		}
+		public static Grid VerticalJustificate(this Grid grid, params View[] views)
+		{
+			grid.HorizontalOptions = LayoutOptions.Center;
+			grid.VerticalOptions = LayoutOptions.FillAndExpand;
+			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+			for (var i = 0; i < views.Length; ++i)
+			{
+				grid.RowDefinitions.Add
+				(
+					new RowDefinition
+					{
+						Height = new GridLength(1, GridUnitType.Star),
+					}
+				);
+				grid.Children.Add(views[i], 0, i);
+			}
+
+			return grid;
+		}
 	}
 }
 

@@ -70,7 +70,7 @@ namespace keep.grass
 		float StartAngle = 0.0f;
 		double GraphSize;
 		float Margin = 30.0f;
-		StackLayout GraphFrame;
+		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
 
 		System.IO.Stream FontSource;
@@ -108,22 +108,15 @@ namespace keep.grass
 				VerticalOptions = LayoutOptions.Center,
 			};
 			var PaddingSize = new[] { (MinSide - 640) * 0.3, 0 }.Max();
-			GraphFrame = new StackLayout
+			GraphFrame = new Grid()
 			{
-				Padding = new Thickness(PaddingSize),
-				Orientation = Width <= Height ?
-					StackOrientation.Vertical:
-					StackOrientation.Horizontal,
-				MinimumWidthRequest = GraphSize +PaddingSize,
-				MinimumHeightRequest = GraphSize +PaddingSize,
+				MinimumWidthRequest = GraphSize + (PaddingSize *2.0),
+				MinimumHeightRequest = GraphSize + (PaddingSize * 2.0),
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				Children =
-				{
-					CanvasView
-				},
-			};
+			}
+			.SetSingleChild(CanvasView);
 			Update();
 		}
 
