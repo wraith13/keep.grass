@@ -338,7 +338,13 @@ namespace keep.grass
 					i => new
 					{
 						Hour = i.Hour,
-			            Time = i.Time.Ticks < Domain.LastPublicActivity.Ticks ? i.Time +TimeSpan.FromDays(1): i.Time,
+			            Time = i.Time.Ticks < Domain.LastPublicActivity.Ticks ?
+					            i.Time +TimeSpan.FromDays(1):
+					            (
+						            TimeSpan.FromDays(1).Ticks < (i.Time -Domain.LastPublicActivity).Ticks ?
+									i.Time - TimeSpan.FromDays(1):
+									i.Time
+					            ),
 					}
 				)
 				.Select
