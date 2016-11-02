@@ -23,7 +23,7 @@ namespace keep.grass
 				AlphaFactory.MakeCircleImageCell
 				(
 					ImageSource: Root.GetApplicationImageSource(),
-					Text: "1.00.000",
+					Text: "1.00.001",
 					Command: new Command
 					(
 						o => Device.OpenUri
