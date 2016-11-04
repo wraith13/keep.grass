@@ -7,6 +7,7 @@
 temporary/
 packages/
 TestResults/
+source/UWP/AppPackages
 
 # globs
 Makefile.in
