@@ -14,9 +14,14 @@
 ■  アプリストア
 ■
 
-iOS版( 近日公開予定 )
+iOS版( 未公開 )
 https://itunes.apple.com/us/app/keep.grass/id1170833136?l=ja&ls=1&mt=8
 
+Android版
+https://play.google.com/store/apps/details?id=net.trickpalace.keep_grass
+
+UWP版
+https://www.microsoft.com/store/apps/9nblggh51p1m
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ■
