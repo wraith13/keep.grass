@@ -14,7 +14,7 @@
 ■  アプリストア
 ■
 
-iOS版( 未公開 )
+iOS版
 https://itunes.apple.com/us/app/keep.grass/id1170833136?l=ja&ls=1&mt=8
 
 Android版
