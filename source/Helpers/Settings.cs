@@ -68,6 +68,18 @@ namespace keep.grass.Helpers
 				AppSettings.AddOrUpdateValue<string>(UserNameKey, value);
 			}
 		}
+		public static string FriendSettingKey(int index)
+		{
+			return String.Format("friend{0:D2}", index);
+		}
+		public static string GetFriend(int index)
+		{
+			return Get(FriendSettingKey(index), "");
+		}
+		public static void SetFriend(int index, string NewValue)
+		{
+			Set(FriendSettingKey(index), NewValue);
+		}
 
 		private const string IsValidUserNameKey = "IsValidUserName";
 		private static readonly bool IsValidUserNameDefault = false;
