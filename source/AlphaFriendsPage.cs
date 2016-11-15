@@ -13,13 +13,16 @@ namespace keep.grass
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		VoidEntryCell UserNameCell = null;
+		const int MaxFriendCount = 5;
+		VoidEntryCell[] FriendNameCellList = null;
 
 		public AlphaFriendsPage()
 		{
 			Title = L["Friends"];
-			UserNameCell = AlphaFactory.MakeEntryCell();
-			UserNameCell.Label = L["User ID"];
+			FriendNameCellList = Enumerable.Range(0, MaxFriendCount)
+         		.Select(i => AlphaFactory.MakeEntryCell())
+             	.ToArray();
+			//UserNameCell.Label = L["User ID"];
 		}
 
 		public override void Build()
@@ -39,7 +42,7 @@ namespace keep.grass
 							{
 								new TableSection(L["Friends"])
 								{
-									UserNameCell.AsCell(),
+									FriendNameCellList.Select(i => i.AsCell()),
 								},
 							},
 						},
@@ -66,7 +69,7 @@ namespace keep.grass
 									{
 										new TableSection(L["Friends"])
 										{
-											UserNameCell.AsCell(),
+											FriendNameCellList.Select(i => i.AsCell()),
 										},
 									},
 								},
