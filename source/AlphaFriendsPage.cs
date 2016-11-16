@@ -111,11 +111,22 @@ namespace keep.grass
 			base.OnDisappearing();
 			bool IsChanged = false;
 
+			var NewFriendList = new List<string>();
 			for (var i = 0; 0 < FriendNameCellList.Count(); ++i)
 			{
-				FriendNameCellList[i].Text = Settings.GetFriend(i);
-
 				var NewFriend = FriendNameCellList[i].Text.Trim();
+				if
+				(
+					!string.IsNullOrWhiteSpace(NewFriend) &&
+					!NewFriendList.Select(f => f.ToLower()).Contains(NewFriend.ToLower())
+				)
+				{
+					NewFriendList.Add(NewFriend);
+				}
+			}
+			for (var i = 0; 0 < FriendNameCellList.Count(); ++i)
+			{
+				var NewFriend = NewFriendList.Skip(i).FirstOrDefault("");
 				if (Settings.GetFriend(i) != NewFriend)
 				{
 					Settings.SetFriend(i, NewFriend);
