@@ -17,9 +17,6 @@ namespace keep.grass
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-#if WITH_PROGRESSBAR
-		ProgressBar ProgressBar = new ProgressBar();
-#endif
 		VoidCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
 
 		Task UpdateLeftTimeTask = null;
@@ -32,10 +29,6 @@ namespace keep.grass
 			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName));
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
-#if WITH_PROGRESSBAR
-			ProgressBar.Margin = new Thickness(0, 0, 0, 0);
-#endif
-
 			//Build();
 		}
 
@@ -65,13 +58,6 @@ namespace keep.grass
 					},
 				},
 			};
-#if WITH_PROGRESSBAR
-			ProgressBarFrame,
-			var ProgressBarFrame = new Grid().HorizontalJustificate
-			(
-				ProgressBar
-		 	);
-#endif
 			var ButtonFrame = new Grid().HorizontalJustificate
 			(
 				new Button
@@ -101,9 +87,6 @@ namespace keep.grass
 					{
 						CircleGraph.AsView(),
 						MainTable,
-#if WITH_PROGRESSBAR
-						ProgressBarFrame,
-#endif
 						ButtonFrame,
 					},
 				};
@@ -126,9 +109,6 @@ namespace keep.grass
 								MainTable,
 							},
 						},
-#if WITH_PROGRESSBAR
-						ProgressBarFrame,
-#endif
 						ButtonFrame,
 					},
 				};
@@ -316,9 +296,6 @@ namespace keep.grass
 				var LimitTime = Domain.LastPublicActivity.AddHours(24);
 				var LeftTime = LimitTime - Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
-#if WITH_PROGRESSBAR
-				await ProgressBar.ProgressTo(Math.Max(LeftTime.TotalDays, 0.0), 300, Easing.CubicInOut);
-#endif
 				var LeftTimeColor = MakeLeftTimeColor(LeftTime);
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
