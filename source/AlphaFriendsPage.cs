@@ -13,12 +13,12 @@ namespace keep.grass
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		const int MaxFriendCount = 5;
+		const int MaxFriendCount = 8;
 		VoidEntryCell[] FriendNameCellList = null;
 
 		public AlphaFriendsPage()
 		{
-			Title = L["Friends"];
+			Title = L["Rivals"];
 			FriendNameCellList = Enumerable.Range(0, MaxFriendCount)
          		.Select
                	(
@@ -47,7 +47,7 @@ namespace keep.grass
 						{
 							Root = new TableRoot
 							{
-								new TableSection(L["Friends"])
+								new TableSection(L["Github Account"])
 								{
 									FriendNameCellList.Select(i => i.AsCell()),
 								},
@@ -58,6 +58,7 @@ namespace keep.grass
 			}
 			else
 			{
+				var HalfCount = FriendNameCellList.Count() /2;
 				Content = new StackLayout
 				{
 					Children =
@@ -74,9 +75,9 @@ namespace keep.grass
 									BackgroundColor = Color.White,
 									Root = new TableRoot
 									{
-										new TableSection(L["Friends"])
+										new TableSection(L["Github Account"])
 										{
-											FriendNameCellList.Where((i,index) => 0 == index %2).Select(i => i.AsCell()),
+											FriendNameCellList.Take(HalfCount).Select(i => i.AsCell()),
 										},
 									},
 								},
@@ -85,9 +86,9 @@ namespace keep.grass
 									BackgroundColor = Color.White,
 									Root = new TableRoot
 									{
-										new TableSection(L["Friends"])
+										new TableSection(L["Github Account"])
 										{
-											FriendNameCellList.Where((i,index) => 1 == index %2).Select(i => i.AsCell()),
+											FriendNameCellList.Skip(HalfCount).Select(i => i.AsCell()),
 										},
 									},
 								},
@@ -101,7 +102,7 @@ namespace keep.grass
 		{
 			base.OnAppearing();
 
-			for (var i = 0; 0 < FriendNameCellList.Count(); ++i)
+			for (var i = 0; i < FriendNameCellList.Count(); ++i)
 			{
 				FriendNameCellList[i].Text = Settings.GetFriend(i);
 			}
@@ -112,7 +113,7 @@ namespace keep.grass
 			bool IsChanged = false;
 
 			var NewFriendList = new List<string>();
-			for (var i = 0; 0 < FriendNameCellList.Count(); ++i)
+			for (var i = 0; i < FriendNameCellList.Count(); ++i)
 			{
 				var NewFriend = FriendNameCellList[i].Text.Trim();
 				if
@@ -124,7 +125,7 @@ namespace keep.grass
 					NewFriendList.Add(NewFriend);
 				}
 			}
-			for (var i = 0; 0 < FriendNameCellList.Count(); ++i)
+			for (var i = 0; i < FriendNameCellList.Count(); ++i)
 			{
 				var NewFriend = NewFriendList.Skip(i).FirstOrDefault("");
 				if (Settings.GetFriend(i) != NewFriend)

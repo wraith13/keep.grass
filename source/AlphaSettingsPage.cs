@@ -42,6 +42,11 @@ namespace keep.grass
 								new TableSection(L["Github Account"])
 								{
 									UserNameCell.AsCell(),
+									AlphaFactory.MakeCircleImageCell
+									(
+										Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
+										Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
+									),
 								},
 								new TableSection(L["Notifications"])
 								{
@@ -49,7 +54,7 @@ namespace keep.grass
 									(
 										Text: L["Alert by Left Time"],
 										Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
-									   ),
+									),
 									AlphaFactory.MakeCircleImageCell
 									(
 										Text: L["Daily Alert"],

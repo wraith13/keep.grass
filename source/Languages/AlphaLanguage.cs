@@ -20,6 +20,7 @@ namespace keep.grass.Languages
 					{ "Settings", "設定" },
 					{ "Update", "更新" },
 					{ "Github Account", "Githubアカウント" },
+					{ "Rivals", "ライバル" },
 					{ "Notifications", "通知" },
 					{ "Alert by Left Time", "残り時間による通知" },
 					{ "Daily Alert", "定刻通知" },

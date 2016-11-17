@@ -80,6 +80,15 @@ namespace keep.grass.Helpers
 		{
 			Set(FriendSettingKey(index), NewValue);
 		}
+		public static int GetFriendCount()
+		{
+			var result = 0;
+			while(!string.IsNullOrWhiteSpace(GetFriend(result)))
+			{
+				++result;
+			}
+			return result;
+		}
 
 		private const string IsValidUserNameKey = "IsValidUserName";
 		private static readonly bool IsValidUserNameDefault = false;
