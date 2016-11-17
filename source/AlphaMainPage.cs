@@ -29,7 +29,7 @@ namespace keep.grass
 		{
 			Title = "keep.grass";
 
-			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
+			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName));
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 #if WITH_PROGRESSBAR

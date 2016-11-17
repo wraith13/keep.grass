@@ -50,6 +50,11 @@ namespace keep.grass
 			Navigation.PopToRootAsync();
 		}
 
+		public void ShowDetailPage(string User)
+		{
+			Navigation.PushAsync(new AlphaDetailPage(User));
+		}
+
 		public void ShowSettingsPage()
 		{
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());

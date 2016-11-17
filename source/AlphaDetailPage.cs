@@ -23,23 +23,11 @@ namespace keep.grass
 		Task UpdateLeftTimeTask = null;
 		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
 
-		public AlphaDetailPage(string User)
-		{
-			Title = "keep.grass";
+		public String User;
 
-			UserLabel = AlphaFactory.MakeCircleImageCell
-			(
-        		ImageSource: AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User)),
-				Text: User,
-				Command: new Command
-				(
-					o => Device.OpenUri
-					(
-						new Uri(GitHub.GetProfileUrl(User))
-					)
-				),
-				OptionImageSource: Root.GetExportImageSource()
-		  	);
+		public AlphaDetailPage(string UserName)
+		{
+			Title = User = UserName;
 
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
@@ -154,7 +142,6 @@ namespace keep.grass
 		public async Task UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaDetailPage::UpdateInfoAsync");
-			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
 				if (UserLabel.Text != User)
@@ -162,6 +149,14 @@ namespace keep.grass
 					UserLabel.ImageSource = await AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User));
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
+					UserLabel.Command = new Command
+					(
+						o => Device.OpenUri
+						(
+							new Uri(GitHub.GetProfileUrl(User))
+						)
+					);
+					UserLabel.OptionImageSource = Root.GetExportImageSource();
 					if (!Settings.IsValidUserName)
 					{
 						ClearActiveInfo();
@@ -174,6 +169,8 @@ namespace keep.grass
 				UserLabel.ImageSource = null;
 				UserLabel.Text = L["unspecified"];
 				UserLabel.TextColor = Color.Gray;
+				UserLabel.Command = null;
+				UserLabel.OptionImageSource = null;
 				ClearActiveInfo();
 			}
 		}
