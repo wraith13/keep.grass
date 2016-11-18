@@ -3,6 +3,7 @@ using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace keep.grass.Helpers
 {
@@ -88,6 +89,24 @@ namespace keep.grass.Helpers
 				++result;
 			}
 			return result;
+		}
+		public static string[] GetFriendList()
+		{
+			var result = new List<string>();
+			int i = 0;
+			while(true)
+			{
+				var Friend = GetFriend(i++);
+				if (string.IsNullOrWhiteSpace(Friend))
+				{
+					break;
+				}
+				else
+				{
+					result.Add(Friend);
+				}
+			}
+			return result.ToArray();
 		}
 
 		private const string IsValidUserNameKey = "IsValidUserName";

@@ -15,6 +15,7 @@ namespace keep.grass
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
+		AlphaCircleImageCell[] Friends;
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		VoidCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
@@ -39,6 +40,11 @@ namespace keep.grass
 
 			CircleGraph.Build(Width, Height);
 
+			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
+			{
+				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
+			}
+
 			var MainTable = new TableView
 			{
 				BackgroundColor = Color.White,
@@ -55,6 +61,10 @@ namespace keep.grass
 					new TableSection(L["Left Time"])
 					{
 						LeftTimeLabel,
+					},
+					new TableSection(L["Rivals"])
+					{
+						Friends,
 					},
 				},
 			};
@@ -181,6 +191,18 @@ namespace keep.grass
 				UserLabel.Text = L["unspecified"];
 				UserLabel.TextColor = Color.Gray;
 				ClearActiveInfo();
+			}
+
+			for (var i = 0; i < Friends.Count(); ++i)
+			{
+				var Friend = Settings.GetFriend(i);
+				if (Friends[i].Text != Friend)
+				{
+					Friends[i].ImageSource = await AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend));
+					Friends[i].Text = Friend;
+					Friends[i].TextColor = Color.Default;
+					Friends[i].Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));
+				}
 			}
 		}
 		public static float TimeToAngle(DateTime Time)
