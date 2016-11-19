@@ -326,6 +326,7 @@ namespace keep.grass
 
 				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
+				/*
 				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
 				(
 					i => new
@@ -361,6 +362,7 @@ namespace keep.grass
 						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
 					}
 				);
+				*/
 
 				await Domain.AutoUpdateLastPublicActivityAsync();
 			}
