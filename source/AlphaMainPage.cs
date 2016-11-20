@@ -27,7 +27,6 @@ namespace keep.grass
 		{
 			Title = "keep.grass";
 
-			UserLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName));
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
@@ -45,7 +44,13 @@ namespace keep.grass
 				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
 			}
 
-			var MainTable = new TableView
+			UserLabel.Command = Friends.Any() ?
+				new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)):
+				new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
+
+
+			var MainTable = Friends.Any() ?
+			new TableView
 			{
 				BackgroundColor = Color.White,
 				Root = new TableRoot
@@ -54,7 +59,21 @@ namespace keep.grass
 					{
 						UserLabel,
 					},
-					/*
+					new TableSection(L["Rivals"])
+					{
+						Friends,
+					},
+				},
+			}:
+			new TableView
+			{
+				BackgroundColor = Color.White,
+				Root = new TableRoot
+				{
+					new TableSection(L["Github Account"])
+					{
+						UserLabel,
+					},
 					new TableSection(L["Last Acitivity Stamp"])
 					{
 						LastActivityStampLabel,
@@ -62,11 +81,6 @@ namespace keep.grass
 					new TableSection(L["Left Time"])
 					{
 						LeftTimeLabel,
-					},
-					*/
-					new TableSection(L["Rivals"])
-					{
-						Friends,
 					},
 				},
 			};
@@ -326,43 +340,49 @@ namespace keep.grass
 
 				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
-				/*
-				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
-				(
-					i => new
-					{
-						Hour = i,
-						Time = Today +TimeSpan.FromHours(i),
-					}
-				)
-				.Select
-				(
-					i => new
-					{
-						Hour = i.Hour,
-			            Time = i.Time.Ticks < Domain.LastPublicActivity.Ticks ?
-					            i.Time +TimeSpan.FromDays(1):
-					            (
-						            TimeSpan.FromDays(1).Ticks < (i.Time -Domain.LastPublicActivity).Ticks ?
-									i.Time - TimeSpan.FromDays(1):
-									i.Time
-					            ),
-					}
-				)
-				.Select
-				(
-					i => new CircleGraphSatelliteText
-					{
-						Text = i.Hour.ToString(),
-						Color = LeftTime.Ticks <= 0 ?
-	                		MakeLeftTimeColor(LeftTime):
-							i.Time.Ticks < Now.Ticks ?
-		             			Color.Gray:
-								MakeLeftTimeColor(LimitTime -i.Time),
-						Angle = 360.0f * ((float)(i.Hour) / 24.0f),
-					}
-				);
-				*/
+
+				if (Friends.Any())
+				{
+					CircleGraph.SatelliteTexts = null;
+				}
+				else
+				{
+					CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
+					(
+						i => new
+						{
+							Hour = i,
+							Time = Today + TimeSpan.FromHours(i),
+						}
+					)
+					.Select
+					(
+						i => new
+						{
+							Hour = i.Hour,
+							Time = i.Time.Ticks < Domain.LastPublicActivity.Ticks ?
+									i.Time + TimeSpan.FromDays(1) :
+									(
+										TimeSpan.FromDays(1).Ticks < (i.Time - Domain.LastPublicActivity).Ticks ?
+										i.Time - TimeSpan.FromDays(1) :
+										i.Time
+									),
+						}
+					)
+					.Select
+					(
+						i => new CircleGraphSatelliteText
+						{
+							Text = i.Hour.ToString(),
+							Color = LeftTime.Ticks <= 0 ?
+								MakeLeftTimeColor(LeftTime) :
+								i.Time.Ticks < Now.Ticks ?
+									 Color.Gray :
+									MakeLeftTimeColor(LimitTime - i.Time),
+							Angle = 360.0f * ((float)(i.Hour) / 24.0f),
+						}
+					);
+				}
 
 				await Domain.AutoUpdateLastPublicActivityAsync();
 			}

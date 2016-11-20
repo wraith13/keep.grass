@@ -110,7 +110,8 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			bool IsChanged = false;
+			var IsChanged = false;
+			var HadFrinends = 0 < Settings.GetFriendCount();
 
 			var NewFriendList = new List<string>();
 			for (var i = 0; i < FriendNameCellList.Count(); ++i)
@@ -138,6 +139,10 @@ namespace keep.grass
 			}
 			if (IsChanged)
 			{
+				if (HadFrinends != 0 < Settings.GetFriendCount())
+				{
+					Root.RebuildMainPage();
+				}
 				Root.OnChangeSettings();
 			}
 		}
