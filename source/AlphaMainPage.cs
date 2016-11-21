@@ -18,7 +18,7 @@ namespace keep.grass
 		AlphaCircleImageCell[] Friends;
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-		VoidCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
+		AlphaCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
 
 		Task UpdateLeftTimeTask = null;
 		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);

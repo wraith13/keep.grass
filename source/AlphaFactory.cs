@@ -83,11 +83,11 @@ namespace keep.grass
 			return new AlphaInfoPage();
 		}
 
-		public static VoidCircleGraph MakeCircleGraph()
+		public static AlphaCircleGraph MakeCircleGraph()
 		{
 			return Instance.MakeOmegaCircleGraph();
 		}
-		public virtual VoidCircleGraph MakeOmegaCircleGraph()
+		public virtual AlphaCircleGraph MakeOmegaCircleGraph()
 		{
 			return new AlphaCircleGraph();
 		}

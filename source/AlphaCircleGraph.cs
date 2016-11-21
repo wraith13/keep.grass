@@ -22,17 +22,6 @@ namespace keep.grass
 		public Color Color { get; set; }
 		public float Angle { get; set; }
 	}
-	public interface VoidCircleGraph
-	{
-		IEnumerable<VoidPie> Data { get; set; }
-		void SetStartAngle(float NewStartAngle);
-
-		IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
-
-		void Build(double Width, double Height);
-		void Update();
-		View AsView();
-	}
 	public class NumberPie : VoidPie
 	{
 		public string Text { get; set; }
@@ -64,7 +53,7 @@ namespace keep.grass
 			Path.LineTo(Point.X, Point.Y);
 		}
 	}
-	public class AlphaCircleGraph :VoidCircleGraph, IDisposable
+	public class AlphaCircleGraph :IDisposable
 	{
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
