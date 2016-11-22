@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace keep.grass
 {
@@ -176,8 +177,19 @@ namespace keep.grass
         }
         public virtual async Task<ImageSource> MakeOmegaImageSourceFromUrl(string Url)
         {
-            return ImageSource.FromUri(new Uri(Url));
-        }
+            //return ImageSource.FromUri(new Uri(Url));
+			//	↑こちらのコードでも良いが、効率化の為に SkiaSharp 用のバイナリと同じモノを使い回す
+            try
+            {
+				var Binary = await AlphaImageProxy.Get(Url);
+				return ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
+			}
+			catch (Exception err)
+			{
+				Debug.WriteLine(err);
+				return null;
+			}
+		}
     }
 }
 

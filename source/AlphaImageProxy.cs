@@ -15,11 +15,11 @@ namespace keep.grass
 	{
 		static AlphaImageEntry[] Cache = new AlphaImageEntry[] { };
 
-		static async Task<byte[]> GetWithoutCache(string Url)
+		static public async Task<byte[]> GetWithoutCache(string Url)
 		{
 			return await AlphaFactory.MakeSureDomain().HttpClient.GetByteArrayAsync(Url);
 		}
-		static async Task<byte[]> Get(string Url)
+		static public async Task<byte[]> Get(string Url)
 		{
 			var Now = DateTime.Now;
 			var Expire = Now - TimeSpan.FromMinutes(60);
