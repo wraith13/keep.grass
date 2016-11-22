@@ -111,7 +111,7 @@ namespace keep.grass
 		{
 			base.OnDisappearing();
 			var IsChanged = false;
-			var HadFrinends = 0 < Settings.GetFriendCount();
+			var OldFriendCount = Settings.GetFriendCount();
 
 			var NewFriendList = new List<string>();
 			for (var i = 0; i < FriendNameCellList.Count(); ++i)
@@ -139,7 +139,7 @@ namespace keep.grass
 			}
 			if (IsChanged)
 			{
-				if (HadFrinends != 0 < Settings.GetFriendCount())
+				if (OldFriendCount != Settings.GetFriendCount())
 				{
 					Root.RebuildMainPage();
 				}
