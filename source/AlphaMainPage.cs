@@ -145,13 +145,12 @@ namespace keep.grass
 			LeftTimeLabel.ShowText();
 
 			OnUpdateLastPublicActivity();
-			UpdateLeftTime();
 		}
 
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			UpdateInfoAsync().Wait(0);
+			UpdateInfoAsync();
 			StartUpdateLeftTimeTask();
 		}
 
@@ -168,7 +167,9 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			LastActivityStampLabel.Text = Domain.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+			LastActivityStampLabel.Text = Domain.LastPublicActivity.IsDefault() ?
+				"":
+				Domain.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
 			LastActivityStampLabel.TextColor = Color.Default;
 		}
 		public void OnErrorInQuery()
@@ -183,7 +184,7 @@ namespace keep.grass
 			StartUpdateLeftTimeTask();
 		}
 
-		public async Task UpdateInfoAsync()
+		public void UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
 			var User = Settings.UserName;
@@ -191,14 +192,18 @@ namespace keep.grass
 			{
 				if (UserLabel.Text != User)
 				{
-					UserLabel.ImageSource = await AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User));
+					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
+						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					if (!Settings.IsValidUserName)
 					{
 						ClearActiveInfo();
 					}
-					await Domain.ManualUpdateLastPublicActivityAsync();
+					if (default(DateTime) == Domain.LastPublicActivity)
+					{
+						Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
+					}
 				}
 			}
 			else
@@ -209,15 +214,17 @@ namespace keep.grass
 				ClearActiveInfo();
 			}
 
-			for (var i = 0; i < Friends.Count(); ++i)
+			for (var i = 0; i < Friends?.Count(); ++i)
 			{
 				var Friend = Settings.GetFriend(i);
-				if (Friends[i].Text != Friend)
+				var FriendLable = Friends[i];
+				if (FriendLable.Text != Friend)
 				{
-					Friends[i].ImageSource = await AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend));
-					Friends[i].Text = Friend;
-					Friends[i].TextColor = Color.Default;
-					Friends[i].Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));
+					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend))
+							.ContinueWith(t => Device.BeginInvokeOnMainThread(() => FriendLable.ImageSource = t.Result));
+					FriendLable.Text = Friend;
+					FriendLable.TextColor = Color.Default;
+					FriendLable.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));
 				}
 			}
 		}
@@ -230,8 +237,6 @@ namespace keep.grass
 			Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
-
-			UpdateLeftTime();
 		}
 		public IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
@@ -290,7 +295,7 @@ namespace keep.grass
 						while (null != UpdateLeftTimeTask)
 						{
 							UpdateLeftTimeTaskLastStamp = DateTime.Now;
-							Device.BeginInvokeOnMainThread(async () => await UpdateLeftTime());
+							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
@@ -324,7 +329,7 @@ namespace keep.grass
 			return  Color.FromRgb(red, green, blue);
 		}
 
-		protected async Task UpdateLeftTime()
+		protected void UpdateLeftTime()
 		{
 			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
 			if (default(DateTime) != Domain.LastPublicActivity)
@@ -384,7 +389,7 @@ namespace keep.grass
 					);
 				}
 
-				await Domain.AutoUpdateLastPublicActivityAsync();
+				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
 			}
 			else
 			{

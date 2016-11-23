@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using keep.grass.Helpers;
+using Xamarin.Forms;
 
 namespace keep.grass
 {
@@ -93,20 +94,44 @@ namespace keep.grass
 		}
 		public void OnStartQuery()
 		{
-			AlphaFactory.GetApp()?.Main?.OnStartQuery();
+			Device.BeginInvokeOnMainThread
+			(
+				() =>
+				{
+					AlphaFactory.GetApp()?.Main?.OnStartQuery();
+				}
+			);
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			UpdateAlerts();
-			AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity();
+			Device.BeginInvokeOnMainThread
+			(
+				() =>
+				{
+					UpdateAlerts();
+					AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity();
+				}
+			);
 		}
 		public void OnErrorInQuery()
 		{
-			AlphaFactory.GetApp()?.Main?.OnErrorInQuery();
+			Device.BeginInvokeOnMainThread
+			(
+				() =>
+				{
+					AlphaFactory.GetApp()?.Main?.OnErrorInQuery();
+				}
+			);
 		}
 		public void OnEndQuery()
 		{
-			AlphaFactory.GetApp()?.Main?.OnEndQuery();
+			Device.BeginInvokeOnMainThread
+			(
+				() =>
+				{
+					AlphaFactory.GetApp()?.Main?.OnEndQuery();
+				}
+			);
 		}
 
 		public virtual void UpdateAlerts()

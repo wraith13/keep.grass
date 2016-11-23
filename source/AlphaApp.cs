@@ -63,7 +63,7 @@ namespace keep.grass
 		public void OnChangeSettings()
 		{
 			AlphaFactory.MakeSureLanguage().Update();
-			Main.UpdateInfoAsync().Wait(0);
+			Main.UpdateInfoAsync();
 			Domain.UpdateAlerts();
 		}
 
