@@ -52,7 +52,7 @@ namespace keep.grass.UWP
         {
             return new OmegaSwitchCell();
         }
-        public override VoidCircleGraph MakeOmegaCircleGraph()
+        public override AlphaCircleGraph MakeOmegaCircleGraph()
         {
             return new OmegaCircleGraph();
         }
