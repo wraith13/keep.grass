@@ -14,24 +14,24 @@ namespace keep.grass.Droid
 			Debug.WriteLine("AlarmIntentService::OnHandleIntent()");
 			try
 			{
-				ShowNotification(ApplicationContext, intent);
+				ShowNotification(intent);
 			}
 			finally
 			{
 				Android.Support.V4.Content.WakefulBroadcastReceiver.CompleteWakefulIntent(intent);
 			}
 		}
-		public void ShowNotification(Context context, Intent intent)
+		public void ShowNotification(Intent intent)
 		{
 			var id = intent.GetIntExtra("id", 0);
 			var title = intent.GetStringExtra("title");
 			var body = intent.GetStringExtra("message");
 
-			var main_intent = new Intent(context, typeof(MainActivity));
+			var main_intent = new Intent(this, typeof(MainActivity));
 			main_intent.PutExtra("type", "alarm");
 			main_intent.PutExtra("id", id);
 
-			var builder = new Notification.Builder(Forms.Context);
+			var builder = new Notification.Builder(this);
 			//builder.SetGroup("keep.grass");
 			builder.SetTicker(title);
 			builder.SetContentTitle(title);
@@ -40,18 +40,18 @@ namespace keep.grass.Droid
 			(
 				PendingIntent.GetActivity
 				(
-					context,
+					this,
 					id,
 					main_intent,
 					PendingIntentFlags.UpdateCurrent
 				)
 			);
 			builder.SetSmallIcon(Resource.Drawable.icon);
-			builder.SetLargeIcon(BitmapFactory.DecodeResource(context.Resources, Resource.Drawable.icon));
+			builder.SetLargeIcon(BitmapFactory.DecodeResource(this.Resources, Resource.Drawable.icon));
 			builder.SetDefaults(NotificationDefaults.All);
 			builder.SetAutoCancel(true);
 
-			((NotificationManager)context.GetSystemService(NotificationService))
+			((NotificationManager)this.GetSystemService(NotificationService))
 				.Notify(id, builder.Build());
 		}
 	}
