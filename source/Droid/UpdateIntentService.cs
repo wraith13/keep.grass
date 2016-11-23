@@ -9,25 +9,32 @@ namespace keep.grass.Droid
 	[Service]
 	public class UpdateIntentService :IntentService
 	{
+		public override void OnCreate()
+		{
+			base.OnCreate();
+			global::Xamarin.Forms.Forms.Init(this, null);
+		}
+
 		protected override void OnHandleIntent(Intent intent)
 		{
 			Debug.WriteLine("UpdateIntentService::OnHandleIntent()");
 			try
 			{
-				UpdateLastPublicActivity(ApplicationContext, intent);
+				UpdateLastPublicActivity(intent);
 			}
 			finally
 			{
 				Android.Support.V4.Content.WakefulBroadcastReceiver.CompleteWakefulIntent(intent);
 			}
 		}
-		public void UpdateLastPublicActivity(Context context, Intent intent)
+
+		void UpdateLastPublicActivity(Intent intent)
 		{
 			OmegaFactory.MakeSureInit();
 			var Domain = AlphaFactory.MakeSureDomain() as OmegaDomain;
 			try
 			{
-				Domain.ThreadContext.Value = context;
+				Domain.ThreadContext.Value = this;
 				Domain.AutoUpdateLastPublicActivityAsync().Wait();
 			}
 			finally
