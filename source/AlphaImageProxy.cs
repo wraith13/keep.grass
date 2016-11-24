@@ -24,7 +24,7 @@ namespace keep.grass
 			var Now = DateTime.Now;
 			var Expire = Now - TimeSpan.FromMinutes(60);
 			var result = Cache
-				.Where(i => i.Url == Url && i.Stamp < Expire)
+				.Where(i => i.Url == Url && Expire < i.Stamp)
 				.Select(i => i.Binary)
 				.FirstOrDefault();
 			if (null == result)
@@ -35,7 +35,7 @@ namespace keep.grass
 					lock(Cache)
 					{
 						Cache = Cache
-							.Where(i => i.Stamp < Expire)
+							.Where(i => Expire < i.Stamp)
 							.Concat
 							(
 								new[]
