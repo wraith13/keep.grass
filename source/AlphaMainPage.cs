@@ -346,7 +346,7 @@ namespace keep.grass
 				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = MakeSlices(LeftTime, LeftTimeColor);
 
-				if (Friends.Any())
+				if (Friends?.Any() ?? false)
 				{
 					CircleGraph.SatelliteTexts = null;
 				}
