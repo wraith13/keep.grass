@@ -19,6 +19,13 @@ namespace keep.grass
 		{
 			return await AlphaFactory.MakeSureDomain().HttpClient.GetByteArrayAsync(Url);
 		}
+		static public byte[] GetFromCache(string Url)
+		{
+			return Cache
+				.Where(i => i.Url == Url)
+				.Select(i => i.Binary)
+				.FirstOrDefault();
+		}
 		static public async Task<byte[]> Get(string Url)
 		{
 			var Now = DateTime.Now;
