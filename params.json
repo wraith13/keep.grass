@@ -1,0 +1,6 @@
+{
+  "name": "Keep.grass",
+  "tagline": "This cross-platform App shows the last commit timestamp in order to keep your github active.",
+  "body": "# keep.grass\r\n\r\nこのアプリは github 上の Contributions つまりネット上での俗称である「草」\r\nを途切らせることのないようにスマートフォンで Public Activity の最新の\r\nタイムスタンプとそこから24時間が経過してしまうまでの残り時間を確認する為の\r\nアプリです。\r\n\r\n\r\n## アプリストア\r\n\r\niOS版\r\nhttps://itunes.apple.com/us/app/keep.grass/id1170833136?l=ja&ls=1&mt=8\r\n\r\nAndroid版\r\nhttps://play.google.com/store/apps/details?id=net.trickpalace.keep_grass\r\n\r\nUWP版\r\nhttps://www.microsoft.com/store/apps/9nblggh51p1m\r\n\r\n## ライセンス\r\n\r\nBoost Software License - Version 1.0 を採用しています。\r\n詳細は [.\\LICENSE_1_0.txt](https://github.com/wraith13/keep.grass/blob/master/LICENSE_1_0.txt) を参照してください。\r\n[日本語参考訳](http://hamigaki.sourceforge.jp/doc/html/license.html)",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
