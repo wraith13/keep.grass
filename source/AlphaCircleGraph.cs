@@ -169,6 +169,25 @@ namespace keep.grass
 			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
 			var Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
 			var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+			var ImageRadius = Radius / Phi;
+
+			//	イメージの描画
+			if (null != Image)
+			{
+				using (var data = new SKData(Image))
+				using (var bitmap = SKBitmap.Decode(data))
+				using (var paint = new SKPaint())
+				{
+					var Rect = SKRect.Create
+					(
+						Center.X - ImageRadius,
+						Center.Y - ImageRadius,
+						ImageRadius * 2.0f,
+						ImageRadius * 2.0f
+					);
+					canvas.DrawBitmap(bitmap, Rect, paint);
+				}
+			}
 
 			if (null == Data || !Data.Any())
 			{
@@ -199,21 +218,62 @@ namespace keep.grass
 						paint.IsAntialias = true;
 						paint.Color = ToSKColor(Pie.Color);
 						paint.StrokeCap = SKStrokeCap.Round;
-						using (var path = new SKPath())
+						if (Pie.Volume < TotalVolume)
 						{
-							if (Pie.Volume < TotalVolume)
+							using (var path = new SKPath())
 							{
-								path.AddArc(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume);
-								path.MoveTo(Center);
-								path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-								path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
-								path.LineTo(Center);
+								if (null != Image)
+								{
+									path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+									//path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(NextAngle, ImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), NextAngle, -CurrentAngleVolume, false);
+								}
+								else
+								{
+									path.MoveTo(Center);
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+									path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+									path.LineTo(Center);
+								}
 								path.Close();
 								canvas.DrawPath(path, paint);
 							}
+						}
+						else
+						{
+							//	TotalVolume <= Pie.Volume な時に上の処理ではパイが描画されないことがある。
+							if (null != Image)
+							{
+								//	一度に描画しようとしても path が繋がらないので半分に分けて描画する
+								using (var path = new SKPath())
+								{
+									path.MoveTo(Center + AngleRadiusToPoint(0.0f, ImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(0.0f, Radius));
+									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 0.0f, 180.0f, false);
+									//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 180.0f, -180.0f, false);
+									path.Close();
+									canvas.DrawPath(path, paint);
+								}
+								using (var path = new SKPath())
+								{
+									path.MoveTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 180.0f, 180.0f, false);
+									//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(360.0f, ImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 360.0f, -180.0f, false);
+									path.Close();
+									canvas.DrawPath(path, paint);
+								}
+							}
 							else
 							{
-								//	TotalVolume <= Pie.Volume な時に上の処理ではパイが描画されないことがある。
 								canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
 							}
 						}
@@ -236,9 +296,16 @@ namespace keep.grass
 						paint.StrokeWidth = PhysicalPixelRate;
 						using (var path = new SKPath())
 						{
-							path.MoveTo(Center);
+							if (null != Image)
+							{
+								path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+								path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
+							}
+							else
+							{
+								path.MoveTo(Center);
+							}
 							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-							path.Close();
 							canvas.DrawPath(path, paint);
 						}
 					}
@@ -331,24 +398,6 @@ namespace keep.grass
 							}
 						}
 						CurrentAngle = NextAngle;
-					}
-				}
-
-				if (null != Image)
-				{
-					var ImageSizeBase = Radius / Phi;
-					using (var data = new SKData(Image))
-					using (var bitmap = SKBitmap.Decode(data))
-					using (var paint = new SKPaint())
-					{
-						var Rect = SKRect.Create
-						(
-							Center.X - ImageSizeBase,
-							Center.Y - ImageSizeBase,
-							ImageSizeBase * 2.0f,
-							ImageSizeBase * 2.0f
-						);
-						canvas.DrawBitmap(bitmap, Rect, paint);
 					}
 				}
 			}
