@@ -109,6 +109,7 @@ namespace keep.grass
 			Update();
 		}
 
+		public byte[] Image { get; set; }
 		public IEnumerable<VoidPie> Data { get; set; }
 		public IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 
@@ -163,6 +164,7 @@ namespace keep.grass
 			canvas.Clear();
 			SKRect rect;
 			canvas.GetClipBounds(ref rect);
+			var Phi = 1.618033988749894848204586834365f;
 			var PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
 			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
 			var Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
@@ -279,54 +281,75 @@ namespace keep.grass
 				}
 
 				//	パイ・テキストの描画
-				foreach (var Pie in Data)
+				if (null == Image)
 				{
-					var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
-					var NextAngle = CurrentAngle + CurrentAngleVolume;
-					if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+					foreach (var Pie in Data)
 					{
-						using (var paint = new SKPaint())
+						var CurrentAngleVolume = (float)((Pie.Volume / TotalVolume) * 360.0);
+						var NextAngle = CurrentAngle + CurrentAngleVolume;
+						if (!String.IsNullOrWhiteSpace(Pie.Text) || !String.IsNullOrWhiteSpace(Pie.DisplayVolume))
 						{
-							paint.IsAntialias = true;
-							paint.StrokeCap = SKStrokeCap.Round;
-							using (var path = new SKPath())
+							using (var paint = new SKPaint())
 							{
-								paint.TextSize = 14.0f * PhysicalPixelRate;
 								paint.IsAntialias = true;
-								paint.Color = ToSKColor(Color.White);
-								paint.TextAlign = SKTextAlign.Center;
-								paint.Typeface = Font;
-
-								var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
-								var HalfRadius = Radius / 2.0f;
-								var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
-
-								if (!String.IsNullOrWhiteSpace(Pie.Text))
+								paint.StrokeCap = SKStrokeCap.Round;
+								using (var path = new SKPath())
 								{
-									canvas.DrawText
-									(
-										Pie.Text,
-										TextCenter.X,
-										TextCenter.Y - (paint.TextSize / 2.0f),
-										paint
-									);
-								}
-								if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
-								{
-									canvas.DrawText
-									(
-										Pie.DisplayVolume,
-										TextCenter.X,
-										TextCenter.Y + (paint.TextSize / 2.0f),
-										paint
-									);
-								}
+									paint.TextSize = 14.0f * PhysicalPixelRate;
+									paint.IsAntialias = true;
+									paint.Color = ToSKColor(Color.White);
+									paint.TextAlign = SKTextAlign.Center;
+									paint.Typeface = Font;
 
-								paint.Typeface = null;
+									var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
+									var HalfRadius = Radius / 2.0f;
+									var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
+
+									if (!String.IsNullOrWhiteSpace(Pie.Text))
+									{
+										canvas.DrawText
+										(
+											Pie.Text,
+											TextCenter.X,
+											TextCenter.Y - (paint.TextSize / 2.0f),
+											paint
+										);
+									}
+									if (!String.IsNullOrWhiteSpace(Pie.DisplayVolume))
+									{
+										canvas.DrawText
+										(
+											Pie.DisplayVolume,
+											TextCenter.X,
+											TextCenter.Y + (paint.TextSize / 2.0f),
+											paint
+										);
+									}
+
+									paint.Typeface = null;
+								}
 							}
 						}
+						CurrentAngle = NextAngle;
 					}
-					CurrentAngle = NextAngle;
+				}
+
+				if (null != Image)
+				{
+					var ImageSizeBase = Radius / Phi;
+					using (var data = new SKData(Image))
+					using (var bitmap = SKBitmap.Decode(data))
+					using (var paint = new SKPaint())
+					{
+						var Rect = SKRect.Create
+						(
+							Center.X - ImageSizeBase,
+							Center.Y - ImageSizeBase,
+							ImageSizeBase * 2.0f,
+							ImageSizeBase * 2.0f
+						);
+						canvas.DrawBitmap(bitmap, Rect, paint);
+					}
 				}
 			}
 		}

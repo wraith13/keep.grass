@@ -193,7 +193,17 @@ namespace keep.grass
 				if (UserLabel.Text != User)
 				{
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+						.ContinueWith
+			            (
+		            		t => Device.BeginInvokeOnMainThread
+				            (
+		            			() =>
+								{
+									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
+									UserLabel.ImageSource = t.Result;
+								}
+				           )
+			           	);
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
 					if (!Settings.IsValidUserName)
@@ -208,6 +218,7 @@ namespace keep.grass
 			}
 			else
 			{
+				CircleGraph.Image = null;
 				UserLabel.ImageSource = null;
 				UserLabel.Text = L["unspecified"];
 				UserLabel.TextColor = Color.Gray;
