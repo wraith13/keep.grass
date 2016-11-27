@@ -192,6 +192,9 @@ namespace keep.grass
 			{
 				if (UserLabel.Text != User)
 				{
+					CircleGraph.Image = null;
+					CircleGraph.Update();
+					UserLabel.ImageSource = null;
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith
 			            (
@@ -200,6 +203,7 @@ namespace keep.grass
 		            			() =>
 								{
 									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
+									CircleGraph.Update();
 									UserLabel.ImageSource = t.Result;
 								}
 				           )
@@ -219,6 +223,7 @@ namespace keep.grass
 			else
 			{
 				CircleGraph.Image = null;
+				CircleGraph.Update();
 				UserLabel.ImageSource = null;
 				UserLabel.Text = L["unspecified"];
 				UserLabel.TextColor = Color.Gray;
@@ -231,6 +236,7 @@ namespace keep.grass
 				var FriendLable = Friends[i];
 				if (FriendLable.Text != Friend)
 				{
+					FriendLable.ImageSource = null;
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend))
 							.ContinueWith(t => Device.BeginInvokeOnMainThread(() => FriendLable.ImageSource = t.Result));
 					FriendLable.Text = Friend;
