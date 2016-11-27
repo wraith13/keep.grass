@@ -66,6 +66,10 @@ namespace keep.grass
 		SKManagedStream FontStream;
 		SKTypeface Font;
 
+		byte[] ImageBytes;
+		SKData ImageData;
+		SKBitmap ImageBitmap;
+
 		public AlphaCircleGraph()
 		{
 			//	※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
@@ -81,6 +85,10 @@ namespace keep.grass
 			FontStream = null;
 			FontSource?.Dispose();
 			FontSource = null;
+			ImageBitmap?.Dispose();
+			ImageBitmap = null;
+			ImageData?.Dispose();
+			ImageData = null;
 		}
 
 		public void Build(double Width, double Height)
@@ -109,7 +117,29 @@ namespace keep.grass
 			Update();
 		}
 
-		public byte[] Image { get; set; }
+		public byte[] Image
+		{
+			get
+			{
+				return ImageBytes;
+			}
+			set
+			{
+				if (ImageBytes != value)
+				{
+					ImageBitmap?.Dispose();
+					ImageBitmap = null;
+					ImageData?.Dispose();
+					ImageData = null;
+					ImageBytes = value;
+					if (null != ImageBytes)
+					{
+						ImageData = new SKData(ImageBytes);
+						ImageBitmap = SKBitmap.Decode(ImageData);
+					}
+				}
+			}
+		}
 		public IEnumerable<VoidPie> Data { get; set; }
 		public IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 
@@ -172,10 +202,8 @@ namespace keep.grass
 			var ImageRadius = Radius / Phi;
 
 			//	イメージの描画
-			if (null != Image)
+			if (null != Image && null != ImageData && null != ImageBitmap)
 			{
-				using (var data = new SKData(Image))
-				using (var bitmap = SKBitmap.Decode(data))
 				using (var paint = new SKPaint())
 				{
 					var Rect = SKRect.Create
@@ -185,7 +213,7 @@ namespace keep.grass
 						ImageRadius * 2.0f,
 						ImageRadius * 2.0f
 					);
-					canvas.DrawBitmap(bitmap, Rect, paint);
+					canvas.DrawBitmap(ImageBitmap, Rect, paint);
 				}
 			}
 
