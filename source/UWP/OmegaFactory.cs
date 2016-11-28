@@ -56,21 +56,5 @@ namespace keep.grass.UWP
         {
             return new OmegaCircleGraph();
         }
-        public override async Task<ImageSource> MakeOmegaImageSourceFromUrl(string Url)
-        {
-            //	本来、override 元のコードで正常に動作しなければならないが、 UWP版を Windows Phone で
-            //	動作させた場合に画像が表示されない為、こちらのコードで問題を回避している。
-            //	なお、同じ UWP 版でも PC の Windows 10 であれば下のコードで正常に動作する。
-            try
-            {
-                var Binary = await MakeSureDomain().HttpClient.GetByteArrayAsync(Url);
-                return ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err);
-                return null;
-            }
-        }
     }
 }
