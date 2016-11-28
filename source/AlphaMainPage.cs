@@ -44,6 +44,20 @@ namespace keep.grass
 				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
 			}
 
+			if (Friends.Any())
+			{
+				CircleGraph
+					.AsView()
+					.GestureRecognizers
+					.Add
+					(
+						new TapGestureRecognizer()
+						{
+							Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
+						}
+					);
+			}
+
 			UserLabel.Command = Friends.Any() ?
 				new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)):
 				new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
@@ -55,10 +69,10 @@ namespace keep.grass
 				BackgroundColor = Color.White,
 				Root = new TableRoot
 				{
-					new TableSection(L["Github Account"])
+					/*new TableSection(L["Github Account"])
 					{
 						UserLabel,
-					},
+					},*/
 					new TableSection(L["Rivals"])
 					{
 						Friends,
