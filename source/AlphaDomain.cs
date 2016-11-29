@@ -258,6 +258,11 @@ namespace keep.grass
 			}
 		}
 
+		public static float TimeToAngle(DateTime Time)
+		{
+			return (float)((Time.TimeOfDay.Ticks * 360.0) / TimeSpan.FromDays(1).Ticks);
+		}
+
 		public static Color MakeLeftTimeColor(TimeSpan LeftTime)
 		{
 			double LeftTimeRate = Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours / 24.0));

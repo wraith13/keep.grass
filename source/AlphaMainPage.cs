@@ -259,10 +259,6 @@ namespace keep.grass
 				}
 			}
 		}
-		public static float TimeToAngle(DateTime Time)
-		{
-			return (float)((Time.TimeOfDay.Ticks * 360.0) / TimeSpan.FromDays(1).Ticks);
-		}
 		public void ClearActiveInfo()
 		{
 			Domain.LastPublicActivity = default(DateTime);
@@ -310,10 +306,10 @@ namespace keep.grass
 
 		protected void UpdateLeftTime()
 		{
-			CircleGraph.SetStartAngle(TimeToAngle(DateTime.Now));
+			var Now = DateTime.Now;
+			CircleGraph.SetStartAngle(AlphaDomain.TimeToAngle(Now));
 			if (default(DateTime) != Domain.LastPublicActivity)
 			{
-				var Now = DateTime.Now;
 				var Today = Now.Date;
 				var LimitTime = Domain.LastPublicActivity.AddHours(24);
 				var LeftTime = LimitTime - Now;
@@ -322,7 +318,6 @@ namespace keep.grass
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
-				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
 				var FontSize = 14.0f;
