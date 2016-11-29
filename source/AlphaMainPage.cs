@@ -325,9 +325,20 @@ namespace keep.grass
 				CircleGraph.SetStartAngle(TimeToAngle(Now));
 				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
-				if (Friends?.Any() ?? false)
+				var FontSize = 14.0f;
+				if (CircleGraph.GraphSize < FontSize * 9.0f)
 				{
 					CircleGraph.SatelliteTexts = null;
+				}
+				else
+				if (CircleGraph.GraphSize < FontSize * 12.0f)
+				{
+					CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, Domain.LastPublicActivity, 6);
+				}
+				else
+				if (CircleGraph.GraphSize < FontSize * 16.0f)
+				{
+					CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, Domain.LastPublicActivity, 3);
 				}
 				else
 				{

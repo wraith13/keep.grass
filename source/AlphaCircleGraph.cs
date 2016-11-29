@@ -57,7 +57,7 @@ namespace keep.grass
 	{
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
-		double GraphSize;
+		public double GraphSize;
 		float Margin = 30.0f;
 		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
