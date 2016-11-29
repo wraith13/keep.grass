@@ -261,7 +261,7 @@ namespace keep.grass
 		}
 		public static float TimeToAngle(DateTime Time)
 		{
-			return (float)((Time.TimeOfDay.Ticks * 360) / TimeSpan.FromDays(1).Ticks);
+			return (float)((Time.TimeOfDay.Ticks * 360.0) / TimeSpan.FromDays(1).Ticks);
 		}
 		public void ClearActiveInfo()
 		{
