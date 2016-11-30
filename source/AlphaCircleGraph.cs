@@ -58,6 +58,7 @@ namespace keep.grass
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		public double GraphSize;
+		public float FontSize = 14.0f;
 		float Margin = 30.0f;
 		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
@@ -353,7 +354,7 @@ namespace keep.grass
 								paint.IsAntialias = true;
 								paint.Color = ToSKColor(SatelliteText.Color);
 								paint.StrokeCap = SKStrokeCap.Round;
-								paint.TextSize = 14.0f * PhysicalPixelRate;
+								paint.TextSize = FontSize * PhysicalPixelRate;
 								paint.IsAntialias = true;
 								paint.TextAlign = SKTextAlign.Center;
 								paint.Typeface = Font;
@@ -390,7 +391,7 @@ namespace keep.grass
 								paint.StrokeCap = SKStrokeCap.Round;
 								using (var path = new SKPath())
 								{
-									paint.TextSize = 14.0f * PhysicalPixelRate;
+									paint.TextSize = FontSize * PhysicalPixelRate;
 									paint.IsAntialias = true;
 									paint.Color = ToSKColor(Color.White);
 									paint.TextAlign = SKTextAlign.Center;
