@@ -19,6 +19,7 @@ namespace keep.grass
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
+		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
 		Task UpdateLeftTimeTask = null;
 		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
@@ -29,6 +30,7 @@ namespace keep.grass
 
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
+			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
 			CircleGraph.IsDoughnut = true;
@@ -96,15 +98,10 @@ namespace keep.grass
 					},
 				},
 			};
+			UpdateButton.Text = L["Update"];
 			var ButtonFrame = new Grid().HorizontalJustificate
 			(
-				new Button
-				{
-					VerticalOptions = LayoutOptions.Center,
-					HorizontalOptions = LayoutOptions.FillAndExpand,
-					Text = L["Update"],
-					Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync()),
-				},
+                UpdateButton,
 				new Button
 				{
 					VerticalOptions = LayoutOptions.Center,
@@ -155,6 +152,7 @@ namespace keep.grass
 			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
 			LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
+			UpdateButton.ShowText();
 
 			OnUpdateLastPublicActivity();
 		}
@@ -176,6 +174,7 @@ namespace keep.grass
 		{
 			LastActivityStampLabel.ShowIndicator();
 			LeftTimeLabel.ShowIndicator();
+			UpdateButton.ShowIndicator();
 		}
 		public void OnUpdateLastPublicActivity()
 		{
@@ -193,6 +192,7 @@ namespace keep.grass
 		{
 			LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
+			UpdateButton.ShowText();
 			StartUpdateLeftTimeTask();
 		}
 
