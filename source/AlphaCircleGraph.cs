@@ -60,6 +60,7 @@ namespace keep.grass
 		public double GraphSize;
 		public float FontSize = 14.0f;
 		float Margin = 30.0f;
+		public bool IsDoughnut { get; set; }
 		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
 
@@ -251,7 +252,7 @@ namespace keep.grass
 						{
 							using (var path = new SKPath())
 							{
-								if (null != Image)
+								if (null != Image || IsDoughnut)
 								{
 									path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
 									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
@@ -325,7 +326,7 @@ namespace keep.grass
 						paint.StrokeWidth = PhysicalPixelRate;
 						using (var path = new SKPath())
 						{
-							if (null != Image)
+							if (null != Image || IsDoughnut)
 							{
 								path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
 								path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
@@ -377,7 +378,7 @@ namespace keep.grass
 				}
 
 				//	パイ・テキストの描画
-				if (null == Image)
+				if (null == Image && !IsDoughnut)
 				{
 					foreach (var Pie in Data)
 					{

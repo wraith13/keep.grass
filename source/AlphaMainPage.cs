@@ -30,6 +30,8 @@ namespace keep.grass
 			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
+
+			CircleGraph.IsDoughnut = true;
 		}
 
 		public override void Build()
@@ -44,24 +46,20 @@ namespace keep.grass
 				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
 			}
 
-			if (Friends.Any())
-			{
-				CircleGraph
-					.AsView()
-					.GestureRecognizers
-					.Add
-					(
-						new TapGestureRecognizer()
-						{
-							Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
-						}
-					);
-			}
-
 			UserLabel.Command = Friends.Any() ?
-				new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)):
+				new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)) :
 				new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
 
+			CircleGraph
+				.AsView()
+				.GestureRecognizers
+				.Add
+				(
+					new TapGestureRecognizer()
+					{
+						Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
+					}
+				);
 
 			var MainTable = Friends.Any() ?
 			new TableView
@@ -84,10 +82,10 @@ namespace keep.grass
 				BackgroundColor = Color.White,
 				Root = new TableRoot
 				{
-					new TableSection(L["Github Account"])
+					/*new TableSection(L["Github Account"])
 					{
 						UserLabel,
-					},
+					},*/
 					new TableSection(L["Last Acitivity Stamp"])
 					{
 						LastActivityStampLabel,
