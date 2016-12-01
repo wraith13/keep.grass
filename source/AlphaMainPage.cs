@@ -206,7 +206,7 @@ namespace keep.grass
 				{
 					CircleGraph.Image = null;
 					CircleGraph.AltText = User;
-					CircleGraph.AltTextColor = Color.Default;
+					CircleGraph.AltTextColor = Color.Black;
 					CircleGraph.Update();
 					UserLabel.ImageSource = null;
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
