@@ -205,6 +205,8 @@ namespace keep.grass
 				if (UserLabel.Text != User)
 				{
 					CircleGraph.Image = null;
+					CircleGraph.AltText = User;
+					CircleGraph.AltTextColor = Color.Default;
 					CircleGraph.Update();
 					UserLabel.ImageSource = null;
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
@@ -222,6 +224,7 @@ namespace keep.grass
 			           	);
 					UserLabel.Text = User;
 					UserLabel.TextColor = Color.Default;
+
 					if (!Settings.IsValidUserName)
 					{
 						ClearActiveInfo();
@@ -235,6 +238,8 @@ namespace keep.grass
 			else
 			{
 				CircleGraph.Image = null;
+				CircleGraph.AltText = L["unspecified"];
+				CircleGraph.AltTextColor = Color.Gray;
 				CircleGraph.Update();
 				UserLabel.ImageSource = null;
 				UserLabel.Text = L["unspecified"];

@@ -61,6 +61,8 @@ namespace keep.grass
 		public float FontSize = 14.0f;
 		float Margin = 30.0f;
 		public bool IsDoughnut { get; set; }
+		public string AltText { get; set; }
+		public Color AltTextColor { get; set; }
 		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
 
@@ -218,6 +220,31 @@ namespace keep.grass
 					canvas.DrawBitmap(ImageBitmap, Rect, paint);
 				}
 			}
+			else
+			//	Altテキストの描画
+			if (!String.IsNullOrWhiteSpace(AltText))
+			{
+				using (var paint = new SKPaint())
+				{
+					paint.IsAntialias = true;
+					paint.Color = ToSKColor(AltTextColor);
+					paint.StrokeCap = SKStrokeCap.Round;
+					paint.TextSize = FontSize * PhysicalPixelRate;
+					paint.IsAntialias = true;
+					paint.TextAlign = SKTextAlign.Center;
+					paint.Typeface = Font;
+
+					canvas.DrawText
+					(
+						AltText,
+						Center.X,
+						Center.Y + (paint.TextSize / 2.0f),
+						paint
+					);
+
+					paint.Typeface = null;
+				}
+			}
 
 			if (null == Data || !Data.Any())
 			{
@@ -226,11 +253,35 @@ namespace keep.grass
 					paint.IsAntialias = true;
 					paint.Color = ToSKColor(Color.Gray);
 					paint.StrokeCap = SKStrokeCap.Round;
-					using (var path = new SKPath())
+					if (null != Image || IsDoughnut)
 					{
-						path.AddCircle(Center.X, Center.Y, Radius);
-						path.Close();
-						canvas.DrawPath(path, paint);
+						//	一度に描画しようとしても path が繋がらないので半分に分けて描画する
+						using (var path = new SKPath())
+						{
+							path.MoveTo(Center + AngleRadiusToPoint(0.0f, ImageRadius));
+							path.LineTo(Center + AngleRadiusToPoint(0.0f, Radius));
+							path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 0.0f, 180.0f, false);
+							//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+							path.LineTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
+							path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 180.0f, -180.0f, false);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+						using (var path = new SKPath())
+						{
+							path.MoveTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
+							path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+							path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 180.0f, 180.0f, false);
+							//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+							path.LineTo(Center + AngleRadiusToPoint(360.0f, ImageRadius));
+							path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 360.0f, -180.0f, false);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+					}
+					else
+					{
+						canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
 					}
 				}
 			}
@@ -276,7 +327,7 @@ namespace keep.grass
 						else
 						{
 							//	TotalVolume <= Pie.Volume な時に上の処理ではパイが描画されないことがある。
-							if (null != Image)
+							if (null != Image || IsDoughnut)
 							{
 								//	一度に描画しようとしても path が繋がらないので半分に分けて描画する
 								using (var path = new SKPath())
