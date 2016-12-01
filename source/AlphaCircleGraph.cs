@@ -230,7 +230,6 @@ namespace keep.grass
 					paint.Color = ToSKColor(AltTextColor);
 					paint.StrokeCap = SKStrokeCap.Round;
 					paint.TextSize = FontSize * PhysicalPixelRate;
-					paint.IsAntialias = true;
 					paint.TextAlign = SKTextAlign.Center;
 					paint.Typeface = Font;
 
@@ -407,7 +406,6 @@ namespace keep.grass
 								paint.Color = ToSKColor(SatelliteText.Color);
 								paint.StrokeCap = SKStrokeCap.Round;
 								paint.TextSize = FontSize * PhysicalPixelRate;
-								paint.IsAntialias = true;
 								paint.TextAlign = SKTextAlign.Center;
 								paint.Typeface = Font;
 
