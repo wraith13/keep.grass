@@ -14,7 +14,6 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaCircleImageCell[] Friends;
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
@@ -48,10 +47,6 @@ namespace keep.grass
 				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
 			}
 
-			UserLabel.Command = Friends.Any() ?
-				new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)) :
-				new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage());
-
 			CircleGraph
 				.AsView()
 				.GestureRecognizers
@@ -69,10 +64,6 @@ namespace keep.grass
 				BackgroundColor = Color.White,
 				Root = new TableRoot
 				{
-					/*new TableSection(L["Github Account"])
-					{
-						UserLabel,
-					},*/
 					new TableSection(L["Rivals"])
 					{
 						Friends,
@@ -84,10 +75,6 @@ namespace keep.grass
 				BackgroundColor = Color.White,
 				Root = new TableRoot
 				{
-					/*new TableSection(L["Github Account"])
-					{
-						UserLabel,
-					},*/
 					new TableSection(L["Last Acitivity Stamp"])
 					{
 						LastActivityStampLabel,
@@ -202,13 +189,12 @@ namespace keep.grass
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
-				if (UserLabel.Text != User)
+				if (CircleGraph.AltText != User)
 				{
 					CircleGraph.Image = null;
 					CircleGraph.AltText = User;
 					CircleGraph.AltTextColor = Color.Black;
 					CircleGraph.Update();
-					UserLabel.ImageSource = null;
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith
 			            (
@@ -218,12 +204,9 @@ namespace keep.grass
 								{
 									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
 									CircleGraph.Update();
-									UserLabel.ImageSource = t.Result;
 								}
 				           )
 			           	);
-					UserLabel.Text = User;
-					UserLabel.TextColor = Color.Default;
 
 					if (!Settings.IsValidUserName)
 					{
@@ -241,9 +224,6 @@ namespace keep.grass
 				CircleGraph.AltText = L["unspecified"];
 				CircleGraph.AltTextColor = Color.Gray;
 				CircleGraph.Update();
-				UserLabel.ImageSource = null;
-				UserLabel.Text = L["unspecified"];
-				UserLabel.TextColor = Color.Gray;
 				ClearActiveInfo();
 			}
 
