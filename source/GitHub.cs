@@ -40,20 +40,22 @@ namespace keep.grass
 			{
 				using (var content = response.Content)
 				{
-					var stream = await content.ReadAsStreamAsync();
-					return await Task.Factory.StartNew<DateTime>
-					(
-						() =>
-						DateTime.Parse
+					using(var stream = await content.ReadAsStreamAsync())
+					{
+						return await Task.Factory.StartNew<DateTime>
 						(
-							XDocument
-							.Load(stream)
-							.Descendants()
-							.Where(i => i.Name.LocalName == "updated")
-							.First()
-							.Value
-						)
-					);
+							() =>
+							DateTime.Parse
+							(
+								XDocument
+								.Load(stream)
+								.Descendants()
+								.Where(i => i.Name.LocalName == "updated")
+								.First()
+								.Value
+							)
+						);
+					}
 				}
 			}
 		}
