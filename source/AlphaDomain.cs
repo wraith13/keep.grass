@@ -19,7 +19,7 @@ namespace keep.grass
 			HttpClient = new HttpClient();
 		}
 
-		public async Task<byte[]> GetByteArrayFromUrlAsync(string Url)
+		public virtual async Task<byte[]> GetByteArrayFromUrlAsync(string Url)
 		{
 			return await HttpClient.GetByteArrayAsync(Url);
 		}

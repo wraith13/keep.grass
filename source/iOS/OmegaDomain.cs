@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 
@@ -7,6 +8,21 @@ namespace keep.grass.iOS
 {
 	public class OmegaDomain : AlphaDomain
 	{
+		public override async Task<byte[]> GetByteArrayFromUrlAsync(string Url)
+		{
+			return await Task.Factory.StartNew<byte[]>
+			(
+				() =>
+				{
+					using(var Url2 = NSUrl.FromString(Url))
+					using(var Data = NSData.FromUrl(Url2))
+					{
+						return Data.ToArray();
+					}
+				}
+			);
+		}
+
 		public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
 		{
 			CancelAlert(id);
