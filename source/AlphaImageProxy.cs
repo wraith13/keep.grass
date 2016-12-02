@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,27 +37,38 @@ namespace keep.grass
 				.FirstOrDefault();
 			if (null == result)
 			{
-				result = await GetWithoutCache(Url);
-				if (null != result)
+				try
 				{
-					lock(Cache)
+					result = await GetWithoutCache(Url);
+					if (null != result)
 					{
-						Cache = Cache
-							.Where(i => Expire < i.Stamp)
-							.Concat
-							(
-								new[]
-								{
-									new AlphaImageEntry
+						lock (Cache)
+						{
+							Cache = Cache
+								.Where(i => Expire < i.Stamp)
+								.Concat
+								(
+									new[]
 									{
-										Url = Url,
-										Binary = result,
-										Stamp = Now,
-									},
-								}
-							)
-							.ToArray();
+										new AlphaImageEntry
+										{
+											Url = Url,
+											Binary = result,
+											Stamp = Now,
+										},
+									}
+								)
+								.ToArray();
+						}
 					}
+				}
+				catch(Exception err)
+				{
+					Debug.WriteLine("AlphaImageProxy::Get::catch::err" + err.ToString());
+					result = Cache
+						.Where(i => i.Url == Url)
+						.Select(i => i.Binary)
+						.FirstOrDefault();
 				}
 			}
 			return result;
