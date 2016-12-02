@@ -12,11 +12,16 @@ namespace keep.grass
 	public abstract class AlphaDomain
 	{
 		protected static Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-		public HttpClient HttpClient = new HttpClient();
+		private HttpClient HttpClient = new HttpClient();
 		public void RefreshHttpClient()
 		{
 			HttpClient?.Dispose();
 			HttpClient = new HttpClient();
+		}
+
+		public async Task<byte[]> GetByteArrayFromUrlAsync(string Url)
+		{
+			return await HttpClient.GetByteArrayAsync(Url);
 		}
 
 		private DateTime LastPublicActivityCache;
@@ -72,7 +77,13 @@ namespace keep.grass
 					OnStartQuery();
 
 					var OldLastPublicActivity = LastPublicActivity;
-					LastPublicActivity = await GitHub.GetLastPublicActivityAsync(HttpClient, User);
+					LastPublicActivity = GitHub.GetLastPublicActivity
+                 	(
+						await GetByteArrayFromUrlAsync
+						(
+							GitHub.GetAtomUrl(User)
+						)
+                    );
 					Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::LastPublicActivity = " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss"));
 
 					if (OldLastPublicActivity != LastPublicActivity)

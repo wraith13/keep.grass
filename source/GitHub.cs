@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Xml.Linq;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace keep.grass
 {
@@ -34,29 +35,19 @@ namespace keep.grass
 			return String.Format (IconUrlFormat, Id);
 		}
 
-		static public async Task<DateTime> GetLastPublicActivityAsync(HttpClient HttpClient, string Id)
+		static public DateTime GetLastPublicActivity(byte[] AtomRawBytes)
 		{
-			using (var response = await HttpClient.GetAsync(GetAtomUrl(Id)))
+			using (var stream = new MemoryStream(AtomRawBytes))
 			{
-				using (var content = response.Content)
-				{
-					using(var stream = await content.ReadAsStreamAsync())
-					{
-						return await Task.Factory.StartNew<DateTime>
-						(
-							() =>
-							DateTime.Parse
-							(
-								XDocument
-								.Load(stream)
-								.Descendants()
-								.Where(i => i.Name.LocalName == "updated")
-								.First()
-								.Value
-							)
-						);
-					}
-				}
+				return DateTime.Parse
+				(
+					XDocument
+						.Load(stream)
+						.Descendants()
+						.Where(i => i.Name.LocalName == "updated")
+						.First()
+						.Value
+				);
 			}
 		}
 	}

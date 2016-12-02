@@ -17,7 +17,7 @@ namespace keep.grass
 
 		static public async Task<byte[]> GetWithoutCache(string Url)
 		{
-			return await AlphaFactory.MakeSureDomain().HttpClient.GetByteArrayAsync(Url);
+			return await AlphaFactory.MakeSureDomain().GetByteArrayFromUrlAsync(Url);
 		}
 		static public byte[] GetFromCache(string Url)
 		{
