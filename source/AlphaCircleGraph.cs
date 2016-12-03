@@ -74,6 +74,11 @@ namespace keep.grass
 		SKData ImageData;
 		SKBitmap ImageBitmap;
 
+		float PhysicalPixelRate;
+		float Radius;
+		float ImageRadius;
+		SKPoint Center;
+
 		public AlphaCircleGraph()
 		{
 			//	※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
@@ -195,16 +200,23 @@ namespace keep.grass
 
 		public void Draw(SKCanvas canvas)
 		{
-			canvas.Clear();
+			var Phi = 1.618033988749894848204586834365f;
+
 			SKRect rect;
 			canvas.GetClipBounds(ref rect);
-			var Phi = 1.618033988749894848204586834365f;
-			var PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
+			PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
 			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-			var Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
-			var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
-			var ImageRadius = Radius / Phi;
+			Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
+			Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+			ImageRadius = Radius / Phi;
 
+			canvas.Clear();
+			DrawCenter(canvas);
+			DrawSatelliteTexts(canvas);
+			DrawData(canvas);
+		}
+		public void DrawCenter(SKCanvas canvas)
+		{
 			//	イメージの描画
 			if (null != Image && null != ImageData && null != ImageBitmap)
 			{
@@ -244,7 +256,45 @@ namespace keep.grass
 					paint.Typeface = null;
 				}
 			}
+		}
+		public void DrawSatelliteTexts(SKCanvas canvas)
+		{
+			var CurrentAngle = GetStartAngle();
+			//	周辺テキストの描画
+			if (null != SatelliteTexts)
+			{
+				foreach (var SatelliteText in SatelliteTexts)
+				{
+					if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
+					{
+						using (var paint = new SKPaint())
+						{
+							paint.IsAntialias = true;
+							paint.Color = ToSKColor(SatelliteText.Color);
+							paint.StrokeCap = SKStrokeCap.Round;
+							paint.TextSize = FontSize * PhysicalPixelRate;
+							paint.TextAlign = SKTextAlign.Center;
+							paint.Typeface = Font;
 
+							var TextRadius = Radius + paint.TextSize;
+							var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle + OriginAngle, TextRadius);
+
+							canvas.DrawText
+							(
+								SatelliteText.Text,
+								TextCenter.X,
+								TextCenter.Y + (paint.TextSize / 2.0f),
+								paint
+							);
+
+							paint.Typeface = null;
+						}
+					}
+				}
+			}
+		}
+		public void DrawData(SKCanvas canvas)
+		{
 			if (null == Data || !Data.Any())
 			{
 				using (var paint = new SKPaint())
@@ -390,40 +440,6 @@ namespace keep.grass
 						}
 					}
 					CurrentAngle = NextAngle;
-				}
-
-				CurrentAngle = GetStartAngle();
-				//	周辺テキストの描画
-				if (null != SatelliteTexts)
-				{
-					foreach (var SatelliteText in SatelliteTexts)
-					{
-						if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
-						{
-							using (var paint = new SKPaint())
-							{
-								paint.IsAntialias = true;
-								paint.Color = ToSKColor(SatelliteText.Color);
-								paint.StrokeCap = SKStrokeCap.Round;
-								paint.TextSize = FontSize * PhysicalPixelRate;
-								paint.TextAlign = SKTextAlign.Center;
-								paint.Typeface = Font;
-
-								var TextRadius = Radius + paint.TextSize;
-								var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle + OriginAngle, TextRadius);
-
-								canvas.DrawText
-								(
-									SatelliteText.Text,
-									TextCenter.X,
-									TextCenter.Y + (paint.TextSize / 2.0f),
-									paint
-								);
-								
-								paint.Typeface = null;
-							}
-						}
-					}
 				}
 
 				//	パイ・テキストの描画
