@@ -53,7 +53,7 @@ namespace keep.grass
 			Path.LineTo(Point.X, Point.Y);
 		}
 	}
-	public abstract class VoidCircleGraph
+	public abstract class VoidCircleGraph // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 	{
 		public virtual bool IsDoughnut { get; set; }
 		public virtual string AltText { get; set; }
@@ -62,6 +62,7 @@ namespace keep.grass
 		public virtual bool IsInvalidCenter { get; set; }
 		public virtual bool IsInvalidSatelliteTexts { get; set; }
 		public virtual bool IsInvalidData { get; set; }
+		public virtual bool IsClearCanvas { get; set; }
 		public virtual byte[] Image { get; set; }
 		public virtual IEnumerable<VoidPie> Data { get; set; }
 		public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
@@ -73,6 +74,7 @@ namespace keep.grass
 		public double GraphSize;
 		public float FontSize = 14.0f;
 		float Margin = 30.0f;
+		float AntialiasMargin = 0.6f;
 
 		public override bool IsDoughnut
 		{
@@ -213,8 +215,9 @@ namespace keep.grass
 		SKData ImageData;
 		SKBitmap ImageBitmap;
 
+		SKRect CanvasRect;
 		float PhysicalPixelRate;
-		float Radius;
+		float PieRadius;
 		float ImageRadius;
 		SKPoint Center;
 
@@ -316,19 +319,19 @@ namespace keep.grass
 			if (IsInvalidCanvas)
 			{
 				var Phi = 1.618033988749894848204586834365f;
-				SKRect rect;
-				canvas.GetClipBounds(ref rect);
-				PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
+				canvas.GetClipBounds(ref CanvasRect);
+				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (CanvasView.Width + CanvasView.Height));
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-				Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
+				PieRadius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
 				Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
-				ImageRadius = Radius / Phi;
+				ImageRadius = PieRadius / Phi;
 				
 				IsInvalidCanvas = false;
 				IsInvalidCenter = true;
 				IsInvalidSatelliteTexts = true;
 				IsInvalidData = true;
 				canvas.Clear();
+				IsClearCanvas = true;
 			}
 			if (IsInvalidCenter)
 			{
@@ -342,10 +345,26 @@ namespace keep.grass
 			{
 				DrawData(canvas);
 			}
+			IsClearCanvas = false;
 		}
 		private void DrawCenter(SKCanvas canvas)
 		{
 			IsInvalidCenter = false;
+			IsInvalidData = true;
+			var AntialiasImageRadius = ImageRadius - AntialiasMargin;
+
+			//	背景を塗りつぶす
+			if (!IsClearCanvas)
+			{
+				using (var paint = new SKPaint())
+				{
+					paint.IsAntialias = true;
+					paint.Color = ToSKColor(Color.White);
+					paint.StrokeCap = SKStrokeCap.Round;
+					canvas.DrawCircle(Center.X, Center.Y, ImageRadius + AntialiasMargin, paint);
+				}
+			}
+
 			//	イメージの描画
 			if (null != Image && null != ImageData && null != ImageBitmap)
 			{
@@ -353,10 +372,10 @@ namespace keep.grass
 				{
 					var Rect = SKRect.Create
 					(
-						Center.X - ImageRadius,
-						Center.Y - ImageRadius,
-						ImageRadius * 2.0f,
-						ImageRadius * 2.0f
+						Center.X - AntialiasImageRadius,
+						Center.Y - AntialiasImageRadius,
+						AntialiasImageRadius * 2.0f,
+						AntialiasImageRadius * 2.0f
 					);
 					canvas.DrawBitmap(ImageBitmap, Rect, paint);
 				}
@@ -365,15 +384,6 @@ namespace keep.grass
 			//	Altテキストの描画
 			if (!String.IsNullOrWhiteSpace(AltText))
 			{
-				//	背景を塗りつぶす
-				using (var paint = new SKPaint())
-				{
-					paint.IsAntialias = true;
-					paint.Color = ToSKColor(Color.White);
-					paint.StrokeCap = SKStrokeCap.Round;
-					canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
-				}
-				//	Altテキスト本体の描画
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
@@ -394,13 +404,69 @@ namespace keep.grass
 					paint.Typeface = null;
 				}
 			}
+
+			//	輪郭の円の描画 ( これより外側の部分は DrawData() に任せる )
+			using (var paint = new SKPaint())
+			{
+				paint.IsAntialias = true;
+				paint.Color = ToSKColor(Color.White);
+				paint.StrokeCap = SKStrokeCap.Round;
+				paint.IsStroke = true;
+				paint.StrokeWidth = PhysicalPixelRate;
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 0.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
+				}
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 180.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
+				}
+			}
 		}
 		private void DrawSatelliteTexts(SKCanvas canvas)
 		{
 			IsInvalidSatelliteTexts = false;
 			//	周辺テキストの描画
-			if (null != SatelliteTexts)
+			if (SatelliteTexts?.Any() ?? false)
 			{
+				if (!IsClearCanvas)
+				{
+					//	背景をクリア
+					var AntialiasPieRadius = PieRadius +AntialiasMargin;
+					using (var paint = new SKPaint())
+					{
+						paint.IsAntialias = true;
+						paint.Color = ToSKColor(Color.White);
+						paint.StrokeCap = SKStrokeCap.Round;
+						using (var path = new SKPath())
+						{
+							path.MoveTo(CanvasRect.Right, CanvasRect.Top);
+							path.LineTo(Center.X, CanvasRect.Top);
+							path.LineTo(Center.X, Center.Y - AntialiasPieRadius);
+							path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 0.0f +OriginAngle, 180.0f, false);
+							path.LineTo(Center.X, CanvasRect.Bottom);
+							path.LineTo(CanvasRect.Right, CanvasRect.Bottom);
+							path.LineTo(CanvasRect.Right, CanvasRect.Top);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+						using (var path = new SKPath())
+						{
+							path.MoveTo(CanvasRect.Left, CanvasRect.Top);
+							path.LineTo(Center.X, CanvasRect.Top);
+							path.LineTo(Center.X, Center.Y - AntialiasPieRadius);
+							path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 0.0f +OriginAngle, -180.0f, false);
+							path.LineTo(Center.X, CanvasRect.Bottom);
+							path.LineTo(CanvasRect.Left, CanvasRect.Bottom);
+							path.LineTo(CanvasRect.Left, CanvasRect.Top);
+							path.Close();
+							canvas.DrawPath(path, paint);
+						}
+					}
+				}
+				
 				foreach (var SatelliteText in SatelliteTexts)
 				{
 					if (!String.IsNullOrWhiteSpace(SatelliteText.Text))
@@ -414,7 +480,7 @@ namespace keep.grass
 							paint.TextAlign = SKTextAlign.Center;
 							paint.Typeface = Font;
 
-							var TextRadius = Radius + paint.TextSize;
+							var TextRadius = PieRadius + paint.TextSize;
 							var TextCenter = Center + AngleRadiusToPoint(SatelliteText.Angle + OriginAngle, TextRadius);
 
 							canvas.DrawText
@@ -434,6 +500,29 @@ namespace keep.grass
 		private void DrawData(SKCanvas canvas)
 		{
 			IsInvalidData = false;
+			var AntialiasPieRadius = PieRadius - AntialiasMargin;
+			var AntialiasImageRadius = ImageRadius + AntialiasMargin;
+
+			//	内側の輪郭の円の描画
+			using (var paint = new SKPaint())
+			{
+				paint.IsAntialias = true;
+				paint.Color = ToSKColor(Color.White);
+				paint.StrokeCap = SKStrokeCap.Round;
+				paint.IsStroke = true;
+				paint.StrokeWidth = PhysicalPixelRate;
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 0.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
+				}
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 180.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
+				}
+			}
+
 			if (null == Data || !Data.Any())
 			{
 				using (var paint = new SKPaint())
@@ -446,30 +535,30 @@ namespace keep.grass
 						//	一度に描画しようとしても path が繋がらないので半分に分けて描画する
 						using (var path = new SKPath())
 						{
-							path.MoveTo(Center + AngleRadiusToPoint(0.0f, ImageRadius));
-							path.LineTo(Center + AngleRadiusToPoint(0.0f, Radius));
-							path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 0.0f, 180.0f, false);
-							//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
+							path.MoveTo(Center + AngleRadiusToPoint(0.0f, AntialiasImageRadius));
+							path.LineTo(Center + AngleRadiusToPoint(0.0f, AntialiasPieRadius));
+							path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 0.0f, 180.0f, false);
+							//path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
 							path.LineTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
-							path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 180.0f, -180.0f, false);
+							path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 180.0f, -180.0f, false);
 							path.Close();
 							canvas.DrawPath(path, paint);
 						}
 						using (var path = new SKPath())
 						{
-							path.MoveTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
-							path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
-							path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 180.0f, 180.0f, false);
-							//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
-							path.LineTo(Center + AngleRadiusToPoint(360.0f, ImageRadius));
-							path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 360.0f, -180.0f, false);
+							path.MoveTo(Center + AngleRadiusToPoint(180.0f, AntialiasImageRadius));
+							path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
+							path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 180.0f, 180.0f, false);
+							//path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
+							path.LineTo(Center + AngleRadiusToPoint(360.0f, AntialiasImageRadius));
+							path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 360.0f, -180.0f, false);
 							path.Close();
 							canvas.DrawPath(path, paint);
 						}
 					}
 					else
 					{
-						canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
+						canvas.DrawCircle(Center.X, Center.Y, AntialiasPieRadius, paint);
 					}
 				}
 			}
@@ -493,19 +582,19 @@ namespace keep.grass
 							{
 								if (null != Image || IsDoughnut)
 								{
-									path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
-									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
-									//path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
-									path.LineTo(Center + AngleRadiusToPoint(NextAngle, ImageRadius));
-									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), NextAngle, -CurrentAngleVolume, false);
+									path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, AntialiasImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, AntialiasPieRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+									//path.LineTo(Center + AngleRadiusToPoint(NextAngle, AntialiasPieRadius));
+									path.LineTo(Center + AngleRadiusToPoint(NextAngle, AntialiasImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), NextAngle, -CurrentAngleVolume, false);
 								}
 								else
 								{
 									path.MoveTo(Center);
-									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
-									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
-									path.LineTo(Center + AngleRadiusToPoint(NextAngle, Radius));
+									path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, AntialiasPieRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+									path.LineTo(Center + AngleRadiusToPoint(NextAngle, AntialiasPieRadius));
 									path.LineTo(Center);
 								}
 								path.Close();
@@ -520,30 +609,30 @@ namespace keep.grass
 								//	一度に描画しようとしても path が繋がらないので半分に分けて描画する
 								using (var path = new SKPath())
 								{
-									path.MoveTo(Center + AngleRadiusToPoint(0.0f, ImageRadius));
-									path.LineTo(Center + AngleRadiusToPoint(0.0f, Radius));
-									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 0.0f, 180.0f, false);
-									//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
-									path.LineTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
-									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 180.0f, -180.0f, false);
+									path.MoveTo(Center + AngleRadiusToPoint(0.0f, AntialiasImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(0.0f, AntialiasPieRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 0.0f, 180.0f, false);
+									//path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
+									path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 180.0f, -180.0f, false);
 									path.Close();
 									canvas.DrawPath(path, paint);
 								}
 								using (var path = new SKPath())
 								{
-									path.MoveTo(Center + AngleRadiusToPoint(180.0f, ImageRadius));
-									path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
-									path.ArcTo(SKRect.Create(Center.X - Radius, Center.Y - Radius, Radius * 2.0f, Radius * 2.0f), 180.0f, 180.0f, false);
-									//path.LineTo(Center + AngleRadiusToPoint(180.0f, Radius));
-									path.LineTo(Center + AngleRadiusToPoint(360.0f, ImageRadius));
-									path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), 360.0f, -180.0f, false);
+									path.MoveTo(Center + AngleRadiusToPoint(180.0f, AntialiasImageRadius));
+									path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 180.0f, 180.0f, false);
+									//path.LineTo(Center + AngleRadiusToPoint(180.0f, AntialiasPieRadius));
+									path.LineTo(Center + AngleRadiusToPoint(360.0f, AntialiasImageRadius));
+									path.ArcTo(SKRect.Create(Center.X - AntialiasImageRadius, Center.Y - AntialiasImageRadius, AntialiasImageRadius * 2.0f, AntialiasImageRadius * 2.0f), 360.0f, -180.0f, false);
 									path.Close();
 									canvas.DrawPath(path, paint);
 								}
 							}
 							else
 							{
-								canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
+								canvas.DrawCircle(Center.X, Center.Y, AntialiasPieRadius, paint);
 							}
 						}
 					}
@@ -567,14 +656,14 @@ namespace keep.grass
 						{
 							if (null != Image || IsDoughnut)
 							{
-								path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
-								path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, ImageRadius));
+								//path.ArcTo(SKRect.Create(Center.X - ImageRadius, Center.Y - ImageRadius, ImageRadius * 2.0f, ImageRadius * 2.0f), CurrentAngle, CurrentAngleVolume, false);
+								path.MoveTo(Center + AngleRadiusToPoint(CurrentAngle, AntialiasImageRadius));
 							}
 							else
 							{
 								path.MoveTo(Center);
 							}
-							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, Radius));
+							path.LineTo(Center + AngleRadiusToPoint(CurrentAngle, AntialiasPieRadius));
 							canvas.DrawPath(path, paint);
 						}
 					}
@@ -603,7 +692,7 @@ namespace keep.grass
 									paint.Typeface = Font;
 
 									var CenterAngle = (CurrentAngle + NextAngle) / 2.0f;
-									var HalfRadius = Radius / 2.0f;
+									var HalfRadius = AntialiasPieRadius / 2.0f;
 									var TextCenter = Center + AngleRadiusToPoint(CenterAngle, HalfRadius);
 
 									if (!String.IsNullOrWhiteSpace(Pie.Text))
@@ -633,6 +722,26 @@ namespace keep.grass
 						}
 						CurrentAngle = NextAngle;
 					}
+				}
+			}
+
+			//	外側の輪郭の円の描画
+			using (var paint = new SKPaint())
+			{
+				paint.IsAntialias = true;
+				paint.Color = ToSKColor(Color.White);
+				paint.StrokeCap = SKStrokeCap.Round;
+				paint.IsStroke = true;
+				paint.StrokeWidth = PhysicalPixelRate;
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 0.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
+				}
+				using (var path = new SKPath())
+				{
+					path.ArcTo(SKRect.Create(Center.X - AntialiasPieRadius, Center.Y - AntialiasPieRadius, AntialiasPieRadius * 2.0f, AntialiasPieRadius * 2.0f), 180.0f, 180.0f, false);
+					canvas.DrawPath(path, paint);
 				}
 			}
 		}
