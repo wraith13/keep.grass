@@ -263,7 +263,6 @@ namespace keep.grass
 					}
 				);
 			}
-			CircleGraph.Update();
 			//Debug.WriteLine("AlphaDetailPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
 	}

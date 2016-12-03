@@ -194,7 +194,6 @@ namespace keep.grass
 					CircleGraph.Image = null;
 					CircleGraph.AltText = User;
 					CircleGraph.AltTextColor = Color.Black;
-					CircleGraph.Update();
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith
 			            (
@@ -203,7 +202,6 @@ namespace keep.grass
 		            			() =>
 								{
 									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
-									CircleGraph.Update();
 								}
 				           )
 			           	);
@@ -223,7 +221,6 @@ namespace keep.grass
 				CircleGraph.Image = null;
 				CircleGraph.AltText = L["unspecified"];
 				CircleGraph.AltTextColor = Color.Gray;
-				CircleGraph.Update();
 				ClearActiveInfo();
 			}
 
@@ -344,7 +341,6 @@ namespace keep.grass
 					}
 				);
 			}
-			CircleGraph.Update();
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
 

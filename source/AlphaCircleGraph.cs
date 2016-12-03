@@ -53,16 +53,156 @@ namespace keep.grass
 			Path.LineTo(Point.X, Point.Y);
 		}
 	}
-	public class AlphaCircleGraph :IDisposable
+	public abstract class VoidCircleGraph
+	{
+		public virtual bool IsDoughnut { get; set; }
+		public virtual string AltText { get; set; }
+		public virtual Color AltTextColor { get; set; }
+		public virtual bool IsInvalidCanvas { get; set; }
+		public virtual bool IsInvalidCenter { get; set; }
+		public virtual bool IsInvalidSatelliteTexts { get; set; }
+		public virtual bool IsInvalidData { get; set; }
+		public virtual byte[] Image { get; set; }
+		public virtual IEnumerable<VoidPie> Data { get; set; }
+		public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
+	}
+	public class AlphaCircleGraph :VoidCircleGraph, IDisposable
 	{
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		public double GraphSize;
 		public float FontSize = 14.0f;
 		float Margin = 30.0f;
-		public bool IsDoughnut { get; set; }
-		public string AltText { get; set; }
-		public Color AltTextColor { get; set; }
+
+		public override bool IsDoughnut
+		{
+			set
+			{
+				if (base.IsDoughnut != value)
+				{
+					base.IsDoughnut = value;
+					IsInvalidCenter = true;
+				}
+			}
+		}
+		public override string AltText
+		{
+			set
+			{
+				if (base.AltText != value)
+				{
+					base.AltText = value;
+					IsInvalidCenter = true;
+				}
+			}
+		}
+		public override Color AltTextColor
+		{
+			set
+			{
+				if (base.AltTextColor != value)
+				{
+					base.AltTextColor = value;
+					IsInvalidCenter = true;
+				}
+			}
+		}
+		public override bool IsInvalidCanvas
+		{
+			set
+			{
+				if (base.IsInvalidCanvas != value)
+				{
+					base.IsInvalidCanvas = value;
+					if (base.IsInvalidCanvas)
+					{
+						Update();
+					}
+				}
+			}
+		}
+		public override bool IsInvalidCenter
+		{
+			set
+			{
+				if (base.IsInvalidCenter != value)
+				{
+					base.IsInvalidCenter = value;
+					if (base.IsInvalidCenter)
+					{
+						Update();
+					}
+				}
+			}
+		}
+
+		public override bool IsInvalidSatelliteTexts
+		{
+			set
+			{
+				if (base.IsInvalidSatelliteTexts != value)
+				{
+					base.IsInvalidSatelliteTexts = value;
+					if (base.IsInvalidSatelliteTexts)
+					{
+						Update();
+					}
+				}
+			}
+		}
+
+		public override bool IsInvalidData
+		{
+			set
+			{
+				if (base.IsInvalidSatelliteTexts != value)
+				{
+					base.IsInvalidData = value;
+					if (base.IsInvalidData)
+					{
+						Update();
+					}
+				}
+			}
+		}
+
+		public override byte[] Image
+		{
+			set
+			{
+				if (base.Image != value)
+				{
+					ImageBitmap?.Dispose();
+					ImageBitmap = null;
+					ImageData?.Dispose();
+					ImageData = null;
+					base.Image = value;
+					if (null != base.Image)
+					{
+						ImageData = new SKData(base.Image);
+						ImageBitmap = SKBitmap.Decode(ImageData);
+					}
+					IsInvalidCenter = true;
+				}
+			}
+		}
+		public override IEnumerable<VoidPie> Data
+		{
+			set
+			{
+				base.Data = value;
+				IsInvalidData = true;
+			}
+		}
+		public override IEnumerable<CircleGraphSatelliteText> SatelliteTexts
+		{
+			set
+			{
+				base.SatelliteTexts = value;
+				IsInvalidSatelliteTexts = true;
+			}
+		}
+
 		Grid GraphFrame;
 		AlphaCircleGraphView CanvasView;
 
@@ -70,7 +210,6 @@ namespace keep.grass
 		SKManagedStream FontStream;
 		SKTypeface Font;
 
-		byte[] ImageBytes;
 		SKData ImageData;
 		SKBitmap ImageBitmap;
 
@@ -123,34 +262,9 @@ namespace keep.grass
 				VerticalOptions = LayoutOptions.FillAndExpand,
 			}
 			.SetSingleChild(CanvasView);
+			IsInvalidCanvas = true;
 			Update();
 		}
-
-		public byte[] Image
-		{
-			get
-			{
-				return ImageBytes;
-			}
-			set
-			{
-				if (ImageBytes != value)
-				{
-					ImageBitmap?.Dispose();
-					ImageBitmap = null;
-					ImageData?.Dispose();
-					ImageData = null;
-					ImageBytes = value;
-					if (null != ImageBytes)
-					{
-						ImageData = new SKData(ImageBytes);
-						ImageBitmap = SKBitmap.Decode(ImageData);
-					}
-				}
-			}
-		}
-		public IEnumerable<VoidPie> Data { get; set; }
-		public IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 
 		public static SKColor ToSKColor(Color c)
 		{
@@ -190,33 +304,48 @@ namespace keep.grass
 		{
 			StartAngle = NewStartAngle;
 		}
-        public void Update()
+        private void Update()
 		{
 			if (null != CanvasView)
 			{
 				CanvasView.InvalidateSurface();
 			}
 		}
-
 		public void Draw(SKCanvas canvas)
 		{
-			var Phi = 1.618033988749894848204586834365f;
-
-			SKRect rect;
-			canvas.GetClipBounds(ref rect);
-			PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
-			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-			Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
-			Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
-			ImageRadius = Radius / Phi;
-
-			canvas.Clear();
-			DrawCenter(canvas);
-			DrawSatelliteTexts(canvas);
-			DrawData(canvas);
+			if (IsInvalidCanvas)
+			{
+				var Phi = 1.618033988749894848204586834365f;
+				SKRect rect;
+				canvas.GetClipBounds(ref rect);
+				PhysicalPixelRate = (float)((rect.Width + rect.Height) / (CanvasView.Width + CanvasView.Height));
+				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
+				Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
+				Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+				ImageRadius = Radius / Phi;
+				
+				IsInvalidCanvas = false;
+				IsInvalidCenter = true;
+				IsInvalidSatelliteTexts = true;
+				IsInvalidData = true;
+				canvas.Clear();
+			}
+			if (IsInvalidCenter)
+			{
+				DrawCenter(canvas);
+			}
+			if (IsInvalidSatelliteTexts)
+			{
+				DrawSatelliteTexts(canvas);
+			}
+			if (IsInvalidData)
+			{
+				DrawData(canvas);
+			}
 		}
-		public void DrawCenter(SKCanvas canvas)
+		private void DrawCenter(SKCanvas canvas)
 		{
+			IsInvalidCenter = false;
 			//	イメージの描画
 			if (null != Image && null != ImageData && null != ImageBitmap)
 			{
@@ -236,6 +365,15 @@ namespace keep.grass
 			//	Altテキストの描画
 			if (!String.IsNullOrWhiteSpace(AltText))
 			{
+				//	背景を塗りつぶす
+				using (var paint = new SKPaint())
+				{
+					paint.IsAntialias = true;
+					paint.Color = ToSKColor(Color.White);
+					paint.StrokeCap = SKStrokeCap.Round;
+					canvas.DrawCircle(Center.X, Center.Y, Radius, paint);
+				}
+				//	Altテキスト本体の描画
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
@@ -257,9 +395,9 @@ namespace keep.grass
 				}
 			}
 		}
-		public void DrawSatelliteTexts(SKCanvas canvas)
+		private void DrawSatelliteTexts(SKCanvas canvas)
 		{
-			var CurrentAngle = GetStartAngle();
+			IsInvalidSatelliteTexts = false;
 			//	周辺テキストの描画
 			if (null != SatelliteTexts)
 			{
@@ -293,8 +431,9 @@ namespace keep.grass
 				}
 			}
 		}
-		public void DrawData(SKCanvas canvas)
+		private void DrawData(SKCanvas canvas)
 		{
+			IsInvalidData = false;
 			if (null == Data || !Data.Any())
 			{
 				using (var paint = new SKPaint())
