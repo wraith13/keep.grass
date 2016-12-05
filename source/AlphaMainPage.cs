@@ -150,33 +150,6 @@ namespace keep.grass
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			var Now = DateTime.Now;
-			if (OldNow.AddSeconds(60) < Now)
-			{
-				Debug.WriteLine("Start AnimateNow");
-				OldNow = new[]
-				{
-					OldNow,
-					Now.AddDays(-1).AddMinutes(1),
-				}
-				.Max();
-				OldLastPublicActivity = new[]
-				{
-					Domain.LastPublicActivity,
-					Now.AddDays(-1).AddMinutes(1),
-				}
-				.Max();
-				CircleGraph.AsView().Animate
-			   	(
-					"NowAnimation",
-					d => UpdateLeftTime((OldNow = Now.Date + TimeSpan.FromMinutes(d)), OldLastPublicActivity),
-					(OldNow - Now.Date).TotalMinutes,
-			        (Now.AddMilliseconds(500) - Now.Date).TotalMinutes,
-		           	16,
-		           	500,
-		           	Easing.SinOut
-	          	);
-			}
 			UpdateInfoAsync();
 			StartUpdateLeftTimeTask();
 		}
@@ -320,14 +293,45 @@ namespace keep.grass
 							//if (!IsInAnimation(Now))
 							if
 							(
+								null != CircleGraph &&
+								null != CircleGraph.AsView() &&
 								!CircleGraph.AsView().AnimationIsRunning("NowAnimation") &&
 								!CircleGraph.AsView().AnimationIsRunning("LastPublicActivityAnimation")
 							)
 							{
-								OldNow = Now;
-								Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.LastPublicActivity));
-								Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
+								if (OldNow.AddSeconds(60) < Now)
+								{
+									Debug.WriteLine("Start AnimateNow");
+									OldNow = new[]
+									{
+										OldNow,
+										Now.AddDays(-1).AddMinutes(1),
+									}
+									.Max();
+									OldLastPublicActivity = new[]
+									{
+										Domain.LastPublicActivity,
+										Now.AddDays(-1).AddMinutes(1),
+									}
+									.Max();
+									CircleGraph.AsView().Animate
+									(
+										"NowAnimation",
+										d => UpdateLeftTime((OldNow = Now.Date + TimeSpan.FromMinutes(d)), OldLastPublicActivity),
+										(OldNow - Now.Date).TotalMinutes,
+										(Now.AddMilliseconds(500) - Now.Date).TotalMinutes,
+										16,
+										500,
+										Easing.SinOut
+									);
+								}
+								else
+								{
+									OldNow = Now;
+									Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.LastPublicActivity));
+								}
 							}
+							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
 				);
