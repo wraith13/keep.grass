@@ -64,6 +64,7 @@ namespace keep.grass
 		public virtual bool IsInvalidData { get; set; }
 		public virtual bool IsClearCanvas { get; set; }
 		public virtual byte[] Image { get; set; }
+		public virtual byte ImageAlpha { get; set; }
 		public virtual IEnumerable<VoidPie> Data { get; set; }
 		public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 	}
@@ -185,6 +186,20 @@ namespace keep.grass
 						ImageBitmap = SKBitmap.Decode(ImageData);
 					}
 					IsInvalidCenter = true;
+				}
+			}
+		}
+		public override byte ImageAlpha
+		{
+			set
+			{
+				if (base.ImageAlpha != value)
+				{
+					base.ImageAlpha = value;
+					if (null != base.Image)
+					{
+						IsInvalidCenter = true;
+					}
 				}
 			}
 		}
@@ -378,6 +393,17 @@ namespace keep.grass
 						AntialiasImageRadius * 2.0f
 					);
 					canvas.DrawBitmap(ImageBitmap, Rect, paint);
+				}
+				if (ImageAlpha < 255)
+				{
+					using (var paint = new SKPaint())
+					{
+						paint.IsAntialias = true;
+						paint.Color = new SKColor(255, 255, 255, (byte)(255 -ImageAlpha));
+						paint.StrokeCap = SKStrokeCap.Round;
+						paint.IsStroke = false;
+						canvas.DrawCircle(Center.X, Center.Y, AntialiasImageRadius, paint);
+					}
 				}
 			}
 			else

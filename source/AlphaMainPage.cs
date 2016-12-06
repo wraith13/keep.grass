@@ -205,7 +205,7 @@ namespace keep.grass
 					16,
 					500,
 					Easing.SinOut
-				  );
+				);
 			}
 			LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
@@ -232,6 +232,18 @@ namespace keep.grass
 		            			() =>
 								{
 									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
+									CircleGraph.AsView().Animate
+									(
+										"ImageAnimation",
+										d => CircleGraph.ImageAlpha = (byte)d,
+										0.0,
+										255.0,
+										16,
+										500,
+										Easing.SinOut
+									);
+
+
 								}
 				           )
 			           	);
