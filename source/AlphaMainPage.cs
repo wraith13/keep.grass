@@ -239,8 +239,8 @@ namespace keep.grass
 										0.0,
 										255.0,
 										16,
-										500,
-										Easing.SinOut
+										1000,
+										Easing.SinIn
 									);
 
 
