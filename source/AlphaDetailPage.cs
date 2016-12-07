@@ -123,9 +123,9 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			LastActivityStampLabel.Text = Domain.LastPublicActivity.IsDefault() ?
+			LastActivityStampLabel.Text = Domain.GetLastPublicActivity(User).IsDefault() ?
 				"":
-				Domain.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				Domain.GetLastPublicActivity(User).ToString("yyyy-MM-dd HH:mm:ss");
 			LastActivityStampLabel.TextColor = Color.Default;
 		}
 		public void OnErrorInQuery()
@@ -159,11 +159,11 @@ namespace keep.grass
 						)
 					);
 					UserLabel.OptionImageSource = Root.GetExportImageSource();
-					if (!Settings.IsValidUserName)
+					if (!Settings.GetIsValidUserName(User))
 					{
 						ClearActiveInfo();
 					}
-					if (default(DateTime) == Domain.LastPublicActivity)
+					if (default(DateTime) == Domain.GetLastPublicActivity(User))
 					{
 						Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 					}
@@ -182,7 +182,7 @@ namespace keep.grass
 
 		public void ClearActiveInfo()
 		{
-			Domain.LastPublicActivity = default(DateTime);
+			//Domain.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -229,10 +229,10 @@ namespace keep.grass
 		{
 			var Now = DateTime.Now;
 			CircleGraph.SetStartAngle(AlphaDomain.TimeToAngle(Now));
-			if (default(DateTime) != Domain.LastPublicActivity)
+			if (default(DateTime) != Domain.GetLastPublicActivity(User))
 			{
 				var Today = Now.Date;
-				var LimitTime = Domain.LastPublicActivity.AddHours(24);
+				var LimitTime = Domain.GetLastPublicActivity(User).AddHours(24);
 				var LeftTime = LimitTime - Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
 				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
@@ -240,7 +240,7 @@ namespace keep.grass
 				LeftTimeLabel.TextColor = LeftTimeColor;
 
 				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
-				CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, Domain.LastPublicActivity);
+				CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, Domain.GetLastPublicActivity(User));
 
 				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
 			}

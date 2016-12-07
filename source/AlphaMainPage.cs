@@ -144,7 +144,7 @@ namespace keep.grass
 			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 
-			OnUpdateLastPublicActivity();
+			OnUpdateLastPublicActivity(Settings.UserName);
 		}
 
 		protected override void OnAppearing()
@@ -164,7 +164,7 @@ namespace keep.grass
 		{
 			OldLastPublicActivity = new[]
 			{
-				Domain.LastPublicActivity,
+				Domain.GetLastPublicActivity(Settings.UserName),
 				DateTime.Now.AddDays(-1).AddMinutes(1),
 			}
 			.Max();
@@ -172,12 +172,15 @@ namespace keep.grass
 			LeftTimeLabel.ShowIndicator();
 			UpdateButton.ShowIndicator();
 		}
-		public void OnUpdateLastPublicActivity()
+		public void OnUpdateLastPublicActivity(string User)
 		{
-			LastActivityStampLabel.Text = Domain.LastPublicActivity.IsDefault() ?
-				"":
-				Domain.LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
-			LastActivityStampLabel.TextColor = Color.Default;
+			if (Settings.UserName == User)
+			{
+				LastActivityStampLabel.Text = Domain.GetLastPublicActivity(Settings.UserName).IsDefault() ?
+					"" :
+					Domain.GetLastPublicActivity(Settings.UserName).ToString("yyyy-MM-dd HH:mm:ss");
+				LastActivityStampLabel.TextColor = Color.Default;
+			}
 		}
 		public void OnErrorInQuery()
 		{
@@ -186,7 +189,7 @@ namespace keep.grass
 		}
 		public void OnEndQuery()
 		{
-			if (OldLastPublicActivity < Domain.LastPublicActivity)
+			if (OldLastPublicActivity < Domain.GetLastPublicActivity(Settings.UserName))
 			{
 				Debug.WriteLine("Start LastPublicActivity");
 				var Now = DateTime.Now;
@@ -201,7 +204,7 @@ namespace keep.grass
 					"LastPublicActivityAnimation",
 					d => UpdateLeftTime(OldNow, (OldLastPublicActivity = Now.Date + TimeSpan.FromMinutes(d))),
 					(OldLastPublicActivity - Now.Date).TotalMinutes,
-					(Domain.LastPublicActivity - Now.Date).TotalMinutes,
+					(Domain.GetLastPublicActivity(Settings.UserName) - Now.Date).TotalMinutes,
 					16,
 					500,
 					Easing.SinOut
@@ -248,11 +251,11 @@ namespace keep.grass
 				           )
 			           	);
 
-					if (!Settings.IsValidUserName)
+					if (!Settings.GetIsValidUserName(Settings.UserName))
 					{
 						ClearActiveInfo();
 					}
-					if (default(DateTime) == Domain.LastPublicActivity)
+					if (default(DateTime) == Domain.GetLastPublicActivity(Settings.UserName))
 					{
 						Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 					}
@@ -283,7 +286,7 @@ namespace keep.grass
 		}
 		public void ClearActiveInfo()
 		{
-			Domain.LastPublicActivity = default(DateTime);
+			//SetLastPublicActivity(Settings.UserName, default(DateTime));
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -322,7 +325,7 @@ namespace keep.grass
 									.Max();
 									OldLastPublicActivity = new[]
 									{
-										Domain.LastPublicActivity,
+										Domain.GetLastPublicActivity(Settings.UserName),
 										Now.AddDays(-1).AddMinutes(1),
 									}
 									.Max();
@@ -340,7 +343,7 @@ namespace keep.grass
 								else
 								{
 									OldNow = Now;
-									Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.LastPublicActivity));
+									Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName)));
 								}
 							}
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();

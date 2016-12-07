@@ -110,40 +110,42 @@ namespace keep.grass.Helpers
 		}
 
 		private const string IsValidUserNameKey = "IsValidUserName";
-		private static readonly bool IsValidUserNameDefault = false;
-		public static bool IsValidUserName
+		private static string MakeIsValidUserNameKey(string User)
 		{
-			get
-			{
-				return AppSettings.GetValueOrDefault<bool>(IsValidUserNameKey, IsValidUserNameDefault);
-			}
-			set
-			{
-				AppSettings.AddOrUpdateValue<bool>(IsValidUserNameKey, value);
-			}
+			return $"{IsValidUserNameKey}{User}";
+		}
+		private static readonly bool IsValidUserNameDefault = false;
+		public static bool GetIsValidUserName(string User)
+		{
+			return AppSettings.GetValueOrDefault<bool>(MakeIsValidUserNameKey(User), IsValidUserNameDefault);
+		}
+		public static void SetIsValidUserName(string User, bool value)
+		{
+			AppSettings.AddOrUpdateValue<bool>(MakeIsValidUserNameKey(User), value);
 		}
 
 		private const string LastPublicActivityKey = "LastPublicActivity";
-		private static readonly DateTime LastPublicActivityDefault = default(DateTime);
-		public static DateTime LastPublicActivity
+		private static string MakeLastPublicActivityKey(string User)
 		{
-			get
-			{
-				var value = AppSettings.GetValueOrDefault<DateTime>(LastPublicActivityKey, LastPublicActivityDefault);
-				return value == LastPublicActivityDefault ?
-					value:
-					value.ToLocalTime();
-			}
-			set
-			{
-				AppSettings.AddOrUpdateValue<DateTime>
-	           	(
-	           		LastPublicActivityKey,
-					value == LastPublicActivityDefault ?
-		           		value:
-			           	value.ToUniversalTime()
-	          	);
-			}
+			return $"{LastPublicActivityKey}{User}";
+		}
+		private static readonly DateTime LastPublicActivityDefault = default(DateTime);
+		public static DateTime GetLastPublicActivity(string User)
+		{
+			var value = AppSettings.GetValueOrDefault<DateTime>(MakeLastPublicActivityKey(User), LastPublicActivityDefault);
+			return value == LastPublicActivityDefault ?
+				value:
+				value.ToLocalTime();
+		}
+		public static void SetLastPublicActivity(string User, DateTime value)
+		{
+			AppSettings.AddOrUpdateValue<DateTime>
+           	(
+           		MakeLastPublicActivityKey(User),
+				value == LastPublicActivityDefault ?
+	           		value:
+		           	value.ToUniversalTime()
+          	);
 		}
 
 		public static T Get<T>(string Key, T DefaultValue)

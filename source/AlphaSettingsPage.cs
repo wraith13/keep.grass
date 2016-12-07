@@ -172,7 +172,6 @@ namespace keep.grass
 			if (Settings.UserName != NewUserName)
 			{
 				Settings.UserName = NewUserName;
-				Settings.IsValidUserName = false;
                 IsChanged = true;
             }
 			var OldLanguage = L.Get();
