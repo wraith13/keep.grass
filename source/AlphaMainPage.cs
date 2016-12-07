@@ -382,6 +382,7 @@ namespace keep.grass
 				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
 
 				LeftTimeLabel.TextColor = LeftTimeColor;
+				CircleGraph.AltTextColor = LeftTimeColor;
 
 				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
@@ -426,6 +427,16 @@ namespace keep.grass
 					}
 				);
 			}
+
+			for (var i = 0; i < Friends?.Count(); ++i)
+			{
+				var Friend = Settings.GetFriend(i);
+				var LimitTime = Domain.GetLastPublicActivity(Friend).AddHours(24);
+				var LeftTime = LimitTime - Now;
+				var FriendLable = Friends[i];
+				FriendLable.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
+			}
+
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
 
