@@ -34,7 +34,7 @@ namespace keep.grass.Droid
 			if
 			(
 				String.IsNullOrWhiteSpace(Settings.UserName) ||
-				default(DateTime) == LastPublicActivity
+				default(DateTime) == GetLastPublicActivity(Settings.UserName)
 			)
 			{
 				System.Diagnostics.Debug.WriteLine("OmegaDomain::CancelAllAlerts");
@@ -42,7 +42,7 @@ namespace keep.grass.Droid
 			else
 			{
 				System.Diagnostics.Debug.WriteLine("OmegaDomain::UpdateAlerts");
-				var Limit = LastPublicActivity.AddHours(24);
+				var Limit = GetLastPublicActivity(Settings.UserName).AddHours(24);
 				var Now = DateTime.Now;
 				int id = BaseUpdateId;
 				foreach
