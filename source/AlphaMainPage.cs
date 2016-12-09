@@ -36,6 +36,20 @@ namespace keep.grass
 			//Build();
 
 			CircleGraph.IsDoughnut = true;
+
+			var Now = DateTime.Now;
+			OldNow = new[]
+			{
+				OldNow,
+				Now.AddDays(-1),
+			}
+			.Max();
+			OldLastPublicActivity = new[]
+			{
+				Domain.GetLastPublicActivity(Settings.UserName),
+				Now.AddDays(-1),
+			}
+			.Max();
 		}
 
 		public override void Build()
@@ -193,12 +207,6 @@ namespace keep.grass
 			{
 				Debug.WriteLine("Start LastPublicActivity");
 				var Now = DateTime.Now;
-				OldNow = new[]
-				{
-					OldNow,
-					Now.AddDays(-1).AddMinutes(1),
-				}
-				.Max();
 				CircleGraph.AsView().Animate
 			   	(
 					"LastPublicActivityAnimation",
@@ -320,13 +328,7 @@ namespace keep.grass
 									OldNow = new[]
 									{
 										OldNow,
-										Now.AddDays(-1).AddMinutes(1),
-									}
-									.Max();
-									OldLastPublicActivity = new[]
-									{
-										Domain.GetLastPublicActivity(Settings.UserName),
-										Now.AddDays(-1).AddMinutes(1),
+										Now.AddDays(-1),
 									}
 									.Max();
 									CircleGraph.AsView().Animate
