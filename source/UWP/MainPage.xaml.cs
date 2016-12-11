@@ -47,7 +47,7 @@ namespace keep.grass.UWP
             var Deferral = taskInstance.GetDeferral();
             OmegaFactory.MakeSureInit();
             AlphaFactory.MakeSureDomain()
-                .AutoUpdateLastPublicActivityAsync()
+                .BackgroundUpdateLastPublicActivityAsync()
                 .ContinueWith
                 (
                     t =>

@@ -53,7 +53,7 @@ namespace keep.grass.iOS
 		public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
 		{
 			OmegaFactory.MakeSureInit();
-			AlphaFactory.MakeSureDomain().AutoUpdateLastPublicActivityAsync().ContinueWith
+			AlphaFactory.MakeSureDomain().BackgroundUpdateLastPublicActivityAsync().ContinueWith
 	        (
 	            t =>
 					completionHandler(UIBackgroundFetchResult.NoData)

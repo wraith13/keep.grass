@@ -35,7 +35,7 @@ namespace keep.grass.Droid
 			try
 			{
 				Domain.ThreadContext.Value = this;
-				Domain.AutoUpdateLastPublicActivityAsync().Wait();
+				Domain.BackgroundUpdateLastPublicActivityAsync().Wait();
 			}
 			finally
 			{
