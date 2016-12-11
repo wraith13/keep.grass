@@ -9,9 +9,5 @@ namespace keep.grass.UWP
 {
     class OmegaCircleGraph : AlphaCircleGraph
     {
-        public override SKColorType GetDeviceColorType()
-        {
-            return SKColorType.Bgra8888;
-        }
     }
 }

@@ -306,10 +306,6 @@ namespace keep.grass
 				Radius * (float)Math.Sin(DegreeToRadian(Angle))
 			);
 		}
-        public virtual SKColorType GetDeviceColorType()
-        {
-            return SKColorType.Rgba8888;
-        }
 		public double GetTotalVolume()
 		{
 			return Data.Select(Pie => Pie.Volume).Sum();
