@@ -94,7 +94,7 @@ namespace keep.grass
 
 			if (OldLastPublicActivity != NewLastPublicActivity)
 			{
-				OnUpdateLastPublicActivity(User);
+				OnUpdateLastPublicActivity(User, NewLastPublicActivity);
 			}
 			Settings.SetIsValidUserName(User, true);
 		}
@@ -141,7 +141,7 @@ namespace keep.grass
 				}
 			);
 		}
-		public void OnUpdateLastPublicActivity(string User)
+		public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
 		{
 			Device.BeginInvokeOnMainThread
 			(
@@ -149,7 +149,7 @@ namespace keep.grass
 				{
 					if (User == Settings.UserName)
 					{
-						UpdateAlerts();
+						UpdateAlerts(LastPublicActivity);
 					}
 					AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User);
 				}
@@ -176,60 +176,56 @@ namespace keep.grass
 			);
 		}
 
-		public virtual void UpdateAlerts()
+		public virtual void UpdateAlerts(DateTime LastPublicActivity)
 		{
 			CancelAllAlerts();
-			if (!String.IsNullOrWhiteSpace(Settings.UserName))
+			if (default(DateTime) < LastPublicActivity)
 			{
-				var LastPublicActivity = GetLastPublicActivity(Settings.UserName);
-				if (default(DateTime) < LastPublicActivity)
+				Debug.WriteLine("AlphaDomain::UpdateAlerts");
+				var Limit = LastPublicActivity.AddHours(24);
+				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				var Now = DateTime.Now;
+				int i = 0;
+				foreach (var Span in Settings.AlertTimeSpanTable)
 				{
-					Debug.WriteLine("AlphaDomain::UpdateAlerts");
-					var Limit = LastPublicActivity.AddHours(24);
-					var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
-					var Now = DateTime.Now;
-					int i = 0;
-					foreach (var Span in Settings.AlertTimeSpanTable)
+					++i;
+					var AlertStamp = Limit - Span;
+					if (Settings.GetAlert(Span) && Now < AlertStamp)
 					{
-						++i;
-						var AlertStamp = Limit - Span;
-						if (Settings.GetAlert(Span) && Now < AlertStamp)
-						{
-							ShowAlert
-							(
-								Settings.AlertTimeSpanToDisplayName(L, Span),
-								LastPublicActivityInfo,
-								i,
-								AlertStamp
-							);
-						}
-						else
-						{
-							CancelAlert(i);
-						}
+						ShowAlert
+						(
+							Settings.AlertTimeSpanToDisplayName(L, Span),
+							LastPublicActivityInfo,
+							i,
+							AlertStamp
+						);
 					}
-					i = 100;
-					foreach (var Span in Settings.AlertDailyTimeTable)
+					else
 					{
-						++i;
-						if (Settings.GetDailyAlert(Span))
-						{
-							var AlertStamp = (Now.TimeOfDay < Span ? Now : Now.AddDays(1))
-								- Now.TimeOfDay
-								+ Span;
-							var LeftTime = Limit - AlertStamp;
-							ShowAlert
-							(
-								Settings.AlertLeftTimeToDisplayName(L, LeftTime),
-								LastPublicActivityInfo,
-								i,
-								AlertStamp
-							);
-						}
-						else
-						{
-							CancelAlert(i);
-						}
+						CancelAlert(i);
+					}
+				}
+				i = 100;
+				foreach (var Span in Settings.AlertDailyTimeTable)
+				{
+					++i;
+					if (Settings.GetDailyAlert(Span))
+					{
+						var AlertStamp = (Now.TimeOfDay < Span ? Now : Now.AddDays(1))
+							- Now.TimeOfDay
+							+ Span;
+						var LeftTime = Limit - AlertStamp;
+						ShowAlert
+						(
+							Settings.AlertLeftTimeToDisplayName(L, LeftTime),
+							LastPublicActivityInfo,
+							i,
+							AlertStamp
+						);
+					}
+					else
+					{
+						CancelAlert(i);
 					}
 				}
 			}

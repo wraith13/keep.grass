@@ -14,14 +14,13 @@ namespace keep.grass.UWP
 {
     class OmegaDomain : AlphaDomain
     {
-        public override void UpdateAlerts()
+        public override void UpdateAlerts(DateTime LastPublicActivity)
         {
-            base.UpdateAlerts();
+            base.UpdateAlerts(LastPublicActivity);
 
             if
             (
-                String.IsNullOrWhiteSpace(Settings.UserName) ||
-                default(DateTime) == GetLastPublicActivity(Settings.UserName)
+                default(DateTime) == LastPublicActivity
             )
             {
             }
@@ -45,7 +44,7 @@ namespace keep.grass.UWP
                             },
                             new TileText()
                             {
-                                Text = L["Last Stamp"] +": " +GetLastPublicActivity(Settings.UserName).ToString("yyyy-MM-dd HH:mm"),
+                                Text = L["Last Stamp"] +": " +LastPublicActivity.ToString("yyyy-MM-dd HH:mm"),
                                 Wrap = true,
                                 Style = TileTextStyle.CaptionSubtle,
                             },
@@ -69,7 +68,7 @@ namespace keep.grass.UWP
                         .GetXml()
                     )
                     {
-                        ExpirationTime = GetLastPublicActivity(Settings.UserName).AddHours(24),
+                        ExpirationTime = LastPublicActivity.AddHours(24),
                     }
                 );
 

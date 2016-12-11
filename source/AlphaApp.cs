@@ -42,7 +42,7 @@ namespace keep.grass
 		}
 		protected override void OnResume()
 		{
-			Domain.UpdateAlerts();
+			Domain.UpdateAlerts(Domain.GetLastPublicActivity(Settings.UserName));
 		}
 
 		public void ShowMainPage()
@@ -64,7 +64,7 @@ namespace keep.grass
 		{
 			AlphaFactory.MakeSureLanguage().Update();
 			Main.UpdateInfoAsync();
-			Domain.UpdateAlerts();
+			Domain.UpdateAlerts(Domain.GetLastPublicActivity(Settings.UserName));
 		}
 
 		public virtual ImageSource GetImageSource(string image)
