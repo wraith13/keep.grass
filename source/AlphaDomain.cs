@@ -163,7 +163,7 @@ namespace keep.grass
 					{
 						UpdateAlerts(LastPublicActivity);
 					}
-					AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User);
+					AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
 				}
 			);
 		}

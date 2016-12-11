@@ -158,7 +158,7 @@ namespace keep.grass
 			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 
-			OnUpdateLastPublicActivity(Settings.UserName);
+			OnUpdateLastPublicActivity(Settings.UserName, OldLastPublicActivity);
 		}
 
 		protected override void OnAppearing()
@@ -176,20 +176,33 @@ namespace keep.grass
 
 		public void OnStartQuery()
 		{
-			OldLastPublicActivity = new[]
-			{
-				Domain.GetLastPublicActivity(Settings.UserName),
-				DateTime.Now.AddDays(-1).AddMinutes(1),
-			}
-			.Max();
 			LastActivityStampLabel.ShowIndicator();
 			LeftTimeLabel.ShowIndicator();
 			UpdateButton.ShowIndicator();
 		}
-		public void OnUpdateLastPublicActivity(string User)
+		public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
 		{
 			if (Settings.UserName == User)
 			{
+				Debug.WriteLine("Start LastPublicActivity");
+				OldLastPublicActivity = new[]
+				{
+					OldLastPublicActivity,
+					DateTime.Now.AddDays(-1),
+				}
+				.Max();
+				var Now = DateTime.Now;
+				CircleGraph.AsView().Animate
+			   	(
+					"LastPublicActivityAnimation",
+					d => UpdateLeftTime(OldNow, (OldLastPublicActivity = Now.Date + TimeSpan.FromMinutes(d))),
+					(OldLastPublicActivity - Now.Date).TotalMinutes,
+					(LastPublicActivity - Now.Date).TotalMinutes,
+					16,
+					500,
+					Easing.SinOut
+				);
+
 				LastActivityStampLabel.Text = Domain.GetLastPublicActivity(Settings.UserName).IsDefault() ?
 					"" :
 					Domain.GetLastPublicActivity(Settings.UserName).ToString("yyyy-MM-dd HH:mm:ss");
@@ -203,21 +216,6 @@ namespace keep.grass
 		}
 		public void OnEndQuery()
 		{
-			if (OldLastPublicActivity < Domain.GetLastPublicActivity(Settings.UserName))
-			{
-				Debug.WriteLine("Start LastPublicActivity");
-				var Now = DateTime.Now;
-				CircleGraph.AsView().Animate
-			   	(
-					"LastPublicActivityAnimation",
-					d => UpdateLeftTime(OldNow, (OldLastPublicActivity = Now.Date + TimeSpan.FromMinutes(d))),
-					(OldLastPublicActivity - Now.Date).TotalMinutes,
-					(Domain.GetLastPublicActivity(Settings.UserName) - Now.Date).TotalMinutes,
-					16,
-					500,
-					Easing.SinOut
-				);
-			}
 			LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
