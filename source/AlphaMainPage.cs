@@ -17,7 +17,7 @@ namespace keep.grass
 		AlphaCircleImageCell[] Friends;
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-		AlphaCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
+		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
 		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
 		Task UpdateLeftTimeTask = null;
@@ -230,32 +230,7 @@ namespace keep.grass
 			{
 				if (CircleGraph.AltText != User)
 				{
-					CircleGraph.Image = null;
-					CircleGraph.AltText = User;
-					CircleGraph.AltTextColor = Color.Black;
-					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-						.ContinueWith
-			            (
-		            		t => Device.BeginInvokeOnMainThread
-				            (
-		            			() =>
-								{
-									CircleGraph.Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
-									CircleGraph.AsView().Animate
-									(
-										"ImageAnimation",
-										d => CircleGraph.ImageAlpha = (byte)d,
-										0.0,
-										255.0,
-										16,
-										1000,
-										Easing.SinIn
-									);
-
-
-								}
-				           )
-			           	);
+					CircleGraph.User = User;
 
 					if (!Settings.GetIsValidUserName(Settings.UserName))
 					{

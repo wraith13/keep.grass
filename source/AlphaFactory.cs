@@ -93,6 +93,15 @@ namespace keep.grass
 			return new AlphaCircleGraph();
 		}
 
+		public static AlphaUserCircleGraph MakeUserCircleGraph()
+		{
+			return Instance.MakeOmegaUserCircleGraph();
+		}
+		public virtual AlphaUserCircleGraph MakeOmegaUserCircleGraph()
+		{
+			return new AlphaUserCircleGraph();
+		}
+
 		public static AlphaActivityIndicatorButton MakeActivityIndicatorButton()
 		{
 			return Instance.MakeOmegaActivityIndicatorButton();
