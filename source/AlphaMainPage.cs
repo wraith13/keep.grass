@@ -347,39 +347,16 @@ namespace keep.grass
 
 		protected void UpdateLeftTime(DateTime Now, DateTime LastPublicActivity)
 		{
-			CircleGraph.SetStartAngle(AlphaDomain.TimeToAngle(Now));
+			CircleGraph.Now = Now;
+			CircleGraph.LastPublicActivity = LastPublicActivity;
+			CircleGraph.UpdateSlices();
 			if (default(DateTime) != LastPublicActivity)
 			{
 				var Today = Now.Date;
 				var LimitTime = LastPublicActivity.AddHours(24);
 				var LeftTime = LimitTime - Now;
 				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
-				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-
-				LeftTimeLabel.TextColor = LeftTimeColor;
-				CircleGraph.AltTextColor = LeftTimeColor;
-
-				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
-
-				var FontSize = 14.0f;
-				if (CircleGraph.GraphSize < FontSize * 9.0f)
-				{
-					CircleGraph.SatelliteTexts = null;
-				}
-				else
-				if (CircleGraph.GraphSize < FontSize * 12.0f)
-				{
-					CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 6);
-				}
-				else
-				if (CircleGraph.GraphSize < FontSize * 16.0f)
-				{
-					CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 3);
-				}
-				else
-				{
-					CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity);
-				}
+				LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
 
 				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
 			}
@@ -390,17 +367,6 @@ namespace keep.grass
 				{
 					StopUpdateLeftTimeTask();
 				}*/
-
-				CircleGraph.Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime);
-				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
-				(
-					i => new CircleGraphSatelliteText
-					{
-						Text = i.ToString(),
-						Color = Color.Gray,
-						Angle = 360.0f * ((float)(i) / 24.0f),
-					}
-				);
 			}
 
 			for (var i = 0; i < Friends?.Count(); ++i)

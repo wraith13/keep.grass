@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace keep.grass
 {
-	public class AlphaUserCircleGraph :AlphaCircleGraph
+	public abstract class VoidUserCircleGraph : AlphaCircleGraph // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
+	{
+		public virtual DateTime Now { get; set; }
+		public virtual DateTime LastPublicActivity { get; set; }
+	}
+	public class AlphaUserCircleGraph :VoidUserCircleGraph
 	{
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
@@ -49,6 +56,55 @@ namespace keep.grass
 		}
 		public AlphaUserCircleGraph()
 		{
+		}
+		public void UpdateSlices()
+		{
+			SetStartAngle(AlphaDomain.TimeToAngle(Now));
+			if (default(DateTime) != LastPublicActivity)
+			{
+				var Today = Now.Date;
+				var LimitTime = LastPublicActivity.AddHours(24);
+				var LeftTime = LimitTime - Now;
+				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
+
+				AltTextColor = LeftTimeColor;
+
+				Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
+
+				if (GraphSize < FontSize * 9.0f)
+				{
+					SatelliteTexts = null;
+				}
+				else
+				if (GraphSize < FontSize * 12.0f)
+				{
+					SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 6);
+				}
+				else
+				if (GraphSize < FontSize * 16.0f)
+				{
+					SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 3);
+				}
+				else
+				{
+					SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity);
+				}
+
+				//Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
+			}
+			else
+			{
+				Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime);
+				SatelliteTexts = Enumerable.Range(0, 24).Select
+				(
+					i => new CircleGraphSatelliteText
+					{
+						Text = i.ToString(),
+						Color = Color.Gray,
+						Angle = 360.0f * ((float)(i) / 24.0f),
+					}
+				);
+			}
 		}
 	}
 }
