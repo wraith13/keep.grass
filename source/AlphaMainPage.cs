@@ -23,8 +23,8 @@ namespace keep.grass
 		Task UpdateLeftTimeTask = null;
 		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
 
-		DateTime OldNow = default(DateTime);
-		DateTime OldLastPublicActivity = default(DateTime);
+		//DateTime OldNow = default(DateTime);
+		//DateTime OldLastPublicActivity = default(DateTime);
 
 		public AlphaMainPage()
 		{
@@ -36,7 +36,7 @@ namespace keep.grass
 			//Build();
 
 			CircleGraph.IsDoughnut = true;
-
+			/*
 			var Now = DateTime.Now;
 			OldNow = new[]
 			{
@@ -49,7 +49,9 @@ namespace keep.grass
 				Domain.GetLastPublicActivity(Settings.UserName),
 				Now.AddDays(-1),
 			}
-			.Max();
+			.Max();*/
+			CircleGraph.Now = DateTime.Now;
+			CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
 		}
 
 		public override void Build()
@@ -158,7 +160,7 @@ namespace keep.grass
 			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 
-			OnUpdateLastPublicActivity(Settings.UserName, OldLastPublicActivity);
+			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 		}
 
 		protected override void OnAppearing()

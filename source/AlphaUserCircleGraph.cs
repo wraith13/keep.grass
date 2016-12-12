@@ -15,7 +15,7 @@ namespace keep.grass
 	}
 	public class AlphaUserCircleGraph :VoidUserCircleGraph
 	{
-		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+		//AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		public string User
 		{
@@ -67,11 +67,13 @@ namespace keep.grass
 					base.IsVisible = value;
 					if (value)
 					{
-						OnAnimate();
+						StartAnimation();
 					}
 				}
 			}
 		}
+
+		private bool HasNextAnimation;
 
 		private DateTime NewNow;
 		public override DateTime Now
@@ -81,7 +83,14 @@ namespace keep.grass
 				NewNow = value;
 				if (IsVisible)
 				{
-					OnAnimate();
+					if (!AnimationIsRunning())
+					{
+						StartAnimation();
+					}
+					else
+					{
+						HasNextAnimation = true;
+					}
 				}
 			}
 			get
@@ -102,7 +111,14 @@ namespace keep.grass
 				NewLastPublicActivity = value;
 				if (IsVisible)
 				{
-					OnAnimate();
+					if (!AnimationIsRunning())
+					{
+						StartAnimation();
+					}
+					else
+					{
+						HasNextAnimation = true;
+					}
 				}
 			}
 			get
@@ -120,11 +136,13 @@ namespace keep.grass
 		{
 			return
 				null != AsView() &&
-				!AsView().AnimationIsRunning("NowAnimation") &&
-				!AsView().AnimationIsRunning("LastPublicActivityAnimation");
+				(
+					AsView().AnimationIsRunning("NowAnimation") ||
+					AsView().AnimationIsRunning("LastPublicActivityAnimation")
+				);
 		}
 
-		public void OnAnimate()
+		public void StartAnimation()
 		{
 			if (NewLastPublicActivity != LastPublicActivity)
 			{
@@ -178,6 +196,11 @@ namespace keep.grass
 		public override void Draw(SKCanvas Canvas)
 		{
 			IsVisible = true;
+			if (HasNextAnimation)
+			{
+				HasNextAnimation = false;
+				StartAnimation();
+			}
 			base.Draw(Canvas);
 		}
 
