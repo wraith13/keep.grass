@@ -185,6 +185,7 @@ namespace keep.grass
 			if (Settings.UserName == User)
 			{
 				Debug.WriteLine("Start LastPublicActivity");
+				/*
 				OldLastPublicActivity = new[]
 				{
 					OldLastPublicActivity,
@@ -202,6 +203,8 @@ namespace keep.grass
 					500,
 					Easing.SinOut
 				);
+				*/
+				CircleGraph.LastPublicActivity = LastPublicActivity;
 
 				LastActivityStampLabel.Text = Domain.GetLastPublicActivity(Settings.UserName).IsDefault() ?
 					"" :
@@ -290,11 +293,11 @@ namespace keep.grass
 							if
 							(
 								null != CircleGraph &&
-								null != CircleGraph.AsView() &&
-								!CircleGraph.AsView().AnimationIsRunning("NowAnimation") &&
-								!CircleGraph.AsView().AnimationIsRunning("LastPublicActivityAnimation")
+								!CircleGraph.AnimationIsRunning()
 							)
 							{
+								CircleGraph.Now = Now;
+								/*
 								if (OldNow.AddSeconds(60) < Now)
 								{
 									Debug.WriteLine("Start AnimateNow");
@@ -320,6 +323,8 @@ namespace keep.grass
 									OldNow = Now;
 									Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName)));
 								}
+								*/
+								Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName)));
 							}
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
@@ -347,9 +352,9 @@ namespace keep.grass
 
 		protected void UpdateLeftTime(DateTime Now, DateTime LastPublicActivity)
 		{
-			CircleGraph.Now = Now;
-			CircleGraph.LastPublicActivity = LastPublicActivity;
-			CircleGraph.UpdateSlices();
+			//CircleGraph.Now = Now;
+			//CircleGraph.LastPublicActivity = LastPublicActivity;
+			//CircleGraph.UpdateSlices();
 			if (default(DateTime) != LastPublicActivity)
 			{
 				var Today = Now.Date;
