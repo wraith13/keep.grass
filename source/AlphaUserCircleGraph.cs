@@ -144,49 +144,62 @@ namespace keep.grass
 
 		public void StartAnimation()
 		{
+			var Delta = TimeSpan.FromSeconds(60);
 			if (NewLastPublicActivity != LastPublicActivity)
 			{
-				Debug.WriteLine("Start LastPublicActivity");
-				var AnchorNow = DateTime.Now;
-				AsView().Animate
-				(
-					"LastPublicActivityAnimation",
-					d =>
-					{
-						base.LastPublicActivity = AnchorNow.Date + TimeSpan.FromMinutes(d);
-						UpdateSlices();
-					},
-					(LastPublicActivity - AnchorNow.Date).TotalMinutes,
-					(NewLastPublicActivity - AnchorNow.Date).TotalMinutes,
-					16,
-					500,
-					Easing.SinOut
-				);
+				if (Delta < (NewLastPublicActivity - LastPublicActivity))
+				{
+					Debug.WriteLine("Start LastPublicActivity");
+					var AnchorNow = DateTime.Now;
+					AsView().Animate
+					(
+						"LastPublicActivityAnimation",
+						d =>
+						{
+							base.LastPublicActivity = AnchorNow.Date + TimeSpan.FromMinutes(d);
+							UpdateSlices();
+						},
+						(LastPublicActivity - AnchorNow.Date).TotalMinutes,
+						(NewLastPublicActivity - AnchorNow.Date).TotalMinutes,
+						16,
+						500,
+						Easing.SinOut
+					);
+					HasNextAnimation = true;
+				}
+				else
+				{
+					base.LastPublicActivity = NewLastPublicActivity;
+				}
 			}
-			if (Now.AddSeconds(60) < NewNow)
+			if (NewNow != Now)
 			{
-				Debug.WriteLine("Start AnimateNow");
-				var AnchorNow = DateTime.Now;
-				AsView().Animate
-				(
-					"NowAnimation",
-					d =>
-					{
-						base.Now = AnchorNow.Date + TimeSpan.FromMinutes(d);
-						UpdateSlices();
-					},
-					(Now - AnchorNow.Date).TotalMinutes,
-					(NewNow.AddMilliseconds(500) - AnchorNow.Date).TotalMinutes,
-					16,
-					500,
-					Easing.SinOut
-				);
+				if (Delta < (NewNow - Now))
+				{
+					Debug.WriteLine("Start AnimateNow");
+					var AnchorNow = DateTime.Now;
+					AsView().Animate
+					(
+						"NowAnimation",
+						d =>
+						{
+							base.Now = AnchorNow.Date + TimeSpan.FromMinutes(d);
+							UpdateSlices();
+						},
+						(Now - AnchorNow.Date).TotalMinutes,
+						(NewNow.AddMilliseconds(500) - AnchorNow.Date).TotalMinutes,
+						16,
+						500,
+						Easing.SinOut
+					);
+				}
+				else
+				{
+					base.Now = NewNow;
+				}
 			}
-			else
-			{
-				base.Now = NewNow;
-				UpdateSlices();
-			}
+
+			UpdateSlices();
 		}
 
 		public AlphaUserCircleGraph()
@@ -241,6 +254,7 @@ namespace keep.grass
 			}
 			else
 			{
+				AltTextColor = Color.Gray;
 				Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime);
 				SatelliteTexts = Enumerable.Range(0, 24).Select
 				(

@@ -36,12 +36,15 @@ namespace keep.grass
 		public DateTime GetLastPublicActivity(string User)
 		{
 			var result = default(DateTime);
-			lock (LastPublicActivityCache)
+			if (!string.IsNullOrWhiteSpace(User))
 			{
-				if (!LastPublicActivityCache.TryGetValue(User, out result))
+				lock (LastPublicActivityCache)
 				{
-					result = Settings.GetLastPublicActivity(User);
-					LastPublicActivityCache[User] = result;
+					if (!LastPublicActivityCache.TryGetValue(User, out result))
+					{
+						result = Settings.GetLastPublicActivity(User);
+						LastPublicActivityCache[User] = result;
+					}
 				}
 			}
 			return result;
