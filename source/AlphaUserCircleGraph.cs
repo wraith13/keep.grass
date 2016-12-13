@@ -58,6 +58,9 @@ namespace keep.grass
 			}
 		}
 
+		public DateTime VisibleAt;
+		public TimeSpan VisibleWait = TimeSpan.FromMilliseconds(500);
+		public bool IsEarlyVisible => DateTime.Now < VisibleAt.Add(VisibleWait);
 		public override bool IsVisible
 		{
 			set
@@ -67,7 +70,9 @@ namespace keep.grass
 					base.IsVisible = value;
 					if (value)
 					{
-						StartAnimation();
+						VisibleAt = DateTime.Now;
+						Task.Delay(VisibleWait)
+							.ContinueWith(t => StartAnimation());
 					}
 				}
 			}
@@ -83,7 +88,7 @@ namespace keep.grass
 				NewNow = value;
 				if (IsVisible)
 				{
-					if (!AnimationIsRunning())
+					if (!IsEarlyVisible && !AnimationIsRunning)
 					{
 						StartAnimation();
 					}
@@ -111,7 +116,7 @@ namespace keep.grass
 				NewLastPublicActivity = value;
 				if (IsVisible)
 				{
-					if (!AnimationIsRunning())
+					if (!IsEarlyVisible && !AnimationIsRunning)
 					{
 						StartAnimation();
 					}
@@ -132,15 +137,12 @@ namespace keep.grass
 			}
 		}
 
-		public bool AnimationIsRunning()
-		{
-			return
+		public bool AnimationIsRunning =>
 				null != AsView() &&
 				(
 					AsView().AnimationIsRunning("NowAnimation") ||
 					AsView().AnimationIsRunning("LastPublicActivityAnimation")
 				);
-		}
 
 		public void StartAnimation()
 		{
@@ -209,7 +211,7 @@ namespace keep.grass
 		public override void Draw(SKCanvas Canvas)
 		{
 			IsVisible = true;
-			if (HasNextAnimation)
+			if (!IsEarlyVisible && HasNextAnimation)
 			{
 				HasNextAnimation = false;
 				StartAnimation();
