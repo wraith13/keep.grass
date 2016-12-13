@@ -72,7 +72,13 @@ namespace keep.grass
 					{
 						VisibleAt = DateTime.Now;
 						Task.Delay(VisibleWait)
-							.ContinueWith(t => StartAnimation());
+							.ContinueWith
+							(
+								t => Device.BeginInvokeOnMainThread
+							    (
+								    () => StartAnimation()
+							   	)
+						   	);
 					}
 				}
 			}
@@ -164,7 +170,7 @@ namespace keep.grass
 						(LastPublicActivity - AnchorNow.Date).TotalMinutes,
 						(NewLastPublicActivity - AnchorNow.Date).TotalMinutes,
 						16,
-						500,
+						1000,
 						Easing.SinOut
 					);
 					HasNextAnimation = true;
@@ -189,9 +195,9 @@ namespace keep.grass
 							UpdateSlices();
 						},
 						(Now - AnchorNow.Date).TotalMinutes,
-						(NewNow.AddMilliseconds(500) - AnchorNow.Date).TotalMinutes,
+						(NewNow.AddMilliseconds(1000) - AnchorNow.Date).TotalMinutes,
 						16,
-						500,
+						1000,
 						Easing.SinOut
 					);
 				}
@@ -211,7 +217,7 @@ namespace keep.grass
 		public override void Draw(SKCanvas Canvas)
 		{
 			IsVisible = true;
-			if (!IsEarlyVisible && HasNextAnimation)
+			if (!IsEarlyVisible && !AnimationIsRunning && HasNextAnimation)
 			{
 				HasNextAnimation = false;
 				StartAnimation();
