@@ -207,7 +207,7 @@ namespace keep.grass
 			var User = Settings.UserName;
 			if (!String.IsNullOrWhiteSpace(User))
 			{
-				if (CircleGraph.AltText != User)
+				if (CircleGraph.User != User)
 				{
 					CircleGraph.User = User;
 
@@ -215,17 +215,16 @@ namespace keep.grass
 					{
 						ClearActiveInfo();
 					}
-					if (default(DateTime) == Domain.GetLastPublicActivity(User))
+					else
 					{
-						Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
+						OnUpdateLastPublicActivity(User, Domain.GetLastPublicActivity(User));
 					}
+					Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 				}
 			}
 			else
 			{
-				CircleGraph.Image = null;
-				CircleGraph.AltText = L["unspecified"];
-				CircleGraph.AltTextColor = Color.Gray;
+				CircleGraph.User = null;
 				ClearActiveInfo();
 			}
 

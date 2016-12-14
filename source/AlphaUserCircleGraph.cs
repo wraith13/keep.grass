@@ -15,7 +15,25 @@ namespace keep.grass
 	}
 	public class AlphaUserCircleGraph :VoidUserCircleGraph
 	{
+		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		//AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+
+		public override string AltText
+		{
+			get
+			{
+				return base.AltText ?? L["unspecified"];
+			}
+		}
+		public override Color AltTextColor
+		{
+			get
+			{
+				return null == base.AltText ?
+					Color.Gray:
+					base.AltTextColor;
+			}
+		}
 
 		public string User
 		{
@@ -26,34 +44,37 @@ namespace keep.grass
 			set
 			{
 				var Trimed = value?.Trim();
-				if (AltText != Trimed)
+				if (base.AltText != Trimed)
 				{
 					Image = null;
 					AltText = Trimed;
 					AltTextColor = Color.Black;
-					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-						.ContinueWith
-						(
-							t => Device.BeginInvokeOnMainThread
+					if (!string.IsNullOrWhiteSpace(Trimed))
+					{
+						AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Trimed))
+							.ContinueWith
 							(
-								() =>
-								{
-									Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(User));
-									AsView().Animate
-									(
-										"ImageAnimation",
-										d => ImageAlpha = (byte)d,
-										0.0,
-										255.0,
-										16,
-										1000,
-										Easing.SinIn
-									);
+								t => Device.BeginInvokeOnMainThread
+								(
+									() =>
+									{
+										Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
+										AsView().Animate
+										(
+											"ImageAnimation",
+											d => ImageAlpha = (byte)d,
+											0.0,
+											255.0,
+											16,
+											1000,
+											Easing.SinIn
+										);
 
 
-								}
-						   )
-					   );
+									}
+							   )
+						   );
+					}
 				}
 			}
 		}
