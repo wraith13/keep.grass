@@ -34,7 +34,14 @@ namespace keep.grass
 
 			CircleGraph.IsDoughnut = true;
 			CircleGraph.Now = DateTime.Now;
-			CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
+			if
+			(
+				!string.IsNullOrWhiteSpace(Settings.UserName) &&
+				Settings.GetIsValidUserName(Settings.UserName) ?
+			)
+			{
+				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
+			}
 		}
 
 		public override void Build()
