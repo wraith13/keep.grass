@@ -38,7 +38,7 @@ namespace keep.grass
 		}
 		protected override void OnSleep()
 		{
-			Main.StopUpdateLeftTimeTask();
+			Main.OnPause();
 		}
 		protected override void OnResume()
 		{

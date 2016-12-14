@@ -50,12 +50,6 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 
 			CircleGraph.Build(Width, Height);
-
-			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
-			{
-				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
-			}
-
 			CircleGraph
 				.AsView()
 				.GestureRecognizers
@@ -66,6 +60,11 @@ namespace keep.grass
 						Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
 					}
 				);
+
+			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
+			{
+				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
+			}
 
 			var MainTable = Friends.Any() ?
 			new TableView
@@ -163,6 +162,11 @@ namespace keep.grass
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
+			OnPause();
+		}
+
+		public void OnPause()
+		{
 			StopUpdateLeftTimeTask();
 			CircleGraph.IsVisible = false;
 		}
