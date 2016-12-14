@@ -264,8 +264,14 @@ namespace keep.grass
 						{
 							var Now = DateTime.Now;
 							UpdateLeftTimeTaskLastStamp = Now;
-							CircleGraph.Now = Now;
-							Device.BeginInvokeOnMainThread(() => UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName)));
+							Device.BeginInvokeOnMainThread
+							(
+								() =>
+								{
+									CircleGraph.Now = Now;
+									UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName));
+								}
+							);
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
