@@ -205,9 +205,9 @@ namespace keep.grass
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
 			var User = Settings.UserName;
-			if (!String.IsNullOrWhiteSpace(User))
+			if (CircleGraph.User != User)
 			{
-				if (CircleGraph.User != User)
+				if (!String.IsNullOrWhiteSpace(User))
 				{
 					CircleGraph.User = User;
 
@@ -221,11 +221,11 @@ namespace keep.grass
 					}
 					Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 				}
-			}
-			else
-			{
-				CircleGraph.User = null;
-				ClearActiveInfo();
+				else
+				{
+					CircleGraph.User = null;
+					ClearActiveInfo();
+				}
 			}
 
 			for (var i = 0; i < Friends?.Count(); ++i)
