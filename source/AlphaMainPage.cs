@@ -37,7 +37,7 @@ namespace keep.grass
 			if
 			(
 				!string.IsNullOrWhiteSpace(Settings.UserName) &&
-				Settings.GetIsValidUserName(Settings.UserName) ?
+				Settings.GetIsValidUserName(Settings.UserName)
 			)
 			{
 				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
