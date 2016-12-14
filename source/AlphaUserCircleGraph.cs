@@ -71,7 +71,7 @@ namespace keep.grass
 					if (value)
 					{
 						VisibleAt = DateTime.Now;
-						Task.Delay(VisibleWait)
+						Task.Delay(VisibleWait.Add(TimeSpan.FromMilliseconds(100)))
 							.ContinueWith
 							(
 								t => Device.BeginInvokeOnMainThread
@@ -86,23 +86,28 @@ namespace keep.grass
 
 		private bool HasNextAnimation;
 
+		public void RequestToAnimation()
+		{
+			if (IsVisible)
+			{
+				if (!IsEarlyVisible && !AnimationIsRunning)
+				{
+					HasNextAnimation = false;
+					StartAnimation();
+				}
+				else
+				{
+					HasNextAnimation = true;
+				}
+			}
+		}
 		private DateTime NewNow;
 		public override DateTime Now
 		{
 			set
 			{
 				NewNow = value;
-				if (IsVisible)
-				{
-					if (!IsEarlyVisible && !AnimationIsRunning)
-					{
-						StartAnimation();
-					}
-					else
-					{
-						HasNextAnimation = true;
-					}
-				}
+				RequestToAnimation();
 			}
 			get
 			{
@@ -120,17 +125,7 @@ namespace keep.grass
 			set
 			{
 				NewLastPublicActivity = value;
-				if (IsVisible)
-				{
-					if (!IsEarlyVisible && !AnimationIsRunning)
-					{
-						StartAnimation();
-					}
-					else
-					{
-						HasNextAnimation = true;
-					}
-				}
+				RequestToAnimation();
 			}
 			get
 			{
@@ -173,7 +168,6 @@ namespace keep.grass
 						1000,
 						Easing.SinOut
 					);
-					HasNextAnimation = true;
 				}
 				else
 				{
@@ -217,10 +211,9 @@ namespace keep.grass
 		public override void Draw(SKCanvas Canvas)
 		{
 			IsVisible = true;
-			if (!IsEarlyVisible && !AnimationIsRunning && HasNextAnimation)
+			if (HasNextAnimation)
 			{
-				HasNextAnimation = false;
-				StartAnimation();
+				RequestToAnimation();
 			}
 			base.Draw(Canvas);
 		}
