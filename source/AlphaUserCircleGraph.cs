@@ -69,8 +69,6 @@ namespace keep.grass
 											1000,
 											Easing.SinIn
 										);
-
-
 									}
 							   )
 						   );
