@@ -12,6 +12,7 @@ namespace keep.grass
 		public virtual bool IsVisible { get; set; }
 		public virtual DateTime Now { get; set; }
 		public virtual DateTime LastPublicActivity { get; set; }
+		public virtual bool IsVisibleLeftTimeBar { get; set; }
 	}
 	public class AlphaUserCircleGraph :VoidUserCircleGraph
 	{
@@ -250,17 +251,17 @@ namespace keep.grass
 				AltTextColor = LeftTimeColor;
 				Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
-				if (GraphSize < FontSize * 9.0f)
+				if (GraphSize < FontSize * 6.0f)
 				{
 					SatelliteTexts = null;
 				}
 				else
-				if (GraphSize < FontSize * 12.0f)
+				if (GraphSize < FontSize * 9.0f)
 				{
 					SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 6);
 				}
 				else
-				if (GraphSize < FontSize * 16.0f)
+				if (GraphSize < FontSize * 12.0f)
 				{
 					SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 3);
 				}

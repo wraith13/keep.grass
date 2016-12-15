@@ -74,7 +74,7 @@ namespace keep.grass
 		float StartAngle = 0.0f;
 		public double GraphSize;
 		public float FontSize = 14.0f;
-		float Margin = 30.0f;
+		Thickness Margin = new Thickness(30.0f);
 		float AntialiasMargin = 0.6f;
 
 		public override bool IsDoughnut
@@ -260,12 +260,12 @@ namespace keep.grass
 		public void Build(double Width, double Height)
 		{
 			var MinSide = new[] { Width, Height }.Min();
-			GraphSize = Math.Round((MinSide * 0.6) +(Margin *2.0f));
+			GraphSize = Math.Round(MinSide * 0.6);
 			CanvasView = new AlphaCircleGraphView(this)
 			{
 				Margin = new Thickness(0.0),
-				WidthRequest = GraphSize,
-				HeightRequest = GraphSize,
+				WidthRequest = GraphSize +Margin.HorizontalThickness,
+				HeightRequest = GraphSize + Margin.VerticalThickness,
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
@@ -273,8 +273,8 @@ namespace keep.grass
 			var PaddingSize = new[] { (MinSide - 640) * 0.3, 0 }.Max();
 			GraphFrame = new Grid()
 			{
-				MinimumWidthRequest = GraphSize + (PaddingSize *2.0),
-				MinimumHeightRequest = GraphSize + (PaddingSize * 2.0),
+				MinimumWidthRequest = CanvasView.WidthRequest + (PaddingSize *2.0),
+				MinimumHeightRequest = CanvasView.HeightRequest + (PaddingSize * 2.0),
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -333,8 +333,12 @@ namespace keep.grass
 				Canvas.GetClipBounds(ref CanvasRect);
 				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (CanvasView.Width + CanvasView.Height));
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-				PieRadius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
-				Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+				PieRadius = DrawGraphSize / 2.0f;
+				Center = new SKPoint
+				(
+					CanvasRect.MidX +(float)(Margin.Left -Margin.Right),
+					CanvasRect.MidY + (float)(Margin.Top - Margin.Bottom)
+				);
 				ImageRadius = PieRadius / Phi;
 				
 				IsInvalidCanvas = false;
