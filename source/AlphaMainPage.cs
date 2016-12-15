@@ -182,9 +182,7 @@ namespace keep.grass
 			if (Settings.UserName == User)
 			{
 				CircleGraph.LastPublicActivity = LastPublicActivity;
-				LastActivityStampLabel.Text = LastPublicActivity.IsDefault() ?
-					"" :
-					LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
 				LastActivityStampLabel.TextColor = Color.Default;
 			}
 		}
@@ -303,7 +301,7 @@ namespace keep.grass
 				var Today = Now.Date;
 				var LimitTime = LastPublicActivity.AddHours(24);
 				var LeftTime = LimitTime - Now;
-				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
+				LeftTimeLabel.Text = Domain.ToString(LeftTime);
 				LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
 
 				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());

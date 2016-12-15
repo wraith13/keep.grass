@@ -361,6 +361,17 @@ namespace keep.grass
 				}
 			);
 		}
+
+		public string ToString(DateTime a)
+		{
+			return a.IsDefault() ?
+				"" :
+				a.ToString("yyyy-MM-dd HH:mm:ss");
+		}
+		public string ToString(TimeSpan a)
+		{
+			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
+		}
 	}
 }
 
