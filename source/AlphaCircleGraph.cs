@@ -772,6 +772,10 @@ namespace keep.grass
 		{
 			return GraphFrame;
 		}
+		public View CanvasAsView()
+		{
+			return CanvasView;
+		}
 	}
 
 	class AlphaCircleGraphView : SKCanvasView

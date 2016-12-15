@@ -59,7 +59,7 @@ namespace keep.grass
 									() =>
 									{
 										Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
-										AsView().Animate
+										CanvasAsView().Animate
 										(
 											"ImageAnimation",
 											d => ImageAlpha = (byte)d,
@@ -173,7 +173,7 @@ namespace keep.grass
 				{
 					Debug.WriteLine("Start LastPublicActivity");
 					var AnchorNow = DateTime.Now;
-					AsView().Animate
+					CanvasAsView().Animate
 					(
 						"LastPublicActivityAnimation",
 						d =>
@@ -199,7 +199,7 @@ namespace keep.grass
 				{
 					Debug.WriteLine("Start AnimateNow");
 					var AnchorNow = DateTime.Now;
-					AsView().Animate
+					CanvasAsView().Animate
 					(
 						"NowAnimation",
 						d =>
