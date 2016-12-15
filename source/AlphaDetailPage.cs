@@ -18,7 +18,7 @@ namespace keep.grass
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-		AlphaCircleGraph CircleGraph = AlphaFactory.MakeCircleGraph();
+		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
 
 		Task UpdateLeftTimeTask = null;
 		DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
@@ -33,6 +33,19 @@ namespace keep.grass
 			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 
 			//Build();
+
+			CircleGraph.IsDoughnut = false;
+			CircleGraph.VisibleWait = TimeSpan.FromMilliseconds(100);
+			CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);
+			CircleGraph.Now = DateTime.Now;
+			if
+			(
+				!string.IsNullOrWhiteSpace(Settings.UserName) &&
+				Settings.GetIsValidUserName(Settings.UserName)
+			)
+			{
+				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
+			}
 		}
 
 		public override void Build()
@@ -123,9 +136,9 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity()
 		{
-			LastActivityStampLabel.Text = Domain.GetLastPublicActivity(User).IsDefault() ?
-				"":
-				Domain.GetLastPublicActivity(User).ToString("yyyy-MM-dd HH:mm:ss");
+			var LastPublicActivity = Domain.GetLastPublicActivity(User);
+			CircleGraph.LastPublicActivity = LastPublicActivity;
+			LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
 			LastActivityStampLabel.TextColor = Color.Default;
 		}
 		public void OnErrorInQuery()
@@ -182,7 +195,7 @@ namespace keep.grass
 
 		public void ClearActiveInfo()
 		{
-			//Domain.LastPublicActivity = default(DateTime);
+			CircleGraph.LastPublicActivity = default(DateTime);
 			LastActivityStampLabel.Text = "";
 			LeftTimeLabel.Text = "";
 		}
@@ -199,8 +212,16 @@ namespace keep.grass
 					{
 						while (null != UpdateLeftTimeTask)
 						{
-							UpdateLeftTimeTaskLastStamp = DateTime.Now;
-							Device.BeginInvokeOnMainThread(() => UpdateLeftTime());
+							var Now = DateTime.Now;
+							UpdateLeftTimeTaskLastStamp = Now;
+							Device.BeginInvokeOnMainThread
+							(
+								() =>
+								{
+									CircleGraph.Now = Now;
+									UpdateLeftTime(Now, Domain.GetLastPublicActivity(User));
+								}
+							);
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
 						}
 					}
@@ -225,22 +246,15 @@ namespace keep.grass
 			UpdateLeftTimeTask = null;
 		}
 
-		protected void UpdateLeftTime()
+		protected void UpdateLeftTime(DateTime Now, DateTime LastPublicActivity)
 		{
-			var Now = DateTime.Now;
-			CircleGraph.SetStartAngle(AlphaDomain.TimeToAngle(Now));
-			if (default(DateTime) != Domain.GetLastPublicActivity(User))
+			if (default(DateTime) != LastPublicActivity)
 			{
 				var Today = Now.Date;
-				var LimitTime = Domain.GetLastPublicActivity(User).AddHours(24);
+				var LimitTime = LastPublicActivity.AddHours(24);
 				var LeftTime = LimitTime - Now;
-				LeftTimeLabel.Text = Math.Floor(LeftTime.TotalHours).ToString() +LeftTime.ToString("\\:mm\\:ss");
-				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-
-				LeftTimeLabel.TextColor = LeftTimeColor;
-
-				CircleGraph.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
-				CircleGraph.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, Domain.GetLastPublicActivity(User));
+				LeftTimeLabel.Text = Domain.ToString(LeftTime);
+				LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
 
 				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
 			}
@@ -251,17 +265,6 @@ namespace keep.grass
 				{
 					StopUpdateLeftTimeTask();
 				}*/
-
-				CircleGraph.Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime);
-				CircleGraph.SatelliteTexts = Enumerable.Range(0, 24).Select
-				(
-					i => new CircleGraphSatelliteText
-					{
-						Text = i.ToString(),
-						Color = Color.Gray,
-						Angle = 360.0f * ((float)(i) / 24.0f),
-					}
-				);
 			}
 			//Debug.WriteLine("AlphaDetailPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}

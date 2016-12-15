@@ -18,6 +18,8 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		//AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
+		public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(1000);
+
 		public override string AltText
 		{
 			get
@@ -66,7 +68,7 @@ namespace keep.grass
 											0.0,
 											255.0,
 											16,
-											1000,
+											(uint)AnimationSpan.TotalMilliseconds,
 											Easing.SinIn
 										);
 									}
@@ -184,7 +186,7 @@ namespace keep.grass
 						(LastPublicActivity - AnchorNow.Date).TotalMinutes,
 						(NewLastPublicActivity - AnchorNow.Date).TotalMinutes,
 						16,
-						1000,
+						(uint)AnimationSpan.TotalMilliseconds,
 						Easing.SinOut
 					);
 				}
@@ -210,7 +212,7 @@ namespace keep.grass
 						(Now - AnchorNow.Date).TotalMinutes,
 						(NewNow.AddMilliseconds(1000) - AnchorNow.Date).TotalMinutes,
 						16,
-						1000,
+						(uint)AnimationSpan.TotalMilliseconds,
 						Easing.SinOut
 					);
 				}
