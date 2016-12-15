@@ -158,6 +158,7 @@ namespace keep.grass
 				.Max();
 			}
 		}
+		public TimeSpan LeftTime => base.LastPublicActivity.AddHours(24) - base.Now;
 
 		public bool AnimationIsRunning =>
 				null != AsView() &&
@@ -245,12 +246,8 @@ namespace keep.grass
 			if (default(DateTime) != LastPublicActivity)
 			{
 				var Today = Now.Date;
-				var LimitTime = LastPublicActivity.AddHours(24);
-				var LeftTime = LimitTime - Now;
 				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-
 				AltTextColor = LeftTimeColor;
-
 				Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
 				if (GraphSize < FontSize * 9.0f)
