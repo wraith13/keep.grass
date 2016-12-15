@@ -21,6 +21,20 @@ namespace keep.grass
 
 		public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(1000);
 
+		float LeftTimeBarHeight => FontSize * Phi;
+
+		public override bool IsVisibleLeftTimeBar
+		{
+			set
+			{
+				if (base.IsVisibleLeftTimeBar != value)
+				{
+					base.IsVisibleLeftTimeBar = value;
+					Margin.Top += value ? LeftTimeBarHeight : -LeftTimeBarHeight;
+				}
+			}
+		}
+
 		public override string AltText
 		{
 			get
@@ -238,7 +252,26 @@ namespace keep.grass
 			{
 				RequestToAnimation();
 			}
+			var IsInvalidBar = IsInvalidData;
 			base.Draw(Canvas);
+			if (IsVisibleLeftTimeBar && IsInvalidBar)
+			{
+				using (var paint = new SKPaint())
+				{
+					paint.Color = ToSKColor(AlphaDomain.MakeLeftTimeColor(LeftTime));
+					Canvas.DrawRect
+					(
+						new SKRect
+						(
+							CanvasRect.Left,
+							CanvasRect.Top,
+							CanvasRect.Right,
+							CanvasRect.Top +(LeftTimeBarHeight *PhysicalPixelRate)
+						),
+						paint
+					);
+				}
+			}
 		}
 
 		public void UpdateSlices()

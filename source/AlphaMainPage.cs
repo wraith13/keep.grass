@@ -32,6 +32,7 @@ namespace keep.grass
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
+			CircleGraph.IsVisibleLeftTimeBar = true;
 			CircleGraph.IsDoughnut = true;
 			CircleGraph.Now = DateTime.Now;
 			if

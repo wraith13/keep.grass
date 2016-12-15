@@ -70,11 +70,12 @@ namespace keep.grass
 	}
 	public class AlphaCircleGraph :VoidCircleGraph, IDisposable
 	{
+		public readonly float Phi = 1.618033988749894848204586834365f;
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		public double GraphSize;
 		public float FontSize = 14.0f;
-		Thickness Margin = new Thickness(30.0f);
+		public Thickness Margin = new Thickness(30.0f);
 		float AntialiasMargin = 0.6f;
 
 		public override bool IsDoughnut
@@ -230,8 +231,8 @@ namespace keep.grass
 		SKData ImageData;
 		SKBitmap ImageBitmap;
 
-		SKRect CanvasRect;
-		float PhysicalPixelRate;
+		public SKRect CanvasRect;
+		public float PhysicalPixelRate;
 		float PieRadius;
 		float ImageRadius;
 		SKPoint Center;
@@ -329,7 +330,6 @@ namespace keep.grass
 		{
 			if (IsInvalidCanvas)
 			{
-				var Phi = 1.618033988749894848204586834365f;
 				Canvas.GetClipBounds(ref CanvasRect);
 				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (CanvasView.Width + CanvasView.Height));
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
