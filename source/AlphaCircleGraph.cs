@@ -265,12 +265,13 @@ namespace keep.grass
 			CanvasView = new AlphaCircleGraphView(this)
 			{
 				Margin = new Thickness(0.0),
-				WidthRequest = GraphSize +Margin.HorizontalThickness,
-				HeightRequest = GraphSize + Margin.VerticalThickness,
+				WidthRequest = (Width <= Height) ? Width: GraphSize +Margin.HorizontalThickness,
+				HeightRequest = (Width <= Height) ? GraphSize + Margin.VerticalThickness: Height,
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 			};
+			/*
 			var PaddingSize = new[] { (MinSide - 640) * 0.3, 0 }.Max();
 			GraphFrame = new Grid()
 			{
@@ -281,6 +282,7 @@ namespace keep.grass
 				VerticalOptions = LayoutOptions.FillAndExpand,
 			}
 			.SetSingleChild(CanvasView);
+			*/
 			IsInvalidCanvas = true;
 			Update();
 		}
@@ -774,7 +776,8 @@ namespace keep.grass
 
 		public View AsView()
 		{
-			return GraphFrame;
+			//return GraphFrame;
+			return CanvasView;
 		}
 		public View CanvasAsView()
 		{
