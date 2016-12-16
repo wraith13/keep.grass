@@ -34,10 +34,9 @@ namespace keep.grass
 
 			//Build();
 
-			//CircleGraph.Margin = new Thickness(0.0);
 			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsDoughnut = false;
-			CircleGraph.VisibleWait = TimeSpan.FromMilliseconds(100);
+			CircleGraph.ActiveWait = TimeSpan.FromMilliseconds(100);
 			CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);
 			CircleGraph.Now = DateTime.Now;
 			if
@@ -54,12 +53,6 @@ namespace keep.grass
 		{
 			base.Build();
 			Debug.WriteLine("AlphaDetailPage.Rebuild();");
-
-			/*CircleGraph.Build
-			(
-				(Width <= Height) ? Width : Width * 0.55,
-				(Width <= Height) ? Height * 0.55 : Height
-			);*/
 
 			var MainTable = new TableView
 			{

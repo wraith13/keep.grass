@@ -32,7 +32,6 @@ namespace keep.grass
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
-			//CircleGraph.Margin = new Thickness(0.0);
 			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsVisibleLeftTimeBar = true;
 			CircleGraph.IsDoughnut = true;
@@ -60,13 +59,6 @@ namespace keep.grass
 		{
 			base.Build();
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
-
-			/*CircleGraph.Build
-			(
-				(Width <= Height) ? Width: Width *0.55,
-				(Width <= Height) ? Height *0.55: Height
-			);*/
-
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
@@ -172,6 +164,7 @@ namespace keep.grass
 
 		protected override void OnAppearing()
 		{
+			Debug.WriteLine("AlphaMainPage::OnAppearing");
 			base.OnAppearing();
 			UpdateInfoAsync();
 			StartUpdateLeftTimeTask();
@@ -179,14 +172,16 @@ namespace keep.grass
 
 		protected override void OnDisappearing()
 		{
+			Debug.WriteLine("AlphaMainPage::OnDisappearing");
 			base.OnDisappearing();
 			OnPause();
+			CircleGraph.IsActive = false;
+			CircleGraph.ResetTime();
 		}
 
 		public void OnPause()
 		{
 			StopUpdateLeftTimeTask();
-			CircleGraph.IsVisible = false;
 		}
 
 		public void OnStartQuery()

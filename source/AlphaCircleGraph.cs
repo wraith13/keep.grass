@@ -76,7 +76,7 @@ namespace keep.grass
 		float StartAngle = 0.0f;
 		public double GraphSize;
 		public float FontSize = 14.0f;
-		public new Thickness Margin = new Thickness(30.0f);
+		public Thickness CircleMargin = new Thickness(30.0f);
 		float AntialiasMargin = 0.6f;
 
 		public override bool IsDoughnut
@@ -259,19 +259,6 @@ namespace keep.grass
 			ImageData = null;
 		}
 
-		/*protected override void OnSizeAllocated(double width, double height)
-		{
-			Debug.WriteLine("AlphaCircleGraph::OnSizeAllocated");
-			base.OnSizeRequest(width, height);
-			GraphSize = new[]
-			{
-				Width -Margin.HorizontalThickness,
-				Height -Margin.VerticalThickness
-			}.Min();
-			IsInvalidCanvas = true;
-			Update();
-		}*/
-
 		public static SKColor ToSKColor(Color c)
 		{
 			return new SKColor
@@ -320,8 +307,8 @@ namespace keep.grass
 			{
 				GraphSize = new[]
 				{
-					Width -Margin.HorizontalThickness,
-					Height -Margin.VerticalThickness
+					Width -CircleMargin.HorizontalThickness,
+					Height -CircleMargin.VerticalThickness
 				}.Min();
 				Canvas.GetClipBounds(ref CanvasRect);
 				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
@@ -329,8 +316,8 @@ namespace keep.grass
 				PieRadius = DrawGraphSize / 2.0f;
 				Center = new SKPoint
 				(
-					CanvasRect.MidX +(float)(Margin.Left -Margin.Right),
-					CanvasRect.MidY + (float)(Margin.Top - Margin.Bottom)
+					CanvasRect.MidX +(float)(CircleMargin.Left -CircleMargin.Right),
+					CanvasRect.MidY + (float)(CircleMargin.Top - CircleMargin.Bottom)
 				);
 				ImageRadius = PieRadius / Phi;
 				

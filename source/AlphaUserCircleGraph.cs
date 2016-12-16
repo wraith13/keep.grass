@@ -9,7 +9,7 @@ namespace keep.grass
 {
 	public abstract class VoidUserCircleGraph : AlphaCircleGraph // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 	{
-		public virtual bool IsVisible { get; set; }
+		public virtual bool IsActive { get; set; }
 		public virtual DateTime Now { get; set; }
 		public virtual DateTime LastPublicActivity { get; set; }
 		public virtual bool IsVisibleLeftTimeBar { get; set; }
@@ -19,7 +19,7 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(1000);
+		public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(500);
 
 		float LeftTimeBarHeight => FontSize * 2.0f;
 
@@ -30,7 +30,7 @@ namespace keep.grass
 				if (base.IsVisibleLeftTimeBar != value)
 				{
 					base.IsVisibleLeftTimeBar = value;
-					Margin.Top += value ? LeftTimeBarHeight : -LeftTimeBarHeight;
+					CircleMargin.Top += value ? LeftTimeBarHeight : -LeftTimeBarHeight;
 				}
 			}
 		}
@@ -94,20 +94,20 @@ namespace keep.grass
 			}
 		}
 
-		public DateTime VisibleAt;
-		public TimeSpan VisibleWait = TimeSpan.FromMilliseconds(500);
-		public bool IsEarlyVisible => DateTime.Now < VisibleAt.Add(VisibleWait);
-		public override bool IsVisible
+		public DateTime ActiveAt;
+		public TimeSpan ActiveWait = TimeSpan.FromMilliseconds(100);
+		public bool IsEarlyActive => DateTime.Now < ActiveAt.Add(ActiveWait);
+		public override bool IsActive
 		{
 			set
 			{
-				if (base.IsVisible != value)
+				if (base.IsActive != value)
 				{
-					base.IsVisible = value;
+					base.IsActive = value;
 					if (value)
 					{
-						VisibleAt = DateTime.Now;
-						Task.Delay(VisibleWait.Add(TimeSpan.FromMilliseconds(100)))
+						ActiveAt = DateTime.Now;
+						Task.Delay(ActiveWait.Add(TimeSpan.FromMilliseconds(100)))
 							.ContinueWith
 							(
 								t => Device.BeginInvokeOnMainThread
@@ -124,9 +124,9 @@ namespace keep.grass
 
 		public void RequestToAnimation()
 		{
-			if (IsVisible)
+			if (IsActive)
 			{
-				if (!IsEarlyVisible && !AnimationIsRunning)
+				if (!IsEarlyActive && !AnimationIsRunning)
 				{
 					HasNextAnimation = false;
 					StartAnimation();
@@ -174,6 +174,13 @@ namespace keep.grass
 			}
 		}
 		public TimeSpan LeftTime => base.LastPublicActivity.AddHours(24) - base.Now;
+
+		public void ResetTime()
+		{
+			base.Now = default(DateTime);
+			base.LastPublicActivity = default(DateTime);
+			UpdateSlices();
+		}
 
 		public bool AnimationIsRunning =>
 					((View)this).AnimationIsRunning("NowAnimation") ||
@@ -244,7 +251,7 @@ namespace keep.grass
 
 		public override void Draw(SKCanvas Canvas)
 		{
-			IsVisible = true;
+			IsActive = true;
 			if (HasNextAnimation)
 			{
 				RequestToAnimation();
