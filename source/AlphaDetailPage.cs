@@ -34,6 +34,8 @@ namespace keep.grass
 
 			//Build();
 
+			//CircleGraph.Margin = new Thickness(0.0);
+			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsDoughnut = false;
 			CircleGraph.VisibleWait = TimeSpan.FromMilliseconds(100);
 			CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);
@@ -53,11 +55,11 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaDetailPage.Rebuild();");
 
-			CircleGraph.Build
+			/*CircleGraph.Build
 			(
 				(Width <= Height) ? Width : Width * 0.55,
 				(Width <= Height) ? Height * 0.55 : Height
-			);
+			);*/
 
 			var MainTable = new TableView
 			{
@@ -80,19 +82,29 @@ namespace keep.grass
 			};
 			if (Width <= Height)
 			{
+				//CircleGraph.WidthRequest = Width;
+				CircleGraph.HeightRequest = Height * 0.55;
+				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
+				CircleGraph.VerticalOptions = LayoutOptions.Start;
+
 				Content = new StackLayout
 				{
 					Spacing = 1.0,
 					BackgroundColor = Color.Gray,
 					Children =
 					{
-						CircleGraph.AsView(),
+						CircleGraph,
 						MainTable,
 					},
 				};
 			}
 			else
 			{
+				CircleGraph.WidthRequest = Width * 0.55;
+				//CircleGraph.HeightRequest = Height;
+				CircleGraph.HorizontalOptions = LayoutOptions.Start;
+				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
+
 				Content = new StackLayout
 				{
 					Spacing = 1.0,
@@ -105,7 +117,7 @@ namespace keep.grass
 							Spacing = 1.0,
 							Children =
 							{
-								CircleGraph.AsView(),
+								CircleGraph,
 								MainTable,
 							},
 						},
@@ -117,6 +129,7 @@ namespace keep.grass
 			LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
 
+			CircleGraph.IsInvalidCanvas = true;
 			OnUpdateLastPublicActivity();
 		}
 

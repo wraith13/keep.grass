@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using System.Diagnostics;
 
 namespace keep.grass
 {
@@ -53,7 +54,7 @@ namespace keep.grass
 			Path.LineTo(Point.X, Point.Y);
 		}
 	}
-	public abstract class VoidCircleGraph // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
+	public abstract class VoidCircleGraph :SKCanvasView // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 	{
 		public virtual bool IsDoughnut { get; set; }
 		public virtual string AltText { get; set; }
@@ -68,14 +69,14 @@ namespace keep.grass
 		public virtual IEnumerable<VoidPie> Data { get; set; }
 		public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
 	}
-	public class AlphaCircleGraph :VoidCircleGraph, IDisposable
+	public class AlphaCircleGraph :VoidCircleGraph
 	{
 		public readonly float Phi = 1.618033988749894848204586834365f;
 		float OriginAngle = -90.0f;
 		float StartAngle = 0.0f;
 		public double GraphSize;
 		public float FontSize = 14.0f;
-		public Thickness Margin = new Thickness(30.0f);
+		public new Thickness Margin = new Thickness(30.0f);
 		float AntialiasMargin = 0.6f;
 
 		public override bool IsDoughnut
@@ -221,8 +222,8 @@ namespace keep.grass
 			}
 		}
 
-		Grid GraphFrame;
-		AlphaCircleGraphView CanvasView;
+		//Grid GraphFrame;
+		//AlphaCircleGraphView CanvasView;
 
 		System.IO.Stream FontSource;
 		SKManagedStream FontStream;
@@ -258,37 +259,18 @@ namespace keep.grass
 			ImageData = null;
 		}
 
-		public void Build(double Width, double Height)
+		/*protected override void OnSizeAllocated(double width, double height)
 		{
+			Debug.WriteLine("AlphaCircleGraph::OnSizeAllocated");
+			base.OnSizeRequest(width, height);
 			GraphSize = new[]
 			{
 				Width -Margin.HorizontalThickness,
 				Height -Margin.VerticalThickness
 			}.Min();
-			CanvasView = new AlphaCircleGraphView(this)
-			{
-				Margin = new Thickness(0.0),
-				WidthRequest = Width,
-				HeightRequest = Height,
-				BackgroundColor = Color.White,
-				HorizontalOptions = LayoutOptions.Center,
-				VerticalOptions = LayoutOptions.Center,
-			};
-			/*
-			var PaddingSize = new[] { (MinSide - 640) * 0.3, 0 }.Max();
-			GraphFrame = new Grid()
-			{
-				MinimumWidthRequest = CanvasView.WidthRequest + (PaddingSize *2.0),
-				MinimumHeightRequest = CanvasView.HeightRequest + (PaddingSize * 2.0),
-				BackgroundColor = Color.White,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-			}
-			.SetSingleChild(CanvasView);
-			*/
 			IsInvalidCanvas = true;
 			Update();
-		}
+		}*/
 
 		public static SKColor ToSKColor(Color c)
 		{
@@ -326,17 +308,23 @@ namespace keep.grass
 		}
         private void Update()
 		{
-			if (null != CanvasView)
-			{
-				CanvasView.InvalidateSurface();
-			}
+			InvalidateSurface();
+		}
+		protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
+		{
+			Draw(e.Surface.Canvas);
 		}
 		public virtual void Draw(SKCanvas Canvas)
 		{
 			if (IsInvalidCanvas)
 			{
+				GraphSize = new[]
+				{
+					Width -Margin.HorizontalThickness,
+					Height -Margin.VerticalThickness
+				}.Min();
 				Canvas.GetClipBounds(ref CanvasRect);
-				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (CanvasView.Width + CanvasView.Height));
+				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
 				PieRadius = DrawGraphSize / 2.0f;
 				Center = new SKPoint
@@ -776,29 +764,5 @@ namespace keep.grass
 				}
 			}
 		}
-
-		public View AsView()
-		{
-			//return GraphFrame;
-			return CanvasView;
-		}
-		public View CanvasAsView()
-		{
-			return CanvasView;
-		}
-	}
-
-	class AlphaCircleGraphView : SKCanvasView
-	{
-		private AlphaCircleGraph Owner;
-		public AlphaCircleGraphView(AlphaCircleGraph aOwner)
-		{
-			Owner = aOwner;
-		}
-		protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
-		{
-			Owner.Draw(e.Surface.Canvas);
-		}
-
 	}
 }

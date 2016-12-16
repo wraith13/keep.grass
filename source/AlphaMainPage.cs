@@ -32,6 +32,8 @@ namespace keep.grass
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
+			//CircleGraph.Margin = new Thickness(0.0);
+			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsVisibleLeftTimeBar = true;
 			CircleGraph.IsDoughnut = true;
 			CircleGraph.Now = DateTime.Now;
@@ -43,20 +45,7 @@ namespace keep.grass
 			{
 				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
 			}
-		}
-
-		public override void Build()
-		{
-			base.Build();
-			Debug.WriteLine("AlphaMainPage.Rebuild();");
-
-			CircleGraph.Build
-			(
-				(Width <= Height) ? Width: Width *0.55,
-				(Width <= Height) ? Height *0.55: Height
-			);
 			CircleGraph
-				.AsView()
 				.GestureRecognizers
 				.Add
 				(
@@ -65,6 +54,19 @@ namespace keep.grass
 						Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
 					}
 				);
+		}
+
+		public override void Build()
+		{
+			base.Build();
+			Debug.WriteLine("AlphaMainPage.Rebuild();");
+
+			/*CircleGraph.Build
+			(
+				(Width <= Height) ? Width: Width *0.55,
+				(Width <= Height) ? Height *0.55: Height
+			);*/
+
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
@@ -114,13 +116,18 @@ namespace keep.grass
 
 			if (Width <= Height)
 			{
+				CircleGraph.WidthRequest = Width * 0.55;
+				CircleGraph.HeightRequest = Height * 0.55;
+				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
+				CircleGraph.VerticalOptions = LayoutOptions.Start;
+
 				Content = new StackLayout
 				{
 					Spacing = 1.0,
 					BackgroundColor = Color.Gray,
 					Children =
 					{
-						CircleGraph.AsView(),
+						CircleGraph,
 						MainTable,
 						ButtonFrame,
 					},
@@ -128,6 +135,11 @@ namespace keep.grass
 			}
 			else
 			{
+				CircleGraph.WidthRequest = Width * 0.55;
+				CircleGraph.HeightRequest = Height * 0.55;
+				CircleGraph.HorizontalOptions = LayoutOptions.Start;
+				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
+
 				Content = new StackLayout
 				{
 					Spacing = 1.0,
@@ -140,7 +152,7 @@ namespace keep.grass
 							Spacing = 1.0,
 							Children =
 							{
-								CircleGraph.AsView(),
+								CircleGraph,
 								MainTable,
 							},
 						},
@@ -154,6 +166,7 @@ namespace keep.grass
 			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 
+			CircleGraph.IsInvalidCanvas = true;
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 		}
 

@@ -76,7 +76,7 @@ namespace keep.grass
 									() =>
 									{
 										Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
-										CanvasAsView().Animate
+										this.Animate
 										(
 											"ImageAnimation",
 											d => ImageAlpha = (byte)d,
@@ -176,11 +176,8 @@ namespace keep.grass
 		public TimeSpan LeftTime => base.LastPublicActivity.AddHours(24) - base.Now;
 
 		public bool AnimationIsRunning =>
-				null != AsView() &&
-				(
-					AsView().AnimationIsRunning("NowAnimation") ||
-					AsView().AnimationIsRunning("LastPublicActivityAnimation")
-				);
+					((View)this).AnimationIsRunning("NowAnimation") ||
+					((View)this).AnimationIsRunning("LastPublicActivityAnimation");
 
 		public void StartAnimation()
 		{
@@ -191,7 +188,7 @@ namespace keep.grass
 				{
 					Debug.WriteLine("Start LastPublicActivity");
 					var AnchorNow = DateTime.Now;
-					CanvasAsView().Animate
+					this.Animate
 					(
 						"LastPublicActivityAnimation",
 						d =>
@@ -217,7 +214,7 @@ namespace keep.grass
 				{
 					Debug.WriteLine("Start AnimateNow");
 					var AnchorNow = DateTime.Now;
-					CanvasAsView().Animate
+					this.Animate
 					(
 						"NowAnimation",
 						d =>
