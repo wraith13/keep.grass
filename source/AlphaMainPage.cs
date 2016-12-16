@@ -50,7 +50,11 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 
-			CircleGraph.Build(Width, Height);
+			CircleGraph.Build
+			(
+				(Width <= Height) ? Width: Width *0.55,
+				(Width <= Height) ? Height *0.55: Height
+			);
 			CircleGraph
 				.AsView()
 				.GestureRecognizers

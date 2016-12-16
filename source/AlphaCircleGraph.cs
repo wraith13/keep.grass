@@ -260,13 +260,16 @@ namespace keep.grass
 
 		public void Build(double Width, double Height)
 		{
-			var MinSide = new[] { Width, Height }.Min();
-			GraphSize = Math.Round(MinSide * 0.6);
+			GraphSize = new[]
+			{
+				Width -Margin.HorizontalThickness,
+				Height -Margin.VerticalThickness
+			}.Min();
 			CanvasView = new AlphaCircleGraphView(this)
 			{
 				Margin = new Thickness(0.0),
-				WidthRequest = (Width <= Height) ? Width: GraphSize +Margin.HorizontalThickness,
-				HeightRequest = (Width <= Height) ? GraphSize + Margin.VerticalThickness: Height,
+				WidthRequest = Width,
+				HeightRequest = Height,
 				BackgroundColor = Color.White,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,

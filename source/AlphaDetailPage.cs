@@ -53,7 +53,11 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaDetailPage.Rebuild();");
 
-			CircleGraph.Build(Width, Height);
+			CircleGraph.Build
+			(
+				(Width <= Height) ? Width : Width * 0.55,
+				(Width <= Height) ? Height * 0.55 : Height
+			);
 
 			var MainTable = new TableView
 			{
