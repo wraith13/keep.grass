@@ -310,6 +310,18 @@ namespace keep.grass
 					Width -CircleMargin.HorizontalThickness,
 					Height -CircleMargin.VerticalThickness
 				}.Min();
+				if (FontSize *15.0f < GraphSize)
+				{
+					GraphSize = Math.Max
+					(
+						FontSize * 15.0f,
+						Math.Min
+						(
+							Width /Phi,
+							Height /Phi
+						)
+					);
+				}
 				Canvas.GetClipBounds(ref CanvasRect);
 				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
 				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
