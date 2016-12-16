@@ -226,7 +226,7 @@ namespace keep.grass
 
 		System.IO.Stream FontSource;
 		SKManagedStream FontStream;
-		SKTypeface Font;
+		protected SKTypeface Font;
 
 		SKData ImageData;
 		SKBitmap ImageBitmap;

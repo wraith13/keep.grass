@@ -17,11 +17,11 @@ namespace keep.grass
 	public class AlphaUserCircleGraph :VoidUserCircleGraph
 	{
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-		//AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(1000);
 
-		float LeftTimeBarHeight => FontSize * Phi;
+		float LeftTimeBarHeight => FontSize * 2.0f;
 
 		public override bool IsVisibleLeftTimeBar
 		{
@@ -256,21 +256,45 @@ namespace keep.grass
 			base.Draw(Canvas);
 			if (IsVisibleLeftTimeBar && IsInvalidBar)
 			{
-				using (var paint = new SKPaint())
-				{
-					paint.Color = ToSKColor(AlphaDomain.MakeLeftTimeColor(LeftTime));
-					Canvas.DrawRect
-					(
-						new SKRect
-						(
-							CanvasRect.Left,
-							CanvasRect.Top,
-							CanvasRect.Right,
-							CanvasRect.Top +(LeftTimeBarHeight *PhysicalPixelRate)
-						),
-						paint
-					);
-				}
+				DrawLeftTimeBar(Canvas);
+			}
+		}
+		private void DrawLeftTimeBar(SKCanvas Canvas)
+		{
+			var LeftTimeBarRect = new SKRect
+			(
+				CanvasRect.Left,
+				CanvasRect.Top,
+				CanvasRect.Right,
+				CanvasRect.Top + (LeftTimeBarHeight * PhysicalPixelRate)
+			);
+			using (var paint = new SKPaint())
+			{
+				paint.Color = ToSKColor(AlphaDomain.MakeLeftTimeColor(LeftTime));
+				Canvas.DrawRect
+				(
+					LeftTimeBarRect,
+					paint
+				);
+			}
+			using (var paint = new SKPaint())
+			{
+				paint.IsAntialias = true;
+				paint.Color = ToSKColor(Color.White);
+				paint.StrokeCap = SKStrokeCap.Round;
+				paint.TextSize = FontSize * PhysicalPixelRate;
+				paint.TextAlign = SKTextAlign.Center;
+				paint.Typeface = Font;
+
+				Canvas.DrawText
+				(
+					L["Left Time"] +" : " +Domain.ToString(LeftTime),
+					LeftTimeBarRect.MidX,
+					LeftTimeBarRect.MidY+ (paint.TextSize / 2.0f),
+					paint
+				);
+
+				paint.Typeface = null;
 			}
 		}
 
