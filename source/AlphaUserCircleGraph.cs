@@ -76,16 +76,19 @@ namespace keep.grass
 									() =>
 									{
 										Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
-										this.Animate
-										(
-											"ImageAnimation",
-											d => ImageAlpha = (byte)d,
-											0.0,
-											255.0,
-											16,
-											(uint)AnimationSpan.TotalMilliseconds,
-											Easing.SinIn
-										);
+										if (null != Image)
+										{
+											this.Animate
+											(
+												"ImageAnimation",
+												d => ImageAlpha = (byte)d,
+												0.0,
+												255.0,
+												16,
+												(uint)AnimationSpan.TotalMilliseconds,
+												Easing.SinIn
+											);
+										}
 									}
 							   )
 						   );
