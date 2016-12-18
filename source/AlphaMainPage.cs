@@ -199,6 +199,21 @@ namespace keep.grass
 				LastActivityStampLabel.TextColor = Color.Default;
 			}
 		}
+		public void OnUpdateIcon(string User, byte[] Binary)
+		{
+			if (Settings.UserName == User)
+			{
+				CircleGraph.Image = Binary;
+			}
+			for (var i = 0; i < Friends?.Count(); ++i)
+			{
+				var FriendLable = Friends[i];
+				if (FriendLable.Text == User && null == FriendLable.ImageSource)
+				{
+					FriendLable.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
+				}
+			}
+		}
 		public void OnErrorInQuery()
 		{
 			LastActivityStampLabel.Text = L["Error"];
@@ -246,8 +261,13 @@ namespace keep.grass
 				if (FriendLable.Text != Friend)
 				{
 					FriendLable.ImageSource = null;
-					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend))
-							.ContinueWith(t => Device.BeginInvokeOnMainThread(() => FriendLable.ImageSource = t.Result));
+					var Binary = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Friend));
+					if (Binary?.Any() ?? false)
+					{
+						FriendLable.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
+					}
+					//AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend))
+					//		.ContinueWith(t => Device.BeginInvokeOnMainThread(() => FriendLable.ImageSource = t.Result));
 					FriendLable.Text = Friend;
 					FriendLable.TextColor = Color.Default;
 					FriendLable.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));

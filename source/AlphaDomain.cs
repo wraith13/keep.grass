@@ -110,6 +110,19 @@ namespace keep.grass
 			}
 			Settings.SetIsValidUserName(User, true);
 		}
+		private async Task UpdateIconAsync(string User)
+		{
+			var IconUrl = GitHub.GetIconUrl(User);
+			if (!(AlphaImageProxy.GetFromCache(IconUrl)?.Any() ?? false))
+			{
+				var Binary = await AlphaImageProxy.Get(IconUrl);
+				if (Binary?.Any() ?? false)
+				{
+					OnUpdateIcon(User, Binary);
+				}
+			}
+		}
+
 		private async Task UpdateAllLastPublicActivityAsync()
 		{
 			Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync");
@@ -133,6 +146,7 @@ namespace keep.grass
 				foreach (var User in Users)
 				{
 					await UpdateLastPublicActivityCoreAsync(User);
+					await UpdateIconAsync(User);
 				}
 			}
 			catch (Exception err)
@@ -167,6 +181,16 @@ namespace keep.grass
 						UpdateAlerts(LastPublicActivity);
 					}
 					AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
+				}
+			);
+		}
+		public void OnUpdateIcon(string User, byte[] Binary)
+		{
+			Device.BeginInvokeOnMainThread
+			(
+				() =>
+				{
+					AlphaFactory.GetApp()?.Main?.OnUpdateIcon(User, Binary);
 				}
 			);
 		}

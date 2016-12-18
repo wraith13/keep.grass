@@ -68,31 +68,28 @@ namespace keep.grass
 					AltTextColor = Color.Black;
 					if (!string.IsNullOrWhiteSpace(Trimed))
 					{
-						AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Trimed))
-							.ContinueWith
-							(
-								t => Device.BeginInvokeOnMainThread
-								(
-									() =>
-									{
-										Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
-										if (null != Image)
-										{
-											this.Animate
-											(
-												"ImageAnimation",
-												d => ImageAlpha = (byte)d,
-												0.0,
-												255.0,
-												16,
-												(uint)AnimationSpan.TotalMilliseconds,
-												Easing.SinIn
-											);
-										}
-									}
-							   )
-						   );
+						Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
 					}
+				}
+			}
+		}
+		public override byte[] Image
+		{
+			set
+			{
+				base.Image = value;
+				if (Image?.Any() ?? false)
+				{
+					this.Animate
+					(
+						"ImageAnimation",
+						d => ImageAlpha = (byte)d,
+						0.0,
+						255.0,
+						16,
+						(uint)AnimationSpan.TotalMilliseconds,
+						Easing.SinIn
+					);
 				}
 			}
 		}
