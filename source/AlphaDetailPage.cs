@@ -35,6 +35,7 @@ namespace keep.grass
 			//Build();
 
 			CircleGraph.BackgroundColor = Color.White;
+			CircleGraph.IsVisibleSatelliteTexts = true;
 			CircleGraph.IsDoughnut = false;
 			CircleGraph.ActiveWait = TimeSpan.FromMilliseconds(100);
 			CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);

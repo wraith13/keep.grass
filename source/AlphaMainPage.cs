@@ -14,10 +14,11 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		AlphaCircleImageCell[] Friends;
 		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
+		//AlphaCircleImageCell[] Friends;
+		AlphaUserCircleGraph[] Friends;
 		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
 		Task UpdateLeftTimeTask = null;
@@ -34,6 +35,7 @@ namespace keep.grass
 
 			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsVisibleLeftTimeBar = true;
+			CircleGraph.IsVisibleSatelliteTexts = true;
 			CircleGraph.IsDoughnut = true;
 			CircleGraph.Now = DateTime.Now;
 			if
@@ -62,9 +64,38 @@ namespace keep.grass
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
-				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
+				//Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
+				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeUserCircleGraph()).ToArray();
+				for (var i = 0; i < Friends?.Count(); ++i)
+				{
+					var Friend = Settings.GetFriend(i);
+					var FriendCircle = Friends[i];
+					FriendCircle.BackgroundColor = Color.White;
+					FriendCircle.IsVisibleLeftTimeBar = false;
+					FriendCircle.IsVisibleSatelliteTexts = false;
+					FriendCircle.FontSize *= 0.5f;
+					FriendCircle.CircleMargin = new Thickness(2.0);
+					FriendCircle.IsDoughnut = true;
+					FriendCircle.User = Friend;
+					FriendCircle.Now = DateTime.Now;
+					if (Settings.GetIsValidUserName(Friend))
+					{
+						FriendCircle.LastPublicActivity = Domain.GetLastPublicActivity(Friend);
+					}
+					FriendCircle.GestureRecognizers.Clear();
+					FriendCircle
+						.GestureRecognizers
+						.Add
+						(
+							new TapGestureRecognizer()
+							{
+								Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend)),
+							}
+						);
+				}
 			}
 
+			/*
 			var MainTable = Friends.Any() ?
 			new TableView
 			{
@@ -92,10 +123,17 @@ namespace keep.grass
 					},
 				},
 			};
+			*/
+
 			UpdateButton.Text = L["Update"];
-			var ButtonFrame = new Grid().HorizontalJustificate
+			var ButtonFrame = new Grid()
+			{
+				VerticalOptions = LayoutOptions.End,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+			}
+			.HorizontalJustificate
 			(
-                UpdateButton,
+				UpdateButton,
 				new Button
 				{
 					VerticalOptions = LayoutOptions.Center,
@@ -108,10 +146,18 @@ namespace keep.grass
 
 			if (Width <= Height)
 			{
-				CircleGraph.WidthRequest = Width * 0.55;
-				CircleGraph.HeightRequest = Height * 0.55;
+				CircleGraph.WidthRequest = Width;
+				CircleGraph.HeightRequest = Height * 0.60;
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
-				CircleGraph.VerticalOptions = LayoutOptions.Start;
+				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
+
+				foreach(var Friend in Friends)
+				{
+					Friend.WidthRequest = Width / Friends.Count();
+					Friend.HeightRequest = Friend.WidthRequest;
+					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
+					Friend.VerticalOptions = LayoutOptions.CenterAndExpand;
+				}
 
 				Content = new StackLayout
 				{
@@ -120,7 +166,14 @@ namespace keep.grass
 					Children =
 					{
 						CircleGraph,
-						MainTable,
+						//MainTable,
+						new Grid()
+						{
+							VerticalOptions = LayoutOptions.Start,
+							HorizontalOptions = LayoutOptions.CenterAndExpand,
+							ColumnSpacing = 0.0,
+							RowSpacing = 0.0,
+						}.HorizontalJustificate(Friends),
 						ButtonFrame,
 					},
 				};
@@ -128,9 +181,17 @@ namespace keep.grass
 			else
 			{
 				CircleGraph.WidthRequest = Width * 0.55;
-				CircleGraph.HeightRequest = Height * 0.55;
-				CircleGraph.HorizontalOptions = LayoutOptions.Start;
+				CircleGraph.HeightRequest = Height * 0.70;
+				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
+
+				foreach (var Friend in Friends)
+				{
+					Friend.WidthRequest = CircleGraph.WidthRequest / CircleGraph.Phi;
+					Friend.HeightRequest = Height / Friends.Count();
+					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
+					Friend.VerticalOptions = LayoutOptions.CenterAndExpand;
+				}
 
 				Content = new StackLayout
 				{
@@ -141,11 +202,16 @@ namespace keep.grass
 						new StackLayout
 						{
 							Orientation = StackOrientation.Horizontal,
-							Spacing = 1.0,
+							Spacing = 0.0,
 							Children =
 							{
 								CircleGraph,
-								MainTable,
+								//MainTable,
+								new Grid()
+								{
+									ColumnSpacing = 0.0,
+									RowSpacing = 0.0,
+								}.VerticalJustificate(Friends),
 							},
 						},
 						ButtonFrame,
@@ -159,6 +225,10 @@ namespace keep.grass
 			UpdateButton.ShowText();
 
 			CircleGraph.IsInvalidCanvas = true;
+			foreach (var Friend in Friends)
+			{
+				Friend.IsInvalidCanvas = true;
+			}
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 		}
 
@@ -177,6 +247,11 @@ namespace keep.grass
 			OnPause();
 			CircleGraph.IsActive = false;
 			CircleGraph.ResetTime();
+			foreach (var Friend in Friends)
+			{
+				Friend.IsActive = false;
+				Friend.ResetTime();
+			}
 		}
 
 		public void OnPause()
@@ -198,6 +273,13 @@ namespace keep.grass
 				LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
 				LastActivityStampLabel.TextColor = Color.Default;
 			}
+			foreach (var Friend in Friends)
+			{
+				if (Friend.User == User)
+				{
+					Friend.LastPublicActivity = LastPublicActivity;
+				}
+			}
 		}
 		public void OnUpdateIcon(string User, byte[] Binary)
 		{
@@ -207,10 +289,17 @@ namespace keep.grass
 			}
 			for (var i = 0; i < Friends?.Count(); ++i)
 			{
+				/*
 				var FriendLable = Friends[i];
 				if (FriendLable.Text == User && null == FriendLable.ImageSource)
 				{
 					FriendLable.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
+				}
+				*/
+				var FriendCircle = Friends[i];
+				if (FriendCircle.User == User)
+				{
+					FriendCircle.Image = Binary;
 				}
 			}
 		}
@@ -257,6 +346,7 @@ namespace keep.grass
 			for (var i = 0; i < Friends?.Count(); ++i)
 			{
 				var Friend = Settings.GetFriend(i);
+				/*
 				var FriendLable = Friends[i];
 				if (FriendLable.Text != Friend)
 				{
@@ -271,6 +361,22 @@ namespace keep.grass
 					FriendLable.Text = Friend;
 					FriendLable.TextColor = Color.Default;
 					FriendLable.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));
+				}
+				*/
+				var FriendCircle = Friends[i];
+				if (FriendCircle.User != Friend)
+				{
+					FriendCircle.User = Friend;
+					FriendCircle.GestureRecognizers.Clear();
+					FriendCircle
+						.GestureRecognizers
+						.Add
+						(
+							new TapGestureRecognizer()
+							{
+								Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend)),
+							}
+						);
 				}
 			}
 		}
@@ -300,6 +406,10 @@ namespace keep.grass
 								() =>
 								{
 									CircleGraph.Now = Now;
+									foreach (var Friend in Friends)
+									{
+										Friend.Now = Now;
+									}
 									UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName));
 								}
 							);
@@ -348,6 +458,7 @@ namespace keep.grass
 				}*/
 			}
 
+			/*
 			for (var i = 0; i < Friends?.Count(); ++i)
 			{
 				var Friend = Settings.GetFriend(i);
@@ -356,6 +467,7 @@ namespace keep.grass
 				var FriendLable = Friends[i];
 				FriendLable.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
 			}
+			*/
 
 			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
 		}
