@@ -305,42 +305,7 @@ namespace keep.grass
 		{
 			if (IsInvalidCanvas)
 			{
-				GraphSize = new[]
-				{
-					Width -CircleMargin.HorizontalThickness,
-					Height -CircleMargin.VerticalThickness
-				}.Min();
-				if (FontSize *15.0f < GraphSize)
-				{
-					GraphSize = Math.Max
-					(
-						FontSize * 15.0f,
-						Math.Min
-						(
-							Width /Phi,
-							Height /Phi
-						)
-					);
-				}
-				Canvas.GetClipBounds(ref CanvasRect);
-				PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
-				var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
-				PieRadius = DrawGraphSize / 2.0f;
-				var CanvasSpaceHeight = (float)((CanvasRect.Height - (CircleMargin.VerticalThickness * PhysicalPixelRate)) -DrawGraphSize);
-				Center = new SKPoint
-				(
-					CanvasRect.MidX +((float)((CircleMargin.Left -CircleMargin.Right) *PhysicalPixelRate)) / 2.0f,
-					//CanvasRect.MidY +((float)((CircleMargin.Top -CircleMargin.Bottom) *PhysicalPixelRate)) / 2.0f
-					(float)(CircleMargin.Top *PhysicalPixelRate) +PieRadius +(CanvasSpaceHeight *(1.0f -(1.0f /Phi)))
-				);
-				ImageRadius = PieRadius / Phi;
-				
-				IsInvalidCanvas = false;
-				IsInvalidCenter = true;
-				IsInvalidSatelliteTexts = true;
-				IsInvalidData = true;
-				Canvas.Clear();
-				IsClearCanvas = true;
+				ClearCanvas(Canvas);
 			}
 			if (IsInvalidCenter)
 			{
@@ -355,6 +320,45 @@ namespace keep.grass
 				DrawData(Canvas);
 			}
 			IsClearCanvas = false;
+		}
+		public virtual void ClearCanvas(SKCanvas Canvas)
+		{
+			GraphSize = new[]
+			{
+					Width -CircleMargin.HorizontalThickness,
+					Height -CircleMargin.VerticalThickness
+				}.Min();
+			if (FontSize * 15.0f < GraphSize)
+			{
+				GraphSize = Math.Max
+				(
+					FontSize * 15.0f,
+					Math.Min
+					(
+						Width / Phi,
+						Height / Phi
+					)
+				);
+			}
+			Canvas.GetClipBounds(ref CanvasRect);
+			PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
+			var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
+			PieRadius = DrawGraphSize / 2.0f;
+			var CanvasSpaceHeight = (float)((CanvasRect.Height - (CircleMargin.VerticalThickness * PhysicalPixelRate)) - DrawGraphSize);
+			Center = new SKPoint
+			(
+				CanvasRect.MidX + ((float)((CircleMargin.Left - CircleMargin.Right) * PhysicalPixelRate)) / 2.0f,
+				//CanvasRect.MidY +((float)((CircleMargin.Top -CircleMargin.Bottom) *PhysicalPixelRate)) / 2.0f
+				(float)(CircleMargin.Top * PhysicalPixelRate) + PieRadius + (CanvasSpaceHeight * (1.0f - (1.0f / Phi)))
+			);
+			ImageRadius = PieRadius / Phi;
+
+			IsInvalidCanvas = false;
+			IsInvalidCenter = true;
+			IsInvalidSatelliteTexts = true;
+			IsInvalidData = true;
+			Canvas.Clear();
+			IsClearCanvas = true;
 		}
 		private void DrawCenter(SKCanvas Canvas)
 		{

@@ -264,6 +264,11 @@ namespace keep.grass
 				DrawLeftTimeBar(Canvas);
 			}
 		}
+		public override void ClearCanvas(SKCanvas Canvas)
+		{
+			base.ClearCanvas(Canvas);
+			UpdateSlices();
+		}
 		private void DrawLeftTimeBar(SKCanvas Canvas)
 		{
 			var LeftTimeBarRect = new SKRect
