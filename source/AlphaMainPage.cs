@@ -16,6 +16,10 @@ namespace keep.grass
 
 		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
 		AlphaUserCircleGraph[] Friends;
+		IEnumerable<AlphaUserCircleGraph> CircleGraphList => new AlphaUserCircleGraph[] { CircleGraph }.Concat
+		(
+			Friends ?? new AlphaUserCircleGraph[] { }
+		);
 		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
 		Task UpdateLeftTimeTask = null;
@@ -28,28 +32,34 @@ namespace keep.grass
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
-			CircleGraph.BackgroundColor = Color.White;
+			InitCircleGraph(CircleGraph, Settings.UserName);
 			CircleGraph.IsVisibleLeftTimeBar = true;
 			CircleGraph.IsVisibleSatelliteTexts = true;
-			CircleGraph.IsDoughnut = true;
-			CircleGraph.Now = DateTime.Now;
-			if
-			(
-				!string.IsNullOrWhiteSpace(Settings.UserName) &&
-				Settings.GetIsValidUserName(Settings.UserName)
-			)
+		}
+		public void InitCircleGraph(AlphaUserCircleGraph i, string User)
+		{
+			i.BackgroundColor = Color.White;
+			//i.IsVisibleLeftTimeBar = true;
+			//i.IsVisibleSatelliteTexts = true;
+			i.IsDoughnut = true;
+			i.Now = DateTime.Now;
+			i.User = User;
+			i.GestureRecognizers.Clear();
+			if (!string.IsNullOrWhiteSpace(User))
 			{
-				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
+				if (Settings.GetIsValidUserName(User))
+				{
+					i.LastPublicActivity = Domain.GetLastPublicActivity(User);
+				}
+				i.GestureRecognizers
+					.Add
+					(
+						new TapGestureRecognizer()
+						{
+							Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(User)),
+						}
+					);
 			}
-			CircleGraph
-				.GestureRecognizers
-				.Add
-				(
-					new TapGestureRecognizer()
-					{
-						Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Settings.UserName)),
-					}
-				);
 		}
 
 		public override void Build()
@@ -65,28 +75,11 @@ namespace keep.grass
 				{
 					var Friend = Settings.GetFriend(i);
 					var FriendCircle = Friends[i];
-					FriendCircle.BackgroundColor = Color.White;
+					InitCircleGraph(FriendCircle, Friend);
 					FriendCircle.IsVisibleLeftTimeBar = false;
 					FriendCircle.IsVisibleSatelliteTexts = false;
 					FriendCircle.FontSize *= 0.5f;
 					FriendCircle.CircleMargin = new Thickness(2.0);
-					FriendCircle.IsDoughnut = true;
-					FriendCircle.User = Friend;
-					FriendCircle.Now = DateTime.Now;
-					if (Settings.GetIsValidUserName(Friend))
-					{
-						FriendCircle.LastPublicActivity = Domain.GetLastPublicActivity(Friend);
-					}
-					FriendCircle.GestureRecognizers.Clear();
-					FriendCircle
-						.GestureRecognizers
-						.Add
-						(
-							new TapGestureRecognizer()
-							{
-								Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend)),
-							}
-						);
 				}
 			}
 
@@ -187,10 +180,9 @@ namespace keep.grass
 			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
 			UpdateButton.ShowText();
 
-			CircleGraph.IsInvalidCanvas = true;
-			foreach (var Friend in Friends)
+			foreach (var i in CircleGraphList)
 			{
-				Friend.IsInvalidCanvas = true;
+				i.IsInvalidCanvas = true;
 			}
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 		}
@@ -208,12 +200,10 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage::OnDisappearing");
 			base.OnDisappearing();
 			OnPause();
-			CircleGraph.IsActive = false;
-			CircleGraph.ResetTime();
-			foreach (var Friend in Friends)
+			foreach (var i in CircleGraphList)
 			{
-				Friend.IsActive = false;
-				Friend.ResetTime();
+				i.IsActive = false;
+				i.ResetTime();
 			}
 		}
 
@@ -228,37 +218,21 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
 		{
-			if (Settings.UserName == User)
+			foreach (var i in CircleGraphList)
 			{
-				CircleGraph.LastPublicActivity = LastPublicActivity;
-			}
-			foreach (var Friend in Friends)
-			{
-				if (Friend.User == User)
+				if (i.User == User)
 				{
-					Friend.LastPublicActivity = LastPublicActivity;
+					i.LastPublicActivity = LastPublicActivity;
 				}
 			}
 		}
 		public void OnUpdateIcon(string User, byte[] Binary)
 		{
-			if (Settings.UserName == User)
+			foreach (var i in CircleGraphList)
 			{
-				CircleGraph.Image = Binary;
-			}
-			for (var i = 0; i < Friends?.Count(); ++i)
-			{
-				/*
-				var FriendLable = Friends[i];
-				if (FriendLable.Text == User && null == FriendLable.ImageSource)
+				if (i.User == User)
 				{
-					FriendLable.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
-				}
-				*/
-				var FriendCircle = Friends[i];
-				if (FriendCircle.User == User)
-				{
-					FriendCircle.Image = Binary;
+					i.Image = Binary;
 				}
 			}
 		}
@@ -274,13 +248,13 @@ namespace keep.grass
 		public void UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
+			var IsChangedUser = false;
 			var User = Settings.UserName;
 			if (CircleGraph.User != User)
 			{
 				if (!String.IsNullOrWhiteSpace(User))
 				{
-					CircleGraph.User = User;
-
+					InitCircleGraph(CircleGraph, User);
 					if (!Settings.GetIsValidUserName(User))
 					{
 						ClearActiveInfo();
@@ -289,7 +263,7 @@ namespace keep.grass
 					{
 						OnUpdateLastPublicActivity(User, Domain.GetLastPublicActivity(User));
 					}
-					Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
+					IsChangedUser = true;
 				}
 				else
 				{
@@ -301,38 +275,16 @@ namespace keep.grass
 			for (var i = 0; i < Friends?.Count(); ++i)
 			{
 				var Friend = Settings.GetFriend(i);
-				/*
-				var FriendLable = Friends[i];
-				if (FriendLable.Text != Friend)
-				{
-					FriendLable.ImageSource = null;
-					var Binary = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Friend));
-					if (Binary?.Any() ?? false)
-					{
-						FriendLable.ImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
-					}
-					//AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(Friend))
-					//		.ContinueWith(t => Device.BeginInvokeOnMainThread(() => FriendLable.ImageSource = t.Result));
-					FriendLable.Text = Friend;
-					FriendLable.TextColor = Color.Default;
-					FriendLable.Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend));
-				}
-				*/
 				var FriendCircle = Friends[i];
 				if (FriendCircle.User != Friend)
 				{
-					FriendCircle.User = Friend;
-					FriendCircle.GestureRecognizers.Clear();
-					FriendCircle
-						.GestureRecognizers
-						.Add
-						(
-							new TapGestureRecognizer()
-							{
-								Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(Friend)),
-							}
-						);
+					IsChangedUser = true;
+					InitCircleGraph(FriendCircle, Friend);
 				}
+			}
+			if (IsChangedUser)
+			{
+				Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 			}
 		}
 		public void ClearActiveInfo()
@@ -358,10 +310,9 @@ namespace keep.grass
 							(
 								() =>
 								{
-									CircleGraph.Now = Now;
-									foreach (var Friend in Friends)
+									foreach (var i in CircleGraphList)
 									{
-										Friend.Now = Now;
+										i.Now = Now;
 									}
 									Domain.AutoUpdateLastPublicActivityAsync();
 								}
