@@ -14,10 +14,7 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
-		//AlphaCircleImageCell[] Friends;
 		AlphaUserCircleGraph[] Friends;
 		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
@@ -28,8 +25,6 @@ namespace keep.grass
 		{
 			Title = "keep.grass";
 
-			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
-			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 			//Build();
 
@@ -94,36 +89,6 @@ namespace keep.grass
 						);
 				}
 			}
-
-			/*
-			var MainTable = Friends.Any() ?
-			new TableView
-			{
-				BackgroundColor = Color.White,
-				Root = new TableRoot
-				{
-					new TableSection(L["Rivals"])
-					{
-						Friends,
-					},
-				},
-			}:
-			new TableView
-			{
-				BackgroundColor = Color.White,
-				Root = new TableRoot
-				{
-					new TableSection(L["Last Acitivity Stamp"])
-					{
-						LastActivityStampLabel,
-					},
-					new TableSection(L["Left Time"])
-					{
-						LeftTimeLabel,
-					},
-				},
-			};
-			*/
 
 			UpdateButton.Text = L["Update"];
 			var ButtonFrame = new Grid()
@@ -220,8 +185,6 @@ namespace keep.grass
 			}
 
 			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
-			LastActivityStampLabel.ShowText();
-			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 
 			CircleGraph.IsInvalidCanvas = true;
@@ -261,8 +224,6 @@ namespace keep.grass
 
 		public void OnStartQuery()
 		{
-			LastActivityStampLabel.ShowIndicator();
-			LeftTimeLabel.ShowIndicator();
 			UpdateButton.ShowIndicator();
 		}
 		public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
@@ -270,8 +231,6 @@ namespace keep.grass
 			if (Settings.UserName == User)
 			{
 				CircleGraph.LastPublicActivity = LastPublicActivity;
-				LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
-				LastActivityStampLabel.TextColor = Color.Default;
 			}
 			foreach (var Friend in Friends)
 			{
@@ -305,13 +264,9 @@ namespace keep.grass
 		}
 		public void OnErrorInQuery()
 		{
-			LastActivityStampLabel.Text = L["Error"];
-			LastActivityStampLabel.TextColor = Color.Red;
 		}
 		public void OnEndQuery()
 		{
-			LastActivityStampLabel.ShowText();
-			LeftTimeLabel.ShowText();
 			UpdateButton.ShowText();
 			StartUpdateLeftTimeTask();
 		}
@@ -383,8 +338,6 @@ namespace keep.grass
 		public void ClearActiveInfo()
 		{
 			CircleGraph.LastPublicActivity = default(DateTime);
-			LastActivityStampLabel.Text = "";
-			LeftTimeLabel.Text = "";
 		}
 
 		public void StartUpdateLeftTimeTask(bool IsPersistently = true)
@@ -410,7 +363,7 @@ namespace keep.grass
 									{
 										Friend.Now = Now;
 									}
-									UpdateLeftTime(Now, Domain.GetLastPublicActivity(Settings.UserName));
+									Domain.AutoUpdateLastPublicActivityAsync();
 								}
 							);
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
@@ -436,41 +389,5 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage::StopUpdateLeftTimeTask");
 			UpdateLeftTimeTask = null;
 		}
-
-		protected void UpdateLeftTime(DateTime Now, DateTime LastPublicActivity)
-		{
-			if (default(DateTime) != LastPublicActivity)
-			{
-				var Today = Now.Date;
-				var LimitTime = LastPublicActivity.AddHours(24);
-				var LeftTime = LimitTime - Now;
-				LeftTimeLabel.Text = Domain.ToString(LeftTime);
-				LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-
-				Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
-			}
-			else
-			{
-				LeftTimeLabel.Text = "";
-				/*if (Settings.IsValidUserName)
-				{
-					StopUpdateLeftTimeTask();
-				}*/
-			}
-
-			/*
-			for (var i = 0; i < Friends?.Count(); ++i)
-			{
-				var Friend = Settings.GetFriend(i);
-				var LimitTime = Domain.GetLastPublicActivity(Friend).AddHours(24);
-				var LeftTime = LimitTime - Now;
-				var FriendLable = Friends[i];
-				FriendLable.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-			}
-			*/
-
-			//Debug.WriteLine("AlphaMainPage::UpdateLeftTime::LeftTime = " +LeftTimeLabel.Text);
-		}
-
 	}
 }
