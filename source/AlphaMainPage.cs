@@ -20,6 +20,21 @@ namespace keep.grass
 		(
 			Friends ?? new AlphaUserCircleGraph[] { }
 		);
+		public void ApplyCircleGraph(string User, Action<AlphaUserCircleGraph> Apply)
+		{
+			var Target = CircleGraphList.Where(i => i.User == User).FirstOrDefault();
+			if (null != Target)
+			{
+				Apply(Target);
+			}
+		}
+		public void ApplyCircleGraph(Action<AlphaUserCircleGraph> Apply)
+		{
+			foreach (var i in CircleGraphList)
+			{
+				Apply(i);
+			}
+		}
 		AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
 
 		Task UpdateLeftTimeTask = null;
@@ -30,7 +45,6 @@ namespace keep.grass
 			Title = "keep.grass";
 
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
-			//Build();
 
 			InitCircleGraph(CircleGraph, Settings.UserName);
 			CircleGraph.IsVisibleLeftTimeBar = true;
@@ -39,12 +53,11 @@ namespace keep.grass
 		public void InitCircleGraph(AlphaUserCircleGraph i, string User)
 		{
 			i.BackgroundColor = Color.White;
-			//i.IsVisibleLeftTimeBar = true;
-			//i.IsVisibleSatelliteTexts = true;
 			i.IsDoughnut = true;
 			i.Now = DateTime.Now;
 			i.User = User;
 			i.GestureRecognizers.Clear();
+			i.LastPublicActivity = default(DateTime);
 			if (!string.IsNullOrWhiteSpace(User))
 			{
 				if (Settings.GetIsValidUserName(User))
@@ -69,7 +82,6 @@ namespace keep.grass
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
-				//Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeCircleImageCell()).ToArray();
 				Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeUserCircleGraph()).ToArray();
 				for (var i = 0; i < Friends?.Count(); ++i)
 				{
@@ -124,7 +136,6 @@ namespace keep.grass
 					Children =
 					{
 						CircleGraph,
-						//MainTable,
 						new Grid()
 						{
 							VerticalOptions = LayoutOptions.Start,
@@ -164,7 +175,6 @@ namespace keep.grass
 							Children =
 							{
 								CircleGraph,
-								//MainTable,
 								new Grid()
 								{
 									ColumnSpacing = 0.0,
@@ -180,10 +190,7 @@ namespace keep.grass
 			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
 			UpdateButton.ShowText();
 
-			foreach (var i in CircleGraphList)
-			{
-				i.IsInvalidCanvas = true;
-			}
+			ApplyCircleGraph(i => i.IsInvalidCanvas = true);
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 		}
 
@@ -200,11 +207,14 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage::OnDisappearing");
 			base.OnDisappearing();
 			OnPause();
-			foreach (var i in CircleGraphList)
-			{
-				i.IsActive = false;
-				i.ResetTime();
-			}
+			ApplyCircleGraph
+			(
+				i =>
+				{
+					i.IsActive = false;
+					i.ResetTime();
+				}
+			);
 		}
 
 		public void OnPause()
@@ -218,23 +228,11 @@ namespace keep.grass
 		}
 		public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
 		{
-			foreach (var i in CircleGraphList)
-			{
-				if (i.User == User)
-				{
-					i.LastPublicActivity = LastPublicActivity;
-				}
-			}
+			ApplyCircleGraph(User, i => i.LastPublicActivity = LastPublicActivity);
 		}
 		public void OnUpdateIcon(string User, byte[] Binary)
 		{
-			foreach (var i in CircleGraphList)
-			{
-				if (i.User == User)
-				{
-					i.Image = Binary;
-				}
-			}
+			ApplyCircleGraph(User, i => i.Image = Binary);
 		}
 		public void OnErrorInQuery()
 		{
@@ -255,20 +253,11 @@ namespace keep.grass
 				if (!String.IsNullOrWhiteSpace(User))
 				{
 					InitCircleGraph(CircleGraph, User);
-					if (!Settings.GetIsValidUserName(User))
-					{
-						ClearActiveInfo();
-					}
-					else
-					{
-						OnUpdateLastPublicActivity(User, Domain.GetLastPublicActivity(User));
-					}
 					IsChangedUser = true;
 				}
 				else
 				{
 					CircleGraph.User = null;
-					ClearActiveInfo();
 				}
 			}
 
@@ -286,10 +275,6 @@ namespace keep.grass
 			{
 				Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 			}
-		}
-		public void ClearActiveInfo()
-		{
-			CircleGraph.LastPublicActivity = default(DateTime);
 		}
 
 		public void StartUpdateLeftTimeTask(bool IsPersistently = true)
@@ -310,10 +295,7 @@ namespace keep.grass
 							(
 								() =>
 								{
-									foreach (var i in CircleGraphList)
-									{
-										i.Now = Now;
-									}
+									ApplyCircleGraph(i => i.Now = Now);
 									Domain.AutoUpdateLastPublicActivityAsync();
 								}
 							);
