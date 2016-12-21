@@ -7,7 +7,7 @@ namespace keep.grass.Droid
 	{
 		public override string getLanguage()
 		{
-			return Locale.Default.ToString().Split('_')[0];
+			return Locale.Default.Language.Split('-')[0];
 		}
 	}
 }
