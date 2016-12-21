@@ -114,25 +114,27 @@ namespace keep.grass
 			);
 			ButtonFrame.BackgroundColor = Color.White;
 
+			var Adjuster = 0 == Friends.Count() % 2 ? 0.0 : 1.0;
+
 			if (Width <= Height)
 			{
 				CircleGraph.WidthRequest = Width;
-				CircleGraph.HeightRequest = Height * 0.60;
+				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 
 				foreach(var Friend in Friends)
 				{
-					Friend.WidthRequest = Width / Friends.Count();
+					Friend.WidthRequest = Math.Floor(Width / Math.Max(Friends.Count(), 2));
 					Friend.HeightRequest = Friend.WidthRequest;
-					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
+					Friend.HorizontalOptions = LayoutOptions.Center;
 					Friend.VerticalOptions = LayoutOptions.CenterAndExpand;
 				}
 
 				Content = new StackLayout
 				{
-					Spacing = 1.0,
-					BackgroundColor = Color.Gray,
+					Spacing = 0.0,
+					BackgroundColor = Color.White,
 					Children =
 					{
 						CircleGraph,
@@ -140,8 +142,8 @@ namespace keep.grass
 						{
 							VerticalOptions = LayoutOptions.Start,
 							HorizontalOptions = LayoutOptions.CenterAndExpand,
-							ColumnSpacing = 0.0,
-							RowSpacing = 0.0,
+							ColumnSpacing = Adjuster,
+							RowSpacing = Adjuster,
 						}.HorizontalJustificate(Friends),
 						ButtonFrame,
 					},
@@ -149,36 +151,37 @@ namespace keep.grass
 			}
 			else
 			{
-				CircleGraph.WidthRequest = Width * 0.55;
-				CircleGraph.HeightRequest = Height * 0.70;
+				CircleGraph.WidthRequest = Math.Floor(Width * 0.55);
+				CircleGraph.HeightRequest = Math.Floor(Height * 0.70);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 
 				foreach (var Friend in Friends)
 				{
-					Friend.WidthRequest = CircleGraph.WidthRequest / CircleGraph.Phi;
-					Friend.HeightRequest = Height / Friends.Count();
+					Friend.WidthRequest = Math.Floor(CircleGraph.WidthRequest / CircleGraph.Phi);
+					Friend.HeightRequest = Math.Floor(Height / Math.Max(Friends.Count(), 2));
 					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
-					Friend.VerticalOptions = LayoutOptions.CenterAndExpand;
+					Friend.VerticalOptions = LayoutOptions.Center;
 				}
 
 				Content = new StackLayout
 				{
-					Spacing = 1.0,
-					BackgroundColor = Color.Gray,
+					Spacing = 0.0,
+					BackgroundColor = Color.White,
 					Children =
 					{
 						new StackLayout
 						{
 							Orientation = StackOrientation.Horizontal,
+							VerticalOptions = LayoutOptions.FillAndExpand,
 							Spacing = 0.0,
 							Children =
 							{
 								CircleGraph,
 								new Grid()
 								{
-									ColumnSpacing = 0.0,
-									RowSpacing = 0.0,
+									ColumnSpacing = Adjuster,
+									RowSpacing = Adjuster,
 								}.VerticalJustificate(Friends),
 							},
 						},
