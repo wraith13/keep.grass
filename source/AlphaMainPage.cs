@@ -119,7 +119,7 @@ namespace keep.grass
 			if (Width <= Height)
 			{
 				CircleGraph.WidthRequest = Width;
-				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
+				CircleGraph.HeightRequest = Math.Floor(Height * 0.10);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 
@@ -151,15 +151,15 @@ namespace keep.grass
 			}
 			else
 			{
-				CircleGraph.WidthRequest = Math.Floor(Width * 0.55);
-				CircleGraph.HeightRequest = Math.Floor(Height * 0.70);
+				CircleGraph.WidthRequest = Math.Floor(Width * 0.10);
+				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 
 				foreach (var Friend in Friends)
 				{
-					Friend.WidthRequest = Math.Floor(CircleGraph.WidthRequest / CircleGraph.Phi);
 					Friend.HeightRequest = Math.Floor(Height / Math.Max(Friends.Count(), 2));
+					Friend.WidthRequest = Friend.HeightRequest;
 					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
 					Friend.VerticalOptions = LayoutOptions.Center;
 				}
