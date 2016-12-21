@@ -114,40 +114,54 @@ namespace keep.grass
 			);
 			ButtonFrame.BackgroundColor = Color.White;
 
-			var Adjuster = 0 == Friends.Count() % 2 ? 0.0 : 1.0;
-
 			if (Width <= Height)
 			{
 				CircleGraph.WidthRequest = Width;
 				CircleGraph.HeightRequest = Math.Floor(Height * 0.10);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
-
 				foreach(var Friend in Friends)
 				{
-					Friend.WidthRequest = Math.Floor(Width / Math.Max(Friends.Count(), 2));
+					Friend.WidthRequest = Math.Floor(Width / Math.Min(Math.Max(Friends.Count(), 2), 4));
 					Friend.HeightRequest = Friend.WidthRequest;
 					Friend.HorizontalOptions = LayoutOptions.Center;
-					Friend.VerticalOptions = LayoutOptions.CenterAndExpand;
+					Friend.VerticalOptions = LayoutOptions.Center;
 				}
-
-				Content = new StackLayout
+				var StackContent = new StackLayout
 				{
 					Spacing = 0.0,
 					BackgroundColor = Color.White,
-					Children =
-					{
-						CircleGraph,
+				};
+				StackContent.Children.Add(CircleGraph);
+				var RowCount = 3.0;
+				var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
+				var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
+				Func<int,int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) -((1.0 /RowCount) +0.1));
+				for (var i = 0; i < LineCount; ++i)
+				{
+					var SkipCount = CalcIndex(i);
+					var TakeCount = CalcIndex(i +1) -SkipCount;
+					var Adjuster = 0 == TakeCount % 2 ? 0.0 : 1.0;
+					StackContent.Children.Add
+					(
 						new Grid()
 						{
-							VerticalOptions = LayoutOptions.Start,
-							HorizontalOptions = LayoutOptions.CenterAndExpand,
 							ColumnSpacing = Adjuster,
 							RowSpacing = Adjuster,
-						}.HorizontalJustificate(Friends),
-						ButtonFrame,
-					},
-				};
+						}.HorizontalJustificate
+						(
+							CirclePerLine <= (float)TakeCount ?
+								GridUtil.Justificate.Even:
+								GridUtil.Justificate.Odd,
+							Friends
+								.Skip(SkipCount)
+								.Take(TakeCount)
+								.ToArray()
+						)
+					);
+				}
+				StackContent.Children.Add(ButtonFrame);
+				Content = StackContent;
 			}
 			else
 			{
@@ -155,36 +169,55 @@ namespace keep.grass
 				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
 				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
 				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
-
 				foreach (var Friend in Friends)
 				{
-					Friend.HeightRequest = Math.Floor(Height / Math.Max(Friends.Count(), 2));
+					Friend.WidthRequest = Math.Floor(Height / Math.Min(Math.Max(Friends.Count(), 2), 4));
 					Friend.WidthRequest = Friend.HeightRequest;
 					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
 					Friend.VerticalOptions = LayoutOptions.Center;
 				}
-
+				var StackContent = new StackLayout
+				{
+					Orientation = StackOrientation.Horizontal,
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Spacing = 0.0,
+					BackgroundColor = Color.White,
+				};
+				StackContent.Children.Add(CircleGraph);
+				var RowCount = 3.0;
+				var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
+				var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
+				Func<int, int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) - ((1.0 /RowCount) +0.1));
+				for (var i = 0; i < LineCount; ++i)
+				{
+					var SkipCount = CalcIndex(i);
+					var TakeCount = CalcIndex(i + 1) - SkipCount;
+					var Adjuster = 0 == TakeCount % 2 ? 0.0 : 1.0;
+					StackContent.Children.Add
+					(
+						new Grid()
+						{
+							ColumnSpacing = Adjuster,
+							RowSpacing = Adjuster,
+						}.VerticalJustificate
+						(
+							CirclePerLine <= (float)TakeCount ?
+								GridUtil.Justificate.Even :
+								GridUtil.Justificate.Odd,
+							Friends
+								.Skip(SkipCount)
+								.Take(TakeCount)
+								.ToArray()
+						)
+					);
+				}
 				Content = new StackLayout
 				{
 					Spacing = 0.0,
 					BackgroundColor = Color.White,
 					Children =
 					{
-						new StackLayout
-						{
-							Orientation = StackOrientation.Horizontal,
-							VerticalOptions = LayoutOptions.FillAndExpand,
-							Spacing = 0.0,
-							Children =
-							{
-								CircleGraph,
-								new Grid()
-								{
-									ColumnSpacing = Adjuster,
-									RowSpacing = Adjuster,
-								}.VerticalJustificate(Friends),
-							},
-						},
+						StackContent,
 						ButtonFrame,
 					},
 				};
