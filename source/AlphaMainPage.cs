@@ -104,6 +104,7 @@ namespace keep.grass
 			{
 				VerticalOptions = LayoutOptions.End,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				BackgroundColor = Color.White,
 			}
 			.HorizontalJustificate
 			(
@@ -116,7 +117,6 @@ namespace keep.grass
 					Command = new Command(o => AlphaFactory.MakeSureApp().ShowSettingsPage()),
 				}
 			);
-			ButtonFrame.BackgroundColor = Color.White;
 
 			if (Width <= Height)
 			{
@@ -258,14 +258,14 @@ namespace keep.grass
 		public void UpdateInfoAsync()
 		{
 			Debug.WriteLine("AlphaMainPage::UpdateInfoAsync");
-			var IsChangedUser = false;
+			var HasRequestToUpdate = false;
 			var User = Settings.UserName;
 			if (CircleGraph.User != User)
 			{
 				if (!String.IsNullOrWhiteSpace(User))
 				{
+					HasRequestToUpdate = true;
 					InitCircleGraph(CircleGraph, User);
-					IsChangedUser = true;
 				}
 				else
 				{
@@ -279,11 +279,11 @@ namespace keep.grass
 				var FriendCircle = Friends[i];
 				if (FriendCircle.User != Friend)
 				{
-					IsChangedUser = true;
+					HasRequestToUpdate = true;
 					InitCircleGraph(FriendCircle, Friend);
 				}
 			}
-			if (IsChangedUser)
+			if (HasRequestToUpdate)
 			{
 				Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 			}
