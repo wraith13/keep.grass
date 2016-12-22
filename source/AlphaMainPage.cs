@@ -118,24 +118,6 @@ namespace keep.grass
 			);
 			ButtonFrame.BackgroundColor = Color.White;
 
-			var RowCount = 3.0;
-			var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
-			var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
-			Func<int, int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) - ((1.0 / RowCount) + 0.1));
-			var FriendLines = new List<AlphaUserCircleGraph[]>();
-			for (var i = 0; i < LineCount; ++i)
-			{
-				var SkipCount = CalcIndex(i);
-				var TakeCount = CalcIndex(i + 1) - SkipCount;
-				FriendLines.Add
-				(
-						Friends
-							.Skip(SkipCount)
-							.Take(TakeCount)
-							.ToArray()
-				);
-			}
-
 			if (Width <= Height)
 			{
 				CircleGraph.WidthRequest = Width;
@@ -151,24 +133,7 @@ namespace keep.grass
 					BackgroundColor = Color.White,
 				};
 				StackContent.Children.Add(CircleGraph);
-				foreach (var Line in FriendLines)
-				{
-					var Adjuster = 0 == Line.Count() % 2 ? 0.0 : 1.0;
-					StackContent.Children.Add
-					(
-						new Grid()
-						{
-							ColumnSpacing = Adjuster,
-							RowSpacing = Adjuster,
-						}.HorizontalJustificate
-						(
-							CirclePerLine <= (float)Line.Count() ?
-								GridUtil.Justificate.Even:
-								GridUtil.Justificate.Odd,
-							Line
-						)
-					);
-				}
+				BuildFriends(StackContent, StackOrientation.Horizontal);
 				StackContent.Children.Add(ButtonFrame);
 				Content = StackContent;
 			}
@@ -189,24 +154,7 @@ namespace keep.grass
 					BackgroundColor = Color.White,
 				};
 				StackContent.Children.Add(CircleGraph);
-				foreach (var Line in FriendLines)
-				{
-					var Adjuster = 0 == Line.Count() % 2 ? 0.0 : 1.0;
-					StackContent.Children.Add
-					(
-						new Grid()
-						{
-							ColumnSpacing = Adjuster,
-							RowSpacing = Adjuster,
-						}.VerticalJustificate
-						(
-							CirclePerLine <= (float)Line.Count() ?
-								GridUtil.Justificate.Even :
-								GridUtil.Justificate.Odd,
-							Line
-						)
-					);
-				}
+				BuildFriends(StackContent, StackOrientation.Vertical);
 				Content = new StackLayout
 				{
 					Spacing = 0.0,
@@ -224,6 +172,38 @@ namespace keep.grass
 
 			ApplyCircleGraph(i => i.IsInvalidCanvas = true);
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
+		}
+
+		public void BuildFriends(StackLayout Stack, StackOrientation Orientation)
+		{
+			var RowCount = 3.0;
+			var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
+			var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
+			Func<int, int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) - ((1.0 / RowCount) + 0.1));
+			for (var i = 0; i < LineCount; ++i)
+			{
+				var SkipCount = CalcIndex(i);
+				var TakeCount = CalcIndex(i + 1) - SkipCount;
+				var Adjuster = 0 == TakeCount % 2 ? 0.0 : 1.0;
+				Stack.Children.Add
+				(
+					new Grid()
+					{
+						ColumnSpacing = Adjuster,
+						RowSpacing = Adjuster,
+					}.LineJustificate
+					(
+						Orientation,
+						CirclePerLine <= (float)TakeCount ?
+							GridUtil.Justificate.Even:
+							GridUtil.Justificate.Odd,
+						Friends
+							.Skip(SkipCount)
+							.Take(TakeCount)
+							.ToArray()
+					)
+				);
+			}
 		}
 
 		protected override void OnAppearing()

@@ -149,6 +149,19 @@ namespace keep.grass
 			}
 			return grid;
 		}
+		public static Grid LineJustificate(this Grid grid, StackOrientation Orientation, Justificate Option, params View[] views)
+		{
+			switch (Orientation)
+			{
+				case StackOrientation.Horizontal:
+					grid.HorizontalJustificate(Option, views);
+					break;
+				case StackOrientation.Vertical:
+					grid.VerticalJustificate(Option, views);
+					break;
+			}
+			return grid;
+		}
 	}
 }
 
