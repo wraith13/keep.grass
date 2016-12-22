@@ -47,6 +47,8 @@ namespace keep.grass
 			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 
 			InitCircleGraph(CircleGraph, Settings.UserName);
+			CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
+			CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 			CircleGraph.IsVisibleLeftTimeBar = true;
 			CircleGraph.IsVisibleSatelliteTexts = true;
 		}
@@ -88,6 +90,8 @@ namespace keep.grass
 					var Friend = Settings.GetFriend(i);
 					var FriendCircle = Friends[i];
 					InitCircleGraph(FriendCircle, Friend);
+					FriendCircle.HorizontalOptions = LayoutOptions.Center;
+					FriendCircle.VerticalOptions = LayoutOptions.Center;
 					FriendCircle.IsVisibleLeftTimeBar = false;
 					FriendCircle.IsVisibleSatelliteTexts = false;
 					FriendCircle.FontSize *= 0.5f;
@@ -114,18 +118,32 @@ namespace keep.grass
 			);
 			ButtonFrame.BackgroundColor = Color.White;
 
+			var RowCount = 3.0;
+			var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
+			var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
+			Func<int, int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) - ((1.0 / RowCount) + 0.1));
+			var FriendLines = new List<AlphaUserCircleGraph[]>();
+			for (var i = 0; i < LineCount; ++i)
+			{
+				var SkipCount = CalcIndex(i);
+				var TakeCount = CalcIndex(i + 1) - SkipCount;
+				FriendLines.Add
+				(
+						Friends
+							.Skip(SkipCount)
+							.Take(TakeCount)
+							.ToArray()
+				);
+			}
+
 			if (Width <= Height)
 			{
 				CircleGraph.WidthRequest = Width;
 				CircleGraph.HeightRequest = Math.Floor(Height * 0.10);
-				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
-				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 				foreach(var Friend in Friends)
 				{
 					Friend.WidthRequest = Math.Floor(Width / Math.Min(Math.Max(Friends.Count(), 2), 4));
 					Friend.HeightRequest = Friend.WidthRequest;
-					Friend.HorizontalOptions = LayoutOptions.Center;
-					Friend.VerticalOptions = LayoutOptions.Center;
 				}
 				var StackContent = new StackLayout
 				{
@@ -133,15 +151,9 @@ namespace keep.grass
 					BackgroundColor = Color.White,
 				};
 				StackContent.Children.Add(CircleGraph);
-				var RowCount = 3.0;
-				var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
-				var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
-				Func<int,int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) -((1.0 /RowCount) +0.1));
-				for (var i = 0; i < LineCount; ++i)
+				foreach (var Line in FriendLines)
 				{
-					var SkipCount = CalcIndex(i);
-					var TakeCount = CalcIndex(i +1) -SkipCount;
-					var Adjuster = 0 == TakeCount % 2 ? 0.0 : 1.0;
+					var Adjuster = 0 == Line.Count() % 2 ? 0.0 : 1.0;
 					StackContent.Children.Add
 					(
 						new Grid()
@@ -150,13 +162,10 @@ namespace keep.grass
 							RowSpacing = Adjuster,
 						}.HorizontalJustificate
 						(
-							CirclePerLine <= (float)TakeCount ?
+							CirclePerLine <= (float)Line.Count() ?
 								GridUtil.Justificate.Even:
 								GridUtil.Justificate.Odd,
-							Friends
-								.Skip(SkipCount)
-								.Take(TakeCount)
-								.ToArray()
+							Line
 						)
 					);
 				}
@@ -167,14 +176,10 @@ namespace keep.grass
 			{
 				CircleGraph.WidthRequest = Math.Floor(Width * 0.10);
 				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
-				CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
-				CircleGraph.VerticalOptions = LayoutOptions.FillAndExpand;
 				foreach (var Friend in Friends)
 				{
 					Friend.WidthRequest = Math.Floor(Height / Math.Min(Math.Max(Friends.Count(), 2), 4));
 					Friend.WidthRequest = Friend.HeightRequest;
-					Friend.HorizontalOptions = LayoutOptions.CenterAndExpand;
-					Friend.VerticalOptions = LayoutOptions.Center;
 				}
 				var StackContent = new StackLayout
 				{
@@ -184,15 +189,9 @@ namespace keep.grass
 					BackgroundColor = Color.White,
 				};
 				StackContent.Children.Add(CircleGraph);
-				var RowCount = 3.0;
-				var LineCount = (int)Math.Ceiling(Friends.Count() / RowCount);
-				var CirclePerLine = ((float)Friends.Count()) / (float)LineCount;
-				Func<int, int> CalcIndex = (int i) => (int)Math.Ceiling((CirclePerLine * i) - ((1.0 /RowCount) +0.1));
-				for (var i = 0; i < LineCount; ++i)
+				foreach (var Line in FriendLines)
 				{
-					var SkipCount = CalcIndex(i);
-					var TakeCount = CalcIndex(i + 1) - SkipCount;
-					var Adjuster = 0 == TakeCount % 2 ? 0.0 : 1.0;
+					var Adjuster = 0 == Line.Count() % 2 ? 0.0 : 1.0;
 					StackContent.Children.Add
 					(
 						new Grid()
@@ -201,13 +200,10 @@ namespace keep.grass
 							RowSpacing = Adjuster,
 						}.VerticalJustificate
 						(
-							CirclePerLine <= (float)TakeCount ?
+							CirclePerLine <= (float)Line.Count() ?
 								GridUtil.Justificate.Even :
 								GridUtil.Justificate.Odd,
-							Friends
-								.Skip(SkipCount)
-								.Take(TakeCount)
-								.ToArray()
+							Line
 						)
 					);
 				}
