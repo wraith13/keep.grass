@@ -143,7 +143,7 @@ namespace keep.grass
 				CircleGraph.HeightRequest = Math.Floor(Height * 0.60);
 				foreach (var Friend in Friends)
 				{
-					Friend.WidthRequest = Math.Floor(Height / Math.Min(Math.Max(Friends.Count(), 2), 4));
+					Friend.HeightRequest = Math.Floor(Height / Math.Min(Math.Max(Friends.Count(), 2), 4));
 					Friend.WidthRequest = Friend.HeightRequest;
 				}
 				var StackContent = new StackLayout
