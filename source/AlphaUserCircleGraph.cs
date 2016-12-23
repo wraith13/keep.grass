@@ -81,18 +81,29 @@ namespace keep.grass
 				base.Image = value;
 				if (Image?.Any() ?? false)
 				{
-					this.Animate
-					(
-						"ImageAnimation",
-						d => ImageAlpha = (byte)d,
-						0.0,
-						255.0,
-						16,
-						(uint)AnimationSpan.TotalMilliseconds,
-						Easing.SinIn
-					);
+					if (IsActive)
+					{
+						StartIconAnimation();
+					}
+					else
+					{
+						ImageAlpha = 0;
+					}
 				}
 			}
+		}
+		public void StartIconAnimation()
+		{
+			this.Animate
+			(
+				"ImageAnimation",
+				d => ImageAlpha = (byte)d,
+				0.0,
+				255.0,
+				16,
+				(uint)AnimationSpan.TotalMilliseconds,
+				Easing.SinIn
+			);
 		}
 
 		public DateTime ActiveAt;
@@ -112,10 +123,14 @@ namespace keep.grass
 							.ContinueWith
 							(
 								t => Device.BeginInvokeOnMainThread
-							    (
-								    () => StartAnimation()
-							   	)
-						   	);
+								(
+									() =>
+									{
+										StartAnimation();
+										StartIconAnimation();
+									}
+								)
+							);
 					}
 				}
 			}
@@ -180,6 +195,7 @@ namespace keep.grass
 		{
 			base.Now = default(DateTime);
 			base.LastPublicActivity = default(DateTime);
+			ImageAlpha = 0;
 			UpdateSlices();
 		}
 
