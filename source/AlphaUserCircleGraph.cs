@@ -78,16 +78,20 @@ namespace keep.grass
 		{
 			set
 			{
-				base.Image = value;
-				if (Image?.Any() ?? false)
+				if (base.Image != value)
 				{
-					if (IsActive)
+					var HasRequestToAnimation = null == base.Image;
+					base.Image = value;
+					if (HasRequestToAnimation)
 					{
-						StartIconAnimation();
-					}
-					else
-					{
-						ImageAlpha = 0;
+						if (IsActive)
+						{
+							StartIconAnimation();
+						}
+						else
+						{
+							ImageAlpha = 0;
+						}
 					}
 				}
 			}
