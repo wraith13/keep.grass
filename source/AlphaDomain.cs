@@ -27,10 +27,16 @@ namespace keep.grass
 		private Dictionary<string, DateTime> LastPublicActivityCache = new Dictionary<string, DateTime>();
 		public void SetLastPublicActivity(string User, DateTime value)
 		{
-			Settings.SetLastPublicActivity(User, value);
-			lock(LastPublicActivityCache)
+			Debug.WriteLine($"AlphaDomain::SetLastPublicActivity({User},{ToString(value)}); ");
+			if (GetLastPublicActivity(User) != value)
 			{
-				LastPublicActivityCache[User] = value;
+				Settings.SetLastPublicActivity(User, value);
+				lock (LastPublicActivityCache)
+				{
+					LastPublicActivityCache[User] = value;
+				}
+				Settings.SetIsValidUserName(User, true);
+				OnUpdateLastPublicActivity(User, value);
 			}
 		}
 		public DateTime GetLastPublicActivity(string User)
@@ -42,8 +48,9 @@ namespace keep.grass
 				{
 					if (!LastPublicActivityCache.TryGetValue(User, out result))
 					{
-						result = Settings.GetLastPublicActivity(User);
-						LastPublicActivityCache[User] = result;
+						LastPublicActivityCache[User] =
+						result =
+							Settings.GetLastPublicActivity(User);
 					}
 				}
 			}
@@ -89,26 +96,17 @@ namespace keep.grass
 		}
 		private async Task UpdateLastPublicActivityCoreAsync(string User)
 		{
-			var OldLastPublicActivity = GetLastPublicActivity(User);
-			var NewLastPublicActivity = GitHub.GetLastPublicActivity
-			(
-				await GetByteArrayFromUrlAsync
-				(
-					GitHub.GetAtomUrl(User)
-				)
-			);
 			SetLastPublicActivity
 			(
 				User,
-				NewLastPublicActivity
+				GitHub.GetLastPublicActivity
+				(
+					await GetByteArrayFromUrlAsync
+					(
+						GitHub.GetAtomUrl(User)
+					)
+				)
 			);
-			Debug.WriteLine($"AlphaDomain::UpdateLastPublicActivityAsync::LastPublicActivity[{User}] = " + NewLastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss"));
-
-			if (OldLastPublicActivity != NewLastPublicActivity)
-			{
-				OnUpdateLastPublicActivity(User, NewLastPublicActivity);
-			}
-			Settings.SetIsValidUserName(User, true);
 		}
 		private async Task UpdateIconAsync(string User)
 		{
@@ -222,7 +220,7 @@ namespace keep.grass
 			{
 				Debug.WriteLine("AlphaDomain::UpdateAlerts");
 				var Limit = LastPublicActivity.AddHours(24);
-				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + LastPublicActivity.ToString("yyyy-MM-dd HH:mm:ss");
+				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + ToString(LastPublicActivity);
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach (var Span in Settings.AlertTimeSpanTable)
