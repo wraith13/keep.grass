@@ -55,6 +55,11 @@ namespace keep.grass
 			Navigation.PushAsync(new AlphaDetailPage(User));
 		}
 
+		public void ShowFeedPage(string User)
+		{
+			Navigation.PushAsync(new AlphaFeedPage(User));
+		}
+
 		public void ShowSettingsPage()
 		{
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());

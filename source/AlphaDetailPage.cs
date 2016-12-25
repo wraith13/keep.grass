@@ -16,7 +16,7 @@ namespace keep.grass
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-		AlphaActivityIndicatorTextCell LastActivityStampLabel = AlphaFactory.MakeActivityIndicatorTextCell();
+		AlphaCircleImageCell LastActivityStampLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
 		AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
 
@@ -29,8 +29,8 @@ namespace keep.grass
 		{
 			Title = User = UserName;
 
-			LastActivityStampLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
-			//LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
+			LastActivityStampLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowFeedPage(User));
+			LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 
 			//Build();
 
@@ -40,14 +40,6 @@ namespace keep.grass
 			CircleGraph.ActiveWait = TimeSpan.FromMilliseconds(100);
 			CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);
 			CircleGraph.Now = DateTime.Now;
-			if
-			(
-				!string.IsNullOrWhiteSpace(Settings.UserName) &&
-				Settings.GetIsValidUserName(Settings.UserName)
-			)
-			{
-				CircleGraph.LastPublicActivity = Domain.GetLastPublicActivity(Settings.UserName);
-			}
 		}
 
 		public override void Build()
@@ -120,7 +112,7 @@ namespace keep.grass
 			}
 
 			//	Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
-			LastActivityStampLabel.ShowText();
+			//LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
 
 			CircleGraph.IsInvalidCanvas = true;
@@ -142,7 +134,7 @@ namespace keep.grass
 
 		public void OnStartQuery()
 		{
-			LastActivityStampLabel.ShowIndicator();
+			//LastActivityStampLabel.ShowIndicator();
 			LeftTimeLabel.ShowIndicator();
 		}
 		public void OnUpdateLastPublicActivity()
@@ -159,7 +151,7 @@ namespace keep.grass
 		}
 		public void OnEndQuery()
 		{
-			LastActivityStampLabel.ShowText();
+			//LastActivityStampLabel.ShowText();
 			LeftTimeLabel.ShowText();
 			StartUpdateLeftTimeTask();
 		}
