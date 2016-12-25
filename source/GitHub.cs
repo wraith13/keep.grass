@@ -17,6 +17,15 @@ namespace keep.grass
 				public string Type { get; set; }
 				public string Rel { get; set; }
 				public string Href { get; set; }
+
+				public static Link Parse(XElement Node)
+				{
+					var result = new Link();
+					result.Type = Node.Attribute("type").Value;
+					result.Rel = Node.Attribute("rel").Value;
+					result.Href = Node.Attribute("href").Value;
+					return result;
+				}
 			}
 			public class Entry
 			{
@@ -25,6 +34,17 @@ namespace keep.grass
 				public DateTime Updated { get; set; }
 				public IEnumerable<Link> LinkList { get; set; }
 				public string Title { get; set; }
+
+				public static Entry Parse(XElement Node)
+				{
+					var result = new Entry();
+					result.Id = Node.Element("id").Value;
+					result.Published = DateTime.Parse(Node.Element("published").Value);
+					result.Updated = DateTime.Parse(Node.Element("Updated").Value);
+					result.LinkList = Node.Elements("link").Select(i => Link.Parse(i)).ToList();
+					result.Title = Node.Element("title").Value;
+					return result;
+				}
 			}
 
 			public string Id { get; set; }
@@ -32,6 +52,17 @@ namespace keep.grass
 			public string Title { get; set; }
 			public DateTime Updated { get; set; }
 			public IEnumerable<Entry> EntryList { get; set; }
+
+			public static Feed Parse(XElement Root)
+			{
+				var result = new Feed();
+				result.Id = Root.Element("id").Value;
+				result.Title = Root.Element("title").Value;
+				result.Updated = DateTime.Parse(Root.Element("Updated").Value);
+				result.LinkList = Root.Elements("link").Select(i => Link.Parse(i)).ToList();
+				result.EntryList = Root.Elements("entry").Select(i => Entry.Parse(i)).ToList();
+				return result;
+			}
 		}
 
 		static private string BaseUrl = "https://github.com";
@@ -73,6 +104,14 @@ namespace keep.grass
 						.First()
 						.Value
 				);
+			}
+		}
+
+		static public Feed ParseFeed(byte[] AtomRawBytes)
+		{
+			using (var stream = new MemoryStream(AtomRawBytes))
+			{
+				return Feed.Parse(XDocument.Load(stream).Root);
 			}
 		}
 	}
