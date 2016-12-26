@@ -38,11 +38,11 @@ namespace keep.grass
 				public static Entry Parse(XElement Node)
 				{
 					var result = new Entry();
-					result.Id = Node.Element("id").Value;
-					result.Published = DateTime.Parse(Node.Element("published").Value);
-					result.Updated = DateTime.Parse(Node.Element("Updated").Value);
-					result.LinkList = Node.Elements("link").Select(i => Link.Parse(i)).ToList();
-					result.Title = Node.Element("title").Value;
+					result.Id = Node.LocalElement("id").Value;
+					result.Published = DateTime.Parse(Node.LocalElement("published").Value);
+					result.Updated = DateTime.Parse(Node.LocalElement("updated").Value);
+					result.LinkList = Node.LocalElements("link").Select(i => Link.Parse(i)).ToList();
+					result.Title = Node.LocalElement("title").Value;
 					return result;
 				}
 			}
@@ -56,11 +56,11 @@ namespace keep.grass
 			public static Feed Parse(XElement Root)
 			{
 				var result = new Feed();
-				result.Id = Root.Element("id").Value;
-				result.Title = Root.Element("title").Value;
-				result.Updated = DateTime.Parse(Root.Element("Updated").Value);
-				result.LinkList = Root.Elements("link").Select(i => Link.Parse(i)).ToList();
-				result.EntryList = Root.Elements("entry").Select(i => Entry.Parse(i)).ToList();
+				result.Id = Root.LocalElement("id").Value;
+				result.Title = Root.LocalElement("title").Value;
+				result.Updated = DateTime.Parse(Root.LocalElement("updated").Value);
+				result.LinkList = Root.LocalElements("link").Select(i => Link.Parse(i)).ToList();
+				result.EntryList = Root.LocalElements("entry").Select(i => Entry.Parse(i)).ToList();
 				return result;
 			}
 		}

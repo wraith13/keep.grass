@@ -74,20 +74,21 @@ namespace keep.grass
 			{
 				if (FeedCache.TryGetValue(User, out result))
 				{
+					Debug.WriteLine($"AlphaDomain::GetFeed({User}): Hit Cache; ");
 					return result;
 				}
 			}
-			result = GitHub.ParseFeed
+			SetFeed
 			(
-				await GetByteArrayFromUrlAsync
+				User,
+				result = GitHub.ParseFeed
 				(
-					GitHub.GetAtomUrl(User)
+					await GetByteArrayFromUrlAsync
+					(
+						GitHub.GetAtomUrl(User)
+					)
 				)
 			);
-			lock (FeedCache)
-			{
-				FeedCache[User] = result;
-			}
 			return result;
 		}
 
@@ -141,6 +142,7 @@ namespace keep.grass
 					)
 				)
 			);
+			await GetFeed(User);
 		}
 		private async Task UpdateIconAsync(string User)
 		{
