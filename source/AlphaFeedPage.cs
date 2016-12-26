@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace keep.grass
@@ -7,21 +9,44 @@ namespace keep.grass
 	//	Activity だと Android のそれと紛らわしいので Feed とした。
 	public class AlphaFeedPage : ResponsiveContentPage
 	{
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		public String User;
+		public GitHub.Feed Feed;
 
 		public AlphaFeedPage(string UserName)
 		{
 			User = UserName;
 			Title = L["Activity"];
+			Task.Run
+			(
+				async () =>
+				{
+					Feed = await Domain.GetFeed(User);
+					Build();
+				}
+			);
 		}
 		public override void Build()
 		{
 			base.Build();
 			Debug.WriteLine("AlphaFeedPage.Rebuild();");
 
+			var Activity = new TableSection(L["Activity"])
+			{
+				Feed?.EntryList?.Select
+				(
+					i => AlphaFactory.MakeCircleImageCell
+					(
+						ImageSource: null,
+						Text: i.Title,
+						Command: new Command(o => Device.OpenUri(new Uri(i.LinkList.Select(l => l.Href).First()))),
+						OptionImageSource: Root.GetExportImageSource()
+					)
+				) ?? new AlphaCircleImageCell[] {}
+			};
 			var Version = new TableSection(L["Version"])
 			{
 				AlphaFactory.MakeCircleImageCell
@@ -146,12 +171,13 @@ namespace keep.grass
 					{
 						BackgroundColor = Color.White,
 						Root = new TableRoot
-							{
-								Version,
-								Auther,
-								Repository,
-								BuiltWith,
-							}
+						{
+							Activity,
+							Version,
+							Auther,
+							Repository,
+							BuiltWith,
+						}
 					}
 	           );
 			}
@@ -164,6 +190,7 @@ namespace keep.grass
 						BackgroundColor = Color.White,
 						Root = new TableRoot
 						{
+							Activity,
 							Version,
 							Auther,
 							Repository,

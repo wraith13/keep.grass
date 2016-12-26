@@ -57,6 +57,40 @@ namespace keep.grass
 			return result;
 		}
 
+		private Dictionary<string, GitHub.Feed> FeedCache = new Dictionary<string, GitHub.Feed>();
+		public void SetFeed(string User, GitHub.Feed value)
+		{
+			Debug.WriteLine($"AlphaDomain::SetFeed({User},...); ");
+			lock (FeedCache)
+			{
+				FeedCache[User] = value;
+			}
+		}
+		public async Task<GitHub.Feed> GetFeed(string User)
+		{
+			Debug.WriteLine($"AlphaDomain::GetFeed({User}); ");
+			var result = default(GitHub.Feed);
+			lock (FeedCache)
+			{
+				if (FeedCache.TryGetValue(User, out result))
+				{
+					return result;
+				}
+			}
+			result = GitHub.ParseFeed
+			(
+				await GetByteArrayFromUrlAsync
+				(
+					GitHub.GetAtomUrl(User)
+				)
+			);
+			lock (FeedCache)
+			{
+				FeedCache[User] = result;
+			}
+			return result;
+		}
+
 		private DateTime PreviousUpdateLastPublicActivityStamp = default(DateTime);
 		public DateTime NextUpdateLastPublicActivityStamp
 		{
