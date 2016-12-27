@@ -91,22 +91,6 @@ namespace keep.grass
 			return String.Format (IconUrlFormat, Id);
 		}
 
-		static public DateTime GetLastPublicActivity(byte[] AtomRawBytes)
-		{
-			using (var stream = new MemoryStream(AtomRawBytes))
-			{
-				return DateTime.Parse
-				(
-					XDocument
-						.Load(stream)
-						.Descendants()
-						.Where(i => i.Name.LocalName == "updated")
-						.First()
-						.Value
-				);
-			}
-		}
-
 		static public Feed ParseFeed(byte[] AtomRawBytes)
 		{
 			using (var stream = new MemoryStream(AtomRawBytes))

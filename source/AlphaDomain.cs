@@ -131,18 +131,23 @@ namespace keep.grass
 		}
 		private async Task UpdateLastPublicActivityCoreAsync(string User)
 		{
+			var Feed = GitHub.ParseFeed
+			(
+				await GetByteArrayFromUrlAsync
+				(
+					GitHub.GetAtomUrl(User)
+				)
+			);
+			SetFeed
+			(
+				User,
+				Feed
+			);
 			SetLastPublicActivity
 			(
 				User,
-				GitHub.GetLastPublicActivity
-				(
-					await GetByteArrayFromUrlAsync
-					(
-						GitHub.GetAtomUrl(User)
-					)
-				)
+				Feed.EntryList.Select(i => i.Updated).FirstOrDefault()
 			);
-			await GetFeed(User);
 		}
 		private async Task UpdateIconAsync(string User)
 		{
