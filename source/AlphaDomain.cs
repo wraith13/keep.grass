@@ -146,7 +146,10 @@ namespace keep.grass
 			SetLastPublicActivity
 			(
 				User,
-				Feed.EntryList.Select(i => i.Updated).FirstOrDefault()
+				Feed.EntryList
+					.Where(i => i.IsContribution)
+					.Select(i => i.Updated)
+					.FirstOrDefault()
 			);
 		}
 		private async Task UpdateIconAsync(string User)

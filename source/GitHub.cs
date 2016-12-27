@@ -27,6 +27,19 @@ namespace keep.grass
 					return result;
 				}
 			}
+			public class Content
+			{
+				public string Type { get; set; }
+				public string Value { get; set; }
+
+				public static Content Parse(XElement Node)
+				{
+					var result = new Content();
+					result.Type = Node.Attribute("type").Value;
+					result.Value = Node.Value;
+					return result;
+				}
+			}
 			public class Entry
 			{
 				public string Id { get; set; }
@@ -34,6 +47,7 @@ namespace keep.grass
 				public DateTime Updated { get; set; }
 				public IEnumerable<Link> LinkList { get; set; }
 				public string Title { get; set; }
+				public Content Content { get; set; }
 
 				public static Entry Parse(XElement Node)
 				{
@@ -43,8 +57,11 @@ namespace keep.grass
 					result.Updated = DateTime.Parse(Node.LocalElement("updated").Value);
 					result.LinkList = Node.LocalElements("link").Select(i => Link.Parse(i)).ToList();
 					result.Title = Node.LocalElement("title").Value;
+					result.Content = Content.Parse(Node.LocalElement("content"));
 					return result;
 				}
+
+				public bool IsContribution => !string.IsNullOrWhiteSpace(Id) && Id.IndexOf(":WatchEvent/") < 0;
 			}
 
 			public string Id { get; set; }

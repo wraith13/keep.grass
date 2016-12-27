@@ -42,8 +42,8 @@ namespace keep.grass
 				}
 			);
 
-            Image.IsVisible = null != Image.Source;
-            Image.VerticalOptions = LayoutOptions.Center;
+			Image.IsVisible = null != Image.Source;
+			Image.VerticalOptions = LayoutOptions.Center;
 			TextLabel.VerticalOptions = LayoutOptions.Center;
 			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
