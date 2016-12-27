@@ -10,7 +10,6 @@ namespace keep.grass
 	public class AlphaFeedPage : ResponsiveContentPage
 	{
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		public String User;
@@ -57,14 +56,11 @@ namespace keep.grass
 							{
 								Feed?.EntryList?.Select
 								(
-									i => AlphaFactory.MakeCircleImageCell
-									(
-										ImageSource: null,
-										Text: i.Title,
-										Command: new Command(o => Device.OpenUri(new Uri(i.LinkList.Select(l => l.Href).First()))),
-										OptionImageSource: Root.GetExportImageSource()
-									)
-								) ?? new AlphaCircleImageCell[] {}
+									i => new AlphaFeedEntryCell()
+									{
+										Entry = i
+									}
+								) ?? new AlphaFeedEntryCell[] {}
 							},
 						}
 					},

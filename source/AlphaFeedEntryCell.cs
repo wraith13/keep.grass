@@ -1,19 +1,30 @@
 ﻿using System;
-
 using System.Linq;
-
 using Xamarin.Forms;
-using ImageCircle.Forms.Plugin.Abstractions;
 
 namespace keep.grass
 {
-    public class AlphaCircleImageCell : ViewCell
+	public class VoidFeedEntryCell : ViewCell
+	{
+		public virtual GitHub.Feed.Entry Entry { get; set; }
+	}
+	public class AlphaFeedEntryCell : VoidFeedEntryCell
 	{
 		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label TextLabel = new Label();
 		protected Image OptionImage = new Image();
 
-		public AlphaCircleImageCell() : base()
+		public override GitHub.Feed.Entry Entry
+		{
+			set
+			{
+				base.Entry = value;
+				Text = Entry.Title;
+				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
+			}
+		}
+
+		public AlphaFeedEntryCell() : base()
 		{
 			View = new Grid().SetSingleChild
 			(
@@ -37,7 +48,7 @@ namespace keep.grass
 			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
 			OptionImage.HorizontalOptions = LayoutOptions.End;
-			OptionImage.Source = AlphaFactory.GetApp().GetRightImageSource();
+			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
 			OptionImage.IsVisible = null != CommandValue;
 		}
 
