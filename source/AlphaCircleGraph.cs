@@ -43,17 +43,6 @@ namespace keep.grass
 			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
 	}
-	public static class SkiaUtil
-	{
-		public static void MoveTo(this SKPath Path, SKPoint Point)
-		{
-			Path.MoveTo(Point.X, Point.Y);
-		}
-		public static void LineTo(this SKPath Path, SKPoint Point)
-		{
-			Path.LineTo(Point.X, Point.Y);
-		}
-	}
 	public abstract class VoidCircleGraph :SKCanvasView // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 	{
 		public virtual bool IsDoughnut { get; set; }
@@ -259,16 +248,6 @@ namespace keep.grass
 			ImageData = null;
 		}
 
-		public static SKColor ToSKColor(Color c)
-		{
-			return new SKColor
-			(
-				(byte)(c.R *255),
-				(byte)(c.G *255),
-				(byte)(c.B *255),
-				(byte)(c.A *255)
-			);
-		}
 		public static double DegreeToRadian(double Degree)
 		{
 			return Degree * Math.PI / 180.0;
@@ -372,7 +351,7 @@ namespace keep.grass
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
-					paint.Color = ToSKColor(Color.White);
+					paint.Color = Color.White.ToSKColor();
 					paint.StrokeCap = SKStrokeCap.Round;
 					Canvas.DrawCircle(Center.X, Center.Y, ImageRadius + AntialiasMargin, paint);
 				}
@@ -411,7 +390,7 @@ namespace keep.grass
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
-					paint.Color = ToSKColor(AltTextColor);
+					paint.Color = AltTextColor.ToSKColor();
 					paint.StrokeCap = SKStrokeCap.Round;
 					paint.TextSize = FontSize * PhysicalPixelRate;
 					paint.TextAlign = SKTextAlign.Center;
@@ -433,7 +412,7 @@ namespace keep.grass
 			using (var paint = new SKPaint())
 			{
 				paint.IsAntialias = true;
-				paint.Color = ToSKColor(Color.White);
+				paint.Color = Color.White.ToSKColor();
 				paint.StrokeCap = SKStrokeCap.Round;
 				paint.IsStroke = true;
 				paint.StrokeWidth = PhysicalPixelRate;
@@ -462,7 +441,7 @@ namespace keep.grass
 					using (var paint = new SKPaint())
 					{
 						paint.IsAntialias = true;
-						paint.Color = ToSKColor(Color.White);
+						paint.Color = Color.White.ToSKColor();
 						paint.StrokeCap = SKStrokeCap.Round;
 						using (var path = new SKPath())
 						{
@@ -498,7 +477,7 @@ namespace keep.grass
 						using (var paint = new SKPaint())
 						{
 							paint.IsAntialias = true;
-							paint.Color = ToSKColor(SatelliteText.Color);
+							paint.Color = SatelliteText.Color.ToSKColor();
 							paint.StrokeCap = SKStrokeCap.Round;
 							paint.TextSize = FontSize * PhysicalPixelRate;
 							paint.TextAlign = SKTextAlign.Center;
@@ -531,7 +510,7 @@ namespace keep.grass
 			using (var paint = new SKPaint())
 			{
 				paint.IsAntialias = true;
-				paint.Color = ToSKColor(Color.White);
+				paint.Color = Color.White.ToSKColor();
 				paint.StrokeCap = SKStrokeCap.Round;
 				paint.IsStroke = true;
 				paint.StrokeWidth = PhysicalPixelRate;
@@ -552,7 +531,7 @@ namespace keep.grass
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
-					paint.Color = ToSKColor(Color.Gray);
+					paint.Color = Color.Gray.ToSKColor();
 					paint.StrokeCap = SKStrokeCap.Round;
 					if (null != Image || IsDoughnut)
 					{
@@ -598,7 +577,7 @@ namespace keep.grass
 					using (var paint = new SKPaint())
 					{
 						paint.IsAntialias = true;
-						paint.Color = ToSKColor(Pie.Color);
+						paint.Color = Pie.Color.ToSKColor();
 						paint.StrokeCap = SKStrokeCap.Round;
 						if (Pie.Volume < TotalVolume)
 						{
@@ -672,7 +651,7 @@ namespace keep.grass
 					using (var paint = new SKPaint())
 					{
 						paint.IsAntialias = true;
-						paint.Color = ToSKColor(Color.White);
+						paint.Color = Color.White.ToSKColor();
 						paint.StrokeCap = SKStrokeCap.Round;
 						paint.IsStroke = true;
 						paint.StrokeWidth = PhysicalPixelRate;
@@ -711,7 +690,7 @@ namespace keep.grass
 								{
 									paint.TextSize = FontSize * PhysicalPixelRate;
 									paint.IsAntialias = true;
-									paint.Color = ToSKColor(Color.White);
+									paint.Color = Color.White.ToSKColor();
 									paint.TextAlign = SKTextAlign.Center;
 									paint.Typeface = Font;
 
@@ -753,7 +732,7 @@ namespace keep.grass
 			using (var paint = new SKPaint())
 			{
 				paint.IsAntialias = true;
-				paint.Color = ToSKColor(Color.White);
+				paint.Color = Color.White.ToSKColor();
 				paint.StrokeCap = SKStrokeCap.Round;
 				paint.IsStroke = true;
 				paint.StrokeWidth = PhysicalPixelRate;

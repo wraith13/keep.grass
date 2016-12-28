@@ -31,6 +31,24 @@ namespace keep.grass
 			{
 				public string Type { get; set; }
 				public string Value { get; set; }
+				public string Svg
+				{
+					get
+					{
+						var start = Value.IndexOf("<svg");
+						var end = Value.IndexOf("</svg>");
+						if (0 <= start && 0 <= end)
+						{
+							var source = Value.Substring(start, end + "</svg>".Length - start);
+							if (source.IndexOf("xmlns=\"http://www.w3.org/2000/svg\"") < 0)
+							{
+								source = source.Replace("<svg", "<svg xmlns=\"http://www.w3.org/2000/svg\"");
+							}
+							return source;
+						}
+						return null;
+					}
+				}
 
 				public static Content Parse(XElement Node)
 				{

@@ -195,8 +195,8 @@ namespace keep.grass
 					(
 						Orientation,
 						CirclePerLine <= (float)TakeCount ?
-							GridUtil.Justificate.Even:
-							GridUtil.Justificate.Odd,
+							GridEx.Justificate.Even:
+							GridEx.Justificate.Odd,
 						Friends
 							.Skip(SkipCount)
 							.Take(TakeCount)

@@ -300,7 +300,7 @@ namespace keep.grass
 			);
 			using (var paint = new SKPaint())
 			{
-				paint.Color = ToSKColor(AlphaDomain.MakeLeftTimeColor(LeftTime));
+				paint.Color = AlphaDomain.MakeLeftTimeColor(LeftTime).ToSKColor();
 				Canvas.DrawRect
 				(
 					LeftTimeBarRect,
@@ -310,7 +310,7 @@ namespace keep.grass
 			using (var paint = new SKPaint())
 			{
 				paint.IsAntialias = true;
-				paint.Color = ToSKColor(Color.White);
+				paint.Color = Color.White.ToSKColor();
 				paint.StrokeCap = SKStrokeCap.Round;
 				paint.TextSize = FontSize * PhysicalPixelRate;
 				paint.TextAlign = SKTextAlign.Center;

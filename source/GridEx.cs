@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace keep.grass
 {
-	public static class GridUtil
+	public static class GridEx
 	{
 		public enum Justificate
 		{
