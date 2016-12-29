@@ -10,8 +10,11 @@ namespace keep.grass
 	}
 	public class AlphaFeedEntryCell : VoidFeedEntryCell
 	{
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+
 		protected Image Image = AlphaFactory.MakeCircleImage();
-		protected Label TextLabel = new Label();
+		protected Label UpdatedLabel = new Label();
+		protected Label TitleLabel = new Label();
 		protected Image OptionImage = new Image();
 
 		public override GitHub.Feed.Entry Entry
@@ -19,7 +22,8 @@ namespace keep.grass
 			set
 			{
 				base.Entry = value;
-				Text = Entry.Title;
+				TitleLabel.Text = Entry.Title;
+				UpdatedLabel.Text = Domain.ToString(Entry.Updated);
 				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
 			}
 		}
@@ -36,7 +40,17 @@ namespace keep.grass
 					Children =
 					{
 						Image,
-						TextLabel,
+						new StackLayout
+						{
+							Orientation = StackOrientation.Vertical,
+							VerticalOptions = LayoutOptions.Start,
+							HorizontalOptions = LayoutOptions.StartAndExpand,
+							Children =
+							{
+								UpdatedLabel,
+								TitleLabel,
+							}
+						},
 						OptionImage,
 					},
 				}
@@ -44,8 +58,10 @@ namespace keep.grass
 
 			Image.IsVisible = null != Image.Source;
 			Image.VerticalOptions = LayoutOptions.Center;
-			TextLabel.VerticalOptions = LayoutOptions.Center;
-			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
+			UpdatedLabel.HorizontalOptions = LayoutOptions.Start;
+			TitleLabel.VerticalOptions = LayoutOptions.Start;
+			TitleLabel.HorizontalOptions = LayoutOptions.Start;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
 			OptionImage.HorizontalOptions = LayoutOptions.End;
 			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
@@ -87,28 +103,6 @@ namespace keep.grass
             }
         }
 
-		public String Text
-		{
-			get
-			{
-				return TextLabel.Text;
-			}
-			set
-			{
-				TextLabel.Text = value;
-			}
-		}
-		public Color TextColor
-		{
-			get
-			{
-				return TextLabel.TextColor;
-			}
-			set
-			{
-				TextLabel.TextColor = value;
-			}
-		}
 		public ImageSource OptionImageSource
 		{
 			get
