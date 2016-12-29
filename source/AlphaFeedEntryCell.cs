@@ -36,6 +36,7 @@ namespace keep.grass
 			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
 			TitleLabel.VerticalOptions = LayoutOptions.Start;
 			TitleLabel.HorizontalOptions = LayoutOptions.Start;
+			TitleLabel.LineBreakMode = LineBreakMode.TailTruncation;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
 			OptionImage.HorizontalOptions = LayoutOptions.End;
 			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
