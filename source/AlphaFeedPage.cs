@@ -48,6 +48,8 @@ namespace keep.grass
 				{
 					new TableView
 					{
+						HasUnevenRows = true,
+						RowHeight = -1,
 						BackgroundColor = Color.White,
 						Root = new TableRoot
 						{

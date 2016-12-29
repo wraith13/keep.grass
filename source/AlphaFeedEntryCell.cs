@@ -30,6 +30,19 @@ namespace keep.grass
 
 		public AlphaFeedEntryCell() : base()
 		{
+			Image.IsVisible = null != Image.Source;
+			Image.VerticalOptions = LayoutOptions.Center;
+			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
+			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+			TitleLabel.VerticalOptions = LayoutOptions.Start;
+			TitleLabel.HorizontalOptions = LayoutOptions.Start;
+			OptionImage.VerticalOptions = LayoutOptions.Center;
+			OptionImage.HorizontalOptions = LayoutOptions.End;
+			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
+			OptionImage.IsVisible = null != CommandValue;
+			OptionImage.HeightRequest = 40;
+			OptionImage.WidthRequest = 40;
+
 			View = new Grid().SetSingleChild
 			(
 				new StackLayout
@@ -55,17 +68,6 @@ namespace keep.grass
 					},
 				}
 			);
-
-			Image.IsVisible = null != Image.Source;
-			Image.VerticalOptions = LayoutOptions.Center;
-			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
-			UpdatedLabel.HorizontalOptions = LayoutOptions.Start;
-			TitleLabel.VerticalOptions = LayoutOptions.Start;
-			TitleLabel.HorizontalOptions = LayoutOptions.Start;
-			OptionImage.VerticalOptions = LayoutOptions.Center;
-			OptionImage.HorizontalOptions = LayoutOptions.End;
-			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
-			OptionImage.IsVisible = null != CommandValue;
 		}
 
 		private Command CommandValue = null;
