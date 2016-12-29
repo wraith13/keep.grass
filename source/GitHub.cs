@@ -49,6 +49,13 @@ namespace keep.grass
 						return null;
 					}
 				}
+				public string OctIcon
+				{
+					get
+					{
+						return Svg.Split(new[]{ ' ', '=', '"', }).Where(i => i.StartsWith("octicon-")).FirstOrDefault();
+					}
+				}
 
 				public static Content Parse(XElement Node)
 				{
