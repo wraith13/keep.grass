@@ -64,7 +64,7 @@ namespace keep.grass
 									}
 								) ?? new AlphaFeedEntryCell[] {}
 							},
-						}
+						},
 					},
 				}
 			};

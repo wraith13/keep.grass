@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Xml.Linq;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
 
@@ -49,11 +50,32 @@ namespace keep.grass
 						return null;
 					}
 				}
-				public string OctIcon
+
+				public string OctIcon => Svg
+					.Split(new[]{ ' ', '=', '"', })
+					.Where(i => i.StartsWith("octicon-"))
+					.FirstOrDefault();
+
+				public string SingleLineValue => Regex.Replace(Value, "[\r\n]+", " ");
+
+				public IEnumerable<string> GetTagText(string Tag) =>
+					Regex.Matches(SingleLineValue, $"<{Tag}[^>]*>(?<item>.*?)</{Tag}>").Cast<Match>()
+					.Select(i => i.Groups["item"].Value)
+					.Select(i => Regex.Replace(i, "<.*?>", ""))
+					.Select(i => System.Net.WebUtility.HtmlDecode(i))
+					.Select(i => Regex.Replace(i, "[ \r\n\t]+", " "))
+					.Select(i => i.Trim());
+				
+				public IEnumerable<string> Details
 				{
 					get
 					{
-						return Svg.Split(new[]{ ' ', '=', '"', }).Where(i => i.StartsWith("octicon-")).FirstOrDefault();
+						var result = GetTagText("li");
+						if (!result.Any())
+						{
+							result = GetTagText("blockquote");
+						}
+						return result;
 					}
 				}
 

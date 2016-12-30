@@ -16,6 +16,12 @@ namespace keep.grass
 		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label UpdatedLabel = new Label();
 		protected Label TitleLabel = new Label();
+		protected StackLayout DetailStack = new StackLayout
+		{
+			Orientation = StackOrientation.Vertical,
+			VerticalOptions = LayoutOptions.Start,
+			HorizontalOptions = LayoutOptions.StartAndExpand,
+		};
 		protected Image OptionImage = new Image();
 
 		public override GitHub.Feed.Entry Entry
@@ -26,6 +32,21 @@ namespace keep.grass
 				ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
 				TitleLabel.Text = Entry.Title;
 				UpdatedLabel.Text = Domain.ToString(Entry.Updated);
+				DetailStack.Children.Clear();
+				foreach(var i in Entry.Content.Details)
+				{
+					DetailStack.Children.Add
+					(
+						new Label
+						{
+							Text = "・" +i,
+							VerticalOptions = LayoutOptions.Start,
+							HorizontalOptions = LayoutOptions.Start,
+							LineBreakMode = LineBreakMode.TailTruncation,
+							FontSize = 13,
+						}
+					);
+				};
 				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
 			}
 		}
@@ -36,13 +57,13 @@ namespace keep.grass
 			Image.VerticalOptions = LayoutOptions.Center;
 			Image.HeightRequest = 40;
 			Image.WidthRequest = 40;
-			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
-			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
-			UpdatedLabel.FontSize = 13;
 			TitleLabel.VerticalOptions = LayoutOptions.Start;
 			TitleLabel.HorizontalOptions = LayoutOptions.Start;
 			TitleLabel.LineBreakMode = LineBreakMode.TailTruncation;
-			TitleLabel.FontSize = 13;
+			TitleLabel.FontSize = 16;
+			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
+			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+			UpdatedLabel.FontSize = 13;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
 			OptionImage.HorizontalOptions = LayoutOptions.End;
 			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
@@ -56,7 +77,7 @@ namespace keep.grass
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
-					Padding = new Thickness(10, 2, 0, 2),
+					Padding = new Thickness(10, 4, 0, 4),
 					Children =
 					{
 						Image,
@@ -67,8 +88,9 @@ namespace keep.grass
 							HorizontalOptions = LayoutOptions.StartAndExpand,
 							Children =
 							{
-								UpdatedLabel,
 								TitleLabel,
+								DetailStack,
+								UpdatedLabel,
 							}
 						},
 						OptionImage,
