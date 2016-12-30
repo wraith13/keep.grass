@@ -34,9 +34,11 @@ namespace keep.grass
 			Image.VerticalOptions = LayoutOptions.Center;
 			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
 			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+			UpdatedLabel.FontSize = 13;
 			TitleLabel.VerticalOptions = LayoutOptions.Start;
 			TitleLabel.HorizontalOptions = LayoutOptions.Start;
 			TitleLabel.LineBreakMode = LineBreakMode.TailTruncation;
+			TitleLabel.FontSize = 13;
 			OptionImage.VerticalOptions = LayoutOptions.Center;
 			OptionImage.HorizontalOptions = LayoutOptions.End;
 			OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
