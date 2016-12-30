@@ -11,6 +11,7 @@ namespace keep.grass
 	public class AlphaFeedEntryCell : VoidFeedEntryCell
 	{
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+		AlphaApp Root = AlphaFactory.MakeSureApp();
 
 		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label UpdatedLabel = new Label();
@@ -22,6 +23,7 @@ namespace keep.grass
 			set
 			{
 				base.Entry = value;
+				ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
 				TitleLabel.Text = Entry.Title;
 				UpdatedLabel.Text = Domain.ToString(Entry.Updated);
 				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
@@ -32,6 +34,8 @@ namespace keep.grass
 		{
 			Image.IsVisible = null != Image.Source;
 			Image.VerticalOptions = LayoutOptions.Center;
+			Image.HeightRequest = 40;
+			Image.WidthRequest = 40;
 			UpdatedLabel.VerticalOptions = LayoutOptions.Start;
 			UpdatedLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
 			UpdatedLabel.FontSize = 13;
@@ -52,7 +56,7 @@ namespace keep.grass
 				{
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.Center,
-					Padding = new Thickness(20, 2, 0, 2),
+					Padding = new Thickness(10, 2, 0, 2),
 					Children =
 					{
 						Image,

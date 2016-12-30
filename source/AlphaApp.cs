@@ -104,6 +104,33 @@ namespace keep.grass
 		{
 			return GetImageSource("export.120.png");
 		}
+		public virtual ImageSource GetOcticonImageSource(string Name)
+		{
+			var Tag = "octicon-";
+			if (Name.StartsWith(Tag))
+			{
+				string CoreName = Name.Substring(Tag.Length);
+				switch (CoreName)
+				{
+					case "comment-discussion":
+					case "git-branch":
+					case "git-commit":
+					case "git-compare":
+					case "git-merge":
+					case "git-pull-request":
+					case "issue-closed":
+					case "issue-opened":
+					case "issue-reopened":
+					case "mark-github":
+					case "repo":
+					case "star":
+					case "tag":
+						return GetImageSource($"octicons.{CoreName}.png");
+				}
+			}
+			Debug.WriteLine($"GetOcticonImageSource({Name}): NOT FOUND ICON!!!");
+			return GetImageSource("octicons.mark-github.png");
+		}
 		public virtual Stream GetFontStream()
 		{
 			return typeof(AlphaApp).GetTypeInfo().Assembly.GetManifestResourceStream("keep.grass.Fonts.NotoSansCJKjp-Regular.otf");
