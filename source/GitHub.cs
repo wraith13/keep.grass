@@ -149,10 +149,12 @@ namespace keep.grass
 									//	CreateEvent ( created branch ) の場合は false
 									//	ForkEvent ( forked branch ) の場合は true
 									//	DeleteEvent ( delete branch ) の場合は false
+									//	...これらはたまたまそうなるだけで実際には master ブランチかどうかが肝だと思われる
 									return "ForkEvent" == EventTypeName;
 								case "git-commit":
 									//	PushEvent
-									return true;
+									//	master ブランチへの commit の場合にのみ true
+									return 0 <= Title.IndexOf(" pushed to master ");
 								//case "git-compare":
 								//	return true;
 								//case "git-merge":
