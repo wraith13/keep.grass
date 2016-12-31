@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace keep.grass
 {
@@ -108,7 +109,81 @@ namespace keep.grass
 					return result;
 				}
 
-				public bool IsContribution => !string.IsNullOrWhiteSpace(Id) && Id.IndexOf(":WatchEvent/") < 0;
+				public string EventTypeName => Regex.Match(Id, "([A-Za-z0-9]+Event)").Value;
+
+				/*
+				public bool IsContribution
+				{
+					get
+					{
+						var Event = EventTypeName;
+						return !string.IsNullOrWhiteSpace(Event) &&
+							Event != "WatchEvent" &&
+							Event != "IssueCommentEvent" &&
+							Event != "GollumEvent";
+					}
+				}
+				*/
+					
+				public bool IsContribution
+				{
+					get
+					{
+						var OctIcon = Content.OctIcon;
+						var Tag = "octicon-";
+						if (OctIcon.StartsWith(Tag))
+						{
+							Debug.WriteLine($"EVENT: {EventTypeName}");
+							string CoreName = OctIcon.Substring(Tag.Length);
+							switch (CoreName)
+							{
+							//	現状、まだ確認がとれてないモノをコメントアウトしている
+								case "book":
+									//	GollumEvent
+									return false;
+								case "comment-discussion":
+									//	PullRequestReviewCommentEvent
+									//	IssueCommentEvent
+									return true; // false の場合もある？
+								case "git-branch":
+									//	CreateEvent ( created branch ) の場合は false
+									//	ForkEvent ( forked branch ) の場合は true
+									//	DeleteEvent ( delete branch ) の場合は false
+									return "ForkEvent" == EventTypeName;
+								case "git-commit":
+									//	PushEvent
+									return true;
+								//case "git-compare":
+								//	return true;
+								//case "git-merge":
+								//	return true;
+								case "git-pull-request":
+									//	PullRequestEvent
+									return true; // false の場合もある？
+								case "issue-closed":
+									//	IssuesEvent
+									return false;
+								case "issue-opened":
+									//	IssuesEvent
+									return true;
+								//case "issue-reopened":
+								//	return true;
+								//case "mark-github":
+								//	return true;
+								//case "repo":
+								//	return true;
+								case "star":
+									//	WatchEvent
+									return false;
+								case "tag":
+									//	CreateEvent
+									return false;
+							}
+						}
+						Debug.WriteLine($"IsContribution({OctIcon}): UNKNOWN EVENT!!!");
+						return false;
+					}
+				}
 			}
 
 			public string Id { get; set; }

@@ -112,6 +112,7 @@ namespace keep.grass
 				string CoreName = Name.Substring(Tag.Length);
 				switch (CoreName)
 				{
+					case "book":
 					case "comment-discussion":
 					case "git-branch":
 					case "git-commit":
