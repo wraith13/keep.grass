@@ -232,6 +232,21 @@ namespace keep.grass
 			return String.Format (IconUrlFormat, Id);
 		}
 
+		static private string SearchUrlFormat = BaseUrl + "/search?q={0}&type={1}&utf8=%E2%9C%93";
+		static public string GetSearchUrl(string Query, string Type)
+		{
+			return String.Format
+			(
+				SearchUrlFormat,
+				System.Net.WebUtility.UrlEncode(Query),
+				System.Net.WebUtility.UrlEncode(Type)
+			);
+		}
+		static public string GetSearchUsersUrl(string Query)
+		{
+			return GetSearchUrl(Query, "Users");
+		}
+
 		static public Feed ParseFeed(byte[] AtomRawBytes)
 		{
 			using (var stream = new MemoryStream(AtomRawBytes))
