@@ -144,7 +144,7 @@ namespace keep.grass
 								case "comment-discussion":
 									//	PullRequestReviewCommentEvent
 									//	IssueCommentEvent
-									return true; // false の場合もある？
+									return false; // true の場合もある？
 								case "git-branch":
 									//	CreateEvent ( created branch ) の場合は false
 									//	ForkEvent ( forked branch ) の場合は true
