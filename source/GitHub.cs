@@ -211,7 +211,7 @@ namespace keep.grass
 			public bool IncompleteResults { get; set; }
 			public IEnumerable<T> Items { get; set; }
 		}
-		public class User
+		public class BaseUser
 		{
 			public string Login { get; set; }
 			public long Id { get; set; }
@@ -230,7 +230,26 @@ namespace keep.grass
 			public string ReceivedEventsUrl { get; set; }
 			public string Type { get; set; }
 			public bool SiteAdmin { get; set; }
+		}
+		public class SearchUser : BaseUser
+		{
 			public double Score { get; set; }
+		}
+		public class User : BaseUser
+		{
+			public string Name { get; set; }
+			public string Company { get; set; }
+			public string Blog { get; set; }
+			public string Location { get; set; }
+			public string Email { get; set; }
+			public bool Hireable { get; set; }
+			public string Bio { get; set; }
+			public int PublicRepos { get; set; }
+			public int PublicGists { get; set; }
+			public int Followers { get; set; }
+			public int Following { get; set; }
+			public DateTime CreatedAt { get; set; }
+			public DateTime UpdatedAt { get; set; }
 		}
 
 		static private string BaseUrl = "https://github.com";
