@@ -65,6 +65,11 @@ namespace keep.grass
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());
 		}
 
+		public void ShowSelectUserPage(Action<string> Reciever)
+		{
+			Navigation.PushAsync(AlphaFactory.MakeSelectUserPage(Reciever));
+		}
+
 		public void OnChangeSettings()
 		{
 			AlphaFactory.MakeSureLanguage().Update();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
@@ -62,6 +62,7 @@ namespace keep.grass
 		{
 			return Instance.MakeOmegaMainPage();
 		}
+
 		public virtual AlphaMainPage MakeOmegaMainPage()
 		{
 			return new AlphaMainPage();
@@ -74,6 +75,15 @@ namespace keep.grass
 		public virtual ContentPage MakeOmegaSettingsPage()
 		{
 			return new AlphaSettingsPage();
+		}
+
+		public static Page MakeSelectUserPage(Action<string> reciever)
+		{
+			return Instance.MakeOmegaSelectUserPage(reciever);
+		}
+		public virtual ContentPage MakeOmegaSelectUserPage(Action<string> reciever)
+		{
+			return new AlphaSelectUserPage(reciever);
 		}
 
 		public static AlphaInfoPage MakeInfoPage()
