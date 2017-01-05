@@ -58,8 +58,8 @@ namespace keep.grass
 			Content = new StackLayout
 			{
 				Orientation = StackOrientation.Vertical,
-				Spacing = 1.0,
-				BackgroundColor = Color.Gray,
+				//Spacing = 1.0,
+				//BackgroundColor = Color.Gray,
 				Children =
 				{
 					Search,

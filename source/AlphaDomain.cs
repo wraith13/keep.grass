@@ -23,6 +23,15 @@ namespace keep.grass
 		{
 			return await HttpClient.GetByteArrayAsync(Url);
 		}
+		public async Task<string> GetStringFromUrlAsync(string Url, System.Text.Encoding Encoding)
+		{
+			var Data = await GetByteArrayFromUrlAsync(Url);
+			return Encoding.GetString(Data, 0, Data.Length);
+		}
+		public async Task<string> GetStringFromUrlAsync(string Url)
+		{
+			return await GetStringFromUrlAsync(Url, System.Text.Encoding.UTF8);
+		}
 
 		private Dictionary<string, DateTime> LastPublicActivityCache = new Dictionary<string, DateTime>();
 		public void SetLastPublicActivity(string User, DateTime value)
@@ -182,7 +191,7 @@ namespace keep.grass
 				new[] { Settings.UserName, }
 					.Union(Settings.GetFriendList())
 					.Where(i => !string.IsNullOrWhiteSpace(i))
-					.ToArray()				
+					.ToArray()
 			);
 		}
 		private async Task UpdateLastPublicActivityAsync(params string[] Users)

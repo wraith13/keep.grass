@@ -13,15 +13,47 @@ namespace keep.grass
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-        VoidEntryCell UserNameCell = null;
+		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage()
 		{
 			Title = L["Settings"];
-			UserNameCell = AlphaFactory.MakeEntryCell();
-			UserNameCell.Label = L["User ID"];
 			LanguageCell = AlphaFactory.MakePickerCell();
+
+			UserLabel.Command = new Command
+			(
+				o => AlphaFactory
+					.MakeSureApp()
+					.ShowSelectUserPage
+					(
+						NewUser =>
+						{
+							Settings.UserName = NewUser;
+							Root.OnChangeSettings();
+						}
+					)
+			);
+		}
+
+		public void ApplyUser(string User)
+		{
+			if (!String.IsNullOrWhiteSpace(User))
+			{
+				if (UserLabel.Text != User || null == UserLabel.ImageSource)
+				{
+					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
+						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+					UserLabel.Text = User;
+					UserLabel.TextColor = Color.Default;
+				}
+			}
+			else
+			{
+				UserLabel.ImageSource = null;
+				UserLabel.Text = L["unspecified"];
+				UserLabel.TextColor = Color.Gray;
+			}
 		}
 
 		public override void Build()
@@ -47,7 +79,7 @@ namespace keep.grass
 							{
 								new TableSection(L["Github Account"])
 								{
-									UserNameCell.AsCell(),
+									UserLabel,
 									Friends,
 								},
 								new TableSection(L["Notifications"])
@@ -101,7 +133,7 @@ namespace keep.grass
 									{
 										new TableSection(L["Github Account"])
 										{
-											UserNameCell.AsCell(),
+											UserLabel,
 											Friends,
 										},
 										new TableSection(L["Language"])
@@ -149,8 +181,7 @@ namespace keep.grass
 		{
 			base.OnAppearing();
 
-			UserNameCell.Text = Settings.UserName;
-
+			ApplyUser(Settings.UserName);
 			var Language = Settings.Language ?? "";
 			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
@@ -168,12 +199,6 @@ namespace keep.grass
 		{
 			base.OnDisappearing();
             bool IsChanged = false;
-			var NewUserName = UserNameCell.Text.Trim();
-			if (Settings.UserName != NewUserName)
-			{
-				Settings.UserName = NewUserName;
-                IsChanged = true;
-            }
 			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
 			if (OldLanguage != L.Get())
