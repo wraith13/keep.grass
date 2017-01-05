@@ -21,9 +21,9 @@ namespace keep.grass
 			Reciever = aReciever;
 			Title = L["Select User"];
 
-			var Template = new DataTemplate(typeof(ImageCell));
-			Template.SetBinding(ImageCell.ImageSourceProperty, "AvatarUrl");
-			Template.SetBinding(TextCell.TextProperty, "Login");
+			var Template = new DataTemplate(typeof(AlphaCircleImageCell));
+			Template.SetBinding(AlphaCircleImageCell.ImageSourceProperty, "AvatarUrl");
+			Template.SetBinding(AlphaCircleImageCell.TextProperty, "Login");
 
 			List = new ListView
 			{

@@ -9,6 +9,21 @@ namespace keep.grass
 {
     public class AlphaCircleImageCell : ViewCell
 	{
+		public static readonly BindableProperty ImageSourceProperty = BindableProperty.Create
+		(
+			nameof(ImageSource),
+			typeof(ImageSource),
+			typeof(AlphaCircleImageCell),
+			propertyChanged: (bindable, oldValue, newValue) => ((AlphaCircleImageCell)bindable).ImageSource = (ImageSource)newValue
+		);
+		public static readonly BindableProperty TextProperty = BindableProperty.Create
+		(
+			nameof(Text),
+			typeof(string),
+			typeof(AlphaCircleImageCell),
+			propertyChanged: (bindable, oldValue, newValue) => ((AlphaCircleImageCell)bindable).Text = (string)newValue
+		);
+
 		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label TextLabel = new Label();
 		protected Image OptionImage = new Image();
