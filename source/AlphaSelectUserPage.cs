@@ -13,10 +13,47 @@ namespace keep.grass
 
 		public Action<string> Reciever;
 
+		ListView List;
+		SearchBar Search;
+
 		public AlphaSelectUserPage(Action<string> aReciever)
 		{
 			Reciever = aReciever;
 			Title = L["Select User"];
+
+			var Template = new DataTemplate(typeof(ImageCell));
+			Template.SetBinding(ImageCell.ImageSourceProperty, "AvatarUrl");
+			Template.SetBinding(TextCell.TextProperty, "Login");
+
+			List = new ListView
+			{
+				ItemTemplate = Template,
+			};
+			List.ItemTapped += (sender, e) =>
+			{
+				var User = e.Item as GitHub.SearchUser;
+				if (null != User)
+				{
+					Reciever(User.Login);
+				}
+				AlphaFactory.MakeSureApp().Navigation.PopAsync();
+			};
+
+			Search = new SearchBar
+			{
+				Placeholder = "ユーザーの名前等",
+				SearchCommand = new Command
+				(
+					async () => List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
+					(
+						await Domain.GetStringFromUrlAsync
+						(
+							GitHub.GetSearchUsersUrl(Search.Text)
+						)
+					)
+					.Items
+				),
+			};
 
 			Content = new StackLayout
 			{
@@ -25,14 +62,8 @@ namespace keep.grass
 				BackgroundColor = Color.Gray,
 				Children =
 				{
-					new SearchBar
-					{
-						Placeholder = "ユーザーの名前等",
-						//SearchCommand = 
-					},
-					new ListView
-					{
-					},
+					Search,
+					List,
 				}
 			};
 		}
