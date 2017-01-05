@@ -39,34 +39,25 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaFeedPage.Rebuild();");
 
-			Content = new StackLayout
+			Content = new TableView
 			{
-				Orientation = StackOrientation.Horizontal,
-				Spacing = 1.0,
-				BackgroundColor = Color.Gray,
-				Children =
+				HasUnevenRows = true,
+				RowHeight = -1,
+				BackgroundColor = Color.White,
+				Root = new TableRoot
 				{
-					new TableView
+					//new TableSection(Feed?.Title ?? L["Activity"])
+					new TableSection()
 					{
-						HasUnevenRows = true,
-						RowHeight = -1,
-						BackgroundColor = Color.White,
-						Root = new TableRoot
-						{
-							//new TableSection(Feed?.Title ?? L["Activity"])
-							new TableSection()
+						Feed?.EntryList?.Select
+						(
+							i => new AlphaFeedEntryCell()
 							{
-								Feed?.EntryList?.Select
-								(
-									i => new AlphaFeedEntryCell()
-									{
-										Entry = i
-									}
-								) ?? new AlphaFeedEntryCell[] {}
-							},
-						},
+								Entry = i
+							}
+						) ?? new AlphaFeedEntryCell[] {}
 					},
-				}
+				},
 			};
 		}
 	}
