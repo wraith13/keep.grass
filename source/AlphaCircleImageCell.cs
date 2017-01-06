@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Reflection;
 using System.Linq;
 
 using Xamarin.Forms;
@@ -9,20 +9,8 @@ namespace keep.grass
 {
     public class AlphaCircleImageCell : ViewCell
 	{
-		public static readonly BindableProperty ImageSourceProperty = BindableProperty.Create
-		(
-			nameof(ImageSource),
-			typeof(ImageSource),
-			typeof(AlphaCircleImageCell),
-			propertyChanged: (bindable, oldValue, newValue) => ((AlphaCircleImageCell)bindable).ImageSource = (ImageSource)newValue
-		);
-		public static readonly BindableProperty TextProperty = BindableProperty.Create
-		(
-			nameof(Text),
-			typeof(string),
-			typeof(AlphaCircleImageCell),
-			propertyChanged: (bindable, oldValue, newValue) => ((AlphaCircleImageCell)bindable).Text = (string)newValue
-		);
+		public static readonly BindableProperty ImageSourceProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageSource").CreateBindableProperty();
+		public static readonly BindableProperty TextProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("Text").CreateBindableProperty();
 
 		protected Image Image = AlphaFactory.MakeCircleImage();
 		protected Label TextLabel = new Label();
