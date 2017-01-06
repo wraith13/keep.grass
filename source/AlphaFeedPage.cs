@@ -12,12 +12,10 @@ namespace keep.grass
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		public String User;
 		public GitHub.Feed Feed;
 
-		public AlphaFeedPage(string UserName)
+		public AlphaFeedPage(string User)
 		{
-			User = UserName;
 			Title = L["Activity"];
 			Task.Run
 			(
@@ -38,14 +36,11 @@ namespace keep.grass
 		{
 			base.Build();
 			Debug.WriteLine("AlphaFeedPage.Rebuild();");
-
 			Content = new ListView
 			{
 				HasUnevenRows = true,
-				ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell))
-					.SetBinding("Entry", "Entry"),
-				ItemsSource = (Feed?.EntryList ?? new GitHub.Feed.Entry[] { })
-					.Select(i => new { Entry = i, }),
+				ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell)).SetBindingList("Entry"),
+				ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
 			};
 		}
 	}

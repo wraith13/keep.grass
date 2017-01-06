@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
 
@@ -20,6 +21,14 @@ namespace keep.grass
 				DeclaringType.GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(DefaultValue),
 				DataPropertyName
 			);
+			return this;
+		}
+		public DataTemplateEx SetBindingList(params string[] PropertyNameList)
+		{
+			foreach(var PropertyName in PropertyNameList)
+			{
+				SetBinding(PropertyName, PropertyName);
+			}
 			return this;
 		}
 	}
