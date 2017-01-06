@@ -56,7 +56,7 @@ namespace keep.grass
 					{
 						UserLabel,
 					},
-					new TableSection(L["Last Acitivity Stamp"])
+					new TableSection(L["Last Activity Stamp"])
 					{
 						LastActivityStampLabel,
 					},

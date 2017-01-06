@@ -39,25 +39,13 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaFeedPage.Rebuild();");
 
-			Content = new TableView
+			Content = new ListView
 			{
 				HasUnevenRows = true,
-				RowHeight = -1,
-				BackgroundColor = Color.White,
-				Root = new TableRoot
-				{
-					//new TableSection(Feed?.Title ?? L["Activity"])
-					new TableSection()
-					{
-						Feed?.EntryList?.Select
-						(
-							i => new AlphaFeedEntryCell()
-							{
-								Entry = i
-							}
-						) ?? new AlphaFeedEntryCell[] {}
-					},
-				},
+				ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell))
+					.SetBinding("Entry", "Entry"),
+				ItemsSource = (Feed?.EntryList ?? new GitHub.Feed.Entry[] { })
+					.Select(i => new { Entry = i, }),
 			};
 		}
 	}
