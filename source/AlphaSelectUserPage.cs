@@ -15,6 +15,7 @@ namespace keep.grass
 
 		ListView List;
 		SearchBar Search;
+		ActivityIndicator Indicator;
 
 		public AlphaSelectUserPage(Action<string> aReciever)
 		{
@@ -42,15 +43,30 @@ namespace keep.grass
 				Placeholder = "ユーザーの名前等",
 				SearchCommand = new Command
 				(
-					async () => List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
-					(
-						await Domain.GetStringFromUrlAsync
+					async () =>
+					{
+						List.IsVisible = false;
+						Indicator.IsVisible = true;
+						Indicator.IsRunning = true;
+						List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
 						(
-							GitHub.GetSearchUsersUrl(Search.Text)
-						)
-					)
-					.Items
+							await Domain.GetStringFromUrlAsync
+							(
+								GitHub.GetSearchUsersUrl(Search.Text)
+							)
+						).Items;
+						Indicator.IsRunning = false;
+						Indicator.IsVisible = false;
+						List.IsVisible = true;
+					}
 				),
+			};
+
+			Indicator = new ActivityIndicator
+			{
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				IsVisible = false,
 			};
 
 			Content = new StackLayout
@@ -62,6 +78,7 @@ namespace keep.grass
 				{
 					Search,
 					List,
+					Indicator,
 				}
 			};
 		}
