@@ -21,13 +21,11 @@ namespace keep.grass
 			Reciever = aReciever;
 			Title = L["Select User"];
 
-			var Template = new DataTemplate(typeof(AlphaCircleImageCell));
-			Template.SetBinding(AlphaCircleImageCell.ImageSourceProperty, "AvatarUrl");
-			Template.SetBinding(AlphaCircleImageCell.TextProperty, "Login");
-
 			List = new ListView
 			{
-				ItemTemplate = Template,
+				ItemTemplate = new DataTemplateEx(typeof(AlphaCircleImageCell))
+					.SetBinding("ImageSource", "AvatarUrl")
+					.SetBinding("Text", "Login"),
 			};
 			List.ItemTapped += (sender, e) =>
 			{
