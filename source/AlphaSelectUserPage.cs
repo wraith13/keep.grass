@@ -54,7 +54,8 @@ namespace keep.grass
 							(
 								GitHub.GetSearchUsersUrl(Search.Text)
 							)
-						).Items;
+						)
+						.Items;
 						Indicator.IsRunning = false;
 						Indicator.IsVisible = false;
 						List.IsVisible = true;
