@@ -300,38 +300,48 @@ namespace keep.grass
 			);
 			using (var paint = new SKPaint())
 			{
-				paint.Color = AlphaDomain.MakeLeftTimeColor(LeftTime).ToSKColor();
+				if (default(DateTime) != base.LastPublicActivity)
+				{
+					paint.Color = AlphaDomain.MakeLeftTimeColor(LeftTime).ToSKColor();
+				}
+				else
+				{
+					paint.Color = AlphaDomain.GetElapsedTimeColor().ToSKColor();
+				}
 				Canvas.DrawRect
 				(
 					LeftTimeBarRect,
 					paint
 				);
 			}
-			using (var paint = new SKPaint())
+			if (default(DateTime) != base.LastPublicActivity)
 			{
-				paint.IsAntialias = true;
-				paint.Color = Color.White.ToSKColor();
-				paint.StrokeCap = SKStrokeCap.Round;
-				paint.TextSize = FontSize * PhysicalPixelRate;
-				paint.TextAlign = SKTextAlign.Center;
-				paint.Typeface = Font;
+				using (var paint = new SKPaint())
+				{
+					paint.IsAntialias = true;
+					paint.Color = Color.White.ToSKColor();
+					paint.StrokeCap = SKStrokeCap.Round;
+					paint.TextSize = FontSize * PhysicalPixelRate;
+					paint.TextAlign = SKTextAlign.Center;
+					paint.Typeface = Font;
 
-				Canvas.DrawText
-				(
-					L["Left Time"] +" : " +Domain.ToString(LeftTime),
-					LeftTimeBarRect.MidX,
-					LeftTimeBarRect.MidY+ (paint.TextSize / 2.0f),
-					paint
-				);
+					Canvas.DrawText
+					(
+						L["Left Time"] +" : " +Domain.ToString(LeftTime),
+						LeftTimeBarRect.MidX,
+						LeftTimeBarRect.MidY + (paint.TextSize / 2.0f),
+						paint
+					);
 
-				paint.Typeface = null;
+					paint.Typeface = null;
+				}
 			}
 		}
 
 		public void UpdateSlices()
 		{
 			SetStartAngle(AlphaDomain.TimeToAngle(Now));
-			if (default(DateTime) != LastPublicActivity)
+			if (default(DateTime) != base.LastPublicActivity)
 			{
 				var Today = Now.Date;
 				var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);

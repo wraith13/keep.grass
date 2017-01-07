@@ -344,6 +344,10 @@ namespace keep.grass
 			return null;
 		}
 
+		public static Color GetElapsedTimeColor()
+		{
+			return Color.FromRgb(0xAA, 0xAA, 0xAA);
+		}
 		public static IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
 		{
 			if (0 <= LeftTime.Ticks)
@@ -364,7 +368,7 @@ namespace keep.grass
 					{
 						Text = L["Elapsed Time"],
 						Value = JustifiedElapsedTime,
-						Color = Color.FromRgb(0xAA, 0xAA, 0xAA),
+						Color = GetElapsedTimeColor(),
 					},
 				};
 			}
