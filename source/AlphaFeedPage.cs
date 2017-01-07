@@ -17,31 +17,48 @@ namespace keep.grass
 		public AlphaFeedPage(string User)
 		{
 			Title = L["Activity"];
-			Task.Run
+			Domain.GetFeed(User).ContinueWith
 			(
-				async () =>
-				{
-					Feed = await Domain.GetFeed(User);
-					Device.BeginInvokeOnMainThread
-					(
-						() =>
+				t => Device.BeginInvokeOnMainThread
+				(
+					() =>
+					{
+						if (null == t.Exception)
 						{
+							Feed = t.Result;
 							Build();
 						}
-					);
-				}
+						else
+						{
+							Debug.WriteLine(t.Exception);
+							AlphaFactory.MakeSureApp().Navigation.PopAsync();
+						}
+					}
+				)
 			);
 		}
 		public override void Build()
 		{
 			base.Build();
 			Debug.WriteLine("AlphaFeedPage.Rebuild();");
-			Content = new ListView
+			if (null == Feed)
 			{
-				HasUnevenRows = true,
-				ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell)).SetBindingList("Entry"),
-				ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
-			};
+				Content = new ActivityIndicator
+				{
+					VerticalOptions = LayoutOptions.CenterAndExpand,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+					IsRunning = true,
+				};
+			}
+			else
+			{
+				Content = new ListView
+				{
+					HasUnevenRows = true,
+					ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell)).SetBindingList("Entry"),
+					ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
+				};
+			}
 		}
 	}
 }
