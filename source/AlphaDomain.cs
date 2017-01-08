@@ -280,7 +280,7 @@ namespace keep.grass
 			{
 				Debug.WriteLine("AlphaDomain::UpdateAlerts");
 				var Limit = LastPublicActivity.AddHours(24);
-				var LastPublicActivityInfo = L["Last Acitivity Stamp"] + ": " + ToString(LastPublicActivity);
+				var LastPublicActivityInfo = L["Last Activity Stamp"] + ": " + ToString(LastPublicActivity);
 				var Now = DateTime.Now;
 				int i = 0;
 				foreach (var Span in Settings.AlertTimeSpanTable)
