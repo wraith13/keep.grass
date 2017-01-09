@@ -265,5 +265,17 @@ namespace keep.grass.Helpers
 			Set(AlertDailyTimeToSettingKey(Key), NewValue);
 		}
 
+		private const string RecentUsersKey = "RecentUsers";
+		public static string[] GetRecentUsers()
+		{
+			return AppSettings.GetValueOrDefault<string>(RecentUsersKey, "")
+				.Split(',')
+				.Where(i => !string.IsNullOrWhiteSpace(i))
+				.ToArray();
+		}
+		public static void SetRecentUsers(IEnumerable<string> RecentUsers)
+		{
+			AppSettings.AddOrUpdateValue<string>(RecentUsersKey, string.Join(",", RecentUsers));
+		}
 	}
 }

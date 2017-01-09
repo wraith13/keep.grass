@@ -458,6 +458,25 @@ namespace keep.grass
 		{
 			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
 		}
+
+		private string[] RecentUsers = null;
+		public string[] GetRecentUsers()
+		{
+			if (null == RecentUsers)
+			{
+				RecentUsers = Settings.GetRecentUsers();
+			}
+			return RecentUsers;
+		}
+		public void AddRecentUser(string User)
+		{
+			RecentUsers = new[] { User }
+				.Concat(GetRecentUsers())
+				.Distinct()
+				.Take(20)
+				.ToArray();
+			Settings.SetRecentUsers(RecentUsers);
+		}
 	}
 }
 

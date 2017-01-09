@@ -17,6 +17,29 @@ namespace keep.grass
 		SearchBar Search;
 		ActivityIndicator Indicator;
 
+		public class ListItem
+		{
+			public ImageSource ImageSource { get; set; }
+			public string Text { get; set; }
+
+			public static ListItem Make(GitHub.SearchUser User)
+			{
+				return new ListItem
+				{
+					ImageSource = User.AvatarUrl,
+					Text = User.Login,
+				};
+			}
+			public static ListItem Make(string User)
+			{
+				return new ListItem
+				{
+					ImageSource = GitHub.GetIconUrl(User),
+					Text = User,
+				};
+			}
+		}
+
 		public AlphaSelectUserPage(Action<string> aReciever)
 		{
 			Reciever = aReciever;
@@ -25,18 +48,21 @@ namespace keep.grass
 			List = new ListView
 			{
 				ItemTemplate = new DataTemplateEx(typeof(AlphaCircleImageCell))
-					.SetBinding("ImageSource", "AvatarUrl")
-					.SetBinding("Text", "Login"),
+					.SetBindingList("ImageSource", "Text"),
 			};
 			List.ItemTapped += (sender, e) =>
 			{
-				var User = e.Item as GitHub.SearchUser;
+				var User = e.Item as ListItem;
 				if (null != User)
 				{
-					Reciever(User.Login);
+					Debug.WriteLine($"Select User: {User.Text}");
+					Reciever(User.Text);
+					Domain.AddRecentUser(User.Text);
 				}
 				AlphaFactory.MakeSureApp().Navigation.PopAsync();
 			};
+			List.ItemsSource = Domain.GetRecentUsers()
+				.Select(i => ListItem.Make(i));
 
 			Search = new SearchBar
 			{
@@ -66,7 +92,8 @@ namespace keep.grass
 											(
 												t.Result
 											)
-											.Items;
+											.Items
+											.Select(i => ListItem.Make(i));
 											Indicator.IsRunning = false;
 											Indicator.IsVisible = false;
 											List.IsVisible = true;
