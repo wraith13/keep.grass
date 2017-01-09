@@ -114,23 +114,36 @@ namespace keep.grass
 			var Tag = "octicon-";
 			if (Name.StartsWith(Tag))
 			{
-				string CoreName = Name.Substring(Tag.Length);
-				switch (CoreName)
+				return GetOcticonImageSource(Name.Substring(Tag.Length));
+			}
+			else
+			{
+				switch (Name)
 				{
+					case "bell":
 					case "book":
+					case "chevron-right":
+					case "clock":
+					case "comment":
 					case "comment-discussion":
+					case "gear":
 					case "git-branch":
 					case "git-commit":
 					case "git-compare":
 					case "git-merge":
 					case "git-pull-request":
+					case "hisotry":
 					case "issue-closed":
 					case "issue-opened":
 					case "issue-reopened":
+					case "link-external":
 					case "mark-github":
+					case "plus":
 					case "repo":
 					case "star":
+					case "sync":
 					case "tag":
+					case "trashcan":
 						return GetImageSource($"octicons.{CoreName}.png");
 				}
 			}
