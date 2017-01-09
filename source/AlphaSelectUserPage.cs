@@ -40,25 +40,45 @@ namespace keep.grass
 
 			Search = new SearchBar
 			{
-				Placeholder = "ユーザーの名前等",
+				Placeholder = L["ユーザーの名前等"],
 				SearchCommand = new Command
 				(
-					async () =>
+					() =>
 					{
 						List.IsVisible = false;
 						Indicator.IsVisible = true;
 						Indicator.IsRunning = true;
-						List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
+
+						Domain.GetStringFromUrlAsync
 						(
-							await Domain.GetStringFromUrlAsync
-							(
-								GitHub.GetSearchUsersUrl(Search.Text)
-							)
-						)
-						.Items;
-						Indicator.IsRunning = false;
-						Indicator.IsVisible = false;
-						List.IsVisible = true;
+							GitHub.GetSearchUsersUrl(Search.Text)
+						 ).ContinueWith
+						(
+							t =>
+							{
+								if (null == t.Exception)
+								{
+									Device.BeginInvokeOnMainThread
+									(
+										() =>
+										{
+											List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
+											(
+												t.Result
+											)
+											.Items;
+											Indicator.IsRunning = false;
+											Indicator.IsVisible = false;
+											List.IsVisible = true;
+										}
+									);
+								}
+								else
+								{
+									Debug.WriteLine(t.Exception);
+								}
+							}
+						);
 					}
 				),
 			};
