@@ -144,7 +144,7 @@ namespace keep.grass
 					case "sync":
 					case "tag":
 					case "trashcan":
-						return GetImageSource($"octicons.{CoreName}.png");
+						return GetImageSource($"octicons.{Name}.png");
 				}
 			}
 			Debug.WriteLine($"GetOcticonImageSource({Name}): NOT FOUND ICON!!!");
