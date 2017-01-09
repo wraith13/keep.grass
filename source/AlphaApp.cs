@@ -120,30 +120,20 @@ namespace keep.grass
 			{
 				switch (Name)
 				{
-					case "bell":
 					case "book":
-					case "chevron-right":
-					case "clock":
-					case "comment":
 					case "comment-discussion":
-					case "gear":
 					case "git-branch":
 					case "git-commit":
 					case "git-compare":
 					case "git-merge":
 					case "git-pull-request":
-					case "hisotry":
 					case "issue-closed":
 					case "issue-opened":
 					case "issue-reopened":
-					case "link-external":
 					case "mark-github":
-					case "plus":
 					case "repo":
 					case "star":
-					case "sync":
 					case "tag":
-					case "trashcan":
 						return GetImageSource($"octicons.{Name}.png");
 				}
 			}

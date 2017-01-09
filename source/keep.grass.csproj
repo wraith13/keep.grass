@@ -154,16 +154,6 @@
     <EmbeddedResource Include="Images\octicons\tag.png" />
     <EmbeddedResource Include="Images\octicons\mark-github.png" />
     <EmbeddedResource Include="Images\octicons\book.png" />
-    <EmbeddedResource Include="Images\octicons\bell.png" />
-    <EmbeddedResource Include="Images\octicons\chevron-right.png" />
-    <EmbeddedResource Include="Images\octicons\clock.png" />
-    <EmbeddedResource Include="Images\octicons\comment.png" />
-    <EmbeddedResource Include="Images\octicons\gear.png" />
-    <EmbeddedResource Include="Images\octicons\history.png" />
-    <EmbeddedResource Include="Images\octicons\link-external.png" />
-    <EmbeddedResource Include="Images\octicons\plus.png" />
-    <EmbeddedResource Include="Images\octicons\sync.png" />
-    <EmbeddedResource Include="Images\octicons\trashcan.png" />
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>
