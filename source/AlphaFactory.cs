@@ -219,6 +219,15 @@ namespace keep.grass
 			}
 			return null;
 		}
-    }
+
+		public static Type GetFeedEntryCellType()
+		{
+			return Instance.GetOmegaFeedEntryCellType();
+		}
+		public virtual Type GetOmegaFeedEntryCellType()
+		{
+			return typeof(AlphaFeedEntryCell);
+		}
+	}
 }
 

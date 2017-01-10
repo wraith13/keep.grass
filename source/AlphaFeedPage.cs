@@ -55,7 +55,7 @@ namespace keep.grass
 				Content = new ListView
 				{
 					HasUnevenRows = true,
-					ItemTemplate = new DataTemplateEx(typeof(AlphaFeedEntryCell)).SetBindingList("Entry"),
+					ItemTemplate = new DataTemplateEx(AlphaFactory.GetFeedEntryCellType()).SetBindingList("Entry"),
 					ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
 				};
 			}
