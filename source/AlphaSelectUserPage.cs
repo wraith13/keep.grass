@@ -47,7 +47,7 @@ namespace keep.grass
 
 			List = new ListView
 			{
-				ItemTemplate = new DataTemplateEx(typeof(AlphaCircleImageCell))
+				ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
 					.SetBindingList("ImageSource", "Text"),
 			};
 			List.ItemTapped += (sender, e) =>

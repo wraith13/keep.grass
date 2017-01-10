@@ -228,6 +228,15 @@ namespace keep.grass
 		{
 			return typeof(AlphaFeedEntryCell);
 		}
-	}
+
+        public static Type GetGitHubUserCellType()
+        {
+            return Instance.GetOmegaGitHubUserCellType();
+        }
+        public virtual Type GetOmegaGitHubUserCellType()
+        {
+            return typeof(AlphaCircleImageCell);
+        }
+    }
 }
 
