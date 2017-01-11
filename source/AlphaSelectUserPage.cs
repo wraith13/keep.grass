@@ -78,7 +78,7 @@ namespace keep.grass
 						Domain.GetStringFromUrlAsync
 						(
 							GitHub.GetSearchUsersUrl(Search.Text)
-						 ).ContinueWith
+						).ContinueWith
 						(
 							t =>
 							{

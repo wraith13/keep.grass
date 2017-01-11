@@ -235,7 +235,7 @@ namespace keep.grass
         }
         public virtual Type GetOmegaGitHubUserCellType()
         {
-            return typeof(AlphaCircleImageCell);
+            return typeof(AlphaGitHubUserCell);
         }
     }
 }
