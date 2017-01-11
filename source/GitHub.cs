@@ -275,7 +275,7 @@ namespace keep.grass
 			[JsonProperty("email")]
 			public string Email { get; set; }
 			[JsonProperty("hireable")]
-			public bool Hireable { get; set; }
+			public bool? Hireable { get; set; }
 			[JsonProperty("bio")]
 			public string Bio { get; set; }
 			[JsonProperty("public_repos")]
@@ -290,6 +290,11 @@ namespace keep.grass
 			public DateTime CreatedAt { get; set; }
 			[JsonProperty("updated_at")]
 			public DateTime UpdatedAt { get; set; }
+
+			public static User Parse(string Json)
+			{
+				return JsonConvert.DeserializeObject<User>(Json);
+			}
 		}
 
 		static private string BaseUrl = "https://github.com";
@@ -300,6 +305,12 @@ namespace keep.grass
 		{
 			return String.Format(ProfileUrlFormat, Id);
 		}
+
+        static private string UserUrlFormat = BaseApiUrl + "/users/{0}";
+        static public string GetUserUrl(string Id)
+        {
+            return String.Format(UserUrlFormat, Id);
+        }
 
 		static private string AcitivityUrlFormat = BaseUrl + "/{0}?tab=activity";
 		static public string GetAcitivityUrl(string Id)
