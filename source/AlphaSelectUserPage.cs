@@ -43,7 +43,7 @@ namespace keep.grass
 		public AlphaSelectUserPage(Action<string> aReciever)
 		{
 			Reciever = aReciever;
-			Title = L["Select User"];
+			Title = L["Select a user"];
 
 			List = new ListView
 			{
@@ -66,46 +66,58 @@ namespace keep.grass
 
 			Search = new SearchBar
 			{
-				Placeholder = L["ユーザーの名前等"],
+				Placeholder = L["User's name etc."],
 				SearchCommand = new Command
 				(
-					() =>
+					async () =>
 					{
 						List.IsVisible = false;
 						Indicator.IsVisible = true;
 						Indicator.IsRunning = true;
 
-						Domain.GetStringFromUrlAsync
-						(
-							GitHub.GetSearchUsersUrl(Search.Text)
-						).ContinueWith
-						(
-							t =>
-							{
-								if (null == t.Exception)
+						try
+						{
+							var Json = await Domain.GetStringFromUrlAsync
+							(
+								GitHub.GetSearchUsersUrl(Search.Text)
+							);
+							Device.BeginInvokeOnMainThread
+							(
+								() =>
 								{
-									Device.BeginInvokeOnMainThread
-									(
-										() =>
+									try
+									{
+										List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse(Json)
+										.Items
+										.Select(i => ListItem.Make(i));
+									}
+									catch (Exception Err)
+									{
+										Debug.WriteLine(Err);
+										if (!string.IsNullOrWhiteSpace(Search.Text))
 										{
-											List.ItemsSource = GitHub.SearchResult<GitHub.SearchUser>.Parse
-											(
-												t.Result
-											)
-											.Items
-											.Select(i => ListItem.Make(i));
-											Indicator.IsRunning = false;
-											Indicator.IsVisible = false;
-											List.IsVisible = true;
+											List.ItemsSource = new[] { Search.Text.Trim() }
+												.Select(i => ListItem.Make(i));
 										}
-									);
+									}
+									Indicator.IsRunning = false;
+									Indicator.IsVisible = false;
+									List.IsVisible = true;
 								}
-								else
-								{
-									Debug.WriteLine(t.Exception);
-								}
+							);
+						}
+						catch (Exception Err)
+						{
+							Debug.WriteLine(Err);
+							if (!string.IsNullOrWhiteSpace(Search.Text))
+							{
+								List.ItemsSource = new[] { Search.Text.Trim() }
+									.Select(i => ListItem.Make(i));
 							}
-						);
+							Indicator.IsRunning = false;
+							Indicator.IsVisible = false;
+							List.IsVisible = true;
+						}
 					}
 				),
 			};

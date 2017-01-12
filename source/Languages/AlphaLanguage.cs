@@ -46,6 +46,8 @@ namespace keep.grass.Languages
 					{ "Auther", "作者" },
 					{ "Github Repository", "Github リポジトリ" },
 					{ "Built with", "利用技術" },
+                    { "Select a user", "ユーザーの選択" },
+                    { "User's name etc.", "ユーザーの名前等" },
 				}
 			}
 		};
