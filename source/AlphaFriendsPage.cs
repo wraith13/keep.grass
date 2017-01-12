@@ -15,6 +15,8 @@ namespace keep.grass
 
 		const int MaxFriendCount = 8;
 		VoidEntryCell[] FriendNameCellList = null;
+        Button AddButton;
+        Button DeleteButton;
 
 		public AlphaFriendsPage()
 		{
@@ -30,12 +32,36 @@ namespace keep.grass
 					}
               	)
              	.ToArray();
+            AddButton = new Button
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Text = L["Add"],
+            };
+            DeleteButton = new Button
+            {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Text = L["Delete"],
+            };
 		}
 
 		public override void Build()
 		{
 			base.Build();
 			Debug.WriteLine("AlphaSettingsPage.Rebuild();");
+
+            var ButtonFrame = new Grid()
+            {
+                VerticalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.White,
+            }
+            .HorizontalJustificate
+            (
+                AddButton,
+                DeleteButton
+            );
 
 			if (Width <= Height || FriendNameCellList.Count() < 6)
 			{
@@ -53,6 +79,7 @@ namespace keep.grass
 								},
 							},
 						},
+                        ButtonFrame,
 					},
 				};
 			}
@@ -94,6 +121,7 @@ namespace keep.grass
 								},
 							},
 						},
+                        ButtonFrame,
 					},
 				};
 			}
