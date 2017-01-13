@@ -14,7 +14,7 @@ namespace keep.grass
 		{
 			DeclaringType = aDeclaringType;
 		}
-		public DataTemplateEx SetBinding(string ViewPropertyName, string DataPropertyName, object DefaultValue = null)
+		public DataTemplateEx SetBinding(string ViewPropertyName, string DataPropertyName, object DefaultValue)
 		{
 			this.SetBinding
 			(
@@ -23,11 +23,24 @@ namespace keep.grass
 			);
 			return this;
 		}
+        public DataTemplateEx SetBinding(string ViewPropertyName, string DataPropertyName)
+        {
+            this.SetBinding
+            (
+                DeclaringType.GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(),
+                DataPropertyName
+            );
+            return this;
+        }
 		public DataTemplateEx SetBindingList(params string[] PropertyNameList)
 		{
 			foreach(var PropertyName in PropertyNameList)
 			{
-				SetBinding(PropertyName, PropertyName);
+                SetBinding
+                (
+                    PropertyName,
+                    PropertyName
+                );
 			}
 			return this;
 		}
