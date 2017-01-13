@@ -14,13 +14,46 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		const int MaxFriendCount = 8;
-		VoidEntryCell[] FriendNameCellList = null;
+        //VoidEntryCell[] FriendNameCellList = null;
+        ListView List;
         Button AddButton;
         Button DeleteButton;
+
+        public class ListItem
+        {
+            public ImageSource ImageSource { get; set; }
+            public string Text { get; set; }
+            public bool IsSeledted { get; set; }
+
+            public static ListItem Make(string User)
+            {
+                return new ListItem
+                {
+                    ImageSource = GitHub.GetIconUrl(User),
+                    Text = User,
+                };
+            }
+        }
 
 		public AlphaFriendsPage()
 		{
 			Title = L["Rivals"];
+            List = new ListView
+            {
+                ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
+                    .SetBindingList("ImageSource", "Text"),
+            };
+            List.ItemTapped += (sender, e) =>
+            {
+                var User = e.Item as ListItem;
+                if (null != User)
+                {
+                    User.IsSeledted = !User.IsSeledted;
+                }
+            };
+            List.ItemsSource = Settings.GetFriendList()
+                .Select(i => ListItem.Make(i));
+            /*
 			FriendNameCellList = Enumerable.Range(0, MaxFriendCount)
          		.Select
                	(
@@ -32,11 +65,27 @@ namespace keep.grass
 					}
               	)
              	.ToArray();
+         	*/
             AddButton = new Button
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Text = L["Add"],
+                Command = new Command
+                (
+                    o => AlphaFactory
+                        .MakeSureApp()
+                        .ShowSelectUserPage
+                        (
+                            NewUser =>
+                            {
+                                Settings.SetFriend(Settings.GetFriendCount(), NewUser);
+                                List.ItemsSource = Settings.GetFriendList()
+                                    .Select(i => ListItem.Make(i));
+                                Root.OnChangeSettings();
+                            }
+                        )
+                ),
             };
             DeleteButton = new Button
             {
@@ -63,70 +112,16 @@ namespace keep.grass
                 DeleteButton
             );
 
-			if (Width <= Height || FriendNameCellList.Count() < 6)
+			Content = new StackLayout
 			{
-				Content = new StackLayout
+				Children =
 				{
-					Children =
-					{
-						new TableView
-						{
-							Root = new TableRoot
-							{
-								new TableSection(L["Github Account"])
-								{
-									FriendNameCellList.Select(i => i.AsCell()),
-								},
-							},
-						},
-                        ButtonFrame,
-					},
-				};
-			}
-			else
-			{
-				var HalfCount = FriendNameCellList.Count() /2;
-				Content = new StackLayout
-				{
-					Children =
-					{
-						new StackLayout
-						{
-							Orientation = StackOrientation.Horizontal,
-							Spacing = 1.0,
-							BackgroundColor = Color.Gray,
-							Children =
-							{
-								new TableView
-								{
-									BackgroundColor = Color.White,
-									Root = new TableRoot
-									{
-										new TableSection(L["Github Account"])
-										{
-											FriendNameCellList.Take(HalfCount).Select(i => i.AsCell()),
-										},
-									},
-								},
-								new TableView
-								{
-									BackgroundColor = Color.White,
-									Root = new TableRoot
-									{
-										new TableSection(L["Github Account"])
-										{
-											FriendNameCellList.Skip(HalfCount).Select(i => i.AsCell()),
-										},
-									},
-								},
-							},
-						},
-                        ButtonFrame,
-					},
-				};
-			}
+                    List,
+                    ButtonFrame,
+				},
+			};
 		}
-		protected override void OnAppearing()
+		/*protected override void OnAppearing()
 		{
 			base.OnAppearing();
 
@@ -134,7 +129,8 @@ namespace keep.grass
 			{
 				FriendNameCellList[i].Text = Settings.GetFriend(i);
 			}
-		}
+		}*/
+        /*
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
@@ -174,6 +170,7 @@ namespace keep.grass
 				Root.OnChangeSettings();
 			}
 		}
+        */
 	}
 }
 
