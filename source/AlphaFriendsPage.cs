@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
-using System.Diagnostics;
 
 namespace keep.grass
 {
@@ -18,6 +18,7 @@ namespace keep.grass
         ListView List;
         Button AddButton;
         Button DeleteButton;
+        bool IsChanged = false;
 
         public class ListItem
         {
@@ -45,27 +46,8 @@ namespace keep.grass
             };
             List.ItemTapped += (sender, e) =>
             {
-                var User = e.Item as ListItem;
-                if (null != User)
-                {
-                    User.IsSeledted = !User.IsSeledted;
-                }
+                DeleteButton.IsEnabled = null != (e.Item as ListItem);
             };
-            List.ItemsSource = Settings.GetFriendList()
-                .Select(i => ListItem.Make(i));
-            /*
-			FriendNameCellList = Enumerable.Range(0, MaxFriendCount)
-         		.Select
-               	(
-               		i =>
-					{
-						var Cell = AlphaFactory.MakeEntryCell();
-						Cell.Label = L["User ID"];
-						return Cell;
-					}
-              	)
-             	.ToArray();
-         	*/
             AddButton = new Button
             {
                 VerticalOptions = LayoutOptions.Center,
@@ -80,9 +62,8 @@ namespace keep.grass
                             NewUser =>
                             {
                                 Settings.SetFriend(Settings.GetFriendCount(), NewUser);
-                                List.ItemsSource = Settings.GetFriendList()
-                                    .Select(i => ListItem.Make(i));
-                                Root.OnChangeSettings();
+                                UpdateList();
+                                IsChanged = true;
                             }
                         )
                 ),
@@ -92,6 +73,24 @@ namespace keep.grass
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Text = L["Delete"],
+                Command = new Command
+                (
+                    o =>
+                    {
+                        var SelectedItem = List.SelectedItem as ListItem;
+                        if (null != SelectedItem)
+                        {
+                            var OldFriendList = Settings.GetFriendList();
+                            for (var i = OldFriendList.IndexOf(SelectedItem.Text); i < OldFriendList.Count(); ++i)
+                            {
+                                var NewFriend = OldFriendList.Skip(i +1).FirstOrDefault("");
+                                Settings.SetFriend(i, NewFriend);
+                            }
+                            IsChanged = true;
+                            UpdateList();
+                        }
+                    }
+                ),
             };
 		}
 
@@ -120,57 +119,24 @@ namespace keep.grass
                     ButtonFrame,
 				},
 			};
+            UpdateList();
 		}
-		/*protected override void OnAppearing()
-		{
-			base.OnAppearing();
-
-			for (var i = 0; i < FriendNameCellList.Count(); ++i)
-			{
-				FriendNameCellList[i].Text = Settings.GetFriend(i);
-			}
-		}*/
-        /*
+        public void UpdateList()
+        {
+            var Source = Settings.GetFriendList();
+            List.ItemsSource = Source.Select(i => ListItem.Make(i));
+            AddButton.IsEnabled = Source.Count() < MaxFriendCount;
+            DeleteButton.IsEnabled = false;
+        }
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			var IsChanged = false;
-			var OldFriendCount = Settings.GetFriendCount();
-
-			var NewFriendList = new List<string>();
-			for (var i = 0; i < FriendNameCellList.Count(); ++i)
-			{
-				var NewFriend = FriendNameCellList[i].Text.Trim();
-				if
-				(
-					!string.IsNullOrWhiteSpace(NewFriend) &&
-					!NewFriendList.Select(f => f.ToLower()).Contains(NewFriend.ToLower())
-				)
-				{
-					NewFriendList.Add(NewFriend);
-				}
-			}
-			for (var i = 0; i < FriendNameCellList.Count(); ++i)
-			{
-				var NewFriend = NewFriendList.Skip(i).FirstOrDefault("");
-				if (Settings.GetFriend(i) != NewFriend)
-				{
-					Settings.SetFriend(i, NewFriend);
-					//これ相当のデータが Friend ごとに必要なんじゃない？
-					//Settings.IsValidUserName = false;
-					IsChanged = true;
-				}
-			}
-			if (IsChanged)
-			{
-				if (OldFriendCount != Settings.GetFriendCount())
-				{
-					Root.RebuildMainPage();
-				}
-				Root.OnChangeSettings();
-			}
+            if (IsChanged)
+            {
+                Root.RebuildMainPage();
+                Root.OnChangeSettings();
+            }
 		}
-        */
 	}
 }
 

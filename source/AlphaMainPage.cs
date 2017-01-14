@@ -308,7 +308,7 @@ namespace keep.grass
 								() =>
 								{
 									ApplyCircleGraph(i => i.Now = Now);
-									Domain.AutoUpdateLastPublicActivityAsync();
+                                    var dummy = Domain.AutoUpdateLastPublicActivityAsync();
 								}
 							);
 							Task.Delay(1000 - DateTime.Now.Millisecond).Wait();
