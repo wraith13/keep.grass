@@ -145,7 +145,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\keep.grass.csproj">
+    <ProjectReference Include="..\PCL\keep.grass.csproj">
       <Project>{34988BF1-96C1-46FD-B646-B86C538C637D}</Project>
       <Name>keep.grass</Name>
     </ProjectReference>

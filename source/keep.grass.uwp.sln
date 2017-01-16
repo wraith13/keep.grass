@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass", "keep.grass.csproj", "{34988BF1-96C1-46FD-B646-B86C538C637D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass", "PCL\keep.grass.csproj", "{34988BF1-96C1-46FD-B646-B86C538C637D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.iOS", "iOS\keep.grass.iOS.csproj", "{F33CF9EB-F3C5-4203-87ED-51992015E409}"
 EndProject
