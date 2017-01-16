@@ -1841,7 +1841,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -3556,7 +3556,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -5229,7 +5229,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -6952,7 +6952,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -8625,7 +8625,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -10348,7 +10348,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -12021,7 +12021,7 @@
           "lib/UAP10/Plugin.Settings.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.3.175": {
+      "Xamarin.Forms/2.3.3.180": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
           "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll": {},
@@ -15441,7 +15441,7 @@
       ]
     },
     "Xam.Plugins.Settings/2.5.1": {
-      "sha512": "qLFxTF5NXC4VvLt4+DtdYc31d33bXOQkophUlm4mGRZoefeF/bu4ScnrcK0OZYAXimt1ONqO9kId2e6YcsW5dA==",
+      "sha512": "74FJFEiDiItFm73B+k5bBGXu7ZJF1J8u+GNjS/xYgtgSqty+5Nc8ZWwxx0BqzlrDmGnKPSnNcTf2vm5Sw46bIw==",
       "type": "package",
       "files": [
         "Xam.Plugins.Settings.2.5.1.nupkg.sha512",
@@ -15489,11 +15489,11 @@
         "readme.txt"
       ]
     },
-    "Xamarin.Forms/2.3.3.175": {
-      "sha512": "ykrHIH6of2zy1NyZ4taaz42iyVlyw/rx6wHOm2TU3/yMEe9ptPUtfZ8kkjAyxJn1nsOjzIGsU8QufMogKLWPtg==",
+    "Xamarin.Forms/2.3.3.180": {
+      "sha512": "n4zTnWMDmtWnLqD8duenKd4Ofk8NmklPHHFRIMx+BuUuzX9ZOJFGWun6RCgzok54UBWQgX38Mf80Hvh7v3GYzQ==",
       "type": "package",
       "files": [
-        "Xamarin.Forms.2.3.3.175.nupkg.sha512",
+        "Xamarin.Forms.2.3.3.180.nupkg.sha512",
         "Xamarin.Forms.nuspec",
         "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/ICSharpCode.Decompiler.dll",
         "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/ICSharpCode.NRefactory.CSharp.dll",
@@ -15660,7 +15660,7 @@
       "SkiaSharp.Views.Forms >= 1.55.1",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.0.5",
       "Xam.Plugins.Settings >= 2.5.1",
-      "Xamarin.Forms >= 2.3.3.175"
+      "Xamarin.Forms >= 2.3.3.180"
     ],
     "UAP,Version=v10.0": []
   }

@@ -6,7 +6,7 @@
     "SkiaSharp.Views.Forms": "1.55.1",
     "Xam.Plugins.Forms.ImageCircle": "1.8.0.5",
     "Xam.Plugins.Settings": "2.5.1",
-    "Xamarin.Forms": "2.3.3.175"
+    "Xamarin.Forms": "2.3.3.180"
   },
   "frameworks": {
     "uap10.0": {}
