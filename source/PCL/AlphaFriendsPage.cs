@@ -59,12 +59,7 @@ namespace keep.grass
                         .MakeSureApp()
                         .ShowSelectUserPage
                         (
-                            NewUser =>
-                            {
-                                Settings.SetFriend(Settings.GetFriendCount(), NewUser);
-                                UpdateList();
-                                IsChanged = true;
-                            },
+                            NewUser => AddUser(NewUser),
                             Settings.GetFriendList()
                                 .Concat(Settings.UserName)
                                 .Where(i => !string.IsNullOrWhiteSpace(i))
@@ -84,19 +79,34 @@ namespace keep.grass
                         var SelectedItem = List.SelectedItem as ListItem;
                         if (null != SelectedItem)
                         {
-                            var OldFriendList = Settings.GetFriendList();
-                            for (var i = OldFriendList.IndexOf(SelectedItem.Text); i < OldFriendList.Count(); ++i)
-                            {
-                                var NewFriend = OldFriendList.Skip(i +1).FirstOrDefault("");
-                                Settings.SetFriend(i, NewFriend);
-                            }
-                            IsChanged = true;
-                            UpdateList();
+                            DeleteUser(SelectedItem.Text);
                         }
                     }
                 ),
             };
 		}
+        public void AddUser(string NewUser)
+        {
+            DeleteUser(NewUser);
+            Settings.SetFriend(Settings.GetFriendCount(), NewUser);
+            IsChanged = true;
+            UpdateList();
+        }
+        public void DeleteUser(string TargetUser)
+        {
+            var Index = Settings.GetFriendList().IndexOf(TargetUser);
+            if (0 <= Index)
+            {
+                int FriendCount = Settings.GetFriendCount();
+                for (var i = Index; i < FriendCount + 1; ++i)
+                {
+                    Settings.SetFriend(i, Settings.GetFriend(i + 1));
+                }
+                Settings.SetFriend(FriendCount, "");
+                IsChanged = true;
+                UpdateList();
+            }
+        }
 
 		public override void Build()
 		{
