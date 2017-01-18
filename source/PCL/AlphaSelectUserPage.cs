@@ -74,9 +74,10 @@ namespace keep.grass
 				(
 					async () =>
 					{
-						List.IsVisible = false;
-						Indicator.IsVisible = true;
-						Indicator.IsRunning = true;
+                        List.IsVisible = false;
+                        Indicator.IsVisible = true;
+                        Indicator.IsRunning = true;
+                        List.ItemsSource = new ListItem[] { };
 
 						try
 						{
