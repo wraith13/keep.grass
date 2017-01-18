@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace keep.grass
 {
@@ -77,13 +78,13 @@ namespace keep.grass
 			return new AlphaSettingsPage();
 		}
 
-		public static Page MakeSelectUserPage(Action<string> reciever)
+        public static Page MakeSelectUserPage(Action<string> Reciever, IEnumerable<string> ExistUsers = null)
 		{
-			return Instance.MakeOmegaSelectUserPage(reciever);
+            return Instance.MakeOmegaSelectUserPage(Reciever, ExistUsers);
 		}
-		public virtual ContentPage MakeOmegaSelectUserPage(Action<string> reciever)
+		public virtual ContentPage MakeOmegaSelectUserPage(Action<string> Reciever, IEnumerable<string> ExistUsers = null)
 		{
-			return new AlphaSelectUserPage(reciever);
+            return new AlphaSelectUserPage(Reciever, ExistUsers);
 		}
 
 		public static AlphaInfoPage MakeInfoPage()

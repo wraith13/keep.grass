@@ -64,7 +64,11 @@ namespace keep.grass
                                 Settings.SetFriend(Settings.GetFriendCount(), NewUser);
                                 UpdateList();
                                 IsChanged = true;
-                            }
+                            },
+                            Settings.GetFriendList()
+                                .Concat(Settings.UserName)
+                                .Where(i => !string.IsNullOrWhiteSpace(i))
+                                .ToList()
                         )
                 ),
             };

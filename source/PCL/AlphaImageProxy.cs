@@ -48,14 +48,11 @@ namespace keep.grass
 								.Where(i => Expire < i.Stamp)
 								.Concat
 								(
-									new[]
+									new AlphaImageEntry
 									{
-										new AlphaImageEntry
-										{
-											Url = Url,
-											Binary = result,
-											Stamp = Now,
-										},
+										Url = Url,
+										Binary = result,
+										Stamp = Now,
 									}
 								)
 								.ToArray();

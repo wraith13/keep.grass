@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace keep.grass
 			}
 		}
 
-		public AlphaSelectUserPage(Action<string> aReciever)
+        public AlphaSelectUserPage(Action<string> aReciever, IEnumerable<string> ExistUsers = null)
 		{
 			Reciever = aReciever;
 			Title = L["Select a user"];
@@ -62,6 +63,7 @@ namespace keep.grass
 				AlphaFactory.MakeSureApp().Navigation.PopAsync();
 			};
 			List.ItemsSource = Domain.GetRecentUsers()
+                .Where(i => !(ExistUsers?.Contains(i) ?? false))
 				.Select(i => ListItem.Make(i));
 
 			Search = new SearchBar

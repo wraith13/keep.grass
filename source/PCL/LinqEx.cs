@@ -24,9 +24,14 @@ namespace keep.grass
 		public static T FirstOrDefault<T>(this IEnumerable<T> list, T DefaultValue)
 		{
 			return list
-				.Concat(new[] { DefaultValue })
+				.Concat(DefaultValue)
 				.First();
 		}
+        public static IEnumerable<T> Concat<T>(this IEnumerable<T> list, T Value)
+        {
+            return list
+                .Concat(new[] { Value });
+        }
 	}
 }
 

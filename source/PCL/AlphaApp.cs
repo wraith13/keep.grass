@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Generic;
 
 namespace keep.grass
 {
@@ -65,9 +66,9 @@ namespace keep.grass
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());
 		}
 
-		public void ShowSelectUserPage(Action<string> Reciever)
+		public void ShowSelectUserPage(Action<string> Reciever, IEnumerable<string> ExistUsers = null)
 		{
-			Navigation.PushAsync(AlphaFactory.MakeSelectUserPage(Reciever));
+			Navigation.PushAsync(AlphaFactory.MakeSelectUserPage(Reciever, ExistUsers));
 		}
 
 		public void OnChangeSettings()
