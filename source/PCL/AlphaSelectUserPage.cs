@@ -27,7 +27,8 @@ namespace keep.grass
 			{
 				return new ListItem
 				{
-					ImageSource = User.AvatarUrl,
+					//ImageSource = User.AvatarUrl, 本来こちらのコードであるべきだが、こちらのURLだと他の箇所とキャッシュが分断されてよろしくない。
+                    ImageSource = GitHub.GetIconUrl(User.Login),
 					Text = User.Login,
 				};
 			}
