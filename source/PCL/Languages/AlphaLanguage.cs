@@ -48,6 +48,8 @@ namespace keep.grass.Languages
 					{ "Built with", "利用技術" },
                     { "Select a user", "ユーザーの選択" },
                     { "User's name etc.", "ユーザーの名前等" },
+                    { "Add", "追加" },
+                    { "Delete", "削除" },
 				}
 			}
 		};
