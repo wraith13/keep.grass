@@ -92,15 +92,6 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.55.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.iOS">
-      <HintPath>..\packages\SkiaSharp.Views.1.55.1\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.55.1\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -118,6 +109,15 @@
     </Reference>
     <Reference Include="ImageCircle.Forms.Plugin.iOS">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.56.0\lib\XamariniOS\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.iOS">
+      <HintPath>..\packages\SkiaSharp.Views.1.56.0\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.56.0\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
