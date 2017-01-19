@@ -119,6 +119,13 @@ namespace keep.grass
 					Command: new Command(o => Device.OpenUri(new Uri("https://github.com/mono/SkiaSharp"))),
 					OptionImageSource: Root.GetExportImageSource()
 				),
+                AlphaFactory.MakeCircleImageCell
+                (
+                    ImageSource: null,
+                    Text: "Json.NET",
+                    Command: new Command(o => Device.OpenUri(new Uri("http://www.newtonsoft.com/json"))),
+                    OptionImageSource: Root.GetExportImageSource()
+                ),
 				AlphaFactory.MakeCircleImageCell
 				(
 					ImageSource: null,

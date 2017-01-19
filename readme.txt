@@ -83,6 +83,10 @@ https://www.nuget.org/packages/NotificationsExtensions.Win10
 https://github.com/mono/SkiaSharp
 https://www.nuget.org/packages/SkiaSharp.Views.Forms/
 
+■Json.NET
+http://www.newtonsoft.com/json
+https://www.nuget.org/packages/Newtonsoft.Json/
+
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ■
