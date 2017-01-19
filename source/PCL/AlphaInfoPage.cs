@@ -126,6 +126,13 @@ namespace keep.grass
 					Command: new Command(o => Device.OpenUri(new Uri("https://www.google.com/get/noto/help/cjk/"))),
 					OptionImageSource: Root.GetExportImageSource()
 				),
+                AlphaFactory.MakeCircleImageCell
+                (
+                    ImageSource: null,
+                    Text: "GitHub Octicons",
+                    Command: new Command(o => Device.OpenUri(new Uri("https://octicons.github.com"))),
+                    OptionImageSource: Root.GetExportImageSource()
+                ),
 			};
 
 			var StackContent = new StackLayout
