@@ -44,7 +44,6 @@ namespace keep.grass
 				{
 					LastPublicActivityCache[User] = value;
 				}
-				Settings.SetIsValidUserName(User, true);
 				OnUpdateLastPublicActivity(User, value);
 			}
 		}

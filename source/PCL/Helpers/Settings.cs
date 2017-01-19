@@ -109,21 +109,6 @@ namespace keep.grass.Helpers
 			return result.ToArray();
 		}
 
-		private const string IsValidUserNameKey = "IsValidUserName";
-		private static string MakeIsValidUserNameKey(string User)
-		{
-			return $"{IsValidUserNameKey}{User}";
-		}
-		private static readonly bool IsValidUserNameDefault = false;
-		public static bool GetIsValidUserName(string User)
-		{
-			return AppSettings.GetValueOrDefault<bool>(MakeIsValidUserNameKey(User), IsValidUserNameDefault);
-		}
-		public static void SetIsValidUserName(string User, bool value)
-		{
-			AppSettings.AddOrUpdateValue<bool>(MakeIsValidUserNameKey(User), value);
-		}
-
 		private const string LastPublicActivityKey = "LastPublicActivity";
 		private static string MakeLastPublicActivityKey(string User)
 		{

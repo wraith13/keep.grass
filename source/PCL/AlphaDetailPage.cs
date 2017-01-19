@@ -175,12 +175,9 @@ namespace keep.grass
 						)
 					);
 					UserLabel.OptionImageSource = Root.GetExportImageSource();
-					if (!Settings.GetIsValidUserName(User))
-					{
-						ClearActiveInfo();
-					}
 					if (default(DateTime) == Domain.GetLastPublicActivity(User))
 					{
+                        ClearActiveInfo();
 						Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
 					}
 				}

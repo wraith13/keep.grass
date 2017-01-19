@@ -62,10 +62,7 @@ namespace keep.grass
 			i.LastPublicActivity = default(DateTime);
 			if (!string.IsNullOrWhiteSpace(User))
 			{
-				if (Settings.GetIsValidUserName(User))
-				{
-					i.LastPublicActivity = Domain.GetLastPublicActivity(User);
-				}
+				i.LastPublicActivity = Domain.GetLastPublicActivity(User);
 				i.GestureRecognizers
 					.Add
 					(
