@@ -36,6 +36,6 @@ namespace keep.grass
         {
             { nameof(Light), Light },
             { nameof(Dark), Dark },
-        }
+        };
     }
 }
