@@ -4,6 +4,7 @@ using System.Linq;
 
 using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -76,6 +77,20 @@ namespace keep.grass
 			{
 				Image.Source = value;
                 Image.IsVisible = null != Image.Source;
+            }
+        }
+        public string ImageSourceUrl
+        {
+            set
+            {
+                Task.Run
+                (
+                    async () =>
+                    {
+                        var Source = await AlphaFactory.MakeImageSourceFromUrl(value);
+                        Device.BeginInvokeOnMainThread(() => ImageSource = Source);
+                    }
+                );
             }
         }
 

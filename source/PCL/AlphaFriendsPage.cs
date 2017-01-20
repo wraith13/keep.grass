@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
+using System.Threading.Tasks;
 
 namespace keep.grass
 {
@@ -22,7 +23,7 @@ namespace keep.grass
 
         public class ListItem
         {
-            public ImageSource ImageSource { get; set; }
+            public string ImageSourceUrl { get; set; }
             public string Text { get; set; }
             public bool IsSeledted { get; set; }
 
@@ -30,7 +31,7 @@ namespace keep.grass
             {
                 return new ListItem
                 {
-                    ImageSource = GitHub.GetIconUrl(User),
+                    ImageSourceUrl = GitHub.GetIconUrl(User),
                     Text = User,
                 };
             }
@@ -42,7 +43,7 @@ namespace keep.grass
             List = new ListView
             {
                 ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
-                    .SetBindingList("ImageSource", "Text"),
+                    .SetBindingList("ImageSourceUrl", "Text"),
             };
             List.ItemTapped += (sender, e) =>
             {

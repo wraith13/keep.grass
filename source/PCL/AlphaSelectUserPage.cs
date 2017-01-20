@@ -20,15 +20,15 @@ namespace keep.grass
 
 		public class ListItem
 		{
-			public ImageSource ImageSource { get; set; }
+			public string ImageSourceUrl { get; set; }
 			public string Text { get; set; }
 
 			public static ListItem Make(GitHub.SearchUser User)
 			{
 				return new ListItem
 				{
-					//ImageSource = User.AvatarUrl, 本来こちらのコードであるべきだが、こちらのURLだと他の箇所とキャッシュが分断されてよろしくない。
-                    ImageSource = GitHub.GetIconUrl(User.Login),
+					//ImageSourceUrl = User.AvatarUrl, 本来こちらのコードであるべきだが、こちらのURLだと他の箇所とキャッシュが分断されてよろしくない。
+                    ImageSourceUrl = GitHub.GetIconUrl(User.Login),
 					Text = User.Login,
 				};
 			}
@@ -36,7 +36,7 @@ namespace keep.grass
 			{
 				return new ListItem
 				{
-					ImageSource = GitHub.GetIconUrl(User),
+					ImageSourceUrl = GitHub.GetIconUrl(User),
 					Text = User,
 				};
 			}
@@ -50,7 +50,7 @@ namespace keep.grass
 			List = new ListView
 			{
 				ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
-					.SetBindingList("ImageSource", "Text"),
+					.SetBindingList("ImageSourceUrl", "Text"),
 			};
 			List.ItemTapped += (sender, e) =>
 			{
