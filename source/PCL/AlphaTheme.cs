@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using keep.grass.Helpers;
 using Xamarin.Forms;
 
 namespace keep.grass
@@ -21,12 +23,12 @@ namespace keep.grass
         {
         }
 
-        public static AlphaTheme Light = new AlphaTheme
+        public static AlphaTheme White = new AlphaTheme
         {
             ForeGroundColor = Color.Black,
             BackGroundColor = Color.White,
         };
-        public static AlphaTheme Dark = new AlphaTheme
+        public static AlphaTheme Black = new AlphaTheme
         {
             ForeGroundColor = Color.White,
             BackGroundColor = Color.Black,
@@ -34,8 +36,24 @@ namespace keep.grass
 
         public static Dictionary<string, AlphaTheme> All = new Dictionary<string, AlphaTheme>
         {
-            { nameof(Light), Light },
-            { nameof(Dark), Dark },
+            { nameof(White), White },
+            { nameof(Black), Black },
         };
+
+        private static KeyValuePair<string, AlphaTheme> Get(string Theme)
+        {
+            return All
+                .Where(i => i.Key == Theme)
+                .Concat(All.FirstOrDefault())
+                .FirstOrDefault();
+        }
+        public static AlphaTheme Get()
+        {
+            return Get(Settings.Theme).Value;
+        }
+        public static void Set(String Theme)
+        {
+            Settings.Theme = Get(Theme).Key;
+        }
     }
 }

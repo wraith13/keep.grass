@@ -56,6 +56,20 @@ namespace keep.grass.Helpers
 			}
 		}
 
+        private const string ThemeKey = "Theme";
+        private static readonly string ThemeDefault = string.Empty;
+        public static string Theme
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>(ThemeKey, ThemeDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>(ThemeKey, value);
+            }
+        }
+
 		private const string UserNameKey = "UserName";
 		private static readonly string UserNameDefault = string.Empty;
 		public static string UserName
