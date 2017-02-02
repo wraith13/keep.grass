@@ -14,11 +14,13 @@ namespace keep.grass
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
+		AlphaPickerCell ThemeCell = null;
 		AlphaPickerCell LanguageCell = null;
 
 		public AlphaSettingsPage()
 		{
 			Title = L["Settings"];
+			ThemeCell = AlphaFactory.MakePickerCell();
 			LanguageCell = AlphaFactory.MakePickerCell();
 
 			UserLabel.Command = new Command
@@ -95,6 +97,10 @@ namespace keep.grass
 										Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
 									)
 								},
+								new TableSection(L["Theme"])
+								{
+									ThemeCell
+								},
 								new TableSection(L["Language"])
 								{
 									LanguageCell
@@ -135,6 +141,10 @@ namespace keep.grass
 										{
 											UserLabel,
 											Friends,
+										},
+										new TableSection(L["Theme"])
+										{
+											ThemeCell
 										},
 										new TableSection(L["Language"])
 										{
@@ -182,13 +192,27 @@ namespace keep.grass
 			base.OnAppearing();
 
 			ApplyUser(Settings.UserName);
+
+			var Theme = Settings.Theme ?? "";
+			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+			foreach (var i in AlphaTheme.All.Keys)
+			{
+				if (!ThemeCell.Items.Where(j => j == i).Any())
+				{
+					ThemeCell.Items.Add(i);
+				}
+			}
+			ThemeCell.SelectedIndex = L.DisplayNames
+				.Select(i => i.Key)
+				.IndexOf(Theme);
+
 			var Language = Settings.Language ?? "";
 			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
 			foreach (var i in L.DisplayNames.Select(i => i.Value))
 			{
-				if (!LanguageCell.Items.Where(j => j == i).Any())
+				if (!LanguageCell.Items.Where(j => j == L[i]).Any())
 				{
-					LanguageCell.Items.Add(i);
+					LanguageCell.Items.Add(L[i]);
 				}
 			}
 			LanguageCell.SelectedIndex = L.DisplayNames
@@ -199,6 +223,15 @@ namespace keep.grass
 		{
 			base.OnDisappearing();
             bool IsChanged = false;
+
+			var OldTheme = Settings.Theme;
+			Settings.Theme = AlphaTheme.All.Keys.Select(i => L[i]).ElementAt(ThemeCell.SelectedIndex);
+			if (OldTheme != L.Get())
+			{
+				Root.RebuildMainPage();
+				IsChanged = true;
+			}
+
 			var OldLanguage = L.Get();
 			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
 			if (OldLanguage != L.Get())
@@ -207,6 +240,7 @@ namespace keep.grass
 				Root.RebuildMainPage();
                 IsChanged = true;
             }
+
             if (IsChanged)
             {
                 Root.OnChangeSettings();
