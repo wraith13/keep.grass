@@ -12,6 +12,7 @@ namespace keep.grass
 	{
 		AlphaApp Root = AlphaFactory.MakeSureApp();
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
 		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
 		AlphaPickerCell ThemeCell = null;
@@ -193,8 +194,8 @@ namespace keep.grass
 
 			ApplyUser(Settings.UserName);
 
-			var Theme = Settings.Theme ?? "";
-			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+			var Theme = AlphaTheme.Get();
+			//ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
 			foreach (var i in AlphaTheme.All.Keys)
 			{
 				if (!ThemeCell.Items.Where(j => j == i).Any())
@@ -202,8 +203,7 @@ namespace keep.grass
 					ThemeCell.Items.Add(i);
 				}
 			}
-			ThemeCell.SelectedIndex = L.DisplayNames
-				.Select(i => i.Key)
+			ThemeCell.SelectedIndex = AlphaTheme.All.Values
 				.IndexOf(Theme);
 
 			var Language = Settings.Language ?? "";
@@ -224,11 +224,10 @@ namespace keep.grass
 			base.OnDisappearing();
             bool IsChanged = false;
 
-			var OldTheme = Settings.Theme;
-			Settings.Theme = AlphaTheme.All.Keys.Select(i => L[i]).ElementAt(ThemeCell.SelectedIndex);
-			if (OldTheme != L.Get())
+			var OldTheme = AlphaTheme.Get();
+			AlphaTheme.Set(AlphaTheme.All.Keys.Select(i => L[i]).ElementAt(ThemeCell.SelectedIndex));
+			if (OldTheme != AlphaTheme.Get())
 			{
-				Root.RebuildMainPage();
 				IsChanged = true;
 			}
 
@@ -237,12 +236,12 @@ namespace keep.grass
 			if (OldLanguage != L.Get())
 			{
 				L.Update();
-				Root.RebuildMainPage();
                 IsChanged = true;
             }
 
             if (IsChanged)
             {
+				Root.RebuildMainPage();
                 Root.OnChangeSettings();
             }
         }
