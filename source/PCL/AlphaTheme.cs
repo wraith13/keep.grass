@@ -47,13 +47,21 @@ namespace keep.grass
                 .Concat(All.FirstOrDefault())
                 .FirstOrDefault();
         }
+
+        private static AlphaTheme Cache = null;
+
         public static AlphaTheme Get()
         {
-            return Get(Settings.Theme).Value;
+            return Cache ??
+            (
+                Cache = Get(Settings.Theme).Value
+            );
         }
         public static void Set(String Theme)
         {
-            Settings.Theme = Get(Theme).Key;
+            var i = Get(Theme);
+            Cache = i.Value;
+            Settings.Theme = i.Key;
         }
     }
 }
