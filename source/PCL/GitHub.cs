@@ -173,6 +173,9 @@ namespace keep.grass
 								//	return true;
 								//case "mark-github":
 								//	return true;
+								case "person":
+									//  MemberEvent
+									return false;
 								case "repo":
 									return true;
 								case "star":

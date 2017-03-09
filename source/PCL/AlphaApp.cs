@@ -132,6 +132,7 @@ namespace keep.grass
 					case "issue-opened":
 					case "issue-reopened":
 					case "mark-github":
+					case "person":
 					case "repo":
 					case "star":
 					case "tag":
