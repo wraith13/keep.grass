@@ -8,6 +8,11 @@ namespace keep.grass
 {
     public class AlphaTheme
     {
+        public Color AccentColor
+        {
+            get;
+            private set;
+        }
         public Color ForeGroundColor
         {
             get;
@@ -25,11 +30,13 @@ namespace keep.grass
 
         public static AlphaTheme White = new AlphaTheme
         {
+            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForeGroundColor = Color.Black,
             BackGroundColor = Color.White,
         };
         public static AlphaTheme Black = new AlphaTheme
         {
+            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForeGroundColor = Color.White,
             BackGroundColor = Color.Black,
         };
