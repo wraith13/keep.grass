@@ -23,6 +23,14 @@ namespace keep.grass
 			Button.HorizontalOptions = LayoutOptions.FillAndExpand;
 
 			Indicator.IsVisible = false;
+            ApplyTheme(AlphaTheme.Get());
+		}
+
+		public void ApplyTheme(AlphaTheme Theme)
+		{
+			Indicator.Color = Theme.ForeGroundColor;
+			TextColor = Theme.AccentColor;
+			//BackgroundColor = Theme.BackGroundColor;
 		}
 
 		public void ShowText()

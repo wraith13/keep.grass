@@ -108,8 +108,7 @@ namespace keep.grass
             }
 
 			UpdateButton.Text = L["Update"];
-            UpdateButton.TextColor = Theme.AccentColor;
-            UpdateButton.BackgroundColor = Theme.BackGroundColor;
+            UpdateButton.ApplyTheme(Theme);
             var ButtonFrame = new Grid()
             {
                 VerticalOptions = LayoutOptions.End,

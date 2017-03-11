@@ -37,9 +37,17 @@ namespace keep.grass
 			RefreshImage.IsVisible = null != CommandValue;
 
             Indicator.IsVisible = false;
+            ApplyTheme(AlphaTheme.Get());
         }
 
-        public void ShowText()
+        public void ApplyTheme(AlphaTheme Theme)
+        {
+            Indicator.Color = Theme.ForeGroundColor;
+            TextLabel.TextColor = Theme.ForeGroundColor;
+            //View.BackgroundColor = Theme.BackGroundColor;
+        }
+
+		public void ShowText()
 		{
 			Indicator.IsRunning = false;
 			Indicator.IsVisible = false;
