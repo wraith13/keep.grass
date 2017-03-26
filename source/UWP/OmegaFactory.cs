@@ -56,5 +56,9 @@ namespace keep.grass.UWP
         {
             return new OmegaCircleGraph();
         }
+        public override Type GetOmegaGitHubUserCellType()
+        {
+            return typeof(OmegaCircleImageCell);
+        }
     }
 }
