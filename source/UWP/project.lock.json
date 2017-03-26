@@ -1971,7 +1971,7 @@
           }
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -3809,7 +3809,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -5604,7 +5604,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -7451,7 +7451,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -9246,7 +9246,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -11093,7 +11093,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -12888,7 +12888,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
+      "Xam.Plugins.Forms.ImageCircle/1.8.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
@@ -16406,12 +16406,12 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "Xam.Plugins.Forms.ImageCircle/1.8.0.5": {
-      "sha512": "Wl9OR/YnS/4u0yUJiFrPD6y3ZV7n7nobfHRA/nUuOHdPdb+g5gsn3eCKHovqUrHLchoMNOn85I+v7cxalumLhQ==",
+    "Xam.Plugins.Forms.ImageCircle/1.8.1": {
+      "sha512": "gU4mTnwB3TCBw3eLP0MNpLUKNsWxYJe28NbpU/CY6YQaGtrIOZ5XRrvjz30w6AKhXeIA+DC6klUY1YqfCNWgPg==",
       "type": "package",
-      "path": "xam.plugins.forms.imagecircle/1.8.0.5",
+      "path": "xam.plugins.forms.imagecircle/1.8.1",
       "files": [
-        "Xam.Plugins.Forms.ImageCircle.1.8.0.5.nupkg.sha512",
+        "Xam.Plugins.Forms.ImageCircle.1.8.1.nupkg.sha512",
         "Xam.Plugins.Forms.ImageCircle.nuspec",
         "lib/MonoAndroid10/ImageCircle.Forms.Plugin.Abstractions.dll",
         "lib/MonoAndroid10/ImageCircle.Forms.Plugin.Abstractions.pdb",
@@ -16682,7 +16682,7 @@
       "NotificationsExtensions.Win10 >= 14332.0.2",
       "SkiaSharp >= 1.56.2",
       "SkiaSharp.Views.Forms >= 1.56.2",
-      "Xam.Plugins.Forms.ImageCircle >= 1.8.0.5",
+      "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
       "Xam.Plugins.Settings >= 2.5.4",
       "Xamarin.Forms >= 2.3.3.193"
     ],
@@ -16713,7 +16713,7 @@
       "NotificationsExtensions.Win10": "14332.0.2",
       "SkiaSharp": "1.56.2",
       "SkiaSharp.Views.Forms": "1.56.2",
-      "Xam.Plugins.Forms.ImageCircle": "1.8.0.5",
+      "Xam.Plugins.Forms.ImageCircle": "[1.8.1, )",
       "Xam.Plugins.Settings": "2.5.4",
       "Xamarin.Forms": "2.3.3.193"
     },
