@@ -12,6 +12,7 @@ namespace keep.grass
 	public class AlphaDetailPage : ResponsiveContentPage
 	{
 		AlphaApp Root = AlphaFactory.MakeSureApp();
+        AlphaTheme Theme;
 		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
@@ -34,7 +35,6 @@ namespace keep.grass
 
 			//Build();
 
-			CircleGraph.BackgroundColor = Color.White;
 			CircleGraph.IsVisibleSatelliteTexts = true;
 			CircleGraph.IsDoughnut = false;
 			CircleGraph.ActiveWait = TimeSpan.FromMilliseconds(100);
@@ -47,9 +47,12 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaDetailPage.Rebuild();");
 
+			Theme = AlphaTheme.Get();
+            BackgroundColor = Theme.BackGroundColor;
+			CircleGraph.BackgroundColor = Theme.BackGroundColor;
 			var MainTable = new TableView
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Theme.BackGroundColor,
 				Root = new TableRoot
 				{
 					new TableSection(L["Github Account"])
@@ -142,7 +145,7 @@ namespace keep.grass
 			var LastPublicActivity = Domain.GetLastPublicActivity(User);
 			CircleGraph.LastPublicActivity = LastPublicActivity;
 			LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
-			LastActivityStampLabel.TextColor = Color.Default;
+			LastActivityStampLabel.TextColor = Theme.ForeGroundColor;
 		}
 		public void OnErrorInQuery()
 		{
@@ -166,7 +169,7 @@ namespace keep.grass
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
 					UserLabel.Text = User;
-					UserLabel.TextColor = Color.Default;
+					UserLabel.TextColor = Theme.ForeGroundColor;
 					UserLabel.Command = new Command
 					(
 						o => Device.OpenUri
