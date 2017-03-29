@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace keep.grass
 {
@@ -8,6 +9,10 @@ namespace keep.grass
 		{
 			return default(T).Equals(value);
 		}
-	}
+        public static T GetValue<T>(this object o, string name)
+        {
+            return (T)o.GetType().GetRuntimeProperty(name).GetValue(o);
+        }
+    }
 }
 

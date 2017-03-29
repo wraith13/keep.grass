@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -18,23 +19,20 @@ namespace keep.grass
 		SearchBar Search;
 		ActivityIndicator Indicator;
 
-		public class ListItem
+		static public class ListItem
 		{
-			public string ImageSourceUrl { get; set; }
-			public string Text { get; set; }
-
-			public static ListItem Make(GitHub.SearchUser User)
+			public static object Make(GitHub.SearchUser User)
 			{
-				return new ListItem
+				return new
 				{
 					//ImageSourceUrl = User.AvatarUrl, 本来こちらのコードであるべきだが、こちらのURLだと他の箇所とキャッシュが分断されてよろしくない。
                     ImageSourceUrl = GitHub.GetIconUrl(User.Login),
 					Text = User.Login,
 				};
 			}
-			public static ListItem Make(string User)
+			public static object Make(string User)
 			{
-				return new ListItem
+				return new
 				{
 					ImageSourceUrl = GitHub.GetIconUrl(User),
 					Text = User,
@@ -54,12 +52,12 @@ namespace keep.grass
 			};
 			List.ItemTapped += (sender, e) =>
 			{
-				var User = e.Item as ListItem;
-				if (null != User)
+                var User = e.Item.GetValue<string>("Text");
+                if (null != User)
 				{
-					Debug.WriteLine($"Select User: {User.Text}");
-					Reciever(User.Text);
-					Domain.AddRecentUser(User.Text);
+					Debug.WriteLine($"Select User: {User}");
+					Reciever(User);
+					Domain.AddRecentUser(User);
 				}
 				AlphaFactory.MakeSureApp().Navigation.PopAsync();
 			};
@@ -77,7 +75,7 @@ namespace keep.grass
                         List.IsVisible = false;
                         Indicator.IsVisible = true;
                         Indicator.IsRunning = true;
-                        List.ItemsSource = new ListItem[] { };
+                        List.ItemsSource = new object[] { };
 
 						try
 						{

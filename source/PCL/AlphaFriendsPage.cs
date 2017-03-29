@@ -21,14 +21,11 @@ namespace keep.grass
         Button DeleteButton;
         bool IsChanged = false;
 
-        public class ListItem
+        static public class ListItem
         {
-            public string ImageSourceUrl { get; set; }
-            public string Text { get; set; }
-
-            public static ListItem Make(string User)
+            public static object Make(string User)
             {
-                return new ListItem
+                return new
                 {
                     ImageSourceUrl = GitHub.GetIconUrl(User),
                     Text = User,
@@ -46,7 +43,7 @@ namespace keep.grass
             };
             List.ItemTapped += (sender, e) =>
             {
-                DeleteButton.IsEnabled = null != (e.Item as ListItem);
+                DeleteButton.IsEnabled = null != e.Item;
             };
             AddButton = new Button
             {
@@ -76,10 +73,10 @@ namespace keep.grass
                 (
                     o =>
                     {
-                        var SelectedItem = List.SelectedItem as ListItem;
-                        if (null != SelectedItem)
+                        var User = List.SelectedItem.GetValue<string>("Text");
+                        if (null != User)
                         {
-                            DeleteUser(SelectedItem.Text);
+                            DeleteUser(User);
                         }
                     }
                 ),
