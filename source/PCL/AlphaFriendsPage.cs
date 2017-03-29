@@ -25,7 +25,6 @@ namespace keep.grass
         {
             public string ImageSourceUrl { get; set; }
             public string Text { get; set; }
-            public bool IsSeledted { get; set; }
 
             public static ListItem Make(string User)
             {
