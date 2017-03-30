@@ -64,13 +64,22 @@ namespace keep.grass
 			base.Build();
 			Debug.WriteLine("AlphaSettingsPage.Rebuild();");
 
+			var Theme = AlphaTheme.Get();
+			BackgroundColor = Theme.BackGroundColor;
+
 			var Friends = AlphaFactory.MakeCircleImageCell
 			(
 				Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
 				Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
 			);
-			
-			if (Width <= Height)
+            Friends.TextColor = Theme.ForeGroundColor;
+
+            UserLabel.TextColor = Theme.ForeGroundColor;
+			UserLabel.View.BackgroundColor = Theme.ForeGroundColor;
+            ThemeCell.View.BackgroundColor = Theme.ForeGroundColor;
+			LanguageCell.View.BackgroundColor = Theme.ForeGroundColor;
+
+            if (Width <= Height)
 			{
 				Content = new StackLayout
 				{
@@ -78,6 +87,7 @@ namespace keep.grass
 					{
 						new TableView
 						{
+            				BackgroundColor = Theme.BackGroundColor,
 							Root = new TableRoot
 							{
 								new TableSection(L["Github Account"])
