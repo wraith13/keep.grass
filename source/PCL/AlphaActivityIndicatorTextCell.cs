@@ -42,8 +42,8 @@ namespace keep.grass
 
         public void ApplyTheme(AlphaTheme Theme)
         {
-            Indicator.Color = Theme.ForeGroundColor;
-            TextLabel.TextColor = Theme.ForeGroundColor;
+            Indicator.Color = Theme.ForegroundColor;
+            TextLabel.TextColor = Theme.ForegroundColor;
             //View.BackgroundColor = Theme.BackGroundColor;
         }
 

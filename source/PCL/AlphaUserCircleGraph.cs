@@ -24,6 +24,11 @@ namespace keep.grass
 
 		float LeftTimeBarHeight => FontSize * 2.0f;
 
+		public void ApplyTheme(AlphaTheme Theme)
+		{
+			BackgroundColor = Theme.BackgroundColor;
+		}
+
 		public override bool IsVisibleLeftTimeBar
 		{
 			set

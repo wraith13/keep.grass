@@ -42,17 +42,19 @@ namespace keep.grass
 			CircleGraph.Now = DateTime.Now;
 		}
 
+		public void ApplyTheme(AlphaTheme Theme)
+		{
+			BackgroundColor = Theme.BackgroundColor;
+            CircleGraph.ApplyTheme(Theme);
+		}
 		public override void Build()
 		{
 			base.Build();
 			Debug.WriteLine("AlphaDetailPage.Rebuild();");
 
 			Theme = AlphaTheme.Get();
-            BackgroundColor = Theme.BackGroundColor;
-			CircleGraph.BackgroundColor = Theme.BackGroundColor;
 			var MainTable = new TableView
 			{
-				BackgroundColor = Theme.BackGroundColor,
 				Root = new TableRoot
 				{
 					new TableSection(L["Github Account"])
@@ -69,6 +71,7 @@ namespace keep.grass
 					},
 				},
 			};
+			MainTable.ApplyTheme(Theme);
 			if (Width <= Height)
 			{
 				//CircleGraph.WidthRequest = Width;
@@ -120,6 +123,7 @@ namespace keep.grass
 
 			CircleGraph.IsInvalidCanvas = true;
 			OnUpdateLastPublicActivity();
+            ApplyTheme(Theme);
 		}
 
 		protected override void OnAppearing()
@@ -145,7 +149,7 @@ namespace keep.grass
 			var LastPublicActivity = Domain.GetLastPublicActivity(User);
 			CircleGraph.LastPublicActivity = LastPublicActivity;
 			LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
-			LastActivityStampLabel.TextColor = Theme.ForeGroundColor;
+			LastActivityStampLabel.TextColor = Theme.ForegroundColor;
 		}
 		public void OnErrorInQuery()
 		{
@@ -169,7 +173,7 @@ namespace keep.grass
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
 					UserLabel.Text = User;
-					UserLabel.TextColor = Theme.ForeGroundColor;
+					UserLabel.TextColor = Theme.ForegroundColor;
 					UserLabel.Command = new Command
 					(
 						o => Device.OpenUri

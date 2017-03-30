@@ -13,12 +13,12 @@ namespace keep.grass
             get;
             private set;
         }
-        public Color ForeGroundColor
+        public Color ForegroundColor
         {
             get;
             private set;
         }
-        public Color BackGroundColor
+        public Color BackgroundColor
         {
             get;
             private set;
@@ -31,14 +31,14 @@ namespace keep.grass
         public static AlphaTheme White = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForeGroundColor = Color.Black,
-            BackGroundColor = Color.White,
+            ForegroundColor = Color.Black,
+            BackgroundColor = Color.White,
         };
         public static AlphaTheme Black = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForeGroundColor = Color.White,
-            BackGroundColor = Color.Black,
+            ForegroundColor = Color.White,
+            BackgroundColor = Color.Black,
         };
 
         public static Dictionary<string, AlphaTheme> All = new Dictionary<string, AlphaTheme>
@@ -71,4 +71,11 @@ namespace keep.grass
             Settings.Theme = i.Key;
         }
     }
+    static class AlphaThemeHelper
+    {
+        public static void ApplyTheme(this View View, AlphaTheme Theme)
+		{
+            View.BackgroundColor = Theme.BackgroundColor;
+		}
+	}
 }

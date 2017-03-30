@@ -83,8 +83,8 @@ namespace keep.grass
             var Theme = AlphaTheme.Get();
             var NavigationBar = Root.Navigation;
             NavigationBar.BarTextColor = Theme.AccentColor;
-            NavigationBar.BarBackgroundColor = Theme.BackGroundColor;
-            BackgroundColor = Theme.BackGroundColor;
+            NavigationBar.BarBackgroundColor = Theme.BackgroundColor;
+            BackgroundColor = Theme.BackgroundColor;
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
@@ -104,7 +104,7 @@ namespace keep.grass
 			}
             foreach (var i in Friends ?? new AlphaUserCircleGraph[] { })
             {
-                i.BackgroundColor = Theme.BackGroundColor;
+                i.BackgroundColor = Theme.BackgroundColor;
             }
 
 			UpdateButton.Text = L["Update"];
@@ -113,7 +113,7 @@ namespace keep.grass
             {
                 VerticalOptions = LayoutOptions.End,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Theme.BackGroundColor,
+                BackgroundColor = Theme.BackgroundColor,
             }
             .HorizontalJustificate
             (
@@ -124,12 +124,12 @@ namespace keep.grass
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     Text = L["Settings"],
                     TextColor = Theme.AccentColor,
-                    BackgroundColor = Theme.BackGroundColor,
+                    BackgroundColor = Theme.BackgroundColor,
 					Command = new Command(o => Root.ShowSettingsPage()),
 				}
 			);
 
-            CircleGraph.BackgroundColor = Theme.BackGroundColor;
+            CircleGraph.BackgroundColor = Theme.BackgroundColor;
 
 			if (Width <= Height)
 			{
@@ -143,7 +143,7 @@ namespace keep.grass
 				var StackContent = new StackLayout
 				{
 					Spacing = 0.0,
-                    BackgroundColor = Theme.BackGroundColor,
+                    BackgroundColor = Theme.BackgroundColor,
 				};
 				StackContent.Children.Add(CircleGraph);
 				BuildFriends(StackContent, StackOrientation.Horizontal);
@@ -164,7 +164,7 @@ namespace keep.grass
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					Spacing = 0.0,
-                    BackgroundColor = Theme.BackGroundColor,
+                    BackgroundColor = Theme.BackgroundColor,
 				};
 				StackContent.Children.Add(CircleGraph);
 				BuildFriends(StackContent, StackOrientation.Vertical);

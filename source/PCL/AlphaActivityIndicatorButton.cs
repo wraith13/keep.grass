@@ -28,7 +28,7 @@ namespace keep.grass
 
 		public void ApplyTheme(AlphaTheme Theme)
 		{
-			Indicator.Color = Theme.ForeGroundColor;
+			Indicator.Color = Theme.ForegroundColor;
 			TextColor = Theme.AccentColor;
 			//BackgroundColor = Theme.BackGroundColor;
 		}
