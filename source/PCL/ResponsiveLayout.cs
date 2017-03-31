@@ -213,6 +213,7 @@ namespace keep.grass
 			if (BuiltWidth != (int)width || BuiltHeight != (int)height)
 			{
 				Build();
+                AlphaTheme.Apply(this);
 			}
 		}
 

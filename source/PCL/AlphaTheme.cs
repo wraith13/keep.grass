@@ -70,8 +70,58 @@ namespace keep.grass
             Cache = i.Value;
             Settings.Theme = i.Key;
         }
+
+        public static void Apply(object UIObject)
+        {
+            var Theme = Get();
+            var ApplyHandler = UIObject as AlphaThemeApplyHandler;
+            if (null != ApplyHandler)
+            {
+                ApplyHandler.ApplyTheme(Theme);
+            }
+            else
+            {
+				ApplyCore(UIObject, Theme);
+				var AppliedHandler = UIObject as AlphaThemeAppliedHandler;
+				if (null != ApplyHandler)
+				{
+					AppliedHandler.AppliedTheme(Theme);
+				}
+            }
+        }
+            private static void ApplyCore(object UIObject, AlphaTheme Theme)
+            {
+                //  C# 7.0 を早く・・・
+
+                var ContentPage = UIObject as ContentPage;
+                if (null != ContentPage)
+                {
+                    ContentPage.BackgroundColor = Theme.BackgroundColor;
+                    Apply(ContentPage.Content);
+                    return;
+                }
+
+                var Layout = UIObject as StackLayout;
+                if (null != Layout)
+                {
+                    Layout.BackgroundColor = Theme.BackgroundColor;
+                    foreach (var i in Layout.Children)
+                    {
+                        Apply(Layout.Children);
+                    }
+                    return;
+                }
+		}
     }
-    static class AlphaThemeHelper
+    interface AlphaThemeApplyHandler
+	{
+        void ApplyTheme(AlphaTheme Theme);
+	}
+	interface AlphaThemeAppliedHandler
+	{
+		void AppliedTheme(AlphaTheme Theme);
+	}
+	static class AlphaThemeHelper
     {
         public static void ApplyTheme(this View View, AlphaTheme Theme)
 		{
