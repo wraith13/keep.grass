@@ -89,43 +89,123 @@ namespace keep.grass
 				}
             }
         }
-            private static void ApplyCore(object UIObject, AlphaTheme Theme)
+        private static void ApplyCore(object UIObject, AlphaTheme Theme)
+        {
+            //  C# 7.0 を早く・・・
+
+            var ContentPage = UIObject as ContentPage;
+            if (null != ContentPage)
             {
-                //  C# 7.0 を早く・・・
+                ContentPage.BackgroundColor = Theme.BackgroundColor;
+                Apply(ContentPage.Content);
+                return;
+            }
 
-                var ContentPage = UIObject as ContentPage;
-                if (null != ContentPage)
-                {
-                    ContentPage.BackgroundColor = Theme.BackgroundColor;
-                    Apply(ContentPage.Content);
-                    return;
-                }
+            var NavigationPage = UIObject as NavigationPage;
+            if (null != NavigationPage)
+            {
+                NavigationPage.BarTextColor = Theme.ForegroundColor;
+                NavigationPage.BarBackgroundColor = Theme.BackgroundColor;
+                NavigationPage.BackgroundColor = Theme.BackgroundColor;
+                Apply(NavigationPage.CurrentPage);
+                return;
+            }
 
-                var Layout = UIObject as StackLayout;
-                if (null != Layout)
+            var Layout = UIObject as StackLayout;
+            if (null != Layout)
+            {
+                Layout.BackgroundColor = Theme.BackgroundColor;
+                foreach (var i in Layout.Children)
                 {
-                    Layout.BackgroundColor = Theme.BackgroundColor;
-                    foreach (var i in Layout.Children)
-                    {
-                        Apply(Layout.Children);
-                    }
-                    return;
+                    Apply(i);
                 }
-		}
+                return;
+            }
+
+            var Table = UIObject as TableView;
+            if (null != Table)
+            {
+                Table.BackgroundColor = Theme.BackgroundColor;
+                foreach (var i in Table.Root.AsEnumerable())
+                {
+                    Apply(i);
+                }
+                return;
+            }
+
+            var Section = UIObject as TableSection;
+            if (null != Section)
+            {
+                foreach (var i in Section.AsEnumerable())
+                {
+                    Apply(i);
+                }
+                return;
+            }
+
+            var Label = UIObject as Label;
+            if (null != Label)
+            {
+                Label.TextColor = Theme.ForegroundColor;
+				Label.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+
+            var Button = UIObject as Button;
+            if (null != Button)
+            {
+                Button.TextColor = Theme.AccentColor;
+                Button.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+
+            var CircleGraph = UIObject as AlphaUserCircleGraph;
+            if (null != CircleGraph)
+            {
+                //CircleGraph.AltTextColor = Theme.AccentColor;
+                CircleGraph.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+
+            var Grid = UIObject as Grid;
+            if (null != Grid)
+            {
+                Grid.BackgroundColor = Theme.BackgroundColor;
+                foreach (var i in Grid.Children)
+                {
+                    Apply(i);
+                }
+                return;
+            }
+
+            var ViewCell = UIObject as ViewCell;
+            if (null != ViewCell)
+            {
+                Apply(ViewCell.View);
+                return;
+            }
+
+            var View = UIObject as View;
+            if (null != View)
+            {
+                View.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+        }
     }
     interface AlphaThemeApplyHandler
-	{
+    {
         void ApplyTheme(AlphaTheme Theme);
-	}
-	interface AlphaThemeAppliedHandler
-	{
-		void AppliedTheme(AlphaTheme Theme);
-	}
-	static class AlphaThemeHelper
+    }
+    interface AlphaThemeAppliedHandler
+    {
+        void AppliedTheme(AlphaTheme Theme);
+    }
+    static class AlphaThemeHelper
     {
         public static void ApplyTheme(this View View, AlphaTheme Theme)
-		{
+        {
             View.BackgroundColor = Theme.BackgroundColor;
-		}
-	}
+        }
+    }
 }

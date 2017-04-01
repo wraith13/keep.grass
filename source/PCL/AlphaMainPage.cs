@@ -80,11 +80,6 @@ namespace keep.grass
 			Debug.WriteLine("AlphaMainPage.Rebuild();");
 
             AlphaApp Root = AlphaFactory.MakeSureApp();
-            var Theme = AlphaTheme.Get();
-            var NavigationBar = Root.Navigation;
-            NavigationBar.BarTextColor = Theme.AccentColor;
-            NavigationBar.BarBackgroundColor = Theme.BackgroundColor;
-            BackgroundColor = Theme.BackgroundColor;
 
 			if (null == Friends || Settings.GetFriendCount() != Friends.Count())
 			{
@@ -102,18 +97,12 @@ namespace keep.grass
 					FriendCircle.CircleMargin = new Thickness(2.0);
 				}
 			}
-            foreach (var i in Friends ?? new AlphaUserCircleGraph[] { })
-            {
-                i.BackgroundColor = Theme.BackgroundColor;
-            }
 
 			UpdateButton.Text = L["Update"];
-            UpdateButton.ApplyTheme(Theme);
             var ButtonFrame = new Grid()
             {
                 VerticalOptions = LayoutOptions.End,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Theme.BackgroundColor,
             }
             .HorizontalJustificate
             (
@@ -123,13 +112,9 @@ namespace keep.grass
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     Text = L["Settings"],
-                    TextColor = Theme.AccentColor,
-                    BackgroundColor = Theme.BackgroundColor,
 					Command = new Command(o => Root.ShowSettingsPage()),
 				}
 			);
-
-            CircleGraph.BackgroundColor = Theme.BackgroundColor;
 
 			if (Width <= Height)
 			{
@@ -143,7 +128,6 @@ namespace keep.grass
 				var StackContent = new StackLayout
 				{
 					Spacing = 0.0,
-                    BackgroundColor = Theme.BackgroundColor,
 				};
 				StackContent.Children.Add(CircleGraph);
 				BuildFriends(StackContent, StackOrientation.Horizontal);
@@ -164,14 +148,13 @@ namespace keep.grass
 					Orientation = StackOrientation.Horizontal,
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					Spacing = 0.0,
-                    BackgroundColor = Theme.BackgroundColor,
 				};
 				StackContent.Children.Add(CircleGraph);
 				BuildFriends(StackContent, StackOrientation.Vertical);
 				Content = new StackLayout
 				{
 					Spacing = 0.0,
-					BackgroundColor = Color.White,
+					//BackgroundColor = Color.White,
 					Children =
 					{
 						StackContent,
