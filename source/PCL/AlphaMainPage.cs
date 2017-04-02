@@ -54,7 +54,7 @@ namespace keep.grass
 		}
 		public void InitCircleGraph(AlphaUserCircleGraph i, string User)
 		{
-			i.BackgroundColor = Color.White;
+			//i.BackgroundColor = Color.White;
 			i.IsDoughnut = true;
 			i.Now = DateTime.Now;
 			i.User = User;

@@ -32,9 +32,6 @@ namespace keep.grass
 				ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
 				TitleLabel.Text = Entry.Title;
 				UpdatedLabel.Text = Domain.ToString(Entry.Updated);
-				UpdatedLabel.TextColor = Entry.IsContribution ?
-					AlphaDomain.MakeLeftTimeColor(Entry.Updated.AddDays(1) - DateTime.Now) :
-					Color.Gray;
 				DetailStack.Children.Clear();
 				foreach(var i in Entry.Content.Details)
 				{
@@ -51,6 +48,10 @@ namespace keep.grass
 					);
 				};
 				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
+				AlphaTheme.Apply(this);
+				UpdatedLabel.TextColor = Entry.IsContribution ?
+					AlphaDomain.MakeLeftTimeColor(Entry.Updated.AddDays(1) - DateTime.Now) :
+					Color.Gray;
 			}
 		}
 

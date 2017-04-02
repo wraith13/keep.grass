@@ -25,13 +25,14 @@ namespace keep.grass
 				Main = AlphaFactory.MakeMainPage()
 			);
 			MainPage.Title = "keep.grass";
+			AlphaTheme.Apply(Navigation);
 		}
 
 		public void RebuildMainPage()
 		{
 			Debug.WriteLine("AlphaApp::RebuildMainPage");
-			Main.Build();
 			AlphaTheme.Apply(Navigation);
+			Main.Build();
 		}
 
 		protected override void OnStart()

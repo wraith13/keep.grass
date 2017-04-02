@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using keep.grass.Helpers;
 using Xamarin.Forms;
@@ -74,7 +75,7 @@ namespace keep.grass
         public static void Apply(object UIObject)
         {
             var Theme = Get();
-            var ApplyHandler = UIObject as AlphaThemeApplyHandler;
+            var ApplyHandler = UIObject as IAlphaThemeApplyHandler;
             if (null != ApplyHandler)
             {
                 ApplyHandler.ApplyTheme(Theme);
@@ -82,11 +83,11 @@ namespace keep.grass
             else
             {
 				ApplyCore(UIObject, Theme);
-				var AppliedHandler = UIObject as AlphaThemeAppliedHandler;
-				if (null != ApplyHandler)
-				{
-					AppliedHandler.AppliedTheme(Theme);
-				}
+            }
+            var AppliedHandler = UIObject as IAlphaThemeAppliedHandler;
+            if (null != ApplyHandler)
+            {
+                AppliedHandler.AppliedTheme(Theme);
             }
         }
         private static void ApplyCore(object UIObject, AlphaTheme Theme)
@@ -125,6 +126,7 @@ namespace keep.grass
                 Layout.BackgroundColor = Theme.BackgroundColor;
                 foreach (var i in Layout.Children)
                 {
+					Debug.WriteLine($"i:{i.GetType().FullName}");
                     Apply(i);
                 }
                 return;
@@ -151,6 +153,13 @@ namespace keep.grass
                 return;
             }
 
+            var List = UIObject as ListView;
+            if (null != List)
+            {
+                List.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+
             var Label = UIObject as Label;
             if (null != Label)
             {
@@ -173,6 +182,7 @@ namespace keep.grass
                 Grid.BackgroundColor = Theme.BackgroundColor;
                 foreach (var i in Grid.Children)
                 {
+                    Debug.WriteLine($"i:{i.GetType().FullName}");
                     Apply(i);
                 }
                 return;
@@ -194,11 +204,11 @@ namespace keep.grass
 
         }
     }
-    interface AlphaThemeApplyHandler
+    interface IAlphaThemeApplyHandler
     {
         void ApplyTheme(AlphaTheme Theme);
     }
-    interface AlphaThemeAppliedHandler
+    interface IAlphaThemeAppliedHandler
     {
         void AppliedTheme(AlphaTheme Theme);
     }

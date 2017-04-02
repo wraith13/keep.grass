@@ -324,7 +324,7 @@ namespace keep.grass
 				using (var paint = new SKPaint())
 				{
 					paint.IsAntialias = true;
-					paint.Color = Color.White.ToSKColor();
+					paint.Color = BackgroundColor.ToSKColor();
 					paint.StrokeCap = SKStrokeCap.Round;
 					paint.TextSize = FontSize * PhysicalPixelRate;
 					paint.TextAlign = SKTextAlign.Center;

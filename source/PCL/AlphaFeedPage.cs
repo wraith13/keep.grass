@@ -27,6 +27,7 @@ namespace keep.grass
 						{
 							Feed = t.Result;
 							Build();
+                            AlphaTheme.Apply(this);
 						}
 						else
 						{
