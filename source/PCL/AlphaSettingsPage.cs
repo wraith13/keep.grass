@@ -48,7 +48,7 @@ namespace keep.grass
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
 						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
 					UserLabel.Text = User;
-					UserLabel.TextColor = Color.Default;
+					//UserLabel.TextColor = Color.Default;
 				}
 			}
 			else

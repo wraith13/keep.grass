@@ -93,6 +93,14 @@ namespace keep.grass
         {
             //  C# 7.0 を早く・・・
 
+            var CircleGraph = UIObject as AlphaUserCircleGraph;
+            if (null != CircleGraph)
+            {
+                //CircleGraph.AltTextColor = Theme.AccentColor;
+                CircleGraph.BackgroundColor = Theme.BackgroundColor;
+                return;
+            }
+
             var ContentPage = UIObject as ContentPage;
             if (null != ContentPage)
             {
@@ -159,14 +167,6 @@ namespace keep.grass
                 return;
             }
 
-            var CircleGraph = UIObject as AlphaUserCircleGraph;
-            if (null != CircleGraph)
-            {
-                //CircleGraph.AltTextColor = Theme.AccentColor;
-                CircleGraph.BackgroundColor = Theme.BackgroundColor;
-                return;
-            }
-
             var Grid = UIObject as Grid;
             if (null != Grid)
             {
@@ -191,6 +191,7 @@ namespace keep.grass
                 View.BackgroundColor = Theme.BackgroundColor;
                 return;
             }
+
         }
     }
     interface AlphaThemeApplyHandler

@@ -43,6 +43,7 @@ namespace keep.grass
 			OptionImage.HorizontalOptions = LayoutOptions.End;
 			OptionImage.Source = AlphaFactory.GetApp().GetRightImageSource();
 			OptionImage.IsVisible = null != CommandValue;
+            AlphaTheme.Apply(this);
 		}
 
 		private Command CommandValue = null;

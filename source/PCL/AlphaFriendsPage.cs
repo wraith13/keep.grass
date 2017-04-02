@@ -114,7 +114,7 @@ namespace keep.grass
             {
                 VerticalOptions = LayoutOptions.End,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.White,
+                //BackgroundColor = Color.White,
             }
             .HorizontalJustificate
             (
