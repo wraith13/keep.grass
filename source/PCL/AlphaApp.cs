@@ -31,8 +31,9 @@ namespace keep.grass
 		public void RebuildMainPage()
 		{
 			Debug.WriteLine("AlphaApp::RebuildMainPage");
-			AlphaTheme.Apply(Navigation);
 			Main.Build();
+			AlphaTheme.Apply(Navigation);
+			AlphaTheme.Apply(Main);
 		}
 
 		protected override void OnStart()

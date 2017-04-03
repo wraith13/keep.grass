@@ -32,8 +32,8 @@ namespace keep.grass
         public static AlphaTheme White = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.Black,
-            BackgroundColor = Color.White,
+			ForegroundColor = Color.Default,
+			BackgroundColor = Color.Default,
         };
         public static AlphaTheme Black = new AlphaTheme
         {
@@ -98,7 +98,9 @@ namespace keep.grass
             if (null != CircleGraph)
             {
                 //CircleGraph.AltTextColor = Theme.AccentColor;
-                CircleGraph.BackgroundColor = Theme.BackgroundColor;
+                CircleGraph.BackgroundColor = Color.Default == Theme.BackgroundColor ?
+                    Color.White:
+                    Theme.BackgroundColor;
                 return;
             }
 
