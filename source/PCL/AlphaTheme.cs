@@ -32,19 +32,33 @@ namespace keep.grass
         public static AlphaTheme White = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-			ForegroundColor = Color.Default,
-			BackgroundColor = Color.Default,
+            ForegroundColor = Color.Default,
+            BackgroundColor = Color.Default,
+        };
+        public static AlphaTheme Grass = new AlphaTheme
+        {
+            AccentColor = Color.Black,
+			ForegroundColor = Color.FromRgb(0x10, 0x60, 0x20),
+            BackgroundColor = Color.FromRgb(0x88, 0xEE, 0x99),
+        };
+        public static AlphaTheme Abyss = new AlphaTheme
+        {
+            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
+            ForegroundColor = Color.FromRgb(0xAA, 0xBB, 0xEE),
+            BackgroundColor = Color.FromRgb(0x11, 0x33, 0x66),
         };
         public static AlphaTheme Black = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.White,
+            ForegroundColor = Color.FromRgb(0xE8,0xF0,0xEC),
             BackgroundColor = Color.Black,
         };
 
         public static Dictionary<string, AlphaTheme> All = new Dictionary<string, AlphaTheme>
         {
             { nameof(White), White },
+            { nameof(Grass), Grass },
+            { nameof(Abyss), Abyss },
             { nameof(Black), Black },
         };
 
