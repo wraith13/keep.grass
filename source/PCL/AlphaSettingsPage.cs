@@ -200,7 +200,7 @@ namespace keep.grass
 			{
 				if (!ThemeCell.Items.Where(j => j == i).Any())
 				{
-					ThemeCell.Items.Add(i);
+                    ThemeCell.Items.Add(L[i]);
 				}
 			}
 			ThemeCell.SelectedIndex = AlphaTheme.All.Values
@@ -225,7 +225,7 @@ namespace keep.grass
             bool IsChanged = false;
 
 			var OldTheme = AlphaTheme.Get();
-			AlphaTheme.Set(AlphaTheme.All.Keys.Select(i => L[i]).ElementAt(ThemeCell.SelectedIndex));
+            AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
 			if (OldTheme != AlphaTheme.Get())
 			{
 				IsChanged = true;

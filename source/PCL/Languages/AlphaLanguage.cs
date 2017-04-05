@@ -54,7 +54,7 @@ namespace keep.grass.Languages
 					{ "White", "ホワイト" },
 					{ "Grass", "グラス" },
 					{ "Cherry", "サクラ" },
-					{ "Abysss", "アビス" },
+					{ "Abyss", "アビス" },
 					{ "Black", "ブラック" },
 				}
 			}
