@@ -38,8 +38,14 @@ namespace keep.grass
         public static AlphaTheme Grass = new AlphaTheme
         {
             AccentColor = Color.Black,
-			ForegroundColor = Color.FromRgb(0x10, 0x60, 0x20),
+            ForegroundColor = Color.FromRgb(0x10, 0x60, 0x20),
             BackgroundColor = Color.FromRgb(0x88, 0xEE, 0x99),
+        };
+        public static AlphaTheme Cherry = new AlphaTheme
+        {
+            AccentColor = Color.Red,
+            ForegroundColor = Color.FromRgb(0x80, 0x40, 0x40),
+            BackgroundColor = Color.FromRgb(0xFF, 0xCC, 0xCC),
         };
         public static AlphaTheme Abyss = new AlphaTheme
         {
@@ -58,6 +64,7 @@ namespace keep.grass
         {
             { nameof(White), White },
             { nameof(Grass), Grass },
+            { nameof(Cherry), Cherry },
             { nameof(Abyss), Abyss },
             { nameof(Black), Black },
         };
