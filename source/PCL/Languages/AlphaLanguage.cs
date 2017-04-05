@@ -50,6 +50,12 @@ namespace keep.grass.Languages
                     { "User's name etc.", "ユーザーの名前等" },
                     { "Add", "追加" },
                     { "Delete", "削除" },
+                    { "Theme", "テーマ" },
+					{ "White", "ホワイト" },
+					{ "Grass", "グラス" },
+					{ "Cherry", "サクラ" },
+					{ "Abysss", "アビス" },
+					{ "Black", "ブラック" },
 				}
 			}
 		};
