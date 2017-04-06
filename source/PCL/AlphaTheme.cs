@@ -24,6 +24,11 @@ namespace keep.grass
             get;
             private set;
         }
+        public Func<double, Color> MakeLeftTimeColor
+        {
+            get;
+            private set;
+        }
 
         private AlphaTheme()
         {
@@ -34,30 +39,60 @@ namespace keep.grass
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.Default,
             BackgroundColor = Color.Default,
+            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
+            (
+                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
+                b: 0
+            ),
         };
         public static AlphaTheme Grass = new AlphaTheme
         {
             AccentColor = Color.Black,
             ForegroundColor = Color.FromRgb(0x10, 0x60, 0x20),
             BackgroundColor = Color.FromRgb(0x88, 0xEE, 0x99),
+            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
+            (
+                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
+                b: 0
+            ),
         };
         public static AlphaTheme Cherry = new AlphaTheme
         {
             AccentColor = Color.Red,
             ForegroundColor = Color.FromRgb(0x80, 0x40, 0x40),
             BackgroundColor = Color.FromRgb(0xFF, 0xCC, 0xCC),
+            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
+            (
+                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
+                b: 0
+            ),
         };
         public static AlphaTheme Abyss = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.FromRgb(0xAA, 0xBB, 0xEE),
             BackgroundColor = Color.FromRgb(0x11, 0x33, 0x66),
+            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
+            (
+                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
+                b: 0
+            ),
         };
         public static AlphaTheme Black = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.FromRgb(0xE8,0xF0,0xEC),
             BackgroundColor = Color.Black,
+            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
+            (
+                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
+                b: 0
+            ),
         };
 
         public static Dictionary<string, AlphaTheme> All = new Dictionary<string, AlphaTheme>
