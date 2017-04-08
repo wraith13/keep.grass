@@ -89,9 +89,9 @@ namespace keep.grass
             BackgroundColor = Color.Black,
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
             (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
+                r: (byte)(160.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(160.0 * Math.Min(0.5, LeftTimeRate)),
+                b: (byte)40
             ),
         };
 

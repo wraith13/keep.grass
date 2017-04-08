@@ -383,9 +383,9 @@ namespace keep.grass
 					},
 					new TimePie
 					{
-						Text = L["Elapsed Time"],
-						Value = TimeSpan.FromDays(1),
-						Color = Color.FromRgb(0xEE, 0x11, 0x11),
+                        Text = L["Elapsed Time"],
+                        Value = TimeSpan.FromDays(1),
+                        Color = LeftTimeColor,
 					},
 				};
 			}
