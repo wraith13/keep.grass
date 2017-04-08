@@ -102,7 +102,7 @@
     <InterfaceDefinition Include="Interface.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\keep.grass.iOS.keep.grassExtension\keep.grass.iOS.watch.Extension.csproj">
+    <ProjectReference Include="..\iOS.watch.Extension\keep.grass.iOS.watch.Extension.csproj">
       <IsAppExtension>true</IsAppExtension>
       <Project>{5D2011E3-96B5-40CE-85A1-194EA6C2B9C6}</Project>
       <Name>keep.grass.iOS.watch.Extension</Name>
