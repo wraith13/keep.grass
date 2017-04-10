@@ -43,3 +43,4 @@ Thumbs.db
 *.dotCover
 
 *.pfx
+.history
