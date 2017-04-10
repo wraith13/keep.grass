@@ -9,6 +9,7 @@
     <RootNamespace>keep.grass.iOS.keep.grass</RootNamespace>
     <AssemblyName>keepgrassiOSkeepgrass</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +91,14 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.48.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.55.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.88.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.172.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\keep.grass.circle.196.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
