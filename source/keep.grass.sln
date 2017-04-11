@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.iOS.watch.Extens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Droid.Wear", "Droid.Wear\keep.grass.Droid.Wear.csproj", "{3ED9F08B-3D01-41CF-B286-39B44BB035D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Mac", "keep.grass.Mac\keep.grass.Mac.csproj", "{DC605CB5-5E9E-4AF9-97F3-0057C19C0F80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Mac", "Mac\keep.grass.Mac.csproj", "{DC605CB5-5E9E-4AF9-97F3-0057C19C0F80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
