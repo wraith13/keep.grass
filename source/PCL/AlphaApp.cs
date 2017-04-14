@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+
 namespace keep.grass
 {
 	public abstract class AlphaApp : Application
@@ -38,7 +42,14 @@ namespace keep.grass
 
 		protected override void OnStart()
 		{
-			// Handle when your app starts
+            // Handle when your app starts
+            base.OnStart();
+
+            // Mobile Center 初期化処理。(もしビルドエラーになるなら取り敢えず「Properties.KeySample.Mobi略」にすれば通る)
+            MobileCenter.Start(
+                appSecret: $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};" + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};",
+                services: new[] { typeof(Analytics), typeof(Crashes) }
+            );
 		}
 		protected override void OnSleep()
 		{
@@ -66,6 +77,12 @@ namespace keep.grass
 
 		public void ShowSettingsPage()
 		{
+            // Mobile Center .Analytics にデータ送信
+            Analytics.TrackEvent(
+                name: "[Clicked] Setting Button",
+                properties: new Dictionary<string, string> { { "Category", "ButtonClick" }, { "Screen", "MainPage" } }
+            );
+            // ページ遷移処理
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());
 		}
 
