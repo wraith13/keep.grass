@@ -81,7 +81,7 @@ namespace keep.grass
 		{
             Analytics.TrackEvent(
                 name: "[Clicked] LastActivity",
-                properties: new Dictionary<string, string> { { "Category", "ListItemClick" }, { "Screen", "DetailPage" } }
+                properties: new Dictionary<string, string> { { "Category", "ColumnClick" }, { "Screen", "DetailPage" } }
             );
 			Navigation.PushAsync(new AlphaFeedPage(User));
 		}

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
@@ -171,15 +174,22 @@ namespace keep.grass
 				if (UserLabel.Text != User)
 				{
 					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+                        .ContinueWith(t => Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
 					UserLabel.Text = User;
 					UserLabel.TextColor = Theme.ForegroundColor;
 					UserLabel.Command = new Command
 					(
-						o => Device.OpenUri
-						(
-							new Uri(GitHub.GetProfileUrl(User))
-						)
+						o =>
+                        {
+                            Analytics.TrackEvent(
+                                name: "[Clicked] User",
+                                properties: new Dictionary<string, string> { { "Category", "ColumnClick" }, { "Screen", "DetailPage" } }
+                            );
+                            Xamarin.Forms.Device.OpenUri
+                            (
+                                new Uri(GitHub.GetProfileUrl(User))
+                            );
+                        }
 					);
 					UserLabel.OptionImageSource = Root.GetExportImageSource();
 					if (default(DateTime) == Domain.GetLastPublicActivity(User))
@@ -221,7 +231,7 @@ namespace keep.grass
 						{
 							var Now = DateTime.Now;
 							UpdateLeftTimeTaskLastStamp = Now;
-							Device.BeginInvokeOnMainThread
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread
 							(
 								() =>
 								{
