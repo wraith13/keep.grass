@@ -8,12 +8,6 @@ using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 
-// Mobile Center
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
-// --
-
 namespace keep.grass.iOS
 {
 	[Register("AppDelegate")]
@@ -34,12 +28,6 @@ namespace keep.grass.iOS
 				);
 			UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
 			UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
-
-            // Mobile Center 初期化処理
-            MobileCenter.Start(
-                appSecret: Properties.Key.MobileCenterSecretIos,
-                services: new [] { typeof(Analytics), typeof(Crashes) }
-            );
 
 			return base.FinishedLaunching(app, options);
 		}
