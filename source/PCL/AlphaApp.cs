@@ -77,6 +77,11 @@ namespace keep.grass
 
 		public void ShowSettingsPage()
 		{
+            // Mobile Center .Analytics にデータ送信
+            Analytics.TrackEvent(
+                name: "[Clicked] Setting Button",
+                properties: new Dictionary<string, string> { { "Category", "ButtonClick" }, { "Screen", "MainPage" } }
+            );
             // ページ遷移処理
 			Navigation.PushAsync(AlphaFactory.MakeSettingsPage());
 		}
