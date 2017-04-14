@@ -44,3 +44,5 @@ Thumbs.db
 
 *.pfx
 .history
+
+source/PCL/Properties/Key.cs
