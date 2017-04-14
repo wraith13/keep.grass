@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
@@ -44,7 +47,17 @@ namespace keep.grass
 		{
 			Title = "keep.grass";
 
-			UpdateButton.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
+			UpdateButton.Command = new Command
+            (
+                async o =>
+                {
+                    Analytics.TrackEvent(
+                        name: "[Clicked] Update Button",
+                        properties: new Dictionary<string, string> { { "Category", "ButtonClick" }, { "Screen", "MainPage" } }
+                    );
+                    await Domain.ManualUpdateLastPublicActivityAsync();
+                }
+            );
 
 			InitCircleGraph(CircleGraph, Settings.UserName);
 			CircleGraph.HorizontalOptions = LayoutOptions.FillAndExpand;
@@ -299,7 +312,7 @@ namespace keep.grass
 						{
 							var Now = DateTime.Now;
 							UpdateLeftTimeTaskLastStamp = Now;
-							Device.BeginInvokeOnMainThread
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread
 							(
 								() =>
 								{

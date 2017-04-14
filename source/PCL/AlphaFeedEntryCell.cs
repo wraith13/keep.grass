@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Xamarin.Forms;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+using System.Collections.Generic;
 
 namespace keep.grass
 {
@@ -47,7 +51,17 @@ namespace keep.grass
 						}
 					);
 				};
-				Command = new Command(o => Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault())));
+				Command = new Command
+                (
+                    o =>
+                    {
+                        Analytics.TrackEvent(
+                            name: "[Clicked] Activity",
+                            properties: new Dictionary<string, string> { { "Category", "ListItemClick" }, { "Screen", "FeedPage" } }
+                        );
+                        Xamarin.Forms.Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault()));
+                    }
+                );
 				AlphaTheme.Apply(this);
 				UpdatedLabel.TextColor = Entry.IsContribution ?
 					AlphaDomain.MakeLeftTimeColor(Entry.Updated.AddDays(1) - DateTime.Now) :

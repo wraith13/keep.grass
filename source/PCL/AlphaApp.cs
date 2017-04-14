@@ -67,11 +67,19 @@ namespace keep.grass
 
 		public void ShowDetailPage(string User)
 		{
+            Analytics.TrackEvent(
+                name: "[Clicked] UserGraph",
+                properties: new Dictionary<string, string> { { "Category", "GraphClick" }, { "Screen", "MainPage" } }
+            );
 			Navigation.PushAsync(new AlphaDetailPage(User));
 		}
 
 		public void ShowFeedPage(string User)
 		{
+            Analytics.TrackEvent(
+                name: "[Clicked] LastActivity",
+                properties: new Dictionary<string, string> { { "Category", "ListItemClick" }, { "Screen", "DetailPage" } }
+            );
 			Navigation.PushAsync(new AlphaFeedPage(User));
 		}
 
