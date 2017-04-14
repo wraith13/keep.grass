@@ -50,6 +50,9 @@ namespace keep.grass
                 appSecret: $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};" + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};",
                 services: new[] { typeof(Analytics), typeof(Crashes) }
             );
+
+            // Mobile Center クラッシュのデータ収集を有効化する
+            Crashes.Enabled = true;
 		}
 		protected override void OnSleep()
 		{
