@@ -1,4 +1,6 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace keep.grass.Mac
 {
     public class OmegaFactory : AlphaFactory
@@ -14,11 +16,11 @@ namespace keep.grass.Mac
         {
             return new OmegaDomain();
         }
-        /*
         public override AlphaApp MakeOmegaApp()
         {
             return new OmegaApp();
         }
+        /*
         public override Languages.AlphaLanguage MakeOmegaLanguage()
         {
             return new OmegaLanguage();
@@ -28,6 +30,10 @@ namespace keep.grass.Mac
             return new OmegaPickerCell();
         }
         */
+        public override Image MakeOmegaCircleImage()
+        {
+            return new Image();
+        }
     }
 }
 

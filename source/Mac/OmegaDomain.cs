@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Foundation;
-using UIKit;
+using AppKit;
 
 namespace keep.grass.Mac
 {
@@ -26,7 +26,7 @@ namespace keep.grass.Mac
         public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
         {
             CancelAlert(id);
-            UIApplication.SharedApplication.ScheduleLocalNotification
+            /*UIApplication.SharedApplication.ScheduleLocalNotification
             (
                 new UILocalNotification
                 {
@@ -36,10 +36,11 @@ namespace keep.grass.Mac
                     TimeZone = NSTimeZone.DefaultTimeZone,
                     UserInfo = new NSDictionary("id", id.ToString()),
                 }
-            );
+            );*/
         }
         public override void CancelAlert(int id)
         {
+            /*
             foreach
             (
                 var notification
@@ -54,10 +55,11 @@ namespace keep.grass.Mac
             {
                 UIApplication.SharedApplication.CancelLocalNotification(notification);
             }
+            */
         }
         public override void CancelAllAlerts()
         {
-            UIApplication.SharedApplication.CancelAllLocalNotifications();
+            //UIApplication.SharedApplication.CancelAllLocalNotifications();
         }
 
         public override Uri GetApplicationStoreUri()
