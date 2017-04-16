@@ -1,285 +1,324 @@
-﻿using System;
+﻿//#define DISABLED_SKIASHARP_VIEWS_FORMS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 
 using SkiaSharp;
+#if !DISABLED_SKIASHARP_VIEWS_FORMS
 using SkiaSharp.Views.Forms;
+#endif
 using System.Diagnostics;
 
 namespace keep.grass
 {
-	public interface VoidPie
-	{
-		string Text { get; }
-		double Volume { get; }
-		Color Color { get; }
-		string DisplayVolume { get; }
-	}
-	public class CircleGraphSatelliteText
-	{
-		public string Text { get; set; }
-		public Color Color { get; set; }
-		public float Angle { get; set; }
-	}
-	public class NumberPie : VoidPie
-	{
-		public string Text { get; set; }
-		public double Value { get; set; }
-		public double Volume { get { return Value; } }
-		public Color Color { get; set; }
-		public string DisplayVolume { get { return Value.ToString(); } }
-	}
-	public class TimePie : VoidPie
-	{
-		public string Text { get; set; }
-		public TimeSpan Value { get; set; }
-		public double Volume { get { return Value.Ticks; } }
-		public Color Color { get; set; }
-		public string DisplayVolume { get { return TimeToString(Value); } }
-		public static string TimeToString(TimeSpan a)
-		{
-			return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
-		}
-	}
+    public interface VoidPie
+    {
+        string Text { get; }
+        double Volume { get; }
+        Color Color { get; }
+        string DisplayVolume { get; }
+    }
+    public class CircleGraphSatelliteText
+    {
+        public string Text { get; set; }
+        public Color Color { get; set; }
+        public float Angle { get; set; }
+    }
+    public class NumberPie : VoidPie
+    {
+        public string Text { get; set; }
+        public double Value { get; set; }
+        public double Volume { get { return Value; } }
+        public Color Color { get; set; }
+        public string DisplayVolume { get { return Value.ToString(); } }
+    }
+    public class TimePie : VoidPie
+    {
+        public string Text { get; set; }
+        public TimeSpan Value { get; set; }
+        public double Volume { get { return Value.Ticks; } }
+        public Color Color { get; set; }
+        public string DisplayVolume { get { return TimeToString(Value); } }
+        public static string TimeToString(TimeSpan a)
+        {
+            return Math.Floor(a.TotalHours).ToString() + a.ToString("\\:mm\\:ss");
+        }
+    }
+#if !DISABLED_SKIASHARP_VIEWS_FORMS
 	public abstract class VoidCircleGraph :SKCanvasView // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
-	{
-		public virtual bool IsDoughnut { get; set; }
-		public virtual string AltText { get; set; }
-		public virtual Color AltTextColor { get; set; }
-		public virtual bool IsInvalidCanvas { get; set; }
-		public virtual bool IsInvalidCenter { get; set; }
-		public virtual bool IsInvalidSatelliteTexts { get; set; }
-		public virtual bool IsInvalidData { get; set; }
-		public virtual bool IsClearCanvas { get; set; }
-		public virtual byte[] Image { get; set; }
-		public virtual byte ImageAlpha { get; set; }
-		public virtual IEnumerable<VoidPie> Data { get; set; }
-		public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
-	}
-	public class AlphaCircleGraph :VoidCircleGraph
-	{
-		public readonly float Phi = 1.618033988749894848204586834365f;
-		float OriginAngle = -90.0f;
-		float StartAngle = 0.0f;
-		public double GraphSize;
-		public float FontSize = 14.0f;
-		public Thickness CircleMargin = new Thickness(30.0f);
-		float AntialiasMargin = 0.6f;
+#else
+    public abstract class VoidCircleGraph : Image // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
+#endif
+    {
+        public virtual bool IsDoughnut { get; set; }
+        public virtual string AltText { get; set; }
+        public virtual Color AltTextColor { get; set; }
+        public virtual bool IsInvalidCanvas { get; set; }
+        public virtual bool IsInvalidCenter { get; set; }
+        public virtual bool IsInvalidSatelliteTexts { get; set; }
+        public virtual bool IsInvalidData { get; set; }
+        public virtual bool IsClearCanvas { get; set; }
+        public virtual byte[] Image { get; set; }
+        public virtual byte ImageAlpha { get; set; }
+        public virtual IEnumerable<VoidPie> Data { get; set; }
+        public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
+    }
+    public class AlphaCircleGraph : VoidCircleGraph
+    {
+        public readonly float Phi = 1.618033988749894848204586834365f;
+        float OriginAngle = -90.0f;
+        float StartAngle = 0.0f;
+        public double GraphSize;
+        public float FontSize = 14.0f;
+        public Thickness CircleMargin = new Thickness(30.0f);
+        float AntialiasMargin = 0.6f;
 
-		public override bool IsDoughnut
-		{
-			set
-			{
-				if (base.IsDoughnut != value)
-				{
-					base.IsDoughnut = value;
-					IsInvalidCenter = true;
-				}
-			}
-		}
-		public override string AltText
-		{
-			set
-			{
-				if (base.AltText != value)
-				{
-					base.AltText = value;
-					IsInvalidCenter = true;
-				}
-			}
-		}
-		public override Color AltTextColor
-		{
-			set
-			{
-				if (base.AltTextColor != value)
-				{
-					base.AltTextColor = value;
-					IsInvalidCenter = true;
-				}
-			}
-		}
-		public override bool IsInvalidCanvas
-		{
-			set
-			{
-				if (base.IsInvalidCanvas != value)
-				{
-					base.IsInvalidCanvas = value;
-					if (base.IsInvalidCanvas)
-					{
-						Update();
-					}
-				}
-			}
-		}
-		public override bool IsInvalidCenter
-		{
-			set
-			{
-				if (base.IsInvalidCenter != value)
-				{
-					base.IsInvalidCenter = value;
-					if (base.IsInvalidCenter)
-					{
-						Update();
-					}
-				}
-			}
-		}
+        public override bool IsDoughnut
+        {
+            set
+            {
+                if (base.IsDoughnut != value)
+                {
+                    base.IsDoughnut = value;
+                    IsInvalidCenter = true;
+                }
+            }
+        }
+        public override string AltText
+        {
+            set
+            {
+                if (base.AltText != value)
+                {
+                    base.AltText = value;
+                    IsInvalidCenter = true;
+                }
+            }
+        }
+        public override Color AltTextColor
+        {
+            set
+            {
+                if (base.AltTextColor != value)
+                {
+                    base.AltTextColor = value;
+                    IsInvalidCenter = true;
+                }
+            }
+        }
+        public override bool IsInvalidCanvas
+        {
+            set
+            {
+                if (base.IsInvalidCanvas != value)
+                {
+                    base.IsInvalidCanvas = value;
+                    if (base.IsInvalidCanvas)
+                    {
+                        Update();
+                    }
+                }
+            }
+        }
+        public override bool IsInvalidCenter
+        {
+            set
+            {
+                if (base.IsInvalidCenter != value)
+                {
+                    base.IsInvalidCenter = value;
+                    if (base.IsInvalidCenter)
+                    {
+                        Update();
+                    }
+                }
+            }
+        }
 
-		public override bool IsInvalidSatelliteTexts
-		{
-			set
-			{
-				if (base.IsInvalidSatelliteTexts != value)
-				{
-					base.IsInvalidSatelliteTexts = value;
-					if (base.IsInvalidSatelliteTexts)
-					{
-						Update();
-					}
-				}
-			}
-		}
+        public override bool IsInvalidSatelliteTexts
+        {
+            set
+            {
+                if (base.IsInvalidSatelliteTexts != value)
+                {
+                    base.IsInvalidSatelliteTexts = value;
+                    if (base.IsInvalidSatelliteTexts)
+                    {
+                        Update();
+                    }
+                }
+            }
+        }
 
-		public override bool IsInvalidData
-		{
-			set
-			{
-				if (base.IsInvalidSatelliteTexts != value)
-				{
-					base.IsInvalidData = value;
-					if (base.IsInvalidData)
-					{
-						Update();
-					}
-				}
-			}
-		}
+        public override bool IsInvalidData
+        {
+            set
+            {
+                if (base.IsInvalidSatelliteTexts != value)
+                {
+                    base.IsInvalidData = value;
+                    if (base.IsInvalidData)
+                    {
+                        Update();
+                    }
+                }
+            }
+        }
 
-		public override byte[] Image
-		{
-			set
-			{
-				if (base.Image != value)
-				{
-					ImageBitmap?.Dispose();
-					ImageBitmap = null;
-					ImageData?.Dispose();
-					ImageData = null;
-					base.Image = value;
-					if (null != base.Image)
-					{
+        public override byte[] Image
+        {
+            set
+            {
+                if (base.Image != value)
+                {
+                    ImageBitmap?.Dispose();
+                    ImageBitmap = null;
+                    ImageData?.Dispose();
+                    ImageData = null;
+                    base.Image = value;
+                    if (null != base.Image)
+                    {
                         ImageData = SKData.CreateCopy(base.Image);
                         ImageBitmap = SKBitmap.Decode(ImageData);
-					}
-					IsInvalidCenter = true;
-				}
-			}
-		}
-		public override byte ImageAlpha
-		{
-			set
-			{
-				if (base.ImageAlpha != value)
-				{
-					base.ImageAlpha = value;
-					if (null != base.Image)
-					{
-						IsInvalidCenter = true;
-					}
-				}
-			}
-		}
-		public override IEnumerable<VoidPie> Data
-		{
-			set
-			{
-				base.Data = value;
-				IsInvalidData = true;
-			}
-		}
-		public override IEnumerable<CircleGraphSatelliteText> SatelliteTexts
-		{
-			set
-			{
-				base.SatelliteTexts = value;
-				IsInvalidSatelliteTexts = true;
-			}
-		}
+                    }
+                    IsInvalidCenter = true;
+                }
+            }
+        }
+        public override byte ImageAlpha
+        {
+            set
+            {
+                if (base.ImageAlpha != value)
+                {
+                    base.ImageAlpha = value;
+                    if (null != base.Image)
+                    {
+                        IsInvalidCenter = true;
+                    }
+                }
+            }
+        }
+        public override IEnumerable<VoidPie> Data
+        {
+            set
+            {
+                base.Data = value;
+                IsInvalidData = true;
+            }
+        }
+        public override IEnumerable<CircleGraphSatelliteText> SatelliteTexts
+        {
+            set
+            {
+                base.SatelliteTexts = value;
+                IsInvalidSatelliteTexts = true;
+            }
+        }
 
-		//Grid GraphFrame;
-		//AlphaCircleGraphView CanvasView;
+        //Grid GraphFrame;
+        //AlphaCircleGraphView CanvasView;
 
-		System.IO.Stream FontSource;
-		SKManagedStream FontStream;
-		protected SKTypeface Font;
+        System.IO.Stream FontSource;
+        SKManagedStream FontStream;
+        protected SKTypeface Font;
 
-		SKData ImageData;
-		SKBitmap ImageBitmap;
+        SKData ImageData;
+        SKBitmap ImageBitmap;
 
-		public SKRect CanvasRect;
-		public float PhysicalPixelRate;
-		float PieRadius;
-		float ImageRadius;
-		SKPoint Center;
+        public SKRect CanvasRect;
+        public float PhysicalPixelRate;
+        float PieRadius;
+        float ImageRadius;
+        SKPoint Center;
 
-		public AlphaCircleGraph()
-		{
-			//	※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
-			FontSource = AlphaFactory.GetApp().GetFontStream();
-			FontStream = new SKManagedStream(FontSource);
-			Font = SKTypeface.FromStream(FontStream);
-		}
-		public void Dispose()
-		{
-			Font?.Dispose();
-			Font = null;
-			FontStream?.Dispose();
-			FontStream = null;
-			FontSource?.Dispose();
-			FontSource = null;
-			ImageBitmap?.Dispose();
-			ImageBitmap = null;
-			ImageData?.Dispose();
-			ImageData = null;
-		}
+        public AlphaCircleGraph()
+        {
+            //	※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
+            FontSource = AlphaFactory.GetApp().GetFontStream();
+            FontStream = new SKManagedStream(FontSource);
+            Font = SKTypeface.FromStream(FontStream);
+        }
+        public void Dispose()
+        {
+            Font?.Dispose();
+            Font = null;
+            FontStream?.Dispose();
+            FontStream = null;
+            FontSource?.Dispose();
+            FontSource = null;
+            ImageBitmap?.Dispose();
+            ImageBitmap = null;
+            ImageData?.Dispose();
+            ImageData = null;
+        }
 
-		public static double DegreeToRadian(double Degree)
-		{
-			return Degree * Math.PI / 180.0;
-		}
-		public static SKPoint AngleRadiusToPoint(float Angle, float Radius)
-		{
-			return new SKPoint
-			(
-				Radius * (float)Math.Cos(DegreeToRadian(Angle)),
-				Radius * (float)Math.Sin(DegreeToRadian(Angle))
-			);
-		}
-		public double GetTotalVolume()
-		{
-			return Data.Select(Pie => Pie.Volume).Sum();
-		}
-		private float GetStartAngle()
-		{
-			return StartAngle +OriginAngle;
-		}
-		public void SetStartAngle(float NewStartAngle)
-		{
-			StartAngle = NewStartAngle;
-		}
-        private void Update()
-		{
-			InvalidateSurface();
-		}
-		protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
+        public static double DegreeToRadian(double Degree)
+        {
+            return Degree * Math.PI / 180.0;
+        }
+        public static SKPoint AngleRadiusToPoint(float Angle, float Radius)
+        {
+            return new SKPoint
+            (
+                Radius * (float)Math.Cos(DegreeToRadian(Angle)),
+                Radius * (float)Math.Sin(DegreeToRadian(Angle))
+            );
+        }
+        public double GetTotalVolume()
+        {
+            return Data.Select(Pie => Pie.Volume).Sum();
+        }
+        private float GetStartAngle()
+        {
+            return StartAngle + OriginAngle;
+        }
+        public void SetStartAngle(float NewStartAngle)
+        {
+            StartAngle = NewStartAngle;
+        }
+#if DISABLED_SKIASHARP_VIEWS_FORMS
+        public virtual float GetPhysicalPixelRate()
+        {
+            return 4.0f; // この数字は適当。本来はちゃんとデバイスごとの物理解像度/論理解像度を取得するべき
+        }
+        public virtual SKColorType GetDeviceColorType()
+        {
+            return SKColorType.Rgba8888;
+        }
+#endif
+        public void Update()
+        {
+#if !DISABLED_SKIASHARP_VIEWS_FORMS
+            InvalidateSurface();
+#else
+            //var Radius = (DrawGraphSize / 2.0f) - (Margin * PhysicalPixelRate);
+            //var Center = new SKPoint(DrawGraphSize / 2.0f, DrawGraphSize / 2.0f);
+            if (0.0 < Width && 0.0 < Height)
+            {
+                using (var Surface = SKSurface.Create((int)(Width *GetPhysicalPixelRate()), (int)(Height *GetPhysicalPixelRate()), GetDeviceColorType(), SKAlphaType.Premul))
+                {
+                    Draw(Surface.Canvas);
+                    var CanvasImageData = Surface.Snapshot().Encode();
+                    Device.BeginInvokeOnMainThread
+                    (
+                        () =>
+                        {
+                            Source = ImageSource.FromStream(() => CanvasImageData.AsStream());
+                        }
+                    );
+                }
+            }
+#endif
+        }
+#if !DISABLED_SKIASHARP_VIEWS_FORMS
+        protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
 		{
 			Draw(e.Surface.Canvas);
 		}
+#endif
 		public virtual void Draw(SKCanvas Canvas)
 		{
 			if (IsInvalidCanvas)
@@ -306,7 +345,7 @@ namespace keep.grass
 			{
 					Width -CircleMargin.HorizontalThickness,
 					Height -CircleMargin.VerticalThickness
-				}.Min();
+            }.Min();
 			if (FontSize * 15.0f < GraphSize)
 			{
 				GraphSize = Math.Max
