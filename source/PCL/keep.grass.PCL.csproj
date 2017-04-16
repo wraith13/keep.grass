@@ -104,12 +104,6 @@
     <Reference Include="Plugin.Settings.Abstractions, Version=2.5.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp, Version=1.56.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.1.56.2\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms, Version=1.56.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.56.2\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -139,6 +133,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.57.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.57.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

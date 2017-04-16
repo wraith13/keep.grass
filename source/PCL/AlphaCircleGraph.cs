@@ -173,8 +173,8 @@ namespace keep.grass
 					base.Image = value;
 					if (null != base.Image)
 					{
-						ImageData = new SKData(base.Image);
-						ImageBitmap = SKBitmap.Decode(ImageData);
+                        ImageData = SKData.CreateCopy(base.Image);
+                        ImageBitmap = SKBitmap.Decode(ImageData);
 					}
 					IsInvalidCenter = true;
 				}
