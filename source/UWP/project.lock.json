@@ -286,7 +286,7 @@
           "lib/uap10.0/NotificationsExtensions.Win10.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -345,10 +345,10 @@
           }
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -357,11 +357,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -2014,7 +2014,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -2304,7 +2304,7 @@
           "runtimes/win8-arm/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -2318,10 +2318,10 @@
           "runtimes/win10-arm/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -2330,11 +2330,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -3852,7 +3852,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -4120,7 +4120,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -4134,10 +4134,10 @@
           "runtimes/win10-arm/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -4146,11 +4146,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -5647,7 +5647,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -5946,7 +5946,7 @@
           "runtimes/win7-x64/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -5960,10 +5960,10 @@
           "runtimes/win10-x64/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -5972,11 +5972,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -7494,7 +7494,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -7762,7 +7762,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -7776,10 +7776,10 @@
           "runtimes/win10-x64/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -7788,11 +7788,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -9289,7 +9289,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -9588,7 +9588,7 @@
           "runtimes/win7-x86/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -9602,10 +9602,10 @@
           "runtimes/win10-x86/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -9614,11 +9614,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -11136,7 +11136,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     },
@@ -11404,7 +11404,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.56.2": {
+      "SkiaSharp/1.57.0": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -11418,10 +11418,10 @@
           "runtimes/win10-x86/native/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.56.2": {
+      "SkiaSharp.Views/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2"
+          "SkiaSharp": "1.57.0"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -11430,11 +11430,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.56.2": {
+      "SkiaSharp.Views.Forms/1.57.0": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.56.2",
-          "SkiaSharp.Views": "1.56.2",
+          "SkiaSharp": "1.57.0",
+          "SkiaSharp.Views": "1.57.0",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -12931,7 +12931,7 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass/1.0.0": {
+      "keep.grass.PCL/1.0.0": {
         "type": "project"
       }
     }
@@ -13647,10 +13647,10 @@
         "runtimes/win8-arm/native/mscorrc.dll"
       ]
     },
-    "SkiaSharp/1.56.2": {
-      "sha512": "TP/qBxstX2Ui0mfr74YMRFsGFetIhfkNS9k2ujkdjNllVkV8QKMDjiCfFZgGXnKf3AVptK4IDux+JBxpEWN5Yw==",
+    "SkiaSharp/1.57.0": {
+      "sha512": "XPCDdu5mPRHK4zEEvK8doUer32i+bU6sics9QU+UawnKR0Wabq/OkCuDMB+FVVpbeAQZtZUu1Zw1OfLXU3dMNw==",
       "type": "package",
-      "path": "skiasharp/1.56.2",
+      "path": "skiasharp/1.57.0",
       "files": [
         "build/XamarinMac/SkiaSharp.targets",
         "build/net45/SkiaSharp.dll.config",
@@ -13684,14 +13684,14 @@
         "runtimes/win10-x86/native/libSkiaSharp.dll",
         "runtimes/win7-x64/native/libSkiaSharp.dll",
         "runtimes/win7-x86/native/libSkiaSharp.dll",
-        "skiasharp.1.56.2.nupkg.sha512",
+        "skiasharp.1.57.0.nupkg.sha512",
         "skiasharp.nuspec"
       ]
     },
-    "SkiaSharp.Views/1.56.2": {
-      "sha512": "io/JeqRK6jBlVSHeUvRyxwXGnYPhgY8vte0SsypIlflE0eWqdQe9XUtsNQPbAzJXllvOJmMLhVWm9bodqvmkrA==",
+    "SkiaSharp.Views/1.57.0": {
+      "sha512": "iXrE6ehRcsLc5qkHv3Pm+L03OSapzlbmTPUUPw9/Xqdu9bWKW1krLYv69PpGrL8zRstsCn1MYsJPUBpVdnmonw==",
       "type": "package",
-      "path": "skiasharp.views/1.56.2",
+      "path": "skiasharp.views/1.57.0",
       "files": [
         "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
         "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
@@ -13700,20 +13700,20 @@
         "lib/net45/SkiaSharp.Views.Desktop.dll",
         "lib/net45/SkiaSharp.Views.WPF.dll",
         "lib/uap10.0/SkiaSharp.Views.UWP.dll",
-        "skiasharp.views.1.56.2.nupkg.sha512",
+        "skiasharp.views.1.57.0.nupkg.sha512",
         "skiasharp.views.nuspec"
       ]
     },
-    "SkiaSharp.Views.Forms/1.56.2": {
-      "sha512": "JXhKZpZnYs7QszK6GNidCORYPZKlVHri9+c7IXr1ALpWQN7MndlQMlGZOg7Q6dUBtNL3QPWNdAr+B2g5eXkqsg==",
+    "SkiaSharp.Views.Forms/1.57.0": {
+      "sha512": "AJ8QLbylj2lkpTG8Wi8LR8PgsiBk5wM3nvIghZ3CpbjppKXKqyLsVAe26LMUsUY0IVpiXwg2CghVPNnVV2/ELw==",
       "type": "package",
-      "path": "skiasharp.views.forms/1.56.2",
+      "path": "skiasharp.views.forms/1.57.0",
       "files": [
         "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
         "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
         "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.Views.Forms.dll",
         "lib/uap10.0/SkiaSharp.Views.Forms.dll",
-        "skiasharp.views.forms.1.56.2.nupkg.sha512",
+        "skiasharp.views.forms.1.57.0.nupkg.sha512",
         "skiasharp.views.forms.nuspec"
       ]
     },
@@ -16670,18 +16670,18 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "keep.grass/1.0.0": {
+    "keep.grass.PCL/1.0.0": {
       "type": "project",
-      "path": "../PCL/keep.grass.csproj",
-      "msbuildProject": "../PCL/keep.grass.csproj"
+      "path": "../PCL/keep.grass.PCL.csproj",
+      "msbuildProject": "../PCL/keep.grass.PCL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
       "NotificationsExtensions.Win10 >= 14332.0.2",
-      "SkiaSharp >= 1.56.2",
-      "SkiaSharp.Views.Forms >= 1.56.2",
+      "SkiaSharp >= 1.57.0",
+      "SkiaSharp.Views.Forms >= 1.57.0",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
       "Xam.Plugins.Settings >= 2.5.4",
       "Xamarin.Forms >= 2.3.3.193"
@@ -16701,8 +16701,8 @@
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.csproj": {
-              "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.csproj"
+            "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.PCL.csproj": {
+              "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.PCL.csproj"
             }
           }
         }
@@ -16711,9 +16711,9 @@
     "dependencies": {
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
       "NotificationsExtensions.Win10": "14332.0.2",
-      "SkiaSharp": "1.56.2",
-      "SkiaSharp.Views.Forms": "1.56.2",
-      "Xam.Plugins.Forms.ImageCircle": "[1.8.1, )",
+      "SkiaSharp": "[1.57.0, )",
+      "SkiaSharp.Views.Forms": "1.57.0",
+      "Xam.Plugins.Forms.ImageCircle": "1.8.1",
       "Xam.Plugins.Settings": "2.5.4",
       "Xamarin.Forms": "2.3.3.193"
     },
