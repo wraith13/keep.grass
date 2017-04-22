@@ -90,15 +90,6 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.56.2\lib\XamariniOS\SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.iOS">
-      <HintPath>..\packages\SkiaSharp.Views.1.56.2\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.56.2\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Mobile">
       <HintPath>..\packages\Microsoft.Azure.Mobile.0.8.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.dll</HintPath>
     </Reference>
@@ -128,6 +119,15 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.57.0\lib\XamariniOS\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.iOS">
+      <HintPath>..\packages\SkiaSharp.Views.1.57.0\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.57.0\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
