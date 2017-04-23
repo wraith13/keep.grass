@@ -44,12 +44,6 @@ https://www.microsoft.com/store/apps/9nblggh51p1m
 
 ■.\source\keep.grass.sln
 　→ Mac版 Xamarin Studio 用のソリューションファイルです。
-　　Xamarin Studio では UWP アプリケーションをビルドできないので
-　　このソリューションファイルには UWP プロジェクトは含まれていません。
-
-■.\source\keep.grass.uwp.sln
-　→ Visual Studio 用のソリューションファイルです。
-　　全てのプロジェクトを含みます。
 
 ■.\resource
 　→ 素材ディレクトリです。
