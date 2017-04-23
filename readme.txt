@@ -43,7 +43,7 @@ https://www.microsoft.com/store/apps/9nblggh51p1m
 　→ ソースディレクトリです。
 
 ■.\source\keep.grass.sln
-　→ Mac版 Xamarin Studio 用のソリューションファイルです。
+　→ ソリューションファイルです。
 
 ■.\resource
 　→ 素材ディレクトリです。
