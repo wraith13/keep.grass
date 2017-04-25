@@ -54,42 +54,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AlphaApp.cs" />
-    <Compile Include="AlphaEntryCell.cs" />
-    <Compile Include="AlphaSwitchCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AlphaSettingsPage.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="AlphaMainPage.cs" />
     <Compile Include="GitHub.cs" />
-    <Compile Include="AlphaActivityIndicatorTextCell.cs" />
-    <Compile Include="AlphaCircleImageCell.cs" />
     <Compile Include="AlphaFactory.cs" />
     <Compile Include="GridEx.cs" />
     <Compile Include="Languages\AlphaLanguage.cs" />
-    <Compile Include="AlphaPickerCell.cs" />
     <Compile Include="LinqEx.cs" />
-    <Compile Include="AlphaInfoPage.cs" />
     <Compile Include="ResponsiveLayout.cs" />
     <Compile Include="AlphaDomain.cs" />
-    <Compile Include="AlphaLeftTimeAlertSettingsPage.cs" />
-    <Compile Include="AlphaDailyAlertSettingsPage.cs" />
-    <Compile Include="AlphaCircleGraph.cs" />
-    <Compile Include="AlphaFriendsPage.cs" />
-    <Compile Include="AlphaDetailPage.cs" />
     <Compile Include="AlphaImageProxy.cs" />
     <Compile Include="ValueEx.cs" />
-    <Compile Include="AlphaActivityIndicatorButton.cs" />
-    <Compile Include="AlphaUserCircleGraph.cs" />
-    <Compile Include="AlphaFeedPage.cs" />
     <Compile Include="XElementEx.cs" />
-    <Compile Include="AlphaFeedEntryCell.cs" />
     <Compile Include="SkiaEx.cs" />
-    <Compile Include="AlphaSelectUserPage.cs" />
     <Compile Include="BindablePropertyEx.cs" />
     <Compile Include="DataTemplateEx.cs" />
     <Compile Include="AlphaTheme.cs" />
     <Compile Include="Properties\Key.cs" />
     <Compile Include="Properties\KeySample.cs" />
+    <Compile Include="Views\AlphaActivityIndicatorButton.cs" />
+    <Compile Include="Cells\AlphaActivityIndicatorTextCell.cs" />
+    <Compile Include="Views\AlphaCircleGraph.cs" />
+    <Compile Include="Cells\AlphaCircleImageCell.cs" />
+    <Compile Include="Pages\AlphaDailyAlertSettingsPage.cs" />
+    <Compile Include="Pages\AlphaDetailPage.cs" />
+    <Compile Include="Cells\AlphaEntryCell.cs" />
+    <Compile Include="Cells\AlphaFeedEntryCell.cs" />
+    <Compile Include="Pages\AlphaFeedPage.cs" />
+    <Compile Include="Pages\AlphaFriendsPage.cs" />
+    <Compile Include="Pages\AlphaInfoPage.cs" />
+    <Compile Include="Pages\AlphaLeftTimeAlertSettingsPage.cs" />
+    <Compile Include="Pages\AlphaMainPage.cs" />
+    <Compile Include="Cells\AlphaPickerCell.cs" />
+    <Compile Include="Pages\AlphaSelectUserPage.cs" />
+    <Compile Include="Pages\AlphaSettingsPage.cs" />
+    <Compile Include="Cells\AlphaSwitchCell.cs" />
+    <Compile Include="Views\AlphaUserCircleGraph.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -168,6 +168,11 @@
     <EmbeddedResource Include="Images\octicons\mark-github.png" />
     <EmbeddedResource Include="Images\octicons\book.png" />
     <EmbeddedResource Include="Images\octicons\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Cells\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
