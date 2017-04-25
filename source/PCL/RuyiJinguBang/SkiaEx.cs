@@ -3,7 +3,7 @@ using System.IO;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace keep.grass
+namespace RuyiJinguBang
 {
 	public static class SkiaEx
 	{

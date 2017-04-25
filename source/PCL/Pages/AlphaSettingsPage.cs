@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 using Xamarin.Forms;
 using keep.grass.Helpers;
-using System.Diagnostics;
+using RuyiJinguBang;
 
 namespace keep.grass
 {
@@ -187,6 +188,7 @@ namespace keep.grass
 					},
 				};
 			}
+            AlphaTheme.Apply(this);
 		}
 		protected override void OnAppearing()
 		{

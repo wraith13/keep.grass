@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using keep.grass.Helpers;
 using Xamarin.Forms;
+using RuyiJinguBang;
 
 namespace keep.grass
 {

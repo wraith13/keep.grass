@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SkiaSharp;
 using Xamarin.Forms;
+using RuyiJinguBang;
 
 namespace keep.grass
 {

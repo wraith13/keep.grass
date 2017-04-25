@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using RuyiJinguBang;
 
 namespace keep.grass
 {
@@ -60,6 +61,7 @@ namespace keep.grass
 					ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
 				};
 			}
+            AlphaTheme.Apply(this);
 		}
 	}
 }

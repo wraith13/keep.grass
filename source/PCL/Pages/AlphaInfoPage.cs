@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
+using RuyiJinguBang;
 
 namespace keep.grass
 {
@@ -193,6 +194,7 @@ namespace keep.grass
 				);
 			}
 			Content = StackContent;
+            AlphaTheme.Apply(this);
 		}
 	}
 }

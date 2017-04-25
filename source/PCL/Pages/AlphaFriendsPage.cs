@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using keep.grass.Helpers;
 using System.Threading.Tasks;
+using RuyiJinguBang;
 
 namespace keep.grass
 {
@@ -131,6 +132,7 @@ namespace keep.grass
 				},
 			};
             UpdateList();
+            AlphaTheme.Apply(this);
 		}
         public void UpdateList()
         {

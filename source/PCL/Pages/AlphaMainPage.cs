@@ -8,6 +8,7 @@ using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
+using RuyiJinguBang;
 using keep.grass.Helpers;
 
 namespace keep.grass
@@ -181,6 +182,7 @@ namespace keep.grass
 
 			ApplyCircleGraph(i => i.IsInvalidCanvas = true);
 			OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
+            AlphaTheme.Apply(this);
 		}
 
 		public void BuildFriends(StackLayout Stack, StackOrientation Orientation)

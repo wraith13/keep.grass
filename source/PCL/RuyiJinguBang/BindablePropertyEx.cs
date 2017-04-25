@@ -2,7 +2,7 @@
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace keep.grass
+namespace RuyiJinguBang
 {
     public static class BindablePropertyEx
     {

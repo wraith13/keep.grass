@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace keep.grass
+namespace RuyiJinguBang
 {
     public class DataTemplateEx : DataTemplate
     {

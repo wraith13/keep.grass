@@ -8,6 +8,7 @@ using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
+using RuyiJinguBang;
 using keep.grass.Helpers;
 
 namespace keep.grass
@@ -49,6 +50,7 @@ namespace keep.grass
 		{
 			BackgroundColor = Theme.BackgroundColor;
             CircleGraph.ApplyTheme(Theme);
+            AlphaTheme.Apply(this);
 		}
 		public override void Build()
 		{

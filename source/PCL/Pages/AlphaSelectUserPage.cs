@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using RuyiJinguBang;
 
 namespace keep.grass
 {
@@ -148,7 +149,7 @@ namespace keep.grass
 		{
 			base.Build();
 			Debug.WriteLine("AlphaSelectUserPage.Rebuild();");
-
+            AlphaTheme.Apply(this);
 		}
 	}
 }

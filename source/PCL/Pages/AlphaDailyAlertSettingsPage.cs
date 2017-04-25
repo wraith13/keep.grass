@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using RuyiJinguBang;
 using keep.grass.Helpers;
 
 namespace keep.grass
@@ -74,7 +75,7 @@ namespace keep.grass
 				StackContent.Children.Add(i);
 			}
 			Content = StackContent;
-
+            AlphaTheme.Apply(this);
 		}
 		protected override void OnAppearing()
 		{
