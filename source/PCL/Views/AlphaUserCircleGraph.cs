@@ -88,7 +88,7 @@ namespace keep.grass
                                     }
                                 );
                             }
-                        );
+                        ).Start();
 					}
 				}
 			}
