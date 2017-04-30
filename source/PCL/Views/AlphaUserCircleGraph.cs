@@ -75,7 +75,20 @@ namespace keep.grass
 					AltTextColor = Color.Black;
 					if (!string.IsNullOrWhiteSpace(Trimed))
 					{
-						Image = AlphaImageProxy.GetFromCache(GitHub.GetIconUrl(Trimed));
+                        new Task
+                        (
+                            async () =>
+                            {
+                                var ImageData = await AlphaImageProxy.Get(GitHub.GetIconUrl(Trimed));
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                                (
+                                    () =>
+                                    {
+                                        Image = ImageData;
+                                    }
+                                );
+                            }
+                        );
 					}
 				}
 			}
