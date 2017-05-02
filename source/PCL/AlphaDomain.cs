@@ -138,7 +138,7 @@ namespace keep.grass
 			Debug.WriteLine("AlphaDomain::ManualUpdateInfoAsync");
 			await UpdateAllLastPublicActivityAsync();
 		}
-		private async Task UpdateLastPublicActivityCoreAsync(string User)
+		public async Task UpdateLastPublicActivityCoreAsync(string User)
 		{
 			var Feed = GitHub.ParseFeed
 			(

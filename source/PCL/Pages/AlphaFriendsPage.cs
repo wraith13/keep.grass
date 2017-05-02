@@ -89,6 +89,7 @@ namespace keep.grass
             Settings.SetFriend(Settings.GetFriendCount(), NewUser);
             IsChanged = true;
             UpdateList();
+            var dummy = AlphaFactory.MakeSureDomain().UpdateLastPublicActivityCoreAsync(NewUser);
         }
         public void DeleteUser(string TargetUser)
         {

@@ -34,6 +34,7 @@ namespace keep.grass
 						NewUser =>
 						{
 							Settings.UserName = NewUser;
+                            var dummy = Domain.UpdateLastPublicActivityCoreAsync(NewUser);
 							Root.OnChangeSettings();
 						}
 					)
