@@ -416,7 +416,7 @@ namespace keep.grass
 					using (var paint = new SKPaint())
 					{
 						paint.IsAntialias = true;
-						paint.Color = new SKColor(255, 255, 255, (byte)(255 -ImageAlpha));
+						paint.Color = new SKColor((byte)(255*BackgroundColor.R), (byte)(255*BackgroundColor.G), (byte)(255*BackgroundColor.B), (byte)(255 - ImageAlpha));
 						paint.StrokeCap = SKStrokeCap.Round;
 						paint.IsStroke = false;
 						Canvas.DrawCircle(Center.X, Center.Y, AntialiasImageRadius, paint);
