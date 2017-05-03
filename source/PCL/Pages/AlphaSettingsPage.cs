@@ -9,246 +9,251 @@ using RuyiJinguBang;
 
 namespace keep.grass
 {
-	public class AlphaSettingsPage : ResponsiveContentPage
-	{
-		AlphaApp Root = AlphaFactory.MakeSureApp();
-		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-		AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+    public class AlphaSettingsPage : ResponsiveContentPage
+    {
+        AlphaApp Root = AlphaFactory.MakeSureApp();
+        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
-		AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-		AlphaPickerCell ThemeCell = null;
-		AlphaPickerCell LanguageCell = null;
+        AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
+        AlphaPickerCell ThemeCell = null;
+        AlphaPickerCell LanguageCell = null;
 
-		public AlphaSettingsPage()
-		{
-			Title = L["Settings"];
-			ThemeCell = AlphaFactory.MakePickerCell();
-			LanguageCell = AlphaFactory.MakePickerCell();
+        public AlphaSettingsPage()
+        {
+            Title = L["Settings"];
+            ThemeCell = AlphaFactory.MakePickerCell();
+            LanguageCell = AlphaFactory.MakePickerCell();
 
-			UserLabel.Command = new Command
-			(
-				o => AlphaFactory
-					.MakeSureApp()
-					.ShowSelectUserPage
-					(
-						NewUser =>
-						{
-							Settings.UserName = NewUser;
+            UserLabel.Command = new Command
+            (
+                o => AlphaFactory
+                    .MakeSureApp()
+                    .ShowSelectUserPage
+                    (
+                        NewUser =>
+                        {
+                            Settings.UserName = NewUser;
                             Domain.UpdateLastPublicActivityCoreAsync(NewUser).LeavingThrown();
-							Root.OnChangeSettings();
-						}
-					)
-			);
-		}
+                            Root.OnChangeSettings();
+                        }
+                    )
+            );
+        }
 
-		public void ApplyUser(string User)
-		{
-			if (!String.IsNullOrWhiteSpace(User))
-			{
-				if (UserLabel.Text != User || null == UserLabel.ImageSource)
-				{
-					AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-						.ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
-					UserLabel.Text = User;
-					//UserLabel.TextColor = Color.Default;
-				}
-			}
-			else
-			{
-				UserLabel.ImageSource = null;
-				UserLabel.Text = L["unspecified"];
-				UserLabel.TextColor = Color.Gray;
-			}
-		}
+        public void ApplyUser(string User)
+        {
+            if (!String.IsNullOrWhiteSpace(User))
+            {
+                if (UserLabel.Text != User || null == UserLabel.ImageSource)
+                {
+                    AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
+                        .ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+                    UserLabel.Text = User;
+                    //UserLabel.TextColor = Color.Default;
+                }
+            }
+            else
+            {
+                UserLabel.ImageSource = null;
+                UserLabel.Text = L["unspecified"];
+            }
+        }
 
-		public override void Build()
-		{
-			base.Build();
-			Debug.WriteLine("AlphaSettingsPage.Rebuild();");
+        public override void Build()
+        {
+            base.Build();
+            Debug.WriteLine("AlphaSettingsPage.Rebuild();");
 
-			var Friends = AlphaFactory.MakeCircleImageCell
-			(
-				Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
-				Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
-			);
+            var Friends = AlphaFactory.MakeCircleImageCell
+            (
+                Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
+                Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
+            );
 
             if (Width <= Height)
-			{
-				Content = new StackLayout
-				{
-					Children =
-					{
-						new TableView
-						{
-							Root = new TableRoot
-							{
-								new TableSection(L["Github Account"])
-								{
-									UserLabel,
-									Friends,
-								},
-								new TableSection(L["Notifications"])
-								{
-									AlphaFactory.MakeCircleImageCell
-									(
-										Text: L["Alert by Left Time"],
-										Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
-									),
-									AlphaFactory.MakeCircleImageCell
-									(
-										Text: L["Daily Alert"],
-										Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
-									)
-								},
-								new TableSection(L["Theme"])
-								{
-									ThemeCell
-								},
-								new TableSection(L["Language"])
-								{
-									LanguageCell
-								},
-								new TableSection(L["Information"])
-								{
-									AlphaFactory.MakeCircleImageCell
-									(
-										ImageSource: Root.GetApplicationImageSource(),
-										Text: L["keep.grass"],
-										Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
-									),
-								},
-							},
-						},
-					},
-				};
-			}
-			else
-			{
-				Content = new StackLayout
-				{
-					Children =
-					{
-						new StackLayout
-						{
-							Orientation = StackOrientation.Horizontal,
-							Spacing = 1.0,
-							BackgroundColor = Color.Gray,
-							Children =
-							{
-								new TableView
-								{
-									BackgroundColor = Color.White,
-									Root = new TableRoot
-									{
-										new TableSection(L["Github Account"])
-										{
-											UserLabel,
-											Friends,
-										},
-										new TableSection(L["Theme"])
-										{
-											ThemeCell
-										},
-										new TableSection(L["Language"])
-										{
-											LanguageCell
-										},
-									},
-								},
-								new TableView
-								{
-									BackgroundColor = Color.White,
-									Root = new TableRoot
-									{
-										new TableSection(L["Notifications"])
-										{
-											AlphaFactory.MakeCircleImageCell
-											(
-												Text: L["Alert by Left Time"],
-												Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
-											   ),
-											AlphaFactory.MakeCircleImageCell
-											(
-												Text: L["Daily Alert"],
-												Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
-											)
-										},
-										new TableSection(L["Information"])
-										{
-											AlphaFactory.MakeCircleImageCell
-											(
-												ImageSource: Root.GetApplicationImageSource(),
-												Text: L["keep.grass"],
-												Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
-											),
-										},
-									},
-								},
-							},
-						},
-					},
-				};
-			}
+            {
+                Content = new StackLayout
+                {
+                    Children =
+                    {
+                        new TableView
+                        {
+                            Root = new TableRoot
+                            {
+                                new TableSection(L["Github Account"])
+                                {
+                                    UserLabel,
+                                    Friends,
+                                },
+                                new TableSection(L["Notifications"])
+                                {
+                                    AlphaFactory.MakeCircleImageCell
+                                    (
+                                        Text: L["Alert by Left Time"],
+                                        Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
+                                    ),
+                                    AlphaFactory.MakeCircleImageCell
+                                    (
+                                        Text: L["Daily Alert"],
+                                        Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
+                                    )
+                                },
+                                new TableSection(L["Theme"])
+                                {
+                                    ThemeCell
+                                },
+                                new TableSection(L["Language"])
+                                {
+                                    LanguageCell
+                                },
+                                new TableSection(L["Information"])
+                                {
+                                    AlphaFactory.MakeCircleImageCell
+                                    (
+                                        ImageSource: Root.GetApplicationImageSource(),
+                                        Text: L["keep.grass"],
+                                        Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+                                    ),
+                                },
+                            },
+                        },
+                    },
+                };
+            }
+            else
+            {
+                Content = new StackLayout
+                {
+                    Children =
+                    {
+                        new StackLayout
+                        {
+                            Orientation = StackOrientation.Horizontal,
+                            Spacing = 1.0,
+                            BackgroundColor = Color.Gray,
+                            Children =
+                            {
+                                new TableView
+                                {
+                                    BackgroundColor = Color.White,
+                                    Root = new TableRoot
+                                    {
+                                        new TableSection(L["Github Account"])
+                                        {
+                                            UserLabel,
+                                            Friends,
+                                        },
+                                        new TableSection(L["Theme"])
+                                        {
+                                            ThemeCell
+                                        },
+                                        new TableSection(L["Language"])
+                                        {
+                                            LanguageCell
+                                        },
+                                    },
+                                },
+                                new TableView
+                                {
+                                    BackgroundColor = Color.White,
+                                    Root = new TableRoot
+                                    {
+                                        new TableSection(L["Notifications"])
+                                        {
+                                            AlphaFactory.MakeCircleImageCell
+                                            (
+                                                Text: L["Alert by Left Time"],
+                                                Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
+                                               ),
+                                            AlphaFactory.MakeCircleImageCell
+                                            (
+                                                Text: L["Daily Alert"],
+                                                Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
+                                            )
+                                        },
+                                        new TableSection(L["Information"])
+                                        {
+                                            AlphaFactory.MakeCircleImageCell
+                                            (
+                                                ImageSource: Root.GetApplicationImageSource(),
+                                                Text: L["keep.grass"],
+                                                Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+                                            ),
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                };
+            }
             AlphaTheme.Apply(this);
-		}
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+            if (string.IsNullOrWhiteSpace(UserLabel.Text))
+            {
+                var Theme = AlphaTheme.Get();
+                UserLabel.TextColor = Theme.BackgroundColorOrDefault;
+                UserLabel.BackgroundColor = Theme.AccentColorOrDefault;
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			ApplyUser(Settings.UserName);
+            ApplyUser(Settings.UserName);
 
-			var Theme = AlphaTheme.Get();
-			//ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
-			foreach (var i in AlphaTheme.All.Keys)
-			{
-				if (!ThemeCell.Items.Where(j => j == i).Any())
-				{
+            var Theme = AlphaTheme.Get();
+            //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+            foreach (var i in AlphaTheme.All.Keys)
+            {
+                if (!ThemeCell.Items.Where(j => j == i).Any())
+                {
                     ThemeCell.Items.Add(L[i]);
-				}
-			}
-			ThemeCell.SelectedIndex = AlphaTheme.All.Values
-				.IndexOf(Theme);
+                }
+            }
+            ThemeCell.SelectedIndex = AlphaTheme.All.Values
+                .IndexOf(Theme);
 
-			var Language = Settings.Language ?? "";
-			//LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
-			foreach (var i in L.DisplayNames.Select(i => i.Value))
-			{
-				if (!LanguageCell.Items.Where(j => j == L[i]).Any())
-				{
-					LanguageCell.Items.Add(L[i]);
-				}
-			}
-			LanguageCell.SelectedIndex = L.DisplayNames
-				.Select(i => i.Key)
-				.IndexOf(Language);
-		}
-		protected override void OnDisappearing()
-		{
-			base.OnDisappearing();
+            var Language = Settings.Language ?? "";
+            //LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+            foreach (var i in L.DisplayNames.Select(i => i.Value))
+            {
+                if (!LanguageCell.Items.Where(j => j == L[i]).Any())
+                {
+                    LanguageCell.Items.Add(L[i]);
+                }
+            }
+            LanguageCell.SelectedIndex = L.DisplayNames
+                .Select(i => i.Key)
+                .IndexOf(Language);
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
             bool IsChanged = false;
 
-			var OldTheme = AlphaTheme.Get();
+            var OldTheme = AlphaTheme.Get();
             AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
-			if (OldTheme != AlphaTheme.Get())
-			{
-				IsChanged = true;
-			}
+            if (OldTheme != AlphaTheme.Get())
+            {
+                IsChanged = true;
+            }
 
-			var OldLanguage = L.Get();
-			Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
-			if (OldLanguage != L.Get())
-			{
-				L.Update();
+            var OldLanguage = L.Get();
+            Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
+            if (OldLanguage != L.Get())
+            {
+                L.Update();
                 IsChanged = true;
             }
 
             if (IsChanged)
             {
-				Root.RebuildMainPage();
+                Root.RebuildMainPage();
                 Root.OnChangeSettings();
             }
         }
-	}
+    }
 }
 
 
