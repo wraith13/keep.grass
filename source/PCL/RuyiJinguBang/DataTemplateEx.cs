@@ -13,12 +13,27 @@ namespace RuyiJinguBang
             :base(aDeclaringType)
         {
             DeclaringType = aDeclaringType;
+            System.Diagnostics.Debug.WriteLine($"DeclaringType:{DeclaringType.FullName}");
+        }
+        public PropertyInfo GetRuntimeProperty(string ViewPropertyName)
+        {
+            var result = DeclaringType.GetRuntimeProperty(ViewPropertyName);
+            if (null == result)
+            {
+                //  Android版のデバッグビルドにおいて Reflection が腐っててプロパティー情報が正常に取得できない問題が確認されている。
+                foreach (var i in DeclaringType.GetRuntimeProperties())
+                {
+                    System.Diagnostics.Debug.WriteLine($"i.Name:{i.Name}");
+                }
+                throw new ArgumentOutOfRangeException("ViewPropertyName", $"{DeclaringType.FullName} has not '{ViewPropertyName}' property. If this is a debug build of the Android version it is highly likely that it is a bug in Xamarin.");
+            }
+            return result;
         }
         public DataTemplateEx SetBinding(string ViewPropertyName, string DataPropertyName, object DefaultValue)
         {
             this.SetBinding
             (
-                DeclaringType.GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(DefaultValue),
+                GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(DefaultValue),
                 DataPropertyName
             );
             return this;
@@ -27,7 +42,7 @@ namespace RuyiJinguBang
         {
             this.SetBinding
             (
-                DeclaringType.GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(),
+                GetRuntimeProperty(ViewPropertyName).CreateBindableProperty(),
                 DataPropertyName
             );
             return this;
