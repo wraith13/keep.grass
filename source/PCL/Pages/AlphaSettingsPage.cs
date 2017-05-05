@@ -58,6 +58,20 @@ namespace keep.grass
                 UserLabel.ImageSource = null;
                 UserLabel.Text = L["unspecified"];
             }
+            ApplyUserLabelTheme(User);
+        }
+        public void ApplyUserLabelTheme(string User)
+        {
+            var Theme = AlphaTheme.Get();
+            if (!String.IsNullOrWhiteSpace(User))
+            {
+                AlphaTheme.Apply(UserLabel, Theme);
+            }
+            else
+            {
+                UserLabel.TextColor = Theme.BackgroundColorOrDefault;
+                UserLabel.BackgroundColor = Theme.AccentColorOrDefault;
+            }
         }
 
         public override void Build()
@@ -189,12 +203,7 @@ namespace keep.grass
                 };
             }
             AlphaTheme.Apply(this);
-            if (string.IsNullOrWhiteSpace(UserLabel.Text))
-            {
-                var Theme = AlphaTheme.Get();
-                UserLabel.TextColor = Theme.BackgroundColorOrDefault;
-                UserLabel.BackgroundColor = Theme.AccentColorOrDefault;
-            }
+            ApplyUserLabelTheme(Settings.UserName);
         }
         protected override void OnAppearing()
         {

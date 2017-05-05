@@ -165,11 +165,14 @@ namespace keep.grass
 
         public static void Apply(object UIObject)
         {
-            var Theme = Get();
+			Apply(UIObject, Get());
+        }
+        public static void Apply(object UIObject, AlphaTheme Theme)
+        {
             var ApplyHandler = UIObject as IAlphaThemeApplyHandler;
             if (null != ApplyHandler)
             {
-                ApplyHandler.ApplyTheme(Theme);
+				ApplyHandler.ApplyTheme(Theme);
             }
             else
             {
@@ -178,7 +181,7 @@ namespace keep.grass
             var AppliedHandler = UIObject as IAlphaThemeAppliedHandler;
             if (null != ApplyHandler)
             {
-                AppliedHandler.AppliedTheme(Theme);
+				AppliedHandler.AppliedTheme(Theme);
             }
         }
         private static void ApplyCore(object UIObject, AlphaTheme Theme)
