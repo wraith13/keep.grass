@@ -11,7 +11,9 @@ using SkiaSharp.Views.Forms;
 #endif
 using System.Diagnostics;
 
+#if DISABLED_SKIASHARP_VIEWS_FORMS
 using RuyiJinguBang;
+#endif
 
 namespace keep.grass
 {
