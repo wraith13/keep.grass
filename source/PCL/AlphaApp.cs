@@ -46,7 +46,10 @@ namespace keep.grass
 
             // Mobile Center 初期化処理。(もしビルドエラーになるなら取り敢えず「Properties.KeySample.Mobi略」にすれば通る)
             MobileCenter.Start(
-                appSecret: $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};" + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};",
+                appSecret:
+                    $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};"
+                    + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};"
+                    + $"uwp={keep.grass.Properties.Key.MobileCenterSecretUwp};",
                 services: new[] { typeof(Analytics), typeof(Crashes) }
             );
 
