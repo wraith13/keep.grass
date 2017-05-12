@@ -75,7 +75,7 @@
       <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.Mac20\Plugin.Settings.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.57.0\lib\XamarinMac\SkiaSharp.dll</HintPath>
+      <HintPath>..\packages\SkiaSharp.1.57.1\lib\XamarinMac\SkiaSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -119,5 +119,4 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.5.233-pre1\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.5.233-pre1\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
-  <Import Project="..\packages\SkiaSharp.1.57.0\build\XamarinMac\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.57.0\build\XamarinMac\SkiaSharp.targets')" />
 </Project>
