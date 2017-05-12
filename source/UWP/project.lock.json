@@ -307,7 +307,7 @@
           "lib/uap10.0/NotificationsExtensions.Win10.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -320,39 +320,39 @@
             "assetType": "native",
             "rid": "osx"
           },
-          "runtimes/win10-arm/native/libEGL.dll": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {
             "assetType": "native",
             "rid": "win10-arm"
           },
-          "runtimes/win10-arm/native/libGLESv2.dll": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {
             "assetType": "native",
             "rid": "win10-arm"
           },
-          "runtimes/win10-arm/native/libSkiaSharp.dll": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {
             "assetType": "native",
             "rid": "win10-arm"
           },
-          "runtimes/win10-x64/native/libEGL.dll": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {
             "assetType": "native",
             "rid": "win10-x64"
           },
-          "runtimes/win10-x64/native/libGLESv2.dll": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {
             "assetType": "native",
             "rid": "win10-x64"
           },
-          "runtimes/win10-x64/native/libSkiaSharp.dll": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {
             "assetType": "native",
             "rid": "win10-x64"
           },
-          "runtimes/win10-x86/native/libEGL.dll": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {
             "assetType": "native",
             "rid": "win10-x86"
           },
-          "runtimes/win10-x86/native/libGLESv2.dll": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {
             "assetType": "native",
             "rid": "win10-x86"
           },
-          "runtimes/win10-x86/native/libSkiaSharp.dll": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {
             "assetType": "native",
             "rid": "win10-x86"
           },
@@ -366,10 +366,10 @@
           }
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -378,11 +378,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -2346,7 +2346,7 @@
           "runtimes/win8-arm/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -2355,15 +2355,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-arm/native/libEGL.dll": {},
-          "runtimes/win10-arm/native/libGLESv2.dll": {},
-          "runtimes/win10-arm/native/libSkiaSharp.dll": {}
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -2372,11 +2372,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -4183,7 +4183,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -4192,15 +4192,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-arm/native/libEGL.dll": {},
-          "runtimes/win10-arm/native/libGLESv2.dll": {},
-          "runtimes/win10-arm/native/libSkiaSharp.dll": {}
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -4209,11 +4209,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -6030,7 +6030,7 @@
           "runtimes/win7-x64/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -6039,15 +6039,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-x64/native/libEGL.dll": {},
-          "runtimes/win10-x64/native/libGLESv2.dll": {},
-          "runtimes/win10-x64/native/libSkiaSharp.dll": {}
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -6056,11 +6056,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -7867,7 +7867,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -7876,15 +7876,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-x64/native/libEGL.dll": {},
-          "runtimes/win10-x64/native/libGLESv2.dll": {},
-          "runtimes/win10-x64/native/libSkiaSharp.dll": {}
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -7893,11 +7893,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -9714,7 +9714,7 @@
           "runtimes/win7-x86/native/mscorrc.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -9723,15 +9723,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-x86/native/libEGL.dll": {},
-          "runtimes/win10-x86/native/libGLESv2.dll": {},
-          "runtimes/win10-x86/native/libSkiaSharp.dll": {}
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -9740,11 +9740,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -11551,7 +11551,7 @@
           "runtimes/win8-aot/lib/netcore50/System.Private.DataContractSerialization.dll": {}
         }
       },
-      "SkiaSharp/1.57.0": {
+      "SkiaSharp/1.57.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -11560,15 +11560,15 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         },
         "native": {
-          "runtimes/win10-x86/native/libEGL.dll": {},
-          "runtimes/win10-x86/native/libGLESv2.dll": {},
-          "runtimes/win10-x86/native/libSkiaSharp.dll": {}
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.57.0": {
+      "SkiaSharp.Views/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0"
+          "SkiaSharp": "1.57.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -11577,11 +11577,11 @@
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         }
       },
-      "SkiaSharp.Views.Forms/1.57.0": {
+      "SkiaSharp.Views.Forms/1.57.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.57.0",
-          "SkiaSharp.Views": "1.57.0",
+          "SkiaSharp": "1.57.1",
+          "SkiaSharp.Views": "1.57.1",
           "Xamarin.Forms": "2.3.0"
         },
         "compile": {
@@ -13822,12 +13822,11 @@
         "runtimes/win8-arm/native/mscorrc.dll"
       ]
     },
-    "SkiaSharp/1.57.0": {
-      "sha512": "XPCDdu5mPRHK4zEEvK8doUer32i+bU6sics9QU+UawnKR0Wabq/OkCuDMB+FVVpbeAQZtZUu1Zw1OfLXU3dMNw==",
+    "SkiaSharp/1.57.1": {
+      "sha512": "Y2WU+/qhdMON0rTyO+MtbUMEbcPvg8do40AhXMI2/C8Yqi59GLhqZexY54snTutCt07/24HZda7hq/Wy53/beg==",
       "type": "package",
-      "path": "skiasharp/1.57.0",
+      "path": "skiasharp/1.57.1",
       "files": [
-        "build/XamarinMac/SkiaSharp.targets",
         "build/net45/SkiaSharp.dll.config",
         "build/net45/SkiaSharp.targets",
         "lib/MonoAndroid/SkiaSharp.dll",
@@ -13848,25 +13847,26 @@
         "lib/uap10.0/SkiaSharp.dll",
         "lib/uap10.0/SkiaSharp.xml",
         "runtimes/osx/native/libSkiaSharp.dylib",
-        "runtimes/win10-arm/native/libEGL.dll",
-        "runtimes/win10-arm/native/libGLESv2.dll",
-        "runtimes/win10-arm/native/libSkiaSharp.dll",
-        "runtimes/win10-x64/native/libEGL.dll",
-        "runtimes/win10-x64/native/libGLESv2.dll",
-        "runtimes/win10-x64/native/libSkiaSharp.dll",
-        "runtimes/win10-x86/native/libEGL.dll",
-        "runtimes/win10-x86/native/libGLESv2.dll",
-        "runtimes/win10-x86/native/libSkiaSharp.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
         "runtimes/win7-x64/native/libSkiaSharp.dll",
         "runtimes/win7-x86/native/libSkiaSharp.dll",
-        "skiasharp.1.57.0.nupkg.sha512",
-        "skiasharp.nuspec"
+        "skiasharp.1.57.1.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
       ]
     },
-    "SkiaSharp.Views/1.57.0": {
-      "sha512": "iXrE6ehRcsLc5qkHv3Pm+L03OSapzlbmTPUUPw9/Xqdu9bWKW1krLYv69PpGrL8zRstsCn1MYsJPUBpVdnmonw==",
+    "SkiaSharp.Views/1.57.1": {
+      "sha512": "lBe6Kwhw010CgyJWBFzjBitHVSqcqlKSwQsYBj2dQcVQbl1o/2M6H/9eQOLeowfsdNmb7E8XkBWplxlJxUcA4w==",
       "type": "package",
-      "path": "skiasharp.views/1.57.0",
+      "path": "skiasharp.views/1.57.1",
       "files": [
         "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
         "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
@@ -13875,20 +13875,21 @@
         "lib/net45/SkiaSharp.Views.Desktop.dll",
         "lib/net45/SkiaSharp.Views.WPF.dll",
         "lib/uap10.0/SkiaSharp.Views.UWP.dll",
-        "skiasharp.views.1.57.0.nupkg.sha512",
+        "skiasharp.views.1.57.1.nupkg.sha512",
         "skiasharp.views.nuspec"
       ]
     },
-    "SkiaSharp.Views.Forms/1.57.0": {
-      "sha512": "AJ8QLbylj2lkpTG8Wi8LR8PgsiBk5wM3nvIghZ3CpbjppKXKqyLsVAe26LMUsUY0IVpiXwg2CghVPNnVV2/ELw==",
+    "SkiaSharp.Views.Forms/1.57.1": {
+      "sha512": "aWzLK6JAcimDOHg0xFWNDR291m/oyp+hpS6gXpuL+bhp3GSrfoi/2n9vP/d73Hu6GcUdMVemOLChX03jNZBvLw==",
       "type": "package",
-      "path": "skiasharp.views.forms/1.57.0",
+      "path": "skiasharp.views.forms/1.57.1",
       "files": [
         "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
+        "lib/XamarinMac/SkiaSharp.Views.Forms.dll",
         "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
         "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.Views.Forms.dll",
         "lib/uap10.0/SkiaSharp.Views.Forms.dll",
-        "skiasharp.views.forms.1.57.0.nupkg.sha512",
+        "skiasharp.views.forms.1.57.1.nupkg.sha512",
         "skiasharp.views.forms.nuspec"
       ]
     },
@@ -16851,8 +16852,8 @@
       "Microsoft.Azure.Mobile.Analytics >= 0.7.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
       "NotificationsExtensions.Win10 >= 14332.0.2",
-      "SkiaSharp >= 1.57.0",
-      "SkiaSharp.Views.Forms >= 1.57.0",
+      "SkiaSharp >= 1.57.1",
+      "SkiaSharp.Views.Forms >= 1.57.1",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
       "Xam.Plugins.Settings >= 2.5.4",
       "Xamarin.Forms >= 2.3.4.231"
@@ -16880,14 +16881,20 @@
       }
     },
     "dependencies": {
-      "Microsoft.Azure.Mobile.Analytics": "[0.7.0, )",
+      "Microsoft.Azure.Mobile.Analytics": "0.7.0",
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
       "NotificationsExtensions.Win10": "14332.0.2",
-      "SkiaSharp": "1.57.0",
-      "SkiaSharp.Views.Forms": "1.57.0",
       "Xam.Plugins.Forms.ImageCircle": "1.8.1",
       "Xam.Plugins.Settings": "2.5.4",
-      "Xamarin.Forms": "2.3.4.231"
+      "Xamarin.Forms": "2.3.4.231",
+      "SkiaSharp": {
+        "target": "Package",
+        "version": "[1.57.1, )"
+      },
+      "SkiaSharp.Views.Forms": {
+        "target": "Package",
+        "version": "[1.57.1, )"
+      }
     },
     "frameworks": {
       "uap10.0": {}
