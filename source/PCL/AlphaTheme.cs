@@ -120,7 +120,7 @@ namespace keep.grass
         public static AlphaTheme Black = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.FromRgb(0xE8,0xF0,0xEC),
+            ForegroundColor = Color.FromRgb(0xE8, 0xF0, 0xEC),
             BackgroundColor = Color.Black,
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
             (
@@ -165,23 +165,23 @@ namespace keep.grass
 
         public static void Apply(object UIObject)
         {
-			Apply(UIObject, Get());
+            Apply(UIObject, Get());
         }
         public static void Apply(object UIObject, AlphaTheme Theme)
         {
             var ApplyHandler = UIObject as IAlphaThemeApplyHandler;
             if (null != ApplyHandler)
             {
-				ApplyHandler.ApplyTheme(Theme);
+                ApplyHandler.ApplyTheme(Theme);
             }
             else
             {
-				ApplyCore(UIObject, Theme);
+                ApplyCore(UIObject, Theme);
             }
             var AppliedHandler = UIObject as IAlphaThemeAppliedHandler;
             if (null != ApplyHandler)
             {
-				AppliedHandler.AppliedTheme(Theme);
+                AppliedHandler.AppliedTheme(Theme);
             }
         }
         private static void ApplyCore(object UIObject, AlphaTheme Theme)
@@ -193,7 +193,7 @@ namespace keep.grass
             {
                 //CircleGraph.AltTextColor = Theme.AccentColor;
                 CircleGraph.BackgroundColor = Color.Default == Theme.BackgroundColor ?
-                    Color.White:
+                    Color.White :
                     Theme.BackgroundColor;
                 return;
             }
@@ -222,7 +222,7 @@ namespace keep.grass
                 Layout.BackgroundColor = Theme.BackgroundColor;
                 foreach (var i in Layout.Children)
                 {
-					Debug.WriteLine($"i:{i.GetType().FullName}");
+                    Debug.WriteLine($"i:{i.GetType().FullName}");
                     Apply(i);
                 }
                 return;
@@ -260,7 +260,7 @@ namespace keep.grass
             if (null != Label)
             {
                 Label.TextColor = Theme.ForegroundColor;
-				Label.BackgroundColor = Theme.BackgroundColor;
+                Label.BackgroundColor = Theme.BackgroundColor;
                 return;
             }
 

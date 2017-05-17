@@ -51,7 +51,7 @@ namespace keep.grass
         }
     }
 #if !DISABLED_SKIASHARP_VIEWS_FORMS
-    public abstract class VoidCircleGraph :SKCanvasView // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
+    public abstract class VoidCircleGraph : SKCanvasView // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 #else
     public abstract class VoidCircleGraph : Image // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 #endif

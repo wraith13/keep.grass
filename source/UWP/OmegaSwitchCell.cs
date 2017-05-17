@@ -8,7 +8,7 @@ using RuyiJinguBang;
 
 namespace keep.grass.UWP
 {
-    class OmegaSwitchCell :ViewCell, VoidSwitchCell
+    class OmegaSwitchCell : ViewCell, VoidSwitchCell
     {
         protected Label TextLabel = new Label();
         protected Switch OnSwitch = new Switch();
@@ -41,7 +41,7 @@ namespace keep.grass.UWP
         }
 
         public OmegaSwitchCell() : base()
-		{
+        {
             View = new Grid().SetSingleChild
             (
                 new StackLayout

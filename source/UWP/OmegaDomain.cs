@@ -74,7 +74,7 @@ namespace keep.grass.UWP
 
                 Debug.Write("BackgroundUpdateLastPublicActivityTask: " + typeof(BackgroundUpdateLastPublicActivityTask).FullName);
                 var BackgroundUpdateTaskName = "UpdateLastPublicActivity";
-                foreach(var task in BackgroundTaskRegistration.AllTasks.Where(i => i.Value.Name == BackgroundUpdateTaskName))
+                foreach (var task in BackgroundTaskRegistration.AllTasks.Where(i => i.Value.Name == BackgroundUpdateTaskName))
                 {
                     task.Value.Unregister(true);
                 }

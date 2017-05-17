@@ -6,11 +6,11 @@ using UIKit;
 
 namespace keep.grass.iOS
 {
-	public class OmegaApp : AlphaApp
-	{
-		public OmegaApp()
-		{
-		}
-	}
+    public class OmegaApp : AlphaApp
+    {
+        public OmegaApp()
+        {
+        }
+    }
 }
 

@@ -10,7 +10,7 @@ namespace RuyiJinguBang
         Type DeclaringType;
 
         public DataTemplateEx(Type aDeclaringType)
-            :base(aDeclaringType)
+            : base(aDeclaringType)
         {
             DeclaringType = aDeclaringType;
             System.Diagnostics.Debug.WriteLine($"DeclaringType:{DeclaringType.FullName}");
@@ -49,7 +49,7 @@ namespace RuyiJinguBang
         }
         public DataTemplateEx SetBindingList(params string[] PropertyNameList)
         {
-            foreach(var PropertyName in PropertyNameList)
+            foreach (var PropertyName in PropertyNameList)
             {
                 SetBinding
                 (

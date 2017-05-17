@@ -353,7 +353,7 @@ namespace keep.grass
                 }
                 Canvas.DrawText
                 (
-					LeftTimeBarText,
+                    LeftTimeBarText,
                     LeftTimeBarRect.MidX,
                     LeftTimeBarRect.MidY + (paint.TextSize / 2.0f),
                     paint

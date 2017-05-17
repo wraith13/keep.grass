@@ -17,33 +17,33 @@ namespace keep.grass
 
     //  Xamarin.Forms 標準の SwitchCell だと TextColor が指定できないので自前実装
     public class AlphaSwitchCell : ViewCell, VoidSwitchCell
-	{
-		protected Label TextLabel = new Label();
+    {
+        protected Label TextLabel = new Label();
         protected Switch Switch = new Switch();
 
-		public AlphaSwitchCell() : base()
+        public AlphaSwitchCell() : base()
         {
-			View = new Grid().SetSingleChild
-			(
-				new StackLayout
-				{
-					Orientation = StackOrientation.Horizontal,
-					VerticalOptions = LayoutOptions.Center,
-					Padding = new Thickness(20, 2, 0, 2),
-					Children =
-					{
-						TextLabel,
-						Switch,
-					},
-				}
-			);
+            View = new Grid().SetSingleChild
+            (
+                new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    VerticalOptions = LayoutOptions.Center,
+                    Padding = new Thickness(20, 2, 0, 2),
+                    Children =
+                    {
+                        TextLabel,
+                        Switch,
+                    },
+                }
+            );
 
-			TextLabel.VerticalOptions = LayoutOptions.Center;
-			TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
-			Switch.VerticalOptions = LayoutOptions.Center;
-			Switch.HorizontalOptions = LayoutOptions.End;
-			AlphaTheme.Apply(this);
-		}
+            TextLabel.VerticalOptions = LayoutOptions.Center;
+            TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+            Switch.VerticalOptions = LayoutOptions.Center;
+            Switch.HorizontalOptions = LayoutOptions.End;
+            AlphaTheme.Apply(this);
+        }
 
         public Color TextColor
         {
@@ -57,31 +57,31 @@ namespace keep.grass
             }
         }
 
-		public new string Text
-		{
-			get
-			{
+        public new string Text
+        {
+            get
+            {
                 return TextLabel.Text;
-			}
-			set
-			{
-				TextLabel.Text = value;
-			}
-		}
-		public new bool On
-		{
-			get
-			{
+            }
+            set
+            {
+                TextLabel.Text = value;
+            }
+        }
+        public new bool On
+        {
+            get
+            {
                 return Switch.IsToggled;
-			}
-			set
-			{
-				Switch.IsToggled = value;
-			}
-		}
-		public Cell AsCell()
-		{
-			return this;
-		}
-	}
+            }
+            set
+            {
+                Switch.IsToggled = value;
+            }
+        }
+        public Cell AsCell()
+        {
+            return this;
+        }
+    }
 }

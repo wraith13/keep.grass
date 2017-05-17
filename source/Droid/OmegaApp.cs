@@ -8,12 +8,12 @@ using Xamarin.Forms;
 
 namespace keep.grass.Droid
 {
-	public class OmegaApp : AlphaApp
-	{
-		public OmegaApp()
-		{
-		}
+    public class OmegaApp : AlphaApp
+    {
+        public OmegaApp()
+        {
+        }
 
-	}
+    }
 }
 

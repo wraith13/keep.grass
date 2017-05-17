@@ -10,12 +10,12 @@ using RuyiJinguBang;
 
 namespace keep.grass
 {
-	public class AlphaFriendsPage : ResponsiveContentPage
-	{
-		AlphaApp Root = AlphaFactory.MakeSureApp();
-		Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+    public class AlphaFriendsPage : ResponsiveContentPage
+    {
+        AlphaApp Root = AlphaFactory.MakeSureApp();
+        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
-		const int MaxFriendCount = 8;
+        const int MaxFriendCount = 8;
         //VoidEntryCell[] FriendNameCellList = null;
         ListView List;
         Button AddButton;
@@ -34,9 +34,9 @@ namespace keep.grass
             }
         }
 
-		public AlphaFriendsPage()
-		{
-			Title = L["Rivals"];
+        public AlphaFriendsPage()
+        {
+            Title = L["Rivals"];
             List = new ListView
             {
                 ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
@@ -82,7 +82,7 @@ namespace keep.grass
                     }
                 ),
             };
-		}
+        }
         public void AddUser(string NewUser)
         {
             DeleteUser(NewUser);
@@ -107,10 +107,10 @@ namespace keep.grass
             }
         }
 
-		public override void Build()
-		{
-			base.Build();
-			Debug.WriteLine("AlphaSettingsPage.Rebuild();");
+        public override void Build()
+        {
+            base.Build();
+            Debug.WriteLine("AlphaSettingsPage.Rebuild();");
 
             var ButtonFrame = new Grid()
             {
@@ -124,17 +124,17 @@ namespace keep.grass
                 DeleteButton
             );
 
-			Content = new StackLayout
-			{
-				Children =
-				{
+            Content = new StackLayout
+            {
+                Children =
+                {
                     List,
                     ButtonFrame,
-				},
-			};
+                },
+            };
             UpdateList();
             AlphaTheme.Apply(this);
-		}
+        }
         public void UpdateList()
         {
             var Source = Settings.GetFriendList();
@@ -142,16 +142,16 @@ namespace keep.grass
             AddButton.IsEnabled = Source.Count() < MaxFriendCount;
             DeleteButton.IsEnabled = false;
         }
-		protected override void OnDisappearing()
-		{
-			base.OnDisappearing();
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
             if (IsChanged)
             {
                 Root.RebuildMainPage();
                 Root.OnChangeSettings();
             }
-		}
-	}
+        }
+    }
 }
 
 
