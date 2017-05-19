@@ -2626,7 +2626,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -5258,7 +5258,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -7929,7 +7929,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -10570,7 +10570,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -13250,7 +13250,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -15891,7 +15891,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -18571,7 +18571,7 @@
           "lib/UAP10/ImageCircle.Forms.Plugin.UWP.dll": {}
         }
       },
-      "Xam.Plugins.Settings/2.5.4": {
+      "Xam.Plugins.Settings/2.5.8": {
         "type": "package",
         "compile": {
           "lib/UAP10/Plugin.Settings.Abstractions.dll": {},
@@ -27495,10 +27495,10 @@
         "lib/wpa81/ImageCircle.Forms.Plugin.WindowsPhoneRT.xml"
       ]
     },
-    "Xam.Plugins.Settings/2.5.4": {
-      "sha512": "ygk2q+ZEav2NO9CCxYo43LopjX5S2yete7uG0N6FS2EtiNV7yozhvzXppsPtUyjpMNk6/eelzQE/scjriJ6dDQ==",
+    "Xam.Plugins.Settings/2.5.8": {
+      "sha512": "iqGTobVkbZf6b0weWwk6ex3bnp8WJ4ipvfV4rT9I47I+qCf1VTffTYFtFwSRU3W53xSl9WtOW6n5vbgEpNJdaw==",
       "type": "package",
-      "path": "xam.plugins.settings/2.5.4",
+      "path": "xam.plugins.settings/2.5.8",
       "files": [
         "content/MonoAndroid10/Helpers/Settings.cs.pp",
         "content/UAP10/Helpers/Settings.cs.pp",
@@ -27546,7 +27546,7 @@
         "lib/wpa81/Plugin.Settings.dll",
         "lib/wpa81/Plugin.Settings.xml",
         "readme.txt",
-        "xam.plugins.settings.2.5.4.nupkg.sha512",
+        "xam.plugins.settings.2.5.8.nupkg.sha512",
         "xam.plugins.settings.nuspec"
       ]
     },
@@ -27722,7 +27722,7 @@
       "SkiaSharp >= 1.57.1",
       "SkiaSharp.Views.Forms >= 1.57.1",
       "Xam.Plugins.Forms.ImageCircle >= 1.8.1",
-      "Xam.Plugins.Settings >= 2.5.4",
+      "Xam.Plugins.Settings >= 2.5.8",
       "Xamarin.Forms >= 2.3.4.247"
     ],
     "UAP,Version=v10.0": []
@@ -27754,8 +27754,8 @@
       "SkiaSharp": "1.57.1",
       "SkiaSharp.Views.Forms": "1.57.1",
       "Xam.Plugins.Forms.ImageCircle": "1.8.1",
-      "Xam.Plugins.Settings": "2.5.4",
-      "Xamarin.Forms": "[2.3.4.247, )"
+      "Xam.Plugins.Settings": "[2.5.8, )",
+      "Xamarin.Forms": "2.3.4.247"
     },
     "frameworks": {
       "uap10.0": {}
