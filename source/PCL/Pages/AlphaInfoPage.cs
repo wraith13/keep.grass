@@ -95,6 +95,20 @@ namespace keep.grass
                 AlphaFactory.MakeCircleImageCell
                 (
                     ImageSource: null,
+                    Text: "Microsoft.Azure.Mobile.Analytics",
+                    Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Azure.Mobile.Analytics/"))),
+                    OptionImageSource: Root.GetExportImageSource()
+                ),
+                AlphaFactory.MakeCircleImageCell
+                (
+                    ImageSource: null,
+                    Text: "Microsoft.Azure.Mobile.Crashes",
+                    Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Azure.Mobile.Crashes//"))),
+                    OptionImageSource: Root.GetExportImageSource()
+                ),
+                AlphaFactory.MakeCircleImageCell
+                (
+                    ImageSource: null,
                     Text: "Settings Plugin",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/jamesmontemagno/SettingsPlugin"))),
                     OptionImageSource: Root.GetExportImageSource()
