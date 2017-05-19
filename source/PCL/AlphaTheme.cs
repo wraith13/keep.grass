@@ -179,7 +179,7 @@ namespace keep.grass
                 ApplyCore(UIObject, Theme);
             }
             var AppliedHandler = UIObject as IAlphaThemeAppliedHandler;
-            if (null != ApplyHandler)
+            if (null != AppliedHandler)
             {
                 AppliedHandler.AppliedTheme(Theme);
             }
@@ -222,7 +222,7 @@ namespace keep.grass
                 Layout.BackgroundColor = Theme.BackgroundColor;
                 foreach (var i in Layout.Children)
                 {
-                    Debug.WriteLine($"i:{i.GetType().FullName}");
+                    //Debug.WriteLine($"i:{i.GetType().FullName}");
                     Apply(i);
                 }
                 return;
@@ -278,7 +278,7 @@ namespace keep.grass
                 Grid.BackgroundColor = Theme.BackgroundColor;
                 foreach (var i in Grid.Children)
                 {
-                    Debug.WriteLine($"i:{i.GetType().FullName}");
+                    //Debug.WriteLine($"i:{i.GetType().FullName}");
                     Apply(i);
                 }
                 return;
