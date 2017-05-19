@@ -9,7 +9,7 @@ using RuyiJinguBang;
 
 namespace keep.grass
 {
-    public class AlphaSelectUserPage : ResponsiveContentPage
+    public class AlphaSelectUserPage : ResponsiveContentPage, IAlphaThemeAppliedHandler
     {
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
         Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
@@ -171,7 +171,10 @@ namespace keep.grass
             base.Build();
             Debug.WriteLine("AlphaSelectUserPage.Rebuild();");
             AlphaTheme.Apply(this);
-            var Theme = AlphaTheme.Get();
+        }
+
+        public void AppliedTheme(AlphaTheme Theme)
+        {
             SearchButton.TextColor = Theme.BackgroundColorOrDefault;
             SearchButton.BackgroundColor = Theme.AccentColorOrDefault;
         }
