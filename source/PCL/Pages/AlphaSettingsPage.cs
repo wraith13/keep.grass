@@ -59,6 +59,11 @@ namespace keep.grass
         }
         public void ApplyUserLabelTheme(string User)
         {
+            var UserLabelAnimation = "DefaultButtn";
+            if (Content.AnimationIsRunning(UserLabelAnimation))
+            {
+                Content.AbortAnimation(UserLabelAnimation);
+            }
             var Theme = AlphaTheme.Get();
             if (!String.IsNullOrWhiteSpace(User))
             {
@@ -66,8 +71,21 @@ namespace keep.grass
             }
             else
             {
-                UserLabel.TextColor = Theme.BackgroundColor;
-                UserLabel.BackgroundColor = Theme.AccentColor;
+                Content.Animate
+                (
+                    UserLabelAnimation,
+                    d =>
+                    {
+                        var Rate = Math.Abs(Math.Sin(d));
+                        UserLabel.TextColor = ColorEx.MergeWithRate(Theme.AccentColor, Theme.BackgroundColor, Rate);
+                        UserLabel.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor, Theme.AccentColor, Rate);
+                    },
+                    0.0,
+                    1000.0,
+                    16,
+                    (uint)2000000,
+                    Easing.Linear
+                );
             }
         }
 

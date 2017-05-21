@@ -17,12 +17,13 @@ namespace keep.grass
         protected Image Image = AlphaFactory.MakeCircleImage();
         protected Label TextLabel = new Label();
         protected Image OptionImage = new Image();
+        protected StackLayout Stack;
 
         public AlphaCircleImageCell() : base()
         {
             View = new Grid().SetSingleChild
             (
-                new StackLayout
+                Stack = new StackLayout
                 {
                     Orientation = StackOrientation.Horizontal,
                     VerticalOptions = LayoutOptions.Center,
@@ -127,6 +128,10 @@ namespace keep.grass
             set
             {
                 View.BackgroundColor = value;
+                Stack.BackgroundColor = value;
+                Image.BackgroundColor = value;
+                TextLabel.BackgroundColor = value;
+                OptionImage.BackgroundColor = value;
             }
         }
         public ImageSource OptionImageSource

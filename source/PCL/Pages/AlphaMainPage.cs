@@ -183,13 +183,32 @@ namespace keep.grass
 
             ApplyCircleGraph(i => i.IsInvalidCanvas = true);
             OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
+
+            var SettingsButtonAnimation = "DefaultButtn";
+            if (SettingsButton.AnimationIsRunning(SettingsButtonAnimation))
+            {
+                SettingsButton.AbortAnimation(SettingsButtonAnimation);
+            }
             AlphaTheme.Apply(this);
 
             if (string.IsNullOrWhiteSpace(CircleGraph.User))
             {
                 var Theme = AlphaTheme.Get();
-                SettingsButton.TextColor = Theme.BackgroundColor;
-                SettingsButton.BackgroundColor = Theme.AccentColor;
+                SettingsButton.Animate
+                (
+                    SettingsButtonAnimation,
+                    d =>
+	                {
+                        var Rate = Math.Abs(Math.Sin(d));
+                        SettingsButton.TextColor = ColorEx.MergeWithRate(Theme.AccentColor, Theme.BackgroundColor, Rate);
+                        SettingsButton.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor, Theme.AccentColor, Rate);
+                    },
+                    0.0,
+                    1000.0,
+                    16,
+                    (uint)2000000,
+                    Easing.Linear
+                );
             }
         }
 
