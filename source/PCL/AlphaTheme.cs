@@ -67,9 +67,9 @@ namespace keep.grass
             BackgroundColor = Color.FromRgb(0x88, 0xEE, 0x99),
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
             (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
+                r: (byte)(160.0 * (1.0 - LeftTimeRate)),
                 g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
+                b: (byte)(100.0 * (1.0 - LeftTimeRate))
             ),
         };
         public static AlphaTheme Cherry = new AlphaTheme
@@ -80,8 +80,8 @@ namespace keep.grass
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
             (
                 r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
+                g: (byte)(240.0 * Math.Min(0.5, LeftTimeRate)),
+                b: (byte)(100.0 * Math.Min(0.5, LeftTimeRate))
             ),
         };
         public static AlphaTheme Abyss = new AlphaTheme
@@ -91,9 +91,9 @@ namespace keep.grass
             BackgroundColor = Color.FromRgb(0x11, 0x33, 0x66),
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
             (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
+                r: (byte)(240.0 * (1.0 - LeftTimeRate)),
+                g: (byte)(240.0 * Math.Min(0.5, LeftTimeRate)),
+                b: (byte)40
             ),
         };
         public static AlphaTheme Black = new AlphaTheme
