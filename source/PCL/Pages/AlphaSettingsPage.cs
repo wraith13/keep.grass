@@ -269,13 +269,11 @@ namespace keep.grass
                 };
             }
             AlphaTheme.Apply(this);
-            ApplyUserLabelTheme(Settings.UserName);
+            ApplyUser(Settings.UserName);
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            ApplyUser(Settings.UserName);
         }
     }
 }
