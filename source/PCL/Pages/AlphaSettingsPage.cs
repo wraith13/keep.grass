@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
-
 using Xamarin.Forms;
+using Microsoft.Azure.Mobile.Analytics;
 using keep.grass.Helpers;
 using RuyiJinguBang;
 
@@ -114,7 +114,8 @@ namespace keep.grass
                 .IndexOf(OldTheme);
             ThemeCell.Picker.Unfocused += (sender, e) => 
             {
-                AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
+                var ThemeName = AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex);
+                AlphaTheme.Set(ThemeName);
                 var NewTheme = AlphaTheme.Get();
                 if (OldTheme != AlphaTheme.Get())
                 {
@@ -122,6 +123,10 @@ namespace keep.grass
                     AlphaTheme.Apply(Root.Navigation);
                     AlphaTheme.Apply(Root.Main);
                     Build();
+                    Analytics.TrackEvent(
+                        name: "[Changed] Theme",
+                        properties: new Dictionary<string, string> { { "Category", "Settings" }, { "Theme", ThemeName } }
+                    );
                 }
             };
 
@@ -148,6 +153,14 @@ namespace keep.grass
                     Root.OnChangeSettings();
                     Root.RebuildMainPage();
                     Build();
+                    Analytics.TrackEvent(
+                        name: "[Changed] Language",
+                        properties: new Dictionary<string, string>
+                        {
+                            { "Category", "Settings" },
+                            { "Language", string.IsNullOrEmpty(Settings.Language) ? "default": Settings.Language }
+                        }
+                    );
                 }
             };
 
