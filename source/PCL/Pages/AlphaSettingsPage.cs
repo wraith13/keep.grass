@@ -33,6 +33,7 @@ namespace keep.grass
                             Settings.UserName = NewUser;
                             Domain.UpdateLastPublicActivityCoreAsync(NewUser).LeavingThrown();
                             Root.OnChangeSettings();
+                            ApplyUser(Settings.UserName);
                         }
                     )
             );
