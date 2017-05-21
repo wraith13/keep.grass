@@ -306,6 +306,8 @@ namespace keep.grass
             {
                 Task.Run(() => Domain.ManualUpdateLastPublicActivityAsync());
             }
+
+            Build();
         }
 
         public void StartUpdateLeftTimeTask(bool IsPersistently = true)
