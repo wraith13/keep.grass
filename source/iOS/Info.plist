@@ -7,9 +7,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>net.trickpalace.keep-grass</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.00.002</string>
+	<string>2.00.004</string>
 	<key>CFBundleVersion</key>
-	<string>1.00.002</string>
+	<string>2.00.004</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

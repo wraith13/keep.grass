@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.00.003" package="net.trickpalace.keep_grass" android:versionCode="3">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="2.00.004" package="net.trickpalace.keep_grass" android:versionCode="4">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
