@@ -115,7 +115,7 @@ namespace keep.grass
             { nameof(Grass), Grass },
             { nameof(Cherry), Cherry },
             { nameof(Abyss), Abyss },
-            { nameof(Black), Black },
+            //{ nameof(Black), Black }, 黒背景は問題が発生しやすいので一旦止血
         };
 
         private static KeyValuePair<string, AlphaTheme> Get(string Theme)
