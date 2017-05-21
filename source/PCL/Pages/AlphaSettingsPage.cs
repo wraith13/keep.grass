@@ -16,40 +16,11 @@ namespace keep.grass
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
         AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-        AlphaPickerCell ThemeCell = null;
-        AlphaPickerCell LanguageCell = null;
         AlphaTheme OldTheme;
 
         public AlphaSettingsPage()
         {
             Title = L["Settings"];
-
-            ThemeCell = AlphaFactory.MakePickerCell();
-            //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
-            foreach (var i in AlphaTheme.All.Keys)
-            {
-                if (!ThemeCell.Items.Where(j => j == i).Any())
-                {
-                    ThemeCell.Items.Add(L[i]);
-                }
-            }
-            OldTheme = AlphaTheme.Get();
-            ThemeCell.SelectedIndex = AlphaTheme.All.Values
-                .IndexOf(OldTheme);
-            ThemeCell.Picker.Unfocused += (sender, e) =>
-            {
-                AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
-                var NewTheme = AlphaTheme.Get();
-                if (OldTheme != AlphaTheme.Get())
-                {
-                    OldTheme = NewTheme;
-                    AlphaTheme.Apply(Root.Navigation);
-                    AlphaTheme.Apply(Root.Main);
-                    Build();
-                }
-            };
-
-            LanguageCell = AlphaFactory.MakePickerCell();
 
             UserLabel.Command = new Command
             (
@@ -110,6 +81,57 @@ namespace keep.grass
                 Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
                 Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
             );
+
+            var ThemeCell = AlphaFactory.MakePickerCell();
+            //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+            foreach (var i in AlphaTheme.All.Keys)
+            {
+                if (!ThemeCell.Items.Where(j => j == i).Any())
+                {
+                    ThemeCell.Items.Add(L[i]);
+                }
+            }
+            OldTheme = AlphaTheme.Get();
+            ThemeCell.SelectedIndex = AlphaTheme.All.Values
+                .IndexOf(OldTheme);
+            ThemeCell.Picker.Unfocused += (sender, e) => 
+            {
+                AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
+                var NewTheme = AlphaTheme.Get();
+                if (OldTheme != AlphaTheme.Get())
+                {
+                    OldTheme = NewTheme;
+                    AlphaTheme.Apply(Root.Navigation);
+                    AlphaTheme.Apply(Root.Main);
+                    Build();
+                }
+            };
+
+            var LanguageCell = AlphaFactory.MakePickerCell();
+            var Language = Settings.Language ?? "";
+            //LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+            foreach (var i in L.DisplayNames.Select(i => i.Value))
+            {
+                if (!LanguageCell.Items.Where(j => j == L[i]).Any())
+                {
+                    LanguageCell.Items.Add(L[i]);
+                }
+            }
+            LanguageCell.SelectedIndex = L.DisplayNames
+                .Select(i => i.Key)
+                .IndexOf(Language);
+            LanguageCell.Picker.Unfocused += (sender, e) =>
+            {
+                var OldLanguage = L.Get();
+                Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
+                if (OldLanguage != L.Get())
+                {
+                    L.Update();
+                    Root.OnChangeSettings();
+                    Root.RebuildMainPage();
+                    Build();
+                }
+            };
 
             if (Width <= Height)
             {
@@ -236,37 +258,6 @@ namespace keep.grass
             base.OnAppearing();
 
             ApplyUser(Settings.UserName);
-
-            var Language = Settings.Language ?? "";
-            //LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
-            foreach (var i in L.DisplayNames.Select(i => i.Value))
-            {
-                if (!LanguageCell.Items.Where(j => j == L[i]).Any())
-                {
-                    LanguageCell.Items.Add(L[i]);
-                }
-            }
-            LanguageCell.SelectedIndex = L.DisplayNames
-                .Select(i => i.Key)
-                .IndexOf(Language);
-        }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            bool IsChanged = false;
-            var OldLanguage = L.Get();
-            Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
-            if (OldLanguage != L.Get())
-            {
-                L.Update();
-                IsChanged = true;
-            }
-
-            if (IsChanged)
-            {
-                Root.RebuildMainPage();
-                Root.OnChangeSettings();
-            }
         }
     }
 }
