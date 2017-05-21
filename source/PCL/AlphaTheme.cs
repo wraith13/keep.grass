@@ -235,6 +235,12 @@ namespace keep.grass
                 return;
             }
 
+            var Search = UIObject as SearchBar;
+            if (null != Search)
+            {
+                return;
+            }
+
             var Label = UIObject as Label;
             if (null != Label)
             {
