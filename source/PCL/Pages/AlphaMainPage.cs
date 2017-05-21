@@ -188,8 +188,8 @@ namespace keep.grass
             if (string.IsNullOrWhiteSpace(CircleGraph.User))
             {
                 var Theme = AlphaTheme.Get();
-                SettingsButton.TextColor = Theme.BackgroundColorOrDefault;
-                SettingsButton.BackgroundColor = Theme.AccentColorOrDefault;
+                SettingsButton.TextColor = Theme.BackgroundColor;
+                SettingsButton.BackgroundColor = Theme.AccentColor;
             }
         }
 

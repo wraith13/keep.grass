@@ -31,33 +31,11 @@ namespace keep.grass
             private set;
         }
 
-        public Color AccentColorOrDefault
-        {
-            get
-            {
-                return AccentColor.OrDefault(AlterDefault.AccentColor);
-            }
-        }
-        public Color ForegroundColorOrDefault
-        {
-            get
-            {
-                return ForegroundColor.OrDefault(AlterDefault.ForegroundColor);
-            }
-        }
-        public Color BackgroundColorOrDefault
-        {
-            get
-            {
-                return BackgroundColor.OrDefault(AlterDefault.BackgroundColor);
-            }
-        }
-
         private AlphaTheme()
         {
         }
 
-        public static AlphaTheme AlterDefault = new AlphaTheme // Color.Default を使ってないバージョン
+        public static AlphaTheme AlterWhite = new AlphaTheme // Color.Default を使ってないバージョン
         {
             AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.Black,
@@ -69,7 +47,7 @@ namespace keep.grass
                 b: 0
             ),
         };
-        public static AlphaTheme White = new AlphaTheme
+        public static AlphaTheme DefaultWhite = new AlphaTheme
         {
             AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.Default,
@@ -81,6 +59,7 @@ namespace keep.grass
                 b: 0
             ),
         };
+        public static AlphaTheme White = AlterWhite;
         public static AlphaTheme Grass = new AlphaTheme
         {
             AccentColor = Color.Black,

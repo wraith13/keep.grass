@@ -18,11 +18,37 @@ namespace keep.grass
         AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
         AlphaPickerCell ThemeCell = null;
         AlphaPickerCell LanguageCell = null;
+        AlphaTheme OldTheme;
 
         public AlphaSettingsPage()
         {
             Title = L["Settings"];
+
             ThemeCell = AlphaFactory.MakePickerCell();
+            //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
+            foreach (var i in AlphaTheme.All.Keys)
+            {
+                if (!ThemeCell.Items.Where(j => j == i).Any())
+                {
+                    ThemeCell.Items.Add(L[i]);
+                }
+            }
+            OldTheme = AlphaTheme.Get();
+            ThemeCell.SelectedIndex = AlphaTheme.All.Values
+                .IndexOf(OldTheme);
+            ThemeCell.Picker.Unfocused += (sender, e) =>
+            {
+                AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
+                var NewTheme = AlphaTheme.Get();
+                if (OldTheme != AlphaTheme.Get())
+                {
+                    OldTheme = NewTheme;
+                    AlphaTheme.Apply(Root.Navigation);
+                    AlphaTheme.Apply(Root.Main);
+                    Build();
+                }
+            };
+
             LanguageCell = AlphaFactory.MakePickerCell();
 
             UserLabel.Command = new Command
@@ -69,8 +95,8 @@ namespace keep.grass
             }
             else
             {
-                UserLabel.TextColor = Theme.BackgroundColorOrDefault;
-                UserLabel.BackgroundColor = Theme.AccentColorOrDefault;
+                UserLabel.TextColor = Theme.BackgroundColor;
+                UserLabel.BackgroundColor = Theme.AccentColor;
             }
         }
 
@@ -211,18 +237,6 @@ namespace keep.grass
 
             ApplyUser(Settings.UserName);
 
-            var Theme = AlphaTheme.Get();
-            //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
-            foreach (var i in AlphaTheme.All.Keys)
-            {
-                if (!ThemeCell.Items.Where(j => j == i).Any())
-                {
-                    ThemeCell.Items.Add(L[i]);
-                }
-            }
-            ThemeCell.SelectedIndex = AlphaTheme.All.Values
-                .IndexOf(Theme);
-
             var Language = Settings.Language ?? "";
             //LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
             foreach (var i in L.DisplayNames.Select(i => i.Value))
@@ -240,14 +254,6 @@ namespace keep.grass
         {
             base.OnDisappearing();
             bool IsChanged = false;
-
-            var OldTheme = AlphaTheme.Get();
-            AlphaTheme.Set(AlphaTheme.All.Keys.ElementAt(ThemeCell.SelectedIndex));
-            if (OldTheme != AlphaTheme.Get())
-            {
-                IsChanged = true;
-            }
-
             var OldLanguage = L.Get();
             Settings.Language = L.DisplayNames.Keys.ElementAt(LanguageCell.SelectedIndex);
             if (OldLanguage != L.Get())

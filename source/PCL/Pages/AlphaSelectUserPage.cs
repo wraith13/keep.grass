@@ -175,8 +175,8 @@ namespace keep.grass
 
         public void AppliedTheme(AlphaTheme Theme)
         {
-            SearchButton.TextColor = Theme.BackgroundColorOrDefault;
-            SearchButton.BackgroundColor = Theme.AccentColorOrDefault;
+            SearchButton.TextColor = Theme.BackgroundColor;
+            SearchButton.BackgroundColor = Theme.AccentColor;
         }
     }
 }

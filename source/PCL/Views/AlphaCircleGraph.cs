@@ -69,7 +69,7 @@ namespace keep.grass
         public virtual IEnumerable<VoidPie> Data { get; set; }
         public virtual IEnumerable<CircleGraphSatelliteText> SatelliteTexts { get; set; }
     }
-    public class AlphaCircleGraph : VoidCircleGraph
+    public class AlphaCircleGraph : VoidCircleGraph, IAlphaThemeAppliedHandler
     {
         public readonly float Phi = 1.618033988749894848204586834365f;
         float OriginAngle = -90.0f;
@@ -791,6 +791,11 @@ namespace keep.grass
                     Canvas.DrawPath(path, paint);
                 }
             }
+        }
+
+        public void AppliedTheme(AlphaTheme Theme)
+        {
+            IsInvalidCanvas = true;
         }
     }
 }
