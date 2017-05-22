@@ -8,3 +8,9 @@ keep.grass は *毎日欠かさず* 進捗を出し続け GitHub 上の Contribu
 
 【お断り】
 GitHub は Activity がどのように Contributions に反映されるか詳細な仕様を公開していないようで、 keep.grass もただ最終 Activity の日時を元に残り時間を表示するだけとなりますので、あくまで *目安* としてご利用頂ければ幸いです。
+
+■v2.0
+・Contributionsの判定精度向上
+・Activityの一覧表示
+・ライバル対応
+・テーマ対応
