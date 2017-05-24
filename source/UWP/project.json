@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Azure.Mobile.Analytics": "0.11.1",
+    "Microsoft.Azure.Mobile.Analytics": "0.12.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
     "NotificationsExtensions.Win10": "14332.0.2",
     "SkiaSharp": "1.58.0",
