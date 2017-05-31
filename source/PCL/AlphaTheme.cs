@@ -86,7 +86,7 @@ namespace keep.grass
         };
         public static AlphaTheme Abyss = new AlphaTheme
         {
-            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
+            AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.FromRgb(0xAA, 0xBB, 0xEE),
             BackgroundColor = Color.FromRgb(0x11, 0x33, 0x66),
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
@@ -98,7 +98,7 @@ namespace keep.grass
         };
         public static AlphaTheme Black = new AlphaTheme
         {
-            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
+            AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
             ForegroundColor = Color.FromRgb(0xE8, 0xF0, 0xEC),
             BackgroundColor = Color.Black,
             MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
