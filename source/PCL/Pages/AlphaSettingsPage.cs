@@ -43,17 +43,16 @@ namespace keep.grass
         {
             if (!String.IsNullOrWhiteSpace(User))
             {
-                if (UserLabel.Text != User || null == UserLabel.ImageSource)
+                if (UserLabel.Text != User || null == UserLabel.ImageBytes)
                 {
-                    AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-                        .ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+                    UserLabel.ImageSourceUrl = GitHub.GetIconUrl(User);
                     UserLabel.Text = User;
                     //UserLabel.TextColor = Color.Default;
                 }
             }
             else
             {
-                UserLabel.ImageSource = null;
+                UserLabel.ImageBytes = null;
                 UserLabel.Text = L["unspecified"];
             }
             ApplyUserLabelTheme(User);
@@ -205,7 +204,7 @@ namespace keep.grass
                                 {
                                     AlphaFactory.MakeCircleImageCell
                                     (
-                                        ImageSource: Root.GetApplicationImageSource(),
+                                        ImageBytes: Root.GetApplicationImageSource(),
                                         Text: L["keep.grass"],
                                         Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
                                     ),
@@ -270,7 +269,7 @@ namespace keep.grass
                                         {
                                             AlphaFactory.MakeCircleImageCell
                                             (
-                                                ImageSource: Root.GetApplicationImageSource(),
+                                                ImageBytes: Root.GetApplicationImageSource(),
                                                 Text: L["keep.grass"],
                                                 Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
                                             ),

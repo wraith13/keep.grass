@@ -175,8 +175,9 @@ namespace keep.grass
             {
                 if (UserLabel.Text != User)
                 {
-                    AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
-                        .ContinueWith(t => Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
+                    UserLabel.ImageBytes = null;
+                    AlphaImageProxy.Get(GitHub.GetIconUrl(User))
+                        .ContiuneWithOnUIThread(t => UserLabel.ImageBytes = t.Result);
                     UserLabel.Text = User;
                     UserLabel.TextColor = Theme.ForegroundColor;
                     UserLabel.Command = new Command
@@ -193,7 +194,7 @@ namespace keep.grass
                             );
                         }
                     );
-                    UserLabel.OptionImageSource = Root.GetExportImageSource();
+                    UserLabel.OptionImageBytes = Root.GetExportImageSource();
                     if (default(DateTime) == Domain.GetLastPublicActivity(User))
                     {
                         ClearActiveInfo();
@@ -203,11 +204,11 @@ namespace keep.grass
             }
             else
             {
-                UserLabel.ImageSource = null;
+                UserLabel.ImageBytes = null;
                 UserLabel.Text = L["unspecified"];
                 UserLabel.TextColor = Color.Gray;
                 UserLabel.Command = null;
-                UserLabel.OptionImageSource = null;
+                UserLabel.OptionImageBytes = null;
                 ClearActiveInfo();
             }
         }

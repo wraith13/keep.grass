@@ -111,39 +111,46 @@ namespace keep.grass
             Domain.UpdateAlerts(Domain.GetLastPublicActivity(Settings.UserName));
         }
 
-        public virtual ImageSource GetImageSource(string image)
+        public virtual byte[] GetImageSource(string image)
         {
-            return ImageSource.FromResource
+            using
             (
-                "keep.grass.Images." + image,
-                typeof(AlphaApp).GetTypeInfo().Assembly
-            );
+                var stream = typeof(AlphaApp)
+                    .GetTypeInfo()
+                    .Assembly
+                    .GetManifestResourceStream("keep.grass.Images." + image)
+            )
+            {
+                var result = new byte[stream.Length];
+                stream.Read(result, 0, (int)stream.Length);
+                return result;
+            }
         }
-        public virtual ImageSource GetApplicationImageSource()
+        public virtual byte[] GetApplicationImageSource()
         {
             return GetImageSource("keep.grass.120.png");
         }
-        public virtual ImageSource GetWraithImageSource()
+        public virtual byte[] GetWraithImageSource()
         {
             return GetImageSource("wraith13.120.png");
         }
-        public virtual ImageSource GetGitHubImageSource()
+        public virtual byte[] GetGitHubImageSource()
         {
             return GetImageSource("GitHub-Mark.120.png");
         }
-        public virtual ImageSource GetRightImageSource()
+        public virtual byte[] GetRightImageSource()
         {
             return GetImageSource("right.120.png");
         }
-        public virtual ImageSource GetRefreshImageSource()
+        public virtual byte[] GetRefreshImageSource()
         {
             return GetImageSource("refresh.120.png");
         }
-        public virtual ImageSource GetExportImageSource()
+        public virtual byte[] GetExportImageSource()
         {
             return GetImageSource("export.120.png");
         }
-        public virtual ImageSource GetOcticonImageSource(string Name)
+        public virtual byte[] GetOcticonImageSource(string Name)
         {
             var Tag = "octicon-";
             if (Name.StartsWith(Tag))
