@@ -175,9 +175,7 @@ namespace keep.grass
             {
                 if (UserLabel.Text != User)
                 {
-                    UserLabel.ImageBytes = null;
-                    AlphaImageProxy.Get(GitHub.GetIconUrl(User))
-                        .ContiuneWithOnUIThread(t => UserLabel.ImageBytes = t.Result);
+                    UserLabel.ImageSource = ImageSource.FromUri(GitHub.GetIconUrl(User));
                     UserLabel.Text = User;
                     UserLabel.TextColor = Theme.ForegroundColor;
                     UserLabel.Command = new Command
@@ -194,7 +192,7 @@ namespace keep.grass
                             );
                         }
                     );
-                    UserLabel.OptionImageBytes = Root.GetExportImageSource();
+                    UserLabel.OptionImageSource = Root.GetExportImageSource();
                     if (default(DateTime) == Domain.GetLastPublicActivity(User))
                     {
                         ClearActiveInfo();
@@ -204,11 +202,11 @@ namespace keep.grass
             }
             else
             {
-                UserLabel.ImageBytes = null;
+                UserLabel.ImageSource = null;
                 UserLabel.Text = L["unspecified"];
                 UserLabel.TextColor = Color.Gray;
                 UserLabel.Command = null;
-                UserLabel.OptionImageBytes = null;
+                UserLabel.OptionImageSource = null;
                 ClearActiveInfo();
             }
         }

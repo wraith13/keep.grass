@@ -23,7 +23,7 @@ namespace keep.grass
             {
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: Root.GetApplicationImageSource(),
+                    ImageSource: Root.GetApplicationImageSource(),
                     Text: "2.00.004",
                     Command: new Command
                     (
@@ -32,128 +32,128 @@ namespace keep.grass
                             AlphaFactory.MakeSureDomain().GetApplicationStoreUri()
                         )
                     ),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
             };
             var Auther = new TableSection(L["Auther"])
             {
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: Root.GetWraithImageSource(),
+                    ImageSource: Root.GetWraithImageSource(),
                     Text: "@wraith13",
                     Command: new Command(o => Device.OpenUri(new Uri("https://twitter.com/wraith13"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
             };
             var Repository = new TableSection(L["Github Repository"])
             {
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: Root.GetGitHubImageSource(),
+                    ImageSource: Root.GetGitHubImageSource(),
                     Text: "wraith13/keep.grass",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/wraith13/keep.grass"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
             };
             var BuiltWith = new TableSection(L["Built with"])
             {
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Xamarin",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.xamarin.com"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Visual Studio",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.visualstudio.com/vs/"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Visual Studio Code",
                     Command: new Command(o => Device.OpenUri(new Uri("https://code.visualstudio.com/"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "GIMP",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.gimp.org"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Microsoft HTTP Client Lib.",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Net.Http/"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Microsoft.Azure.Mobile.Analytics",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Azure.Mobile.Analytics/"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Microsoft.Azure.Mobile.Crashes",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.nuget.org/packages/Microsoft.Azure.Mobile.Crashes//"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Settings Plugin",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/jamesmontemagno/SettingsPlugin"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Circle Image Control Plugin",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/jamesmontemagno/ImageCirclePlugin"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "NotificationsExtensions",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/WindowsNotifications/NotificationsExtensions"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "SkiaSharp(.Views.Forms)",
                     Command: new Command(o => Device.OpenUri(new Uri("https://github.com/mono/SkiaSharp"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Json.NET",
                     Command: new Command(o => Device.OpenUri(new Uri("http://www.newtonsoft.com/json"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "Noto Sans CJK jp Regular",
                     Command: new Command(o => Device.OpenUri(new Uri("https://www.google.com/get/noto/help/cjk/"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
                 AlphaFactory.MakeCircleImageCell
                 (
-                    ImageBytes: null,
+                    ImageSource: null,
                     Text: "GitHub Octicons",
                     Command: new Command(o => Device.OpenUri(new Uri("https://octicons.github.com"))),
-                    OptionImageBytes: Root.GetExportImageSource()
+                    OptionImageSource: Root.GetExportImageSource()
                 ),
             };
 

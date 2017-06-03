@@ -34,7 +34,7 @@ namespace keep.grass
             set
             {
                 base.Entry = value;
-                ImageBytes = Root.GetOcticonImageSource(Entry.Content.OctIcon);
+                ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
                 TitleLabel.Text = Entry.Title;
                 UpdatedLabel.Text = Domain.ToString(Entry.Updated);
                 DetailStack.Children.Clear();
@@ -85,7 +85,7 @@ namespace keep.grass
             UpdatedLabel.FontSize = 13;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.ImageBytes = AlphaFactory.GetApp().GetExportImageSource();
+            OptionImage.ImageSource = AlphaFactory.GetApp().GetExportImageSource();
             OptionImage.IsVisible = null != CommandValue;
             OptionImage.HeightRequest = 40;
             OptionImage.WidthRequest = 40;
@@ -140,29 +140,29 @@ namespace keep.grass
             }
         }
 
-        public byte[] ImageBytes
+        public ImageSource ImageSource
         {
             get
             {
-                return Image.ImageBytes;
+                return Image.ImageSource;
             }
             set
             {
-                Image.ImageBytes = value;
-                Image.IsVisible = null != Image.ImageBytes;
+                Image.ImageSource = value;
+                Image.IsVisible = null != Image.ImageSource;
             }
         }
 
-        public byte[] OptionImageBytes
+        public ImageSource OptionImageSource
         {
             get
             {
-                return OptionImage.ImageBytes;
+                return OptionImage.ImageSource;
             }
             set
             {
-                OptionImage.ImageBytes = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.ImageSource = value;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageSource;
             }
         }
     }

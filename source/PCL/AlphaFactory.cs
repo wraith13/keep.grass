@@ -136,19 +136,6 @@ namespace keep.grass
         {
             return Instance.MakeOmegaCircleImageCell();
         }
-        public static AlphaCircleImageCell MakeCircleImageCell(byte[] ImageBytes, string Text, Command Command, byte[] OptionImageBytes)
-        {
-            var result = MakeCircleImageCell(ImageBytes, Text, Command);
-            result.OptionImageBytes = OptionImageBytes;
-            return result;
-        }
-        public static AlphaCircleImageCell MakeCircleImageCell(byte[] ImageBytes, string Text, Command Command)
-        {
-            var result = MakeCircleImageCell(Text, Command);
-            result.ImageBytes = ImageBytes;
-            return result;
-        }
-        /*
         public static AlphaCircleImageCell MakeCircleImageCell(ImageSource ImageSource, string Text, Command Command, ImageSource OptionImageSource)
         {
             var result = MakeCircleImageCell(ImageSource, Text, Command);
@@ -161,7 +148,6 @@ namespace keep.grass
             result.ImageSource = ImageSource;
             return result;
         }
-        */
         public static AlphaCircleImageCell MakeCircleImageCell(string Text, Command Command)
         {
             var result = MakeCircleImageCell();
@@ -221,18 +207,7 @@ namespace keep.grass
         }
         public virtual async Task<ImageSource> MakeOmegaImageSourceFromUrl(string Url)
         {
-            //return ImageSource.FromUri(new Uri(Url));
-            //  ↑こちらのコードでも良いが、効率化の為に SkiaSharp 用のバイナリと同じモノを使い回す
-            var Binary = await AlphaImageProxy.Get(Url);
-            if (Binary?.Any() ?? false)
-            {
-                return ImageSource.FromStream(() => new System.IO.MemoryStream(Binary));
-            }
-            else
-            {
-                Debug.WriteLine($"MakeOmegaImageSourceFromUrl(\"{Url}\") is failed");
-            }
-            return null;
+            return ImageSource.FromUri(Url);
         }
 
         public static Type GetFeedEntryCellType()

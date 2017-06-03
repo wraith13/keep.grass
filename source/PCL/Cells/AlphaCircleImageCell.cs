@@ -11,7 +11,7 @@ namespace keep.grass
 {
     public class AlphaCircleImageCell : ViewCell
     {
-        public static readonly BindableProperty ImageBytesProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageBytes").CreateBindableProperty();
+        public static readonly BindableProperty ImageSourceProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageSource").CreateBindableProperty();
         public static readonly BindableProperty TextProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("Text").CreateBindableProperty();
 
         protected AlphaImageView Image = AlphaFactory.MakeCircleImage();
@@ -44,7 +44,7 @@ namespace keep.grass
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.ImageBytes = AlphaFactory.GetApp().GetRightImageSource();
+            OptionImage.ImageSource = AlphaFactory.GetApp().GetRightImageSource();
             OptionImage.IsVisible = null != CommandValue;
             AlphaTheme.Apply(this);
         }
@@ -70,28 +70,18 @@ namespace keep.grass
                 CommandValue.Execute(this);
             }
         }
-
-        public byte[] ImageBytes
+        public ImageSource ImageSource
         {
             get
             {
-                return Image.ImageBytes;
+                return Image.ImageSource;
             }
             set
             {
-                Image.ImageBytes = value;
-                Image.IsVisible = null != Image.ImageBytes;
+                Image.ImageSource = value;
+                Image.IsVisible = null != Image.ImageSource;
             }
         }
-        public string ImageSourceUrl
-        {
-            set
-            {
-                AlphaImageProxy.Get(value)
-                    .ContiuneWithOnUIThread(t => ImageBytes = t.Result);
-            }
-        }
-
         public String Text
         {
             get
@@ -129,16 +119,16 @@ namespace keep.grass
                 OptionImage.BackgroundColor = value;
             }
         }
-        public byte[] OptionImageBytes
+        public ImageSource OptionImageSource
         {
             get
             {
-                return OptionImage.ImageBytes;
+                return OptionImage.ImageSource;
             }
             set
             {
-                OptionImage.ImageBytes = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.ImageSource = value;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageSource;
             }
         }
     }
