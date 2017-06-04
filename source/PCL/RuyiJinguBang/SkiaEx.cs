@@ -15,5 +15,15 @@ namespace RuyiJinguBang
         {
             Path.LineTo(Point.X, Point.Y);
         }
+        public static SKColor ToSKColor(this Color c)
+        {
+            return new SKColor
+            (
+                (byte)(c.R * 255),
+                (byte)(c.G * 255),
+                (byte)(c.B * 255),
+                (byte)(c.A * 255)
+            );
+        }
     }
 }
