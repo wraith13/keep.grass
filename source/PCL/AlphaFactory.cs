@@ -136,19 +136,6 @@ namespace keep.grass
         {
             return Instance.MakeOmegaCircleImageCell();
         }
-        public static AlphaCircleImageCell MakeCircleImageCell(byte[] ImageBytes, string Text, Command Command, byte[] OptionImageBytes)
-        {
-            var result = MakeCircleImageCell(ImageBytes, Text, Command);
-            result.OptionImageBytes = OptionImageBytes;
-            return result;
-        }
-        public static AlphaCircleImageCell MakeCircleImageCell(byte[] ImageBytes, string Text, Command Command)
-        {
-            var result = MakeCircleImageCell(Text, Command);
-            result.ImageBytes = ImageBytes;
-            return result;
-        }
-        /*
         public static AlphaCircleImageCell MakeCircleImageCell(ImageSource ImageSource, string Text, Command Command, ImageSource OptionImageSource)
         {
             var result = MakeCircleImageCell(ImageSource, Text, Command);
@@ -161,7 +148,6 @@ namespace keep.grass
             result.ImageSource = ImageSource;
             return result;
         }
-        */
         public static AlphaCircleImageCell MakeCircleImageCell(string Text, Command Command)
         {
             var result = MakeCircleImageCell();
@@ -183,13 +169,13 @@ namespace keep.grass
             return new AlphaPickerCell();
         }
 
-        public static AlphaImageView MakeCircleImage()
+        public static Image MakeCircleImage()
         {
             return Instance.MakeOmegaCircleImage();
         }
-        public virtual AlphaImageView MakeOmegaCircleImage()
+        public virtual Image MakeOmegaCircleImage()
         {
-            return new AlphaImageView { IsCircle = true, };
+            return new CircleImage();
         }
         public static VoidEntryCell MakeEntryCell()
         {

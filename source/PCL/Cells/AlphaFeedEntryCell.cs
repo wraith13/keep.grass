@@ -18,7 +18,7 @@ namespace keep.grass
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
         AlphaApp Root = AlphaFactory.MakeSureApp();
 
-        protected AlphaImageView Image = AlphaFactory.MakeCircleImage();
+        protected Image Image = AlphaFactory.MakeCircleImage();
         protected Label UpdatedLabel = new Label();
         protected Label TitleLabel = new Label();
         protected StackLayout DetailStack = new StackLayout
@@ -27,14 +27,14 @@ namespace keep.grass
             VerticalOptions = LayoutOptions.Start,
             HorizontalOptions = LayoutOptions.StartAndExpand,
         };
-        protected AlphaImageView OptionImage = new AlphaImageView();
+        protected Image OptionImage = new Image();
 
         public override GitHub.Feed.Entry Entry
         {
             set
             {
                 base.Entry = value;
-                ImageBytes = Root.GetOcticonImageSource(Entry.Content.OctIcon);
+                ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
                 TitleLabel.Text = Entry.Title;
                 UpdatedLabel.Text = Domain.ToString(Entry.Updated);
                 DetailStack.Children.Clear();
@@ -72,7 +72,7 @@ namespace keep.grass
 
         public AlphaFeedEntryCell() : base()
         {
-            Image.IsVisible = null != Image.ImageBytes;
+            Image.IsVisible = null != Image.Source;
             Image.VerticalOptions = LayoutOptions.Center;
             Image.HeightRequest = 40;
             Image.WidthRequest = 40;
@@ -85,7 +85,7 @@ namespace keep.grass
             UpdatedLabel.FontSize = 13;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.ImageBytes = AlphaFactory.GetApp().GetExportImageSource();
+            OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
             OptionImage.IsVisible = null != CommandValue;
             OptionImage.HeightRequest = 40;
             OptionImage.WidthRequest = 40;
@@ -124,7 +124,7 @@ namespace keep.grass
             set
             {
                 CommandValue = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
             }
             get
             {
@@ -140,29 +140,29 @@ namespace keep.grass
             }
         }
 
-        public byte[] ImageBytes
+        public ImageSource ImageSource
         {
             get
             {
-                return Image.ImageBytes;
+                return Image.Source;
             }
             set
             {
-                Image.ImageBytes = value;
-                Image.IsVisible = null != Image.ImageBytes;
+                Image.Source = value;
+                Image.IsVisible = null != Image.Source;
             }
         }
 
-        public byte[] OptionImageBytes
+        public ImageSource OptionImageSource
         {
             get
             {
-                return OptionImage.ImageBytes;
+                return OptionImage.Source;
             }
             set
             {
-                OptionImage.ImageBytes = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.Source = value;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
             }
         }
     }

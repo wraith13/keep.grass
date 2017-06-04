@@ -9,7 +9,7 @@ namespace keep.grass
     {
         protected ActivityIndicator Indicator = new ActivityIndicator();
         protected Label TextLabel = new Label();
-        protected AlphaImageView RefreshImage = new AlphaImageView();
+        protected Image RefreshImage = new Image();
 
         public AlphaActivityIndicatorTextCell() : base()
         {
@@ -34,7 +34,7 @@ namespace keep.grass
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             RefreshImage.VerticalOptions = LayoutOptions.Center;
             RefreshImage.HorizontalOptions = LayoutOptions.End;
-            RefreshImage.ImageBytes = AlphaFactory.GetApp().GetRefreshImageSource();
+            RefreshImage.Source = AlphaFactory.GetApp().GetRefreshImageSource();
             RefreshImage.IsVisible = null != CommandValue;
 
             Indicator.IsVisible = false;

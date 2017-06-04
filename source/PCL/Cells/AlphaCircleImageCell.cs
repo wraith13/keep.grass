@@ -11,12 +11,12 @@ namespace keep.grass
 {
     public class AlphaCircleImageCell : ViewCell
     {
-        public static readonly BindableProperty ImageBytesProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageBytes").CreateBindableProperty();
+        public static readonly BindableProperty ImageSourceProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageSource").CreateBindableProperty();
         public static readonly BindableProperty TextProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("Text").CreateBindableProperty();
 
-        protected AlphaImageView Image = AlphaFactory.MakeCircleImage();
+        protected Image Image = AlphaFactory.MakeCircleImage();
         protected Label TextLabel = new Label();
-        protected AlphaImageView OptionImage = new AlphaImageView();
+        protected Image OptionImage = new Image();
         protected StackLayout Stack;
 
         public AlphaCircleImageCell() : base()
@@ -37,14 +37,13 @@ namespace keep.grass
                 }
             );
 
-            Image.EnabledAnimation = true;
-            Image.IsVisible = null != Image.ImageBytes;
+            Image.IsVisible = null != Image.Source;
             Image.VerticalOptions = LayoutOptions.Center;
             TextLabel.VerticalOptions = LayoutOptions.Center;
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.ImageBytes = AlphaFactory.GetApp().GetRightImageSource();
+            OptionImage.Source = AlphaFactory.GetApp().GetRightImageSource();
             OptionImage.IsVisible = null != CommandValue;
             AlphaTheme.Apply(this);
         }
@@ -55,7 +54,7 @@ namespace keep.grass
             set
             {
                 CommandValue = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
             }
             get
             {
@@ -71,24 +70,30 @@ namespace keep.grass
             }
         }
 
-        public byte[] ImageBytes
+        public ImageSource ImageSource
         {
             get
             {
-                return Image.ImageBytes;
+                return Image.Source;
             }
             set
             {
-                Image.ImageBytes = value;
-                Image.IsVisible = null != Image.ImageBytes;
+                Image.Source = value;
+                Image.IsVisible = null != Image.Source;
             }
         }
         public string ImageSourceUrl
         {
             set
             {
-                AlphaImageProxy.Get(value)
-                    .ContiuneWithOnUIThread(t => ImageBytes = t.Result);
+                Task.Run
+                (
+                    async () =>
+                    {
+                        var Source = await AlphaFactory.MakeImageSourceFromUrl(value);
+                        Device.BeginInvokeOnMainThread(() => ImageSource = Source);
+                    }
+                );
             }
         }
 
@@ -129,16 +134,16 @@ namespace keep.grass
                 OptionImage.BackgroundColor = value;
             }
         }
-        public byte[] OptionImageBytes
+        public ImageSource OptionImageSource
         {
             get
             {
-                return OptionImage.ImageBytes;
+                return OptionImage.Source;
             }
             set
             {
-                OptionImage.ImageBytes = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
+                OptionImage.Source = value;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.Source;
             }
         }
     }
