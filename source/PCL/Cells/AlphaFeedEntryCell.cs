@@ -34,7 +34,7 @@ namespace keep.grass
             set
             {
                 base.Entry = value;
-                ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
+                ImageBytes = Root.GetOcticonImageSource(Entry.Content.OctIcon);
                 TitleLabel.Text = Entry.Title;
                 UpdatedLabel.Text = Domain.ToString(Entry.Updated);
                 DetailStack.Children.Clear();
@@ -85,7 +85,7 @@ namespace keep.grass
             UpdatedLabel.FontSize = 13;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.ImageSource = AlphaFactory.GetApp().GetExportImageSource();
+            OptionImage.ImageBytes = AlphaFactory.GetApp().GetExportImageSource();
             OptionImage.IsVisible = null != CommandValue;
             OptionImage.HeightRequest = 40;
             OptionImage.WidthRequest = 40;
@@ -140,29 +140,29 @@ namespace keep.grass
             }
         }
 
-        public ImageSource ImageSource
+        public byte[] ImageBytes
         {
             get
             {
-                return Image.ImageSource;
+                return Image.ImageBytes;
             }
             set
             {
-                Image.ImageSource = value;
-                Image.IsVisible = null != Image.ImageSource;
+                Image.ImageBytes = value;
+                Image.IsVisible = null != Image.ImageBytes;
             }
         }
 
-        public ImageSource OptionImageSource
+        public byte[] OptionImageBytes
         {
             get
             {
-                return OptionImage.ImageSource;
+                return OptionImage.ImageBytes;
             }
             set
             {
-                OptionImage.ImageSource = value;
-                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageSource;
+                OptionImage.ImageBytes = value;
+                OptionImage.IsVisible = null != CommandValue && null != OptionImage.ImageBytes;
             }
         }
     }
