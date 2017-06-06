@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Mac", "Mac\keep.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.UWP", "UWP\keep.grass.UWP.csproj", "{DBACD1F3-A298-492D-960B-BEF639E32DB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Domain", "keep.grass.Domain\keep.grass.Domain.csproj", "{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Domain", "Domain\keep.grass.Domain.csproj", "{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
