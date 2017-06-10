@@ -15,7 +15,7 @@ using System.Diagnostics;
 using RuyiJinguBang;
 #endif
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public interface VoidPie
     {

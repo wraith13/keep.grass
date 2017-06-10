@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaActivityIndicatorButton : StackLayout
     {

@@ -12,7 +12,7 @@ using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public abstract class AlphaApp : Application
     {

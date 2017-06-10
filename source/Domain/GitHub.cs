@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Net.Http;
 using System.Xml.Linq;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using RuyiJinguBang;
 
-namespace keep.grass
+namespace keep.grass.Domain
 {
     public class GitHub
     {

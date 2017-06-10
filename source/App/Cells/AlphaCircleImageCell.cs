@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using ImageCircle.Forms.Plugin.Abstractions;
 using RuyiJinguBang;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaCircleImageCell : ViewCell
     {

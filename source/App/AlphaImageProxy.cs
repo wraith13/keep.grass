@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RuyiJinguBang;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaImageEntry
     {

@@ -6,8 +6,9 @@ using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class VoidFeedEntryCell : ViewCell
     {

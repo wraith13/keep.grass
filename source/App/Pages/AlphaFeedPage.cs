@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     //  Activity だと Android のそれと紛らわしいので Feed とした。
     public class AlphaFeedPage : ResponsiveContentPage

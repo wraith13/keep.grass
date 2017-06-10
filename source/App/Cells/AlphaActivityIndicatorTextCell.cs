@@ -3,7 +3,7 @@
 using Xamarin.Forms;
 using RuyiJinguBang;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaActivityIndicatorTextCell : ViewCell
     {

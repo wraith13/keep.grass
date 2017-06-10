@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public interface VoidEntryCell
     {

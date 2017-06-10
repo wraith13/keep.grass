@@ -10,8 +10,9 @@ using Microsoft.Azure.Mobile.Crashes;
 using Xamarin.Forms;
 using RuyiJinguBang;
 using keep.grass.Helpers;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaDetailPage : ResponsiveContentPage
     {

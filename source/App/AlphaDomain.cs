@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using RuyiJinguBang;
 using keep.grass.Helpers;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public abstract class AlphaDomain
     {

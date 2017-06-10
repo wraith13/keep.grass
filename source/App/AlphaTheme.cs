@@ -6,7 +6,7 @@ using keep.grass.Helpers;
 using Xamarin.Forms;
 using RuyiJinguBang;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaTheme
     {

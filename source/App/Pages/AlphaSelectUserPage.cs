@@ -6,8 +6,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaSelectUserPage : ResponsiveContentPage, IAlphaThemeAppliedHandler
     {

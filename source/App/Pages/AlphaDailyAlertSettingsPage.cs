@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using RuyiJinguBang;
 using keep.grass.Helpers;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaDailyAlertSettingsPage : ResponsiveContentPage
     {

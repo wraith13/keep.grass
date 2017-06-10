@@ -6,8 +6,9 @@ using Xamarin.Forms;
 using Microsoft.Azure.Mobile.Analytics;
 using keep.grass.Helpers;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaSettingsPage : ResponsiveContentPage
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public abstract class AlphaFactory
     {

@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{34988BF1-96C1-46FD-B646-B86C538C637D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>keep.grass</RootNamespace>
+    <RootNamespace>keep.grass.App</RootNamespace>
     <AssemblyName>keep.grass.App</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
@@ -56,7 +56,6 @@
     <Compile Include="AlphaApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="GitHub.cs" />
     <Compile Include="AlphaFactory.cs" />
     <Compile Include="Languages\AlphaLanguage.cs" />
     <Compile Include="AlphaDomain.cs" />
@@ -82,11 +81,8 @@
     <Compile Include="Pages\AlphaSettingsPage.cs" />
     <Compile Include="Cells\AlphaSwitchCell.cs" />
     <Compile Include="Views\AlphaUserCircleGraph.cs" />
-    <Compile Include="RuyiJinguBang\LinqEx.cs" />
     <Compile Include="RuyiJinguBang\ResponsiveLayout.cs" />
-    <Compile Include="RuyiJinguBang\ValueEx.cs" />
     <Compile Include="RuyiJinguBang\SkiaEx.cs" />
-    <Compile Include="RuyiJinguBang\XElementEx.cs" />
     <Compile Include="RuyiJinguBang\GridEx.cs" />
     <Compile Include="RuyiJinguBang\BindablePropertyEx.cs" />
     <Compile Include="RuyiJinguBang\DataTemplateEx.cs" />
@@ -178,7 +174,7 @@
     <Folder Include="RuyiJinguBang\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\keep.grass.Domain\keep.grass.Domain.csproj">
+    <ProjectReference Include="..\Domain\keep.grass.Domain.csproj">
       <Project>{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}</Project>
       <Name>keep.grass.Domain</Name>
     </ProjectReference>

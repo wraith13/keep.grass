@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using SkiaSharp;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public abstract class VoidUserCircleGraph : AlphaCircleGraph // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
     {

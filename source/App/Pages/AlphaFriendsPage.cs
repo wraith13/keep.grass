@@ -7,8 +7,9 @@ using Xamarin.Forms;
 using keep.grass.Helpers;
 using System.Threading.Tasks;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
-namespace keep.grass
+namespace keep.grass.App
 {
     public class AlphaFriendsPage : ResponsiveContentPage
     {
