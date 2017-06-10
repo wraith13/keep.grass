@@ -105,9 +105,6 @@
     <Reference Include="System.Runtime">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Threading.Tasks.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
