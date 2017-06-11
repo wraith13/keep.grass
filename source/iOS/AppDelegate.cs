@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using keep.grass.App;
 
 namespace keep.grass.iOS
 {

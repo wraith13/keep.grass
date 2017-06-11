@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.App;
 
 namespace keep.grass.iOS
 {
