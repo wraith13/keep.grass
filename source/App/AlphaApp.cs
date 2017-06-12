@@ -115,7 +115,7 @@ namespace keep.grass.App
         {
             return ImageSource.FromResource
             (
-                "keep.grass.Images." + image,
+                "keep.grass.App.Images." + image,
                 typeof(AlphaApp).GetTypeInfo().Assembly
             );
         }
@@ -177,7 +177,7 @@ namespace keep.grass.App
         }
         public virtual Stream GetFontStream()
         {
-            return typeof(AlphaApp).GetTypeInfo().Assembly.GetManifestResourceStream("keep.grass.Fonts.NotoSansCJKjp-Regular.otf");
+            return typeof(AlphaApp).GetTypeInfo().Assembly.GetManifestResourceStream("keep.grass.App.Fonts.NotoSansCJKjp-Regular.otf");
         }
     }
 }
