@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using ImageCircle.Forms.Plugin.UWP;
+using keep.grass.App;
 
 namespace keep.grass.UWP
 {
@@ -34,7 +35,7 @@ namespace keep.grass.UWP
             {
                 ImageCircleRenderer.Init();
                 OmegaFactory.MakeSureInit();
-                App = keep.grass.AlphaFactory.MakeSureApp();
+                App = AlphaFactory.MakeSureApp();
             }
             return App;
         }

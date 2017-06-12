@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using keep.grass.Languages;
 using Xamarin.Forms;
 using System.Diagnostics;
+using keep.grass.App;
 
 namespace keep.grass.UWP
 {

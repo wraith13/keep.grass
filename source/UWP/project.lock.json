@@ -2655,7 +2655,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -5287,7 +5293,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -7958,7 +7970,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -10599,7 +10617,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -13279,7 +13303,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -15920,7 +15950,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     },
@@ -18600,7 +18636,13 @@
           "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
-      "keep.grass.PCL/1.0.0": {
+      "keep.grass.App/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "keep.grass.Domain": "1.0.0"
+        }
+      },
+      "keep.grass.Domain/1.0.0": {
         "type": "project"
       }
     }
@@ -27708,10 +27750,15 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "keep.grass.PCL/1.0.0": {
+    "keep.grass.App/1.0.0": {
       "type": "project",
-      "path": "../PCL/keep.grass.PCL.csproj",
-      "msbuildProject": "../PCL/keep.grass.PCL.csproj"
+      "path": "../App/keep.grass.App.csproj",
+      "msbuildProject": "../App/keep.grass.App.csproj"
+    },
+    "keep.grass.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/keep.grass.Domain.csproj",
+      "msbuildProject": "../Domain/keep.grass.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -27740,8 +27787,8 @@
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.PCL.csproj": {
-              "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\PCL\\keep.grass.PCL.csproj"
+            "C:\\github\\wraith13\\keep.grass\\source\\App\\keep.grass.App.csproj": {
+              "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\App\\keep.grass.App.csproj"
             }
           }
         }
@@ -27755,7 +27802,7 @@
       "SkiaSharp.Views.Forms": "1.58.0",
       "Xam.Plugins.Forms.ImageCircle": "1.8.1",
       "Xam.Plugins.Settings": "2.5.8",
-      "Xamarin.Forms": "[2.3.4.231, )"
+      "Xamarin.Forms": "2.3.4.231"
     },
     "frameworks": {
       "uap10.0": {}

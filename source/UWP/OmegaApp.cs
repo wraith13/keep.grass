@@ -9,6 +9,7 @@ using keep.grass.Helpers;
 using Xamarin.Forms;
 using System.Reflection;
 using System.Diagnostics;
+using keep.grass.App;
 
 namespace keep.grass.UWP
 {
