@@ -1,4 +1,6 @@
 ﻿using System;
+using keep.grass.App;
+
 namespace keep.grass.Droid
 {
     public class OmegaFactory : AlphaFactory

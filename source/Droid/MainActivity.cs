@@ -9,6 +9,7 @@ using Android.Widget;
 using Android.OS;
 
 using ImageCircle.Forms.Plugin.Droid;
+using keep.grass.App;
 
 namespace keep.grass.Droid
 {

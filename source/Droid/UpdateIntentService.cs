@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Xamarin.Forms;
+using keep.grass.App;
 
 namespace keep.grass.Droid
 {

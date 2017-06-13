@@ -6,6 +6,7 @@ using Android.Content;
 using Android.OS;
 using keep.grass.Helpers;
 using Xamarin.Forms;
+using keep.grass.App;
 
 namespace keep.grass.Droid
 {
