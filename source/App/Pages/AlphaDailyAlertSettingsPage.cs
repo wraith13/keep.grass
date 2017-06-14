@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using RuyiJinguBang;
-using keep.grass.Helpers;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
     public class AlphaDailyAlertSettingsPage : ResponsiveContentPage
     {
         AlphaApp Root = AlphaFactory.MakeSureApp();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         KeyValuePair<TimeSpan, VoidSwitchCell>[] DailyAlertSwitchCellList = null;
 

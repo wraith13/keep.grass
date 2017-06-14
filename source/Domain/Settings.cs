@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace keep.grass.Helpers
+namespace keep.grass.Domain
 {
     /// <summary>
     /// This is the Settings static class that can be used in your Core solution or in any
@@ -188,7 +188,7 @@ namespace keep.grass.Helpers
             TimeSpan.FromHours(22),
             TimeSpan.FromHours(23),
         };
-        public static string AlertTimeSpanToDisplayName(Languages.AlphaLanguage L, TimeSpan left)
+        public static string AlertTimeSpanToDisplayName(AlphaLanguage L, TimeSpan left)
         {
             if (TimeSpan.FromHours(1) < left)
             {
@@ -214,7 +214,7 @@ namespace keep.grass.Helpers
                 return L["Just 24 hours later"];
             }
         }
-        public static string AlertLeftTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan left)
+        public static string AlertLeftTimeToDisplayName(AlphaLanguage L, TimeSpan left)
         {
             if (0 <= left.Ticks)
             {
@@ -247,7 +247,7 @@ namespace keep.grass.Helpers
         )
         .Select(i => TimeSpan.FromTicks(i * AlertDailyTimeUnit.Ticks))
         .ToArray();
-        public static string AlertDailyTimeToDisplayName(Languages.AlphaLanguage L, TimeSpan Time)
+        public static string AlertDailyTimeToDisplayName(AlphaLanguage L, TimeSpan Time)
         {
             return String.Format(L["Every day at {0:D2}:{1:D2}"], Time.Hours, Time.Minutes);
         }

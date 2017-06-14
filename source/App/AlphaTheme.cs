@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using keep.grass.Helpers;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {

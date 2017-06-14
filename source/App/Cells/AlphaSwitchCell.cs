@@ -57,7 +57,7 @@ namespace keep.grass.App
             }
         }
 
-        public new string Text
+        public string Text
         {
             get
             {
@@ -68,7 +68,7 @@ namespace keep.grass.App
                 TextLabel.Text = value;
             }
         }
-        public new bool On
+        public bool On
         {
             get
             {

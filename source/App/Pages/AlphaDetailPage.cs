@@ -9,7 +9,6 @@ using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
 using RuyiJinguBang;
-using keep.grass.Helpers;
 using keep.grass.Domain;
 
 namespace keep.grass.App
@@ -18,7 +17,7 @@ namespace keep.grass.App
     {
         AlphaApp Root = AlphaFactory.MakeSureApp();
         AlphaTheme Theme;
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
         AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();

@@ -13,7 +13,7 @@ namespace keep.grass.App
     public class AlphaSelectUserPage : ResponsiveContentPage, IAlphaThemeAppliedHandler
     {
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         public Action<string> Reciever;
 

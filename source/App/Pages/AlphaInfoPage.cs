@@ -2,13 +2,14 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
     public class AlphaInfoPage : ResponsiveContentPage
     {
         AlphaApp Root = AlphaFactory.MakeSureApp();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         public AlphaInfoPage()
         {

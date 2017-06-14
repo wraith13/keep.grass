@@ -33,6 +33,8 @@
     <Compile Include="RuyiJinguBang\ValueEx.cs" />
     <Compile Include="RuyiJinguBang\XElementEx.cs" />
     <Compile Include="GitHub.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="AlphaLanguage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,16 +1,14 @@
 ﻿using System;
-
-using Xamarin.Forms;
-using keep.grass.Helpers;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
-
+using Xamarin.Forms;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {

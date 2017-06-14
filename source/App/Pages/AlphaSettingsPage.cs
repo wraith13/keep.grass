@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
 using Microsoft.Azure.Mobile.Analytics;
-using keep.grass.Helpers;
 using RuyiJinguBang;
 using keep.grass.Domain;
 
@@ -13,7 +12,7 @@ namespace keep.grass.App
     public class AlphaSettingsPage : ResponsiveContentPage
     {
         AlphaApp Root = AlphaFactory.MakeSureApp();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
         AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using keep.grass.Helpers;
-
-namespace keep.grass.Languages
+namespace keep.grass.Domain
 {
     public class AlphaLanguage
     {

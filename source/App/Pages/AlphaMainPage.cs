@@ -9,13 +9,13 @@ using Microsoft.Azure.Mobile.Crashes;
 
 using Xamarin.Forms;
 using RuyiJinguBang;
-using keep.grass.Helpers;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
     public class AlphaMainPage : ResponsiveContentPage
     {
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
 
         AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();

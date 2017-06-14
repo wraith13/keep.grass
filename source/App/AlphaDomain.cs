@@ -6,14 +6,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using RuyiJinguBang;
-using keep.grass.Helpers;
 using keep.grass.Domain;
 
 namespace keep.grass.App
 {
     public abstract class AlphaDomain
     {
-        protected static Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        protected static AlphaLanguage L = AlphaFactory.MakeSureLanguage();
         private HttpClient HttpClient = new HttpClient();
         public void RefreshHttpClient()
         {

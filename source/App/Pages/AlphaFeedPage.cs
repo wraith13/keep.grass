@@ -12,7 +12,7 @@ namespace keep.grass.App
     public class AlphaFeedPage : ResponsiveContentPage
     {
         AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         public GitHub.Feed Feed;
 

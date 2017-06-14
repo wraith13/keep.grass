@@ -2,10 +2,9 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using keep.grass.Helpers;
-using System.Threading.Tasks;
 using RuyiJinguBang;
 using keep.grass.Domain;
 
@@ -14,7 +13,7 @@ namespace keep.grass.App
     public class AlphaFriendsPage : ResponsiveContentPage
     {
         AlphaApp Root = AlphaFactory.MakeSureApp();
-        Languages.AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
 
         const int MaxFriendCount = 8;
         //VoidEntryCell[] FriendNameCellList = null;

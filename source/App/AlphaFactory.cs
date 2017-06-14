@@ -5,6 +5,7 @@ using ImageCircle.Forms.Plugin.Abstractions;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
@@ -13,7 +14,7 @@ namespace keep.grass.App
         static AlphaFactory Instance = null;
         AlphaDomain Domain = null;
         AlphaApp App = null;
-        Languages.AlphaLanguage Language = null;
+        AlphaLanguage Language = null;
 
         public AlphaFactory()
         {
@@ -49,14 +50,14 @@ namespace keep.grass.App
         }
         public abstract AlphaApp MakeOmegaApp();
 
-        public static Languages.AlphaLanguage MakeSureLanguage()
+        public static AlphaLanguage MakeSureLanguage()
         {
             return Instance.Language ??
                 (Instance.Language = Instance.MakeOmegaLanguage());
         }
-        public virtual Languages.AlphaLanguage MakeOmegaLanguage()
+        public virtual AlphaLanguage MakeOmegaLanguage()
         {
-            return new Languages.AlphaLanguage();
+            return new AlphaLanguage();
         }
 
         public static AlphaMainPage MakeMainPage()

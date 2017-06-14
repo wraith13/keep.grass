@@ -362,7 +362,7 @@ namespace keep.grass.App
                     )
                 );
             }
-            Canvas.GetClipBounds(ref CanvasRect);
+            Canvas.GetLocalClipBounds(out CanvasRect);
             PhysicalPixelRate = (float)((CanvasRect.Width + CanvasRect.Height) / (Width + Height));
             var DrawGraphSize = (float)(GraphSize * PhysicalPixelRate);
             PieRadius = DrawGraphSize / 2.0f;
