@@ -1,5 +1,6 @@
 ﻿using System;
 using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.Droid
 {
@@ -21,7 +22,7 @@ namespace keep.grass.Droid
         {
             return new OmegaApp();
         }
-        public override Languages.AlphaLanguage MakeOmegaLanguage()
+        public override AlphaLanguage MakeOmegaLanguage()
         {
             return new OmegaLanguage();
         }

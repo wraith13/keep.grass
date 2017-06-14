@@ -1,9 +1,10 @@
 ﻿using System;
 using Java.Util;
+using keep.grass.Domain;
 
 namespace keep.grass.Droid
 {
-    public class OmegaLanguage : keep.grass.Languages.AlphaLanguage
+    public class OmegaLanguage : AlphaLanguage
     {
         public override string getLanguage()
         {

@@ -162,6 +162,10 @@
       <Project>{34988BF1-96C1-46FD-B646-B86C538C637D}</Project>
       <Name>keep.grass.App</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\keep.grass.Domain.csproj">
+      <Project>{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}</Project>
+      <Name>keep.grass.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

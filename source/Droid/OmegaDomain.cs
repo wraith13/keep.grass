@@ -4,9 +4,9 @@ using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using keep.grass.Helpers;
 using Xamarin.Forms;
 using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.Droid
 {
