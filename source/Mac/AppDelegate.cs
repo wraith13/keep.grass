@@ -3,6 +3,7 @@ using Foundation;
 using Xamarin.Forms;
 using keep.grass;
 using Xamarin.Forms.Platform.MacOS;
+using keep.grass.App;
 
 namespace keep.grass.Mac
 {
