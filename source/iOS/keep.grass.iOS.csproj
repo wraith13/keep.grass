@@ -180,6 +180,10 @@
       <Project>{EB5069A5-EAEC-41E2-BC4B-99B7622B6F6A}</Project>
       <Name>keep.grass.iOS.watch</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\keep.grass.Domain.csproj">
+      <Project>{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}</Project>
+      <Name>keep.grass.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

@@ -1,9 +1,10 @@
 ﻿using System;
 using Foundation;
+using keep.grass.Domain;
 
 namespace keep.grass.iOS
 {
-    public class OmegaLanguage : keep.grass.Languages.AlphaLanguage
+    public class OmegaLanguage : AlphaLanguage
     {
         public override string getLanguage()
         {
