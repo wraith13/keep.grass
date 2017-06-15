@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using keep.grass.Domain;
 
 namespace keep.grass.UWP
 {
-    class OmegaLanguage : keep.grass.Languages.AlphaLanguage
+    class OmegaLanguage : AlphaLanguage
     {
         public override string getLanguage()
         {

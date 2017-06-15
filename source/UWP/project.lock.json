@@ -27789,6 +27789,9 @@
           "projectReferences": {
             "C:\\github\\wraith13\\keep.grass\\source\\App\\keep.grass.App.csproj": {
               "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\App\\keep.grass.App.csproj"
+            },
+            "C:\\github\\wraith13\\keep.grass\\source\\Domain\\keep.grass.Domain.csproj": {
+              "projectPath": "C:\\github\\wraith13\\keep.grass\\source\\Domain\\keep.grass.Domain.csproj"
             }
           }
         }

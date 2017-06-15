@@ -1,5 +1,4 @@
-﻿using keep.grass.Helpers;
-using NotificationsExtensions.Tiles;
+﻿using NotificationsExtensions.Tiles;
 using NotificationsExtensions.Toasts;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.UI.Notifications;
 using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.UWP
 {

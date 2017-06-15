@@ -150,6 +150,10 @@
       <Project>{34988BF1-96C1-46FD-B646-B86C538C637D}</Project>
       <Name>keep.grass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\keep.grass.Domain.csproj">
+      <Project>{a931aad2-2a6d-4f9c-b24a-dd08a135e991}</Project>
+      <Name>keep.grass.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
