@@ -28,6 +28,59 @@
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
         }
       },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {
+            "assetType": "runtime",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/lib/uap10.0/WatsonRegistrationUtility.winmd": {
+            "assetType": "runtime",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {
+            "assetType": "runtime",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/lib/uap10.0/WatsonRegistrationUtility.winmd": {
+            "assetType": "runtime",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {
+            "assetType": "runtime",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd": {
+            "assetType": "runtime",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/native/WatsonRegistrationUtility.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -2692,6 +2745,25 @@
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
         }
       },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-arm/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-arm/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -5328,6 +5400,25 @@
         },
         "runtime": {
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-arm/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-arm/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
         }
       },
       "Microsoft.CSharp/4.0.1": {
@@ -8007,6 +8098,25 @@
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
         }
       },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-x64/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-x64/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -10652,6 +10762,25 @@
         },
         "runtime": {
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-x64/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-x64/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
         }
       },
       "Microsoft.CSharp/4.0.1": {
@@ -13340,6 +13469,25 @@
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
         }
       },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-x86/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
+        }
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -15985,6 +16133,25 @@
         },
         "runtime": {
           "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Azure.Mobile": "0.12.0"
+        },
+        "compile": {
+          "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {}
+        },
+        "runtime": {
+          "runtimes/win10-x86/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll": {},
+          "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/WatsonRegistrationUtility.dll": {}
+        },
+        "build": {
+          "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets": {}
         }
       },
       "Microsoft.CSharp/4.0.1": {
@@ -18676,6 +18843,31 @@
         "lib/uap10.0/Microsoft.Azure.Mobile.Analytics.dll",
         "microsoft.azure.mobile.analytics.0.12.0.nupkg.sha512",
         "microsoft.azure.mobile.analytics.nuspec"
+      ]
+    },
+    "Microsoft.Azure.Mobile.Crashes/0.12.0": {
+      "sha512": "ImFAxeHvPY2DZn9i8D3hbD731eqB5cb5AeLr5JfNPpGjRwRVdoEkOrJ1eKgHGwlIxg+pIx+WyJfRSF47GQ5kJw==",
+      "type": "package",
+      "path": "microsoft.azure.mobile.crashes/0.12.0",
+      "files": [
+        "build/uap10.0/Microsoft.Azure.Mobile.Crashes.targets",
+        "lib/MonoAndroid403/Microsoft.Azure.Mobile.Crashes.Android.Bindings.dll",
+        "lib/MonoAndroid403/Microsoft.Azure.Mobile.Crashes.dll",
+        "lib/Xamarin.iOS10/Microsoft.Azure.Mobile.Crashes.dll",
+        "lib/Xamarin.iOS10/Microsoft.Azure.Mobile.Crashes.iOS.Bindings.dll",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Microsoft.Azure.Mobile.Crashes.dll",
+        "microsoft.azure.mobile.crashes.0.12.0.nupkg.sha512",
+        "microsoft.azure.mobile.crashes.nuspec",
+        "ref/uap10.0/Microsoft.Azure.Mobile.Crashes.dll",
+        "runtimes/win10-arm/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll",
+        "runtimes/win10-arm/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-arm/native/WatsonRegistrationUtility.dll",
+        "runtimes/win10-x64/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll",
+        "runtimes/win10-x64/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-x64/native/WatsonRegistrationUtility.dll",
+        "runtimes/win10-x86/lib/uap10.0/Microsoft.Azure.Mobile.Crashes.dll",
+        "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd",
+        "runtimes/win10-x86/native/WatsonRegistrationUtility.dll"
       ]
     },
     "Microsoft.CSharp/4.0.1": {
@@ -27763,7 +27955,9 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.Azure.Mobile >= 0.12.0",
       "Microsoft.Azure.Mobile.Analytics >= 0.12.0",
+      "Microsoft.Azure.Mobile.Crashes >= 0.12.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.3.3",
       "NotificationsExtensions.Win10 >= 14332.0.2",
       "SkiaSharp >= 1.58.0",
@@ -27775,7 +27969,7 @@
     "UAP,Version=v10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\wrait\\.nuget\\packages\\": {}
+    "C:\\Users\\wraith13\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
@@ -27798,7 +27992,9 @@
       }
     },
     "dependencies": {
+      "Microsoft.Azure.Mobile": "0.12.0",
       "Microsoft.Azure.Mobile.Analytics": "0.12.0",
+      "Microsoft.Azure.Mobile.Crashes": "0.12.0",
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
       "NotificationsExtensions.Win10": "14332.0.2",
       "SkiaSharp": "1.58.0",
