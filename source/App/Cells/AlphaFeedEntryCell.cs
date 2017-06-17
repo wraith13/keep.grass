@@ -59,7 +59,11 @@ namespace keep.grass.App
                     {
                         Analytics.TrackEvent(
                             name: "[Clicked] Activity",
-                            properties: new Dictionary<string, string> { { "Category", "ColumnClick" }, { "Screen", "FeedPage" } }
+                            properties: new Dictionary<string, string>
+                            {
+                                { "Category", "ColumnClick" },
+                                { "Screen", "FeedPage" }
+                            }
                         );
                         Xamarin.Forms.Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault()));
                     }
