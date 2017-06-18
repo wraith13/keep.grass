@@ -72,7 +72,11 @@ namespace keep.grass.App
         {
             Analytics.TrackEvent(
                 name: "[Clicked] UserGraph",
-                properties: new Dictionary<string, string> { { "Category", "GraphClick" }, { "Screen", "MainPage" } }
+                properties: new Dictionary<string, string>
+                {
+                    { "Category", "GraphClick" },
+                    { "Screen", "MainPage" }
+                }
             );
             Navigation.PushAsync(new AlphaDetailPage(User));
         }
@@ -81,7 +85,11 @@ namespace keep.grass.App
         {
             Analytics.TrackEvent(
                 name: "[Clicked] LastActivity",
-                properties: new Dictionary<string, string> { { "Category", "ColumnClick" }, { "Screen", "DetailPage" } }
+                properties: new Dictionary<string, string>
+                {
+                    { "Category", "ColumnClick" },
+                    { "Screen", "DetailPage" }
+                }
             );
             Navigation.PushAsync(new AlphaFeedPage(User));
         }
@@ -91,7 +99,11 @@ namespace keep.grass.App
             // Mobile Center .Analytics にデータ送信
             Analytics.TrackEvent(
                 name: "[Clicked] Setting Button",
-                properties: new Dictionary<string, string> { { "Category", "ButtonClick" }, { "Screen", "MainPage" } }
+                properties: new Dictionary<string, string>
+                {
+                    { "Category", "ButtonClick" },
+                    { "Screen", "MainPage" }
+                }
             );
             // ページ遷移処理
             Navigation.PushAsync(AlphaFactory.MakeSettingsPage());

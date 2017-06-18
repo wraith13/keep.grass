@@ -52,9 +52,14 @@ namespace keep.grass.App
             (
                 async o =>
                 {
-                    Analytics.TrackEvent(
+                    Analytics.TrackEvent
+                    (
                         name: "[Clicked] Update Button",
-                        properties: new Dictionary<string, string> { { "Category", "ButtonClick" }, { "Screen", "MainPage" } }
+                        properties: new Dictionary<string, string>
+                        {
+                            { "Category", "ButtonClick" },
+                            { "Screen", "MainPage" }
+                        }
                     );
                     await Domain.ManualUpdateLastPublicActivityAsync();
                 }

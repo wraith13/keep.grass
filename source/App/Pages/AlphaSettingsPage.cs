@@ -126,7 +126,11 @@ namespace keep.grass.App
                     Build();
                     Analytics.TrackEvent(
                         name: "[Changed] Theme",
-                        properties: new Dictionary<string, string> { { "Category", "Settings" }, { "Theme", ThemeName } }
+                        properties: new Dictionary<string, string>
+                        {
+                            { "Category", "Settings" },
+                            { "Theme", ThemeName }
+                        }
                     );
                 }
             };
