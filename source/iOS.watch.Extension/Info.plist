@@ -11,9 +11,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.00.002</string>
+	<string>2.00.004</string>
 	<key>CFBundleVersion</key>
-	<string>1.00.002</string>
+	<string>2.00.004</string>
 	<key>MinimumOSVersion</key>
 	<string>3.1</string>
 	<key>CLKComplicationPrincipalClass</key>
