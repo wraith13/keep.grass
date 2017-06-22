@@ -75,7 +75,7 @@ namespace keep.grass.App
                 StackContent.Children.Add(i);
             }
             Content = StackContent;
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
         protected override void OnAppearing()
         {

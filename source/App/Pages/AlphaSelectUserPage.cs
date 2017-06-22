@@ -171,13 +171,13 @@ namespace keep.grass.App
         {
             base.Build();
             Debug.WriteLine("AlphaSelectUserPage.Rebuild();");
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
 
         public void AppliedTheme(AlphaTheme Theme)
         {
-            SearchButton.TextColor = Theme.BackgroundColor;
-            SearchButton.BackgroundColor = Theme.AccentColor;
+            SearchButton.TextColor = Theme.BackgroundColor.ToColor();
+            SearchButton.BackgroundColor = Theme.AccentColor.ToColor();
         }
     }
 }

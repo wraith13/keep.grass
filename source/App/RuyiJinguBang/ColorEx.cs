@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using SkiaSharp;
 
 namespace RuyiJinguBang
 {
@@ -33,6 +34,16 @@ namespace RuyiJinguBang
                     (A.A * RateA) + (B.A * RateB)
                 );
             }
+        }
+        public static Color ToColor(this SKColor Skia)
+        {
+            return new Color
+            (
+                Skia.Red,
+                Skia.Green,
+                Skia.Blue,
+                Skia.Alpha
+            );
         }
     }
 }

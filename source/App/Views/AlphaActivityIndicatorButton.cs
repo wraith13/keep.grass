@@ -1,5 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
+using RuyiJinguBang;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
@@ -28,9 +30,9 @@ namespace keep.grass.App
 
         public void ApplyTheme(AlphaTheme Theme)
         {
-            Indicator.Color = Theme.ForegroundColor;
-            TextColor = Theme.AccentColor;
-            //BackgroundColor = Theme.BackGroundColor;
+            Indicator.Color = Theme.ForegroundColor.ToColor();
+            TextColor = Theme.AccentColor.ToColor();
+            //BackgroundColor = Theme.BackGroundColor.ToColor();
         }
 
         public void ShowText()

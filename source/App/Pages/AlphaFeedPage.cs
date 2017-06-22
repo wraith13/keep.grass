@@ -29,7 +29,7 @@ namespace keep.grass.App
                         {
                             Feed = t.Result;
                             Build();
-                            AlphaTheme.Apply(this);
+                            AlphaThemeStatic.Apply(this);
                         }
                         else
                         {
@@ -62,7 +62,7 @@ namespace keep.grass.App
                     ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
                 };
             }
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
     }
 }

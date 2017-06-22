@@ -42,7 +42,7 @@ namespace keep.grass.App
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             Switch.VerticalOptions = LayoutOptions.Center;
             Switch.HorizontalOptions = LayoutOptions.End;
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
 
         public Color TextColor

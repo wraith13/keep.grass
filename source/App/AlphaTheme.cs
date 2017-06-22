@@ -1,150 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using RuyiJinguBang;
 using keep.grass.Domain;
+using System.Linq;
 
 namespace keep.grass.App
 {
-    public class AlphaTheme
+    static class AlphaThemeStatic
     {
-        public Color AccentColor
-        {
-            get;
-            private set;
-        }
-        public Color ForegroundColor
-        {
-            get;
-            private set;
-        }
-        public Color BackgroundColor
-        {
-            get;
-            private set;
-        }
-        public Func<double, Color> MakeLeftTimeColor
-        {
-            get;
-            private set;
-        }
-
-        private AlphaTheme()
-        {
-        }
-
-        public static AlphaTheme AlterWhite = new AlphaTheme // Color.Default を使ってないバージョン
-        {
-            AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.Black,
-            BackgroundColor = Color.White,
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
-            ),
-        };
-        public static AlphaTheme DefaultWhite = new AlphaTheme
-        {
-            AccentColor = Color.Default,// Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.Default,
-            BackgroundColor = Color.Default,
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: 0
-            ),
-        };
-        public static AlphaTheme White = AlterWhite;
-        public static AlphaTheme Grass = new AlphaTheme
-        {
-            AccentColor = Color.Black,
-            ForegroundColor = Color.FromRgb(0x10, 0x60, 0x20),
-            BackgroundColor = Color.FromRgb(0x88, 0xEE, 0x99),
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(160.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(255.0 * Math.Min(0.5, LeftTimeRate)),
-                b: (byte)(100.0 * (1.0 - LeftTimeRate))
-            ),
-        };
-        public static AlphaTheme Cherry = new AlphaTheme
-        {
-            AccentColor = Color.Red,
-            ForegroundColor = Color.FromRgb(0x80, 0x40, 0x40),
-            BackgroundColor = Color.FromRgb(0xFF, 0xCC, 0xCC),
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(255.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(240.0 * Math.Min(0.5, LeftTimeRate)),
-                b: (byte)(100.0 * Math.Min(0.5, LeftTimeRate))
-            ),
-        };
-        public static AlphaTheme Abyss = new AlphaTheme
-        {
-            AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.FromRgb(0xAA, 0xBB, 0xEE),
-            BackgroundColor = Color.FromRgb(0x11, 0x33, 0x66),
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(240.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(240.0 * Math.Min(0.5, LeftTimeRate)),
-                b: (byte)40
-            ),
-        };
-        public static AlphaTheme Black = new AlphaTheme
-        {
-            AccentColor = Color.FromRgb(0x44, 0x55, 0xEE),
-            ForegroundColor = Color.FromRgb(0xE8, 0xF0, 0xEC),
-            BackgroundColor = Color.Black,
-            MakeLeftTimeColor = LeftTimeRate => Color.FromRgb
-            (
-                r: (byte)(160.0 * (1.0 - LeftTimeRate)),
-                g: (byte)(160.0 * Math.Min(0.5, LeftTimeRate)),
-                b: (byte)40
-            ),
-        };
-
-        public static Dictionary<string, AlphaTheme> All = new Dictionary<string, AlphaTheme>
-        {
-            { nameof(White), White },
-            { nameof(Grass), Grass },
-            { nameof(Cherry), Cherry },
-            { nameof(Abyss), Abyss },
-            //{ nameof(Black), Black }, 黒背景は問題が発生しやすいので一旦止血
-        };
-
-        private static KeyValuePair<string, AlphaTheme> Get(string Theme)
-        {
-            return All
-                .Where(i => i.Key == Theme)
-                .Concat(All.FirstOrDefault())
-                .FirstOrDefault();
-        }
-
-        private static AlphaTheme Cache = null;
-
-        public static AlphaTheme Get()
-        {
-            return Cache ??
-            (
-                Cache = Get(Settings.Theme).Value
-            );
-        }
-        public static void Set(String Theme)
-        {
-            var i = Get(Theme);
-            Cache = i.Value;
-            Settings.Theme = i.Key;
-        }
-
         public static void Apply(object UIObject)
         {
-            Apply(UIObject, Get());
+            Apply(UIObject, AlphaTheme.Get());
         }
         public static void Apply(object UIObject, AlphaTheme Theme)
         {
@@ -171,16 +36,16 @@ namespace keep.grass.App
             if (null != CircleGraph)
             {
                 //CircleGraph.AltTextColor = Theme.AccentColor;
-                CircleGraph.BackgroundColor = Color.Default == Theme.BackgroundColor ?
+                CircleGraph.BackgroundColor = Color.Default == Theme.BackgroundColor.ToColor() ?
                     Color.White :
-                    Theme.BackgroundColor;
+                    Theme.BackgroundColor.ToColor();
                 return;
             }
 
             var ContentPage = UIObject as ContentPage;
             if (null != ContentPage)
             {
-                ContentPage.BackgroundColor = Theme.BackgroundColor;
+                ContentPage.BackgroundColor = Theme.BackgroundColor.ToColor();
                 Apply(ContentPage.Content);
                 return;
             }
@@ -188,9 +53,9 @@ namespace keep.grass.App
             var NavigationPage = UIObject as NavigationPage;
             if (null != NavigationPage)
             {
-                NavigationPage.BarTextColor = Theme.ForegroundColor;
-                NavigationPage.BarBackgroundColor = Theme.BackgroundColor;
-                NavigationPage.BackgroundColor = Theme.BackgroundColor;
+                NavigationPage.BarTextColor = Theme.ForegroundColor.ToColor();
+                NavigationPage.BarBackgroundColor = Theme.BackgroundColor.ToColor();
+                NavigationPage.BackgroundColor = Theme.BackgroundColor.ToColor();
                 Apply(NavigationPage.CurrentPage);
                 return;
             }
@@ -198,7 +63,7 @@ namespace keep.grass.App
             var Layout = UIObject as StackLayout;
             if (null != Layout)
             {
-                Layout.BackgroundColor = Theme.BackgroundColor;
+                Layout.BackgroundColor = Theme.BackgroundColor.ToColor();
                 foreach (var i in Layout.Children)
                 {
                     //Debug.WriteLine($"i:{i.GetType().FullName}");
@@ -210,7 +75,7 @@ namespace keep.grass.App
             var Table = UIObject as TableView;
             if (null != Table)
             {
-                Table.BackgroundColor = Theme.BackgroundColor;
+                Table.BackgroundColor = Theme.BackgroundColor.ToColor();
                 foreach (var i in Table.Root.AsEnumerable())
                 {
                     Apply(i);
@@ -231,7 +96,7 @@ namespace keep.grass.App
             var List = UIObject as ListView;
             if (null != List)
             {
-                List.BackgroundColor = Theme.BackgroundColor;
+                List.BackgroundColor = Theme.BackgroundColor.ToColor();
                 return;
             }
 
@@ -244,23 +109,23 @@ namespace keep.grass.App
             var Label = UIObject as Label;
             if (null != Label)
             {
-                Label.TextColor = Theme.ForegroundColor;
-                Label.BackgroundColor = Theme.BackgroundColor;
+                Label.TextColor = Theme.ForegroundColor.ToColor();
+                Label.BackgroundColor = Theme.BackgroundColor.ToColor();
                 return;
             }
 
             var Button = UIObject as Button;
             if (null != Button)
             {
-                Button.TextColor = Theme.AccentColor;
-                Button.BackgroundColor = Theme.BackgroundColor;
+                Button.TextColor = Theme.AccentColor.ToColor();
+                Button.BackgroundColor = Theme.BackgroundColor.ToColor();
                 return;
             }
 
             var Grid = UIObject as Grid;
             if (null != Grid)
             {
-                Grid.BackgroundColor = Theme.BackgroundColor;
+                Grid.BackgroundColor = Theme.BackgroundColor.ToColor();
                 foreach (var i in Grid.Children)
                 {
                     //Debug.WriteLine($"i:{i.GetType().FullName}");
@@ -279,25 +144,24 @@ namespace keep.grass.App
             var View = UIObject as View;
             if (null != View)
             {
-                View.BackgroundColor = Theme.BackgroundColor;
+                View.BackgroundColor = Theme.BackgroundColor.ToColor();
                 return;
             }
-
         }
     }
-    interface IAlphaThemeApplyHandler
+    public interface IAlphaThemeApplyHandler
     {
         void ApplyTheme(AlphaTheme Theme);
     }
-    interface IAlphaThemeAppliedHandler
+    public interface IAlphaThemeAppliedHandler
     {
         void AppliedTheme(AlphaTheme Theme);
     }
-    static class AlphaThemeHelper
+    public static class AlphaThemeHelper
     {
         public static void ApplyTheme(this View View, AlphaTheme Theme)
         {
-            View.BackgroundColor = Theme.BackgroundColor;
+            View.BackgroundColor = Theme.BackgroundColor.ToColor();
         }
     }
 }

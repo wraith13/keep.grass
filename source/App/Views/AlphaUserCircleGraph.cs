@@ -28,7 +28,7 @@ namespace keep.grass.App
 
         public void ApplyTheme(AlphaTheme Theme)
         {
-            BackgroundColor = Theme.BackgroundColor;
+            BackgroundColor = Theme.BackgroundColor.ToColor();
         }
 
         public override bool IsVisibleLeftTimeBar
@@ -50,12 +50,12 @@ namespace keep.grass.App
                 return base.AltText ?? L["unspecified"];
             }
         }
-        public override Color AltTextColor
+        public override SKColor AltTextColor
         {
             get
             {
                 return null == base.AltText ?
-                    Color.Gray :
+					Color.Gray.ToSKColor() :
                     base.AltTextColor;
             }
         }
@@ -73,7 +73,7 @@ namespace keep.grass.App
                 {
                     Image = null;
                     AltText = Trimed;
-                    AltTextColor = Color.Black;
+                    AltTextColor = Color.Black.ToSKColor();
                     if (!string.IsNullOrWhiteSpace(Trimed))
                     {
                         new Task
@@ -322,11 +322,11 @@ namespace keep.grass.App
             {
                 if (default(DateTime) != base.LastPublicActivity)
                 {
-                    paint.Color = AlphaDomain.MakeLeftTimeColor(LeftTime).ToSKColor();
+                    paint.Color = AlphaDomain.MakeLeftTimeColor(LeftTime);
                 }
                 else
                 {
-                    paint.Color = AlphaDomain.GetElapsedTimeColor().ToSKColor();
+                    paint.Color = AlphaDomain.GetElapsedTimeColor();
                 }
                 Canvas.DrawRect
                 (
@@ -396,8 +396,8 @@ namespace keep.grass.App
             }
             else
             {
-                AltTextColor = Color.Gray;
-                Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime);
+                AltTextColor = Color.Gray.ToSKColor();
+                Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime.ToSKColor());
                 if (!IsVisibleSatelliteTexts)
                 {
                     SatelliteTexts = null;
@@ -409,7 +409,7 @@ namespace keep.grass.App
                         i => new CircleGraphSatelliteText
                         {
                             Text = i.ToString(),
-                            Color = Color.Gray,
+	                        Color = Color.Gray.ToSKColor(),
                             Angle = 360.0f * ((float)(i) / 24.0f),
                         }
                     );

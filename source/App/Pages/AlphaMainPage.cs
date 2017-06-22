@@ -194,7 +194,7 @@ namespace keep.grass.App
             {
                 SettingsButton.AbortAnimation(SettingsButtonAnimation);
             }
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
 
             if (string.IsNullOrWhiteSpace(CircleGraph.User))
             {
@@ -205,8 +205,8 @@ namespace keep.grass.App
                     d =>
 	                {
                         var Rate = Math.Abs(Math.Sin(d));
-                        SettingsButton.TextColor = ColorEx.MergeWithRate(Theme.AccentColor, Theme.BackgroundColor, Rate);
-                        SettingsButton.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor, Theme.AccentColor, Rate);
+                    SettingsButton.TextColor = ColorEx.MergeWithRate(Theme.AccentColor.ToColor(), Theme.BackgroundColor.ToColor(), Rate);
+                    SettingsButton.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor.ToColor(), Theme.AccentColor.ToColor(), Rate);
                     },
                     0.0,
                     1000.0,

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SkiaSharp;
 using RuyiJinguBang;
 using keep.grass.Domain;
 
@@ -344,11 +345,11 @@ namespace keep.grass.App
             return null;
         }
 
-        public static Color GetElapsedTimeColor()
+        public static SKColor GetElapsedTimeColor()
         {
-            return Color.FromRgb(0xAA, 0xAA, 0xAA);
+            return new SKColor(0xAA, 0xAA, 0xAA);
         }
-        public static IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, Color LeftTimeColor)
+        public static IEnumerable<TimePie> MakeSlices(TimeSpan LeftTime, SKColor LeftTimeColor)
         {
             if (0 <= LeftTime.Ticks)
             {
@@ -380,7 +381,7 @@ namespace keep.grass.App
                     {
                         Text = L["Left Time"],
                         Value = TimeSpan.FromTicks(0),
-                        Color = Color.FromRgb(0xD6, 0xE6, 0x85),
+                        Color = new SKColor(0xD6, 0xE6, 0x85),
                     },
                     new TimePie
                     {
@@ -397,7 +398,7 @@ namespace keep.grass.App
             return (float)((Time.TimeOfDay.Ticks * 360.0) / TimeSpan.FromDays(1).Ticks);
         }
 
-        public static Color MakeLeftTimeColor(TimeSpan LeftTime)
+        public static SKColor MakeLeftTimeColor(TimeSpan LeftTime)
         {
             return AlphaTheme.Get().MakeLeftTimeColor(Math.Max(0.0, Math.Min(1.0, LeftTime.TotalHours / 24.0)));
         }
@@ -437,7 +438,7 @@ namespace keep.grass.App
                     Color = LeftTime.Ticks <= 0 ?
                         MakeLeftTimeColor(LeftTime) :
                         i.Time.Ticks < Now.Ticks ?
-                             Color.Gray :
+							Color.Gray.ToSKColor() :
                             MakeLeftTimeColor(LimitTime - i.Time),
                     Angle = 360.0f * ((float)(i.Hour) / 24.0f),
                 }

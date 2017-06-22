@@ -68,9 +68,9 @@ namespace keep.grass.App
                         Xamarin.Forms.Device.OpenUri(new Uri(Entry?.LinkList.Select(i => i.Href).FirstOrDefault()));
                     }
                 );
-                AlphaTheme.Apply(this);
+                AlphaThemeStatic.Apply(this);
                 UpdatedLabel.TextColor = Entry.IsContribution ?
-                    AlphaDomain.MakeLeftTimeColor(Entry.Updated.AddDays(1) - DateTime.Now) :
+                    AlphaDomain.MakeLeftTimeColor(Entry.Updated.AddDays(1) - DateTime.Now).ToColor() :
                     Color.Gray;
             }
         }

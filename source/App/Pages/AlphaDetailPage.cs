@@ -48,9 +48,9 @@ namespace keep.grass.App
 
         public void ApplyTheme(AlphaTheme Theme)
         {
-            BackgroundColor = Theme.BackgroundColor;
+            BackgroundColor = Theme.BackgroundColor.ToColor();
             CircleGraph.ApplyTheme(Theme);
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
         public override void Build()
         {
@@ -154,7 +154,7 @@ namespace keep.grass.App
             var LastPublicActivity = Domain.GetLastPublicActivity(User);
             CircleGraph.LastPublicActivity = LastPublicActivity;
             LastActivityStampLabel.Text = Domain.ToString(LastPublicActivity);
-            LastActivityStampLabel.TextColor = Theme.ForegroundColor;
+            LastActivityStampLabel.TextColor = Theme.ForegroundColor.ToColor();
         }
         public void OnErrorInQuery()
         {
@@ -178,7 +178,7 @@ namespace keep.grass.App
                     AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
                         .ContinueWith(t => Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
                     UserLabel.Text = User;
-                    UserLabel.TextColor = Theme.ForegroundColor;
+                    UserLabel.TextColor = Theme.ForegroundColor.ToColor();
                     UserLabel.Command = new Command
                     (
                         o =>
@@ -277,7 +277,7 @@ namespace keep.grass.App
                 var LimitTime = LastPublicActivity.AddHours(24);
                 var LeftTime = LimitTime - Now;
                 LeftTimeLabel.Text = Domain.ToString(LeftTime);
-                LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
+                LeftTimeLabel.TextColor = AlphaDomain.MakeLeftTimeColor(LeftTime).ToColor();
 
                 Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
             }

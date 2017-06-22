@@ -209,7 +209,7 @@ namespace keep.grass.App
                 );
             }
             Content = StackContent;
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
     }
 }

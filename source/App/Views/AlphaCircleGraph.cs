@@ -15,19 +15,21 @@ using System.Diagnostics;
 using RuyiJinguBang;
 #endif
 
+using keep.grass.Domain;
+
 namespace keep.grass.App
 {
     public interface VoidPie
     {
         string Text { get; }
         double Volume { get; }
-        Color Color { get; }
+        SKColor Color { get; }
         string DisplayVolume { get; }
     }
     public class CircleGraphSatelliteText
     {
         public string Text { get; set; }
-        public Color Color { get; set; }
+        public SKColor Color { get; set; }
         public float Angle { get; set; }
     }
     public class NumberPie : VoidPie
@@ -35,7 +37,7 @@ namespace keep.grass.App
         public string Text { get; set; }
         public double Value { get; set; }
         public double Volume { get { return Value; } }
-        public Color Color { get; set; }
+        public SKColor Color { get; set; }
         public string DisplayVolume { get { return Value.ToString(); } }
     }
     public class TimePie : VoidPie
@@ -43,7 +45,7 @@ namespace keep.grass.App
         public string Text { get; set; }
         public TimeSpan Value { get; set; }
         public double Volume { get { return Value.Ticks; } }
-        public Color Color { get; set; }
+        public SKColor Color { get; set; }
         public string DisplayVolume { get { return TimeToString(Value); } }
         public static string TimeToString(TimeSpan a)
         {
@@ -58,7 +60,7 @@ namespace keep.grass.App
     {
         public virtual bool IsDoughnut { get; set; }
         public virtual string AltText { get; set; }
-        public virtual Color AltTextColor { get; set; }
+        public virtual SKColor AltTextColor { get; set; }
         public virtual bool IsInvalidCanvas { get; set; }
         public virtual bool IsInvalidCenter { get; set; }
         public virtual bool IsInvalidSatelliteTexts { get; set; }
@@ -101,7 +103,7 @@ namespace keep.grass.App
                 }
             }
         }
-        public override Color AltTextColor
+        public override SKColor AltTextColor
         {
             set
             {
@@ -434,7 +436,7 @@ namespace keep.grass.App
                 using (var paint = new SKPaint())
                 {
                     paint.IsAntialias = true;
-                    paint.Color = AltTextColor.ToSKColor();
+                    paint.Color = AltTextColor;
                     paint.StrokeCap = SKStrokeCap.Round;
                     paint.TextSize = FontSize * PhysicalPixelRate;
                     paint.TextAlign = SKTextAlign.Center;
@@ -521,7 +523,7 @@ namespace keep.grass.App
                         using (var paint = new SKPaint())
                         {
                             paint.IsAntialias = true;
-                            paint.Color = SatelliteText.Color.ToSKColor();
+                            paint.Color = SatelliteText.Color;
                             paint.StrokeCap = SKStrokeCap.Round;
                             paint.TextSize = FontSize * PhysicalPixelRate;
                             paint.TextAlign = SKTextAlign.Center;
@@ -621,7 +623,7 @@ namespace keep.grass.App
                     using (var paint = new SKPaint())
                     {
                         paint.IsAntialias = true;
-                        paint.Color = Pie.Color.ToSKColor();
+                        paint.Color = Pie.Color;
                         paint.StrokeCap = SKStrokeCap.Round;
                         if (Pie.Volume < TotalVolume)
                         {

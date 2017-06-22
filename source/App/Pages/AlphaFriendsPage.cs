@@ -133,7 +133,7 @@ namespace keep.grass.App
                 },
             };
             UpdateList();
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
         }
         public void UpdateList()
         {

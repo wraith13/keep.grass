@@ -35,6 +35,7 @@
     <Compile Include="GitHub.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="AlphaLanguage.cs" />
+    <Compile Include="AlphaTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

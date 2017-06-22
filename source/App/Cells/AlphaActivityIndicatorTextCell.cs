@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using RuyiJinguBang;
+using keep.grass.Domain;
 
 namespace keep.grass.App
 {
@@ -43,9 +44,9 @@ namespace keep.grass.App
 
         public void ApplyTheme(AlphaTheme Theme)
         {
-            Indicator.Color = Theme.ForegroundColor;
-            TextLabel.TextColor = Theme.ForegroundColor;
-            //View.BackgroundColor = Theme.BackGroundColor;
+            Indicator.Color = Theme.ForegroundColor.ToColor();
+            TextLabel.TextColor = Theme.ForegroundColor.ToColor();
+            //View.BackgroundColor = Theme.BackGroundColor.ToColor();
         }
 
         public void ShowText()

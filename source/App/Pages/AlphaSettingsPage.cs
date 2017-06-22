@@ -68,7 +68,7 @@ namespace keep.grass.App
             var Theme = AlphaTheme.Get();
             if (!String.IsNullOrWhiteSpace(User))
             {
-                AlphaTheme.Apply(UserLabel, Theme);
+                AlphaThemeStatic.Apply(UserLabel, Theme);
             }
             else
             {
@@ -78,8 +78,8 @@ namespace keep.grass.App
                     d =>
                     {
                         var Rate = Math.Abs(Math.Sin(d));
-                        UserLabel.TextColor = ColorEx.MergeWithRate(Theme.AccentColor, Theme.BackgroundColor, Rate);
-                        UserLabel.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor, Theme.AccentColor, Rate);
+                    UserLabel.TextColor = ColorEx.MergeWithRate(Theme.AccentColor.ToColor(), Theme.BackgroundColor.ToColor(), Rate);
+                    UserLabel.BackgroundColor = ColorEx.MergeWithRate(Theme.BackgroundColor.ToColor(), Theme.AccentColor.ToColor(), Rate);
                     },
                     0.0,
                     1000.0,
@@ -121,8 +121,8 @@ namespace keep.grass.App
                 if (OldTheme != AlphaTheme.Get())
                 {
                     OldTheme = NewTheme;
-                    AlphaTheme.Apply(Root.Navigation);
-                    AlphaTheme.Apply(Root.Main);
+                    AlphaThemeStatic.Apply(Root.Navigation);
+                    AlphaThemeStatic.Apply(Root.Main);
                     Build();
                     Analytics.TrackEvent(
                         name: "[Changed] Theme",
@@ -286,7 +286,7 @@ namespace keep.grass.App
                     },
                 };
             }
-            AlphaTheme.Apply(this);
+            AlphaThemeStatic.Apply(this);
             ApplyUser(Settings.UserName);
         }
         protected override void OnAppearing()
