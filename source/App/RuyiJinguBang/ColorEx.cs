@@ -39,10 +39,10 @@ namespace RuyiJinguBang
         {
             return new Color
             (
-                Skia.Red,
-                Skia.Green,
-                Skia.Blue,
-                Skia.Alpha
+                ((double)(Skia.Red)) /255.0,
+                ((double)(Skia.Green)) / 255.0,
+                ((double)(Skia.Blue)) / 255.0,
+                ((double)(Skia.Alpha)) / 255.0
             );
         }
     }
