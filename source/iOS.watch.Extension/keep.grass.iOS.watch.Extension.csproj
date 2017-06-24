@@ -146,6 +146,12 @@
   <ItemGroup>
     <BundleResource Include="PushNotificationPayload.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\keep.grass.Domain.csproj">
+      <Project>{A931AAD2-2A6D-4F9C-B24A-DD08A135E991}</Project>
+      <Name>keep.grass.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\WatchOS\Xamarin.WatchOS.AppExtension.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>
