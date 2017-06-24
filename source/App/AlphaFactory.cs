@@ -239,6 +239,15 @@ namespace keep.grass.App
         {
             return typeof(AlphaCircleImageCell);
         }
+
+        public static AlphaDrawer MakeDrawer()
+        {
+            return Instance.MakeOmegaDrawer();
+        }
+        public virtual AlphaDrawer MakeOmegaDrawer()
+        {
+            return new AlphaDrawer();
+        }
     }
 }
 

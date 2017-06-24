@@ -74,7 +74,7 @@ namespace keep.grass.App
         public void InitCircleGraph(AlphaUserCircleGraph i, string User)
         {
             //i.BackgroundColor = Color.White;
-            i.IsDoughnut = true;
+            i.Drawer.IsDoughnut = true;
             i.Now = DateTime.Now;
             i.User = User;
             i.GestureRecognizers.Clear();
@@ -112,8 +112,8 @@ namespace keep.grass.App
                     FriendCircle.VerticalOptions = LayoutOptions.Center;
                     FriendCircle.IsVisibleLeftTimeBar = false;
                     FriendCircle.IsVisibleSatelliteTexts = false;
-                    FriendCircle.FontSize *= 0.5f;
-                    FriendCircle.CircleMargin = new Thickness(2.0);
+                    FriendCircle.Drawer.FontSize *= 0.5f;
+                    FriendCircle.Drawer.CircleMargin = new SkiaSharp.SKRect(2.0f, 2.0f, 2.0f, 2.0f);
                 }
             }
 
@@ -186,7 +186,7 @@ namespace keep.grass.App
             //  Indicator を表示中にレイアウトを変えてしまうと簡潔かつ正常に Indicator を再表示できないようなので、問答無用でテキストを表示してしまう。
             UpdateButton.ShowText();
 
-            ApplyCircleGraph(i => i.IsInvalidCanvas = true);
+            ApplyCircleGraph(i => i.Drawer.IsInvalidCanvas = true);
             OnUpdateLastPublicActivity(Settings.UserName, Domain.GetLastPublicActivity(Settings.UserName));
 
             var SettingsButtonAnimation = "DefaultButtn";

@@ -16,6 +16,7 @@ namespace keep.grass.App
         public virtual DateTime LastPublicActivity { get; set; }
         public virtual bool IsVisibleLeftTimeBar { get; set; }
         public virtual bool IsVisibleSatelliteTexts { get; set; }
+        public virtual string User { get; set; }
     }
     public class AlphaUserCircleGraph : VoidUserCircleGraph
     {
@@ -24,7 +25,7 @@ namespace keep.grass.App
 
         public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(500);
 
-        float LeftTimeBarHeight => FontSize * 2.0f;
+        float LeftTimeBarHeight => Drawer.FontSize * 2.0f;
 
         public void ApplyTheme(AlphaTheme Theme)
         {
@@ -38,12 +39,13 @@ namespace keep.grass.App
                 if (base.IsVisibleLeftTimeBar != value)
                 {
                     base.IsVisibleLeftTimeBar = value;
-                    CircleMargin.Top += value ? LeftTimeBarHeight : -LeftTimeBarHeight;
+                    Drawer.CircleMargin.Top += value ? LeftTimeBarHeight : -LeftTimeBarHeight;
                 }
             }
         }
 
-        public override string AltText
+        /*
+        public string AltText
         {
             get
             {
@@ -59,28 +61,32 @@ namespace keep.grass.App
                     base.AltTextColor;
             }
         }
-
-        public string User
+        */
+        public AlphaUserCircleGraph()
         {
-            get
-            {
-                return AltText;
-            }
+            Drawer.AltText = L["unspecified"];
+        }
+
+        public override string User
+        {
             set
             {
                 var Trimed = value?.Trim();
-                if (base.AltText != Trimed)
+                if (base.User != Trimed)
                 {
                     Image = null;
-                    AltText = Trimed;
-                    AltTextColor = Color.Black.ToSKColor();
-                    if (!string.IsNullOrWhiteSpace(Trimed))
+                    base.User = Trimed;
+                    Drawer.AltText = User ?? L["unspecified"];
+                    Drawer.AltTextColor = null == User ?
+                        Color.Gray.ToSKColor() :
+						Color.Black.ToSKColor();
+                    if (!string.IsNullOrWhiteSpace(User))
                     {
                         new Task
                         (
                             async () =>
                             {
-                                var ImageData = await AlphaImageProxy.Get(GitHub.GetIconUrl(Trimed));
+                                var ImageData = await AlphaImageProxy.Get(GitHub.GetIconUrl(User));
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread
                                 (
                                     () =>
@@ -94,14 +100,14 @@ namespace keep.grass.App
                 }
             }
         }
-        public override byte[] Image
+        public byte[] Image
         {
             set
             {
-                if (base.Image != value)
+                if (Drawer.Image != value)
                 {
-                    var HasRequestToAnimation = null == base.Image;
-                    base.Image = value;
+                    var HasRequestToAnimation = null == Drawer.Image;
+                    Drawer.Image = value;
                     if (HasRequestToAnimation)
                     {
                         if (IsActive)
@@ -110,7 +116,7 @@ namespace keep.grass.App
                         }
                         else
                         {
-                            ImageAlpha = 0;
+                            Drawer.ImageAlpha = 0;
                         }
                     }
                 }
@@ -121,7 +127,7 @@ namespace keep.grass.App
             this.Animate
             (
                 "ImageAnimation",
-                d => ImageAlpha = (byte)d,
+                d => Drawer.ImageAlpha = (byte)d,
                 0.0,
                 255.0,
                 16,
@@ -219,7 +225,7 @@ namespace keep.grass.App
         {
             base.Now = default(DateTime);
             base.LastPublicActivity = default(DateTime);
-            ImageAlpha = 0;
+            Drawer.ImageAlpha = 0;
             UpdateSlices();
         }
 
@@ -286,10 +292,6 @@ namespace keep.grass.App
             UpdateSlices();
         }
 
-        public AlphaUserCircleGraph()
-        {
-        }
-
         public override void Draw(SKCanvas Canvas)
         {
             IsActive = true;
@@ -297,26 +299,26 @@ namespace keep.grass.App
             {
                 RequestToAnimation();
             }
-            var IsInvalidBar = IsInvalidData;
+            var IsInvalidBar = Drawer.IsInvalidData;
+            if (Drawer.IsInvalidCanvas)
+            {
+                Drawer.ClearCanvas(Canvas);
+                UpdateSlices();
+            }
             base.Draw(Canvas);
             if (IsVisibleLeftTimeBar && IsInvalidBar)
             {
                 DrawLeftTimeBar(Canvas);
             }
         }
-        public override void ClearCanvas(SKCanvas Canvas)
-        {
-            base.ClearCanvas(Canvas);
-            UpdateSlices();
-        }
         private void DrawLeftTimeBar(SKCanvas Canvas)
         {
             var LeftTimeBarRect = new SKRect
             (
-                CanvasRect.Left,
-                CanvasRect.Top,
-                CanvasRect.Right,
-                CanvasRect.Top + (LeftTimeBarHeight * PhysicalPixelRate)
+                Drawer.CanvasRect.Left,
+                Drawer.CanvasRect.Top,
+                Drawer.CanvasRect.Right,
+                Drawer.CanvasRect.Top + (LeftTimeBarHeight * Drawer.PhysicalPixelRate)
             );
             using (var paint = new SKPaint())
             {
@@ -339,7 +341,7 @@ namespace keep.grass.App
                 paint.IsAntialias = true;
                 paint.Color = BackgroundColor.ToSKColor();
                 paint.StrokeCap = SKStrokeCap.Round;
-                paint.TextSize = FontSize * PhysicalPixelRate;
+                paint.TextSize = Drawer.FontSize * Drawer.PhysicalPixelRate;
                 paint.TextAlign = SKTextAlign.Center;
                 paint.Typeface = Font;
                 var LeftTimeBarText = "";
@@ -365,46 +367,46 @@ namespace keep.grass.App
 
         public void UpdateSlices()
         {
-            SetStartAngle(AlphaDomain.TimeToAngle(Now));
+            Drawer.SetStartAngle(AlphaDomain.TimeToAngle(Now));
             if (default(DateTime) != base.LastPublicActivity)
             {
                 var Today = Now.Date;
                 var LeftTimeColor = AlphaDomain.MakeLeftTimeColor(LeftTime);
-                AltTextColor = LeftTimeColor;
-                Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
+                Drawer.AltTextColor = LeftTimeColor;
+                Drawer.Data = AlphaDomain.MakeSlices(LeftTime, LeftTimeColor);
 
-                if (!IsVisibleSatelliteTexts || GraphSize < FontSize * 6.0f)
+                if (!IsVisibleSatelliteTexts || Drawer.GraphSize < Drawer.FontSize * 6.0f)
                 {
-                    SatelliteTexts = null;
+                    Drawer.SatelliteTexts = null;
                 }
                 else
-                if (GraphSize < FontSize * 9.0f)
+                if (Drawer.GraphSize < Drawer.FontSize * 9.0f)
                 {
-                    SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 6);
+                    Drawer.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 6);
                 }
                 else
-                if (GraphSize < FontSize * 12.0f)
+                if (Drawer.GraphSize < Drawer.FontSize * 12.0f)
                 {
-                    SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 3);
+                    Drawer.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity, 3);
                 }
                 else
                 {
-                    SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity);
+                    Drawer.SatelliteTexts = AlphaDomain.MakeSatelliteTexts(Now, LastPublicActivity);
                 }
 
                 //Task.Run(() => Domain.AutoUpdateLastPublicActivityAsync());
             }
             else
             {
-                AltTextColor = Color.Gray.ToSKColor();
-                Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime.ToSKColor());
+                Drawer.AltTextColor = Color.Gray.ToSKColor();
+                Drawer.Data = AlphaDomain.MakeSlices(TimeSpan.Zero, Color.Lime.ToSKColor());
                 if (!IsVisibleSatelliteTexts)
                 {
-                    SatelliteTexts = null;
+                    Drawer.SatelliteTexts = null;
                 }
                 else
                 {
-                    SatelliteTexts = Enumerable.Range(0, 24).Select
+                    Drawer.SatelliteTexts = Enumerable.Range(0, 24).Select
                     (
                         i => new CircleGraphSatelliteText
                         {

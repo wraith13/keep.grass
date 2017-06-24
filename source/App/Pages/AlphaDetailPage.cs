@@ -40,7 +40,7 @@ namespace keep.grass.App
             //Build();
 
             CircleGraph.IsVisibleSatelliteTexts = true;
-            CircleGraph.IsDoughnut = false;
+            CircleGraph.Drawer.IsDoughnut = false;
             CircleGraph.ActiveWait = TimeSpan.FromMilliseconds(100);
             CircleGraph.AnimationSpan = TimeSpan.FromMilliseconds(500);
             CircleGraph.Now = DateTime.Now;
@@ -126,7 +126,7 @@ namespace keep.grass.App
             //LastActivityStampLabel.ShowText();
             LeftTimeLabel.ShowText();
 
-            CircleGraph.IsInvalidCanvas = true;
+            CircleGraph.Drawer.IsInvalidCanvas = true;
             OnUpdateLastPublicActivity();
             ApplyTheme(Theme);
         }
