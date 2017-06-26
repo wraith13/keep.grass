@@ -13,7 +13,7 @@
                         <imageView alignment="center" id="0" width="1" height="1" verticalAlignment="center"/>
                     </items>
                     <connections>
-                        <outlet property="WatchCanvus" destination="0" id="name-outlet-0"/>
+                        <outlet property="WatchCanvas" destination="0" id="name-outlet-0"/>
                     </connections>
                 </controller>
             </objects>

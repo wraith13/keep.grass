@@ -15,13 +15,13 @@ namespace keep.grass.iOS.keep.grassExtension
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        WatchKit.WKInterfaceImage WatchCanvus { get; set; }
+        WatchKit.WKInterfaceImage WatchCanvas { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (WatchCanvus != null) {
-                WatchCanvus.Dispose ();
-                WatchCanvus = null;
+            if (WatchCanvas != null) {
+                WatchCanvas.Dispose ();
+                WatchCanvas = null;
             }
         }
     }
