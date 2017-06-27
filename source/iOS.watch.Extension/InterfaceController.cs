@@ -1,7 +1,9 @@
 ﻿using System;
 
 using WatchKit;
+using WatchConnectivity;
 using Foundation;
+using keep.grass.Domain;
 
 namespace keep.grass.iOS.keep.grassExtension
 {
@@ -18,6 +20,30 @@ namespace keep.grass.iOS.keep.grassExtension
 
             // Configure interface objects here.
             Console.WriteLine("{0} awake with context", this);
+
+            Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            if (WCSession.IsSupported)
+            {
+                //WatchCanvas.SetImage();
+                //Console.WriteLine($"User: {Settings.UserName ?? "Undefined"}");
+                PresentAlertController
+                (
+                    "Title",
+                    "IsSuppoeted!!!",
+                    WKAlertControllerStyle.Alert,
+                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.PopController()), }
+                );
+            }
+            else
+            {
+                PresentAlertController
+                (
+                    "iPhone と通信できません",
+                    "iPhone との接続状態を確認してください。",
+                    WKAlertControllerStyle.Alert,
+                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.PopController()), }
+                );
+            }
         }
 
         public override void WillActivate()
