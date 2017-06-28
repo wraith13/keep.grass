@@ -4,6 +4,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using keep.grass.App;
+using WatchConnectivity;
 
 namespace keep.grass.iOS
 {
@@ -11,6 +12,16 @@ namespace keep.grass.iOS
     {
         public OmegaApp()
         {
+        }
+
+        public override void OnChangeSettings()
+        {
+            base.OnChangeSettings();
+
+            if (WCSession.IsSupported)
+            {
+                
+            }
         }
     }
 }

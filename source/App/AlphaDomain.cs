@@ -36,7 +36,7 @@ namespace keep.grass.App
         }
 
         private Dictionary<string, DateTime> LastPublicActivityCache = new Dictionary<string, DateTime>();
-        public void SetLastPublicActivity(string User, DateTime value)
+        public virtual void SetLastPublicActivity(string User, DateTime value)
         {
             Debug.WriteLine($"AlphaDomain::SetLastPublicActivity({User},{ToString(value)}); ");
             if (GetLastPublicActivity(User) != value)

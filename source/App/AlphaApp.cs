@@ -114,7 +114,7 @@ namespace keep.grass.App
             Navigation.PushAsync(AlphaFactory.MakeSelectUserPage(Reciever, ExistUsers));
         }
 
-        public void OnChangeSettings()
+        public virtual void OnChangeSettings()
         {
             AlphaFactory.MakeSureLanguage().Update();
             Main.UpdateInfoAsync();

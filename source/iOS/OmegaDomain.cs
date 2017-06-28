@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 using keep.grass.App;
+using WatchConnectivity;
 
 namespace keep.grass.iOS
 {
@@ -22,6 +23,16 @@ namespace keep.grass.iOS
                     }
                 }
             );
+        }
+
+        public override void SetLastPublicActivity(string User, DateTime value)
+        {
+            base.SetLastPublicActivity(User, value);
+
+            if (WCSession.IsSupported)
+            {
+                
+            }
         }
 
         public override void ShowAlert(string title, string body, int id, DateTime notifyTime)
