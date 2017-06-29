@@ -7,7 +7,22 @@ using keep.grass.Domain;
 
 namespace keep.grass.iOS.keep.grassExtension
 {
-    public partial class InterfaceController : WKInterfaceController
+    public class SessionReceiver: WCSessionDelegate
+    {
+        public override void DidReceiveApplicationContext(WCSession session, NSDictionary<NSString, NSObject> applicationContext)
+        {
+            Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@DidReceiveApplicationContext");
+            var User = (applicationContext.ValueForKey(new NSString("User")) as NSString).ToString();
+            Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@User: {User}");
+        }
+
+        static SessionReceiver Instance = null;
+        public static SessionReceiver MakeSure()
+        {
+            return Instance ?? (Instance = new SessionReceiver());
+        }
+    }
+    public partial class InterfaceController : WKInterfaceController, IWCSessionDelegate
     {
         protected InterfaceController(IntPtr handle) : base(handle)
         {
@@ -24,6 +39,8 @@ namespace keep.grass.iOS.keep.grassExtension
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             if (WCSession.IsSupported)
             {
+                WCSession.DefaultSession.Delegate = SessionReceiver.MakeSure();
+                WCSession.DefaultSession.ActivateSession();
                 //WatchCanvas.SetImage();
                 //Console.WriteLine($"User: {Settings.UserName ?? "Undefined"}");
                 PresentAlertController
@@ -31,7 +48,7 @@ namespace keep.grass.iOS.keep.grassExtension
                     "Title",
                     "IsSuppoeted!!!",
                     WKAlertControllerStyle.Alert,
-                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.PopController()), }
+                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.DismissController()), }
                 );
             }
             else
@@ -41,7 +58,7 @@ namespace keep.grass.iOS.keep.grassExtension
                     "iPhone と通信できません",
                     "iPhone との接続状態を確認してください。",
                     WKAlertControllerStyle.Alert,
-                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.PopController()), }
+                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.DismissController()), }
                 );
             }
         }
