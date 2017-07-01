@@ -22,7 +22,7 @@ namespace keep.grass.iOS.keep.grassExtension
             return Instance ?? (Instance = new SessionReceiver());
         }
     }
-    public partial class InterfaceController : WKInterfaceController, IWCSessionDelegate
+    public partial class InterfaceController : WKInterfaceController
     {
         protected InterfaceController(IntPtr handle) : base(handle)
         {
@@ -39,8 +39,10 @@ namespace keep.grass.iOS.keep.grassExtension
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             if (WCSession.IsSupported)
             {
-                WCSession.DefaultSession.Delegate = SessionReceiver.MakeSure();
-                WCSession.DefaultSession.ActivateSession();
+                var DefaultSession = WCSession.DefaultSession;
+                DefaultSession.Delegate = SessionReceiver.MakeSure();
+                DefaultSession.ActivateSession();
+                Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Activated!!!");
                 //WatchCanvas.SetImage();
                 //Console.WriteLine($"User: {Settings.UserName ?? "Undefined"}");
                 PresentAlertController
