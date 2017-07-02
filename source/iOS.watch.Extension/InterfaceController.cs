@@ -15,7 +15,7 @@ namespace keep.grass.iOS.keep.grassExtension
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@DidReceiveApplicationContext");
             var User = (applicationContext.ValueForKey(new NSString("User")) as NSString)?.ToString();
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@User: {User}");
-            var LastPublicActivity = (applicationContext.ValueForKey(new NSString("LastPublicActivity")) as NSDate)?.ToDateTime();
+            var LastPublicActivity = (applicationContext.ValueForKey(new NSString("LastPublicActivity")) as NSDate)?.ToDateTime() ?? default(DateTime);
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@LastPublicActivity: {LastPublicActivity.ToString()}");
         }
 
