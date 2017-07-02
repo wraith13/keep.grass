@@ -39,22 +39,25 @@ namespace keep.grass.iOS.keep.grassExtension
             // Configure interface objects here.
             Console.WriteLine("{0} awake with context", this);
 
-            Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             if (WCSession.IsSupported)
             {
                 var DefaultSession = WCSession.DefaultSession;
                 DefaultSession.Delegate = SessionReceiver.MakeSure();
                 DefaultSession.ActivateSession();
-                Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Activated!!!");
-                //WatchCanvas.SetImage();
-                //Console.WriteLine($"User: {Settings.UserName ?? "Undefined"}");
-                PresentAlertController
-                (
-                    "Title",
-                    "IsSuppoeted!!!",
-                    WKAlertControllerStyle.Alert,
-                    new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.DismissController()), }
-                );
+            }
+        }
+
+        public override void WillActivate()
+        {
+            // This method is called when the watch view controller is about to be visible to the user.
+            Console.WriteLine("{0} will activate", this);
+        }
+
+        public override void DidAppear()
+        {
+            base.DidAppear();
+            if (WCSession.IsSupported)
+            {
             }
             else
             {
@@ -66,12 +69,6 @@ namespace keep.grass.iOS.keep.grassExtension
                     new[] { WKAlertAction.Create("OK", WKAlertActionStyle.Default, () => this.DismissController()), }
                 );
             }
-        }
-
-        public override void WillActivate()
-        {
-            // This method is called when the watch view controller is about to be visible to the user.
-            Console.WriteLine("{0} will activate", this);
         }
 
         public override void DidDeactivate()
