@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="RuyiJinguBang\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -136,6 +137,7 @@
     <Compile Include="NotificationController.designer.cs">
       <DependentUpon>NotificationController.cs</DependentUpon>
     </Compile>
+    <Compile Include="RuyiJinguBang\NSDateEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="PushNotificationPayload.json" />
