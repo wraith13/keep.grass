@@ -58,7 +58,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.58.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
+      <HintPath>..\packages\SkiaSharp.1.58.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
