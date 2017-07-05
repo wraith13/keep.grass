@@ -17,7 +17,10 @@ namespace keep.grass.iOS.keep.grassExtension
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@User: {User}");
             var LastPublicActivity = (applicationContext.ValueForKey(new NSString("LastPublicActivity")) as NSDate)?.ToDateTime() ?? default(DateTime);
             Console.WriteLine($"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@LastPublicActivity: {LastPublicActivity.ToString()}");
+            OnReceive?.Invoke(User, LastPublicActivity);
         }
+
+        public Action<string, DateTime> OnReceive;
 
         static SessionReceiver Instance = null;
         public static SessionReceiver MakeSure()
@@ -48,7 +51,13 @@ namespace keep.grass.iOS.keep.grassExtension
             if (WCSession.IsSupported)
             {
                 var DefaultSession = WCSession.DefaultSession;
-                DefaultSession.Delegate = SessionReceiver.MakeSure();
+                var Receiver = SessionReceiver.MakeSure();
+                Receiver.OnReceive = (User, LastPublicActivity) =>
+                {
+                    Drawer.AltText = User;
+                    Update();
+                };
+                DefaultSession.Delegate = Receiver;
                 DefaultSession.ActivateSession();
             }
         }
