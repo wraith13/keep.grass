@@ -15,15 +15,15 @@ namespace keep.grass.App
 {
     public class AlphaDetailPage : ResponsiveContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeSureApp();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
         AlphaTheme Theme;
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
 
-        AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
-        AlphaCircleImageCell LastActivityStampLabel = AlphaFactory.MakeCircleImageCell();
-        AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaFactory.MakeActivityIndicatorTextCell();
-        AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
+        AlphaCircleImageCell UserLabel = AlphaAppFactory.MakeCircleImageCell();
+        AlphaCircleImageCell LastActivityStampLabel = AlphaAppFactory.MakeCircleImageCell();
+        AlphaActivityIndicatorTextCell LeftTimeLabel = AlphaAppFactory.MakeActivityIndicatorTextCell();
+        AlphaUserCircleGraph CircleGraph = AlphaAppFactory.MakeUserCircleGraph();
 
         Task UpdateLeftTimeTask = null;
         DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
@@ -34,7 +34,7 @@ namespace keep.grass.App
         {
             Title = User = UserName;
 
-            LastActivityStampLabel.Command = new Command(o => AlphaFactory.MakeSureApp().ShowFeedPage(User));
+            LastActivityStampLabel.Command = new Command(o => AlphaAppFactory.MakeSureApp().ShowFeedPage(User));
             LeftTimeLabel.Command = new Command(async o => await Domain.ManualUpdateLastPublicActivityAsync());
 
             //Build();
@@ -175,7 +175,7 @@ namespace keep.grass.App
             {
                 if (UserLabel.Text != User)
                 {
-                    AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
+                    AlphaAppFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
                         .ContinueWith(t => Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
                     UserLabel.Text = User;
                     UserLabel.TextColor = Theme.ForegroundColor.ToColor();

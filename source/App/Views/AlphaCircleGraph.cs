@@ -26,7 +26,7 @@ namespace keep.grass.App
     public class AlphaCircleGraph : Image, IAlphaThemeAppliedHandler // プロパティのフィールドを明示的に指定するの避ける為だけのクラス
 #endif
     {
-        public AlphaDrawer Drawer = AlphaFactory.MakeDrawer();
+        public AlphaDrawer Drawer = AlphaDomainFactory.MakeDrawer();
         System.IO.Stream FontSource;
         SKManagedStream FontStream;
         protected SKTypeface Font;
@@ -34,7 +34,7 @@ namespace keep.grass.App
         public AlphaCircleGraph()
         {
             //  ※iOS 版では Font だけ残して他はこの場で Dispose() して構わないが Android 版では遅延処理が行われるようでそれだと disposed object へのアクセスが発生してしまう。
-            FontSource = AlphaFactory.GetApp().GetFontStream();
+            FontSource = AlphaAppFactory.GetApp().GetFontStream();
             FontStream = new SKManagedStream(FontSource);
             Font = SKTypeface.FromStream(FontStream);
             Drawer.Font = Font;

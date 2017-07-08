@@ -11,8 +11,8 @@ namespace keep.grass.App
     //  Activity だと Android のそれと紛らわしいので Feed とした。
     public class AlphaFeedPage : ResponsiveContentPage
     {
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
 
         public GitHub.Feed Feed;
 
@@ -34,7 +34,7 @@ namespace keep.grass.App
                         else
                         {
                             Debug.WriteLine(t.Exception);
-                            AlphaFactory.MakeSureApp().Navigation.PopAsync();
+                            AlphaAppFactory.MakeSureApp().Navigation.PopAsync();
                         }
                     }
                 )
@@ -58,7 +58,7 @@ namespace keep.grass.App
                 Content = new ListView
                 {
                     HasUnevenRows = true,
-                    ItemTemplate = new DataTemplateEx(AlphaFactory.GetFeedEntryCellType()).SetBindingList("Entry"),
+                    ItemTemplate = new DataTemplateEx(AlphaAppFactory.GetFeedEntryCellType()).SetBindingList("Entry"),
                     ItemsSource = Feed?.EntryList?.Select(i => new { Entry = i, }),
                 };
             }

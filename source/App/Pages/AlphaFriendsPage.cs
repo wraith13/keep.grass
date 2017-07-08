@@ -12,8 +12,8 @@ namespace keep.grass.App
 {
     public class AlphaFriendsPage : ResponsiveContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeSureApp();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
 
         const int MaxFriendCount = 8;
         //VoidEntryCell[] FriendNameCellList = null;
@@ -39,7 +39,7 @@ namespace keep.grass.App
             Title = L["Rivals"];
             List = new ListView
             {
-                ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
+                ItemTemplate = new DataTemplateEx(AlphaAppFactory.GetGitHubUserCellType())
                     .SetBindingList("ImageSourceUrl", "Text"),
             };
             List.ItemTapped += (sender, e) =>
@@ -53,7 +53,7 @@ namespace keep.grass.App
                 Text = L["Add"],
                 Command = new Command
                 (
-                    o => AlphaFactory
+                    o => AlphaAppFactory
                         .MakeSureApp()
                         .ShowSelectUserPage
                         (
@@ -89,7 +89,7 @@ namespace keep.grass.App
             Settings.SetFriend(Settings.GetFriendCount(), NewUser);
             IsChanged = true;
             UpdateList();
-            AlphaFactory.MakeSureDomain().UpdateLastPublicActivityCoreAsync(NewUser).LeavingThrown();
+            AlphaDomainFactory.MakeSureDomain().UpdateLastPublicActivityCoreAsync(NewUser).LeavingThrown();
         }
         public void DeleteUser(string TargetUser)
         {

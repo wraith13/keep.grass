@@ -20,8 +20,8 @@ namespace keep.grass.App
     }
     public class AlphaUserCircleGraph : VoidUserCircleGraph
     {
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
 
         public TimeSpan AnimationSpan = TimeSpan.FromMilliseconds(500);
 

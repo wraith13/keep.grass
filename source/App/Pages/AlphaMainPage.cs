@@ -15,10 +15,10 @@ namespace keep.grass.App
 {
     public class AlphaMainPage : ResponsiveContentPage
     {
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
 
-        AlphaUserCircleGraph CircleGraph = AlphaFactory.MakeUserCircleGraph();
+        AlphaUserCircleGraph CircleGraph = AlphaAppFactory.MakeUserCircleGraph();
         AlphaUserCircleGraph[] Friends;
         IEnumerable<AlphaUserCircleGraph> CircleGraphList => new AlphaUserCircleGraph[] { CircleGraph }.Concat
         (
@@ -39,7 +39,7 @@ namespace keep.grass.App
                 Apply(i);
             }
         }
-        AlphaActivityIndicatorButton UpdateButton = AlphaFactory.MakeActivityIndicatorButton();
+        AlphaActivityIndicatorButton UpdateButton = AlphaAppFactory.MakeActivityIndicatorButton();
 
         Task UpdateLeftTimeTask = null;
         DateTime UpdateLeftTimeTaskLastStamp = default(DateTime);
@@ -87,7 +87,7 @@ namespace keep.grass.App
                     (
                         new TapGestureRecognizer()
                         {
-                            Command = new Command(o => AlphaFactory.MakeSureApp().ShowDetailPage(User)),
+                            Command = new Command(o => AlphaAppFactory.MakeSureApp().ShowDetailPage(User)),
                         }
                     );
             }
@@ -98,11 +98,11 @@ namespace keep.grass.App
             base.Build();
             Debug.WriteLine("AlphaMainPage.Rebuild();");
 
-            AlphaApp Root = AlphaFactory.MakeSureApp();
+            AlphaApp Root = AlphaAppFactory.MakeSureApp();
 
             if (null == Friends || Settings.GetFriendCount() != Friends.Count())
             {
-                Friends = Settings.GetFriendList().Select(i => AlphaFactory.MakeUserCircleGraph()).ToArray();
+                Friends = Settings.GetFriendList().Select(i => AlphaAppFactory.MakeUserCircleGraph()).ToArray();
                 for (var i = 0; i < Friends?.Count(); ++i)
                 {
                     var Friend = Settings.GetFriend(i);

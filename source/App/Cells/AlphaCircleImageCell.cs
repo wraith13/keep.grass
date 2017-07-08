@@ -14,7 +14,7 @@ namespace keep.grass.App
         public static readonly BindableProperty ImageSourceProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("ImageSource").CreateBindableProperty();
         public static readonly BindableProperty TextProperty = typeof(AlphaCircleImageCell).GetRuntimeProperty("Text").CreateBindableProperty();
 
-        protected Image Image = AlphaFactory.MakeCircleImage();
+        protected Image Image = AlphaAppFactory.MakeCircleImage();
         protected Label TextLabel = new Label();
         protected Image OptionImage = new Image();
         protected StackLayout Stack;
@@ -43,7 +43,7 @@ namespace keep.grass.App
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.Source = AlphaFactory.GetApp().GetRightImageSource();
+            OptionImage.Source = AlphaAppFactory.GetApp().GetRightImageSource();
             OptionImage.IsVisible = null != CommandValue;
             AlphaThemeStatic.Apply(this);
         }
@@ -90,7 +90,7 @@ namespace keep.grass.App
                 (
                     async () =>
                     {
-                        var Source = await AlphaFactory.MakeImageSourceFromUrl(value);
+                        var Source = await AlphaAppFactory.MakeImageSourceFromUrl(value);
                         Device.BeginInvokeOnMainThread(() => ImageSource = Source);
                     }
                 );

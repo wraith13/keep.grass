@@ -12,8 +12,8 @@ namespace keep.grass.App
 {
     public class AlphaSelectUserPage : ResponsiveContentPage, IAlphaThemeAppliedHandler
     {
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
 
         public Action<string> Reciever;
 
@@ -50,7 +50,7 @@ namespace keep.grass.App
 
             List = new ListView
             {
-                ItemTemplate = new DataTemplateEx(AlphaFactory.GetGitHubUserCellType())
+                ItemTemplate = new DataTemplateEx(AlphaAppFactory.GetGitHubUserCellType())
                     .SetBindingList("ImageSourceUrl", "Text"),
             };
             List.ItemTapped += (sender, e) =>
@@ -62,7 +62,7 @@ namespace keep.grass.App
                     Reciever(User);
                     Domain.AddRecentUser(User);
                 }
-                AlphaFactory.MakeSureApp().Navigation.PopAsync();
+                AlphaAppFactory.MakeSureApp().Navigation.PopAsync();
             };
             List.ItemsSource = Domain.GetRecentUsers()
                 .Where(i => !(ExistUsers?.Contains(i) ?? false))

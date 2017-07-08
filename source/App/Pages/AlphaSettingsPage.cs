@@ -11,11 +11,11 @@ namespace keep.grass.App
 {
     public class AlphaSettingsPage : ResponsiveContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeSureApp();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
 
-        AlphaCircleImageCell UserLabel = AlphaFactory.MakeCircleImageCell();
+        AlphaCircleImageCell UserLabel = AlphaAppFactory.MakeCircleImageCell();
         AlphaTheme OldTheme;
 
         public AlphaSettingsPage()
@@ -24,7 +24,7 @@ namespace keep.grass.App
 
             UserLabel.Command = new Command
             (
-                o => AlphaFactory
+                o => AlphaAppFactory
                     .MakeSureApp()
                     .ShowSelectUserPage
                     (
@@ -45,7 +45,7 @@ namespace keep.grass.App
             {
                 if (UserLabel.Text != User || null == UserLabel.ImageSource)
                 {
-                    AlphaFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
+                    AlphaAppFactory.MakeImageSourceFromUrl(GitHub.GetIconUrl(User))
                         .ContinueWith(t => Device.BeginInvokeOnMainThread(() => UserLabel.ImageSource = t.Result));
                     UserLabel.Text = User;
                     //UserLabel.TextColor = Color.Default;
@@ -95,13 +95,13 @@ namespace keep.grass.App
             base.Build();
             Debug.WriteLine("AlphaSettingsPage.Rebuild();");
 
-            var Friends = AlphaFactory.MakeCircleImageCell
+            var Friends = AlphaAppFactory.MakeCircleImageCell
             (
                 Text: L["Rivals"] /*+string.Format("({0})", Settings.GetFriendCount())*/,
                 Command: new Command(o => Root.Navigation.PushAsync(new AlphaFriendsPage()))
             );
 
-            var ThemeCell = AlphaFactory.MakePickerCell();
+            var ThemeCell = AlphaAppFactory.MakePickerCell();
             //ThemeCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
             foreach (var i in AlphaTheme.All.Keys)
             {
@@ -135,7 +135,7 @@ namespace keep.grass.App
                 }
             };
 
-            var LanguageCell = AlphaFactory.MakePickerCell();
+            var LanguageCell = AlphaAppFactory.MakePickerCell();
             var Language = Settings.Language ?? "";
             //LanguageCell.Items.Clear(); ２回目でこける。 Xamarin.Forms さん、もっと頑張って。。。
             foreach (var i in L.DisplayNames.Select(i => i.Value))
@@ -186,12 +186,12 @@ namespace keep.grass.App
                                 },
                                 new TableSection(L["Notifications"])
                                 {
-                                    AlphaFactory.MakeCircleImageCell
+                                    AlphaAppFactory.MakeCircleImageCell
                                     (
                                         Text: L["Alert by Left Time"],
                                         Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
                                     ),
-                                    AlphaFactory.MakeCircleImageCell
+                                    AlphaAppFactory.MakeCircleImageCell
                                     (
                                         Text: L["Daily Alert"],
                                         Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
@@ -207,11 +207,11 @@ namespace keep.grass.App
                                 },
                                 new TableSection(L["Information"])
                                 {
-                                    AlphaFactory.MakeCircleImageCell
+                                    AlphaAppFactory.MakeCircleImageCell
                                     (
                                         ImageSource: Root.GetApplicationImageSource(),
                                         Text: L["keep.grass"],
-                                        Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+                                        Command: new Command(o => Root.Navigation.PushAsync(AlphaAppFactory.MakeInfoPage()))
                                     ),
                                 },
                             },
@@ -259,12 +259,12 @@ namespace keep.grass.App
                                     {
                                         new TableSection(L["Notifications"])
                                         {
-                                            AlphaFactory.MakeCircleImageCell
+                                            AlphaAppFactory.MakeCircleImageCell
                                             (
                                                 Text: L["Alert by Left Time"],
                                                 Command: new Command(o => Root.Navigation.PushAsync(new AlphaLeftTimeSettingsPage()))
                                                ),
-                                            AlphaFactory.MakeCircleImageCell
+                                            AlphaAppFactory.MakeCircleImageCell
                                             (
                                                 Text: L["Daily Alert"],
                                                 Command: new Command(o => Root.Navigation.PushAsync(new AlphaDailyAlertSettingsPage()))
@@ -272,11 +272,11 @@ namespace keep.grass.App
                                         },
                                         new TableSection(L["Information"])
                                         {
-                                            AlphaFactory.MakeCircleImageCell
+                                            AlphaAppFactory.MakeCircleImageCell
                                             (
                                                 ImageSource: Root.GetApplicationImageSource(),
                                                 Text: L["keep.grass"],
-                                                Command: new Command(o => Root.Navigation.PushAsync(AlphaFactory.MakeInfoPage()))
+                                                Command: new Command(o => Root.Navigation.PushAsync(AlphaAppFactory.MakeInfoPage()))
                                             ),
                                         },
                                     },

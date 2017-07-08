@@ -11,8 +11,8 @@ namespace keep.grass.App
 {
     public class AlphaDailyAlertSettingsPage : ResponsiveContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeSureApp();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
 
         KeyValuePair<TimeSpan, VoidSwitchCell>[] DailyAlertSwitchCellList = null;
 
@@ -24,7 +24,7 @@ namespace keep.grass.App
                 i => new KeyValuePair<TimeSpan, VoidSwitchCell>
                 (
                     i,
-                    AlphaFactory.MakeSwitchCell
+                    AlphaAppFactory.MakeSwitchCell
                     (
                         Text: Settings.AlertDailyTimeToDisplayName(L, i),
                         On: Settings.GetDailyAlert(i)

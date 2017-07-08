@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SkiaSharp;
 using RuyiJinguBang;
-using keep.grass.Domain;
+using keep.grass.App;
 
-namespace keep.grass.App
+namespace keep.grass.Domain
 {
     public abstract class AlphaDomain
     {
-        protected static AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        protected static AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
         private HttpClient HttpClient = new HttpClient();
         public void RefreshHttpClient()
         {
@@ -219,13 +219,21 @@ namespace keep.grass.App
                 OnEndQuery();
             }
         }
+
+        /*
+        public Action OnStartQuery { get; set; }
+        public Action<string, DateTime> OnUpdateLastPublicActivity { get; set; } // (string User, DateTime LastPublicActivity)
+        public Action<string, byte[]> OnUpdateIcon { get; set; } // (string User, byte[] Binary)
+        public Action OnErrorInQuery { get; set; }
+        public Action OnEndQuery { get; set; }
+        /*/
         public void OnStartQuery()
         {
             Device.BeginInvokeOnMainThread
             (
                 () =>
                 {
-                    AlphaFactory.GetApp()?.Main?.OnStartQuery();
+                    AlphaAppFactory.GetApp()?.Main?.OnStartQuery();
                 }
             );
         }
@@ -239,7 +247,7 @@ namespace keep.grass.App
                     {
                         UpdateAlerts(LastPublicActivity);
                     }
-                    AlphaFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
+                    AlphaAppFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
                 }
             );
         }
@@ -249,7 +257,7 @@ namespace keep.grass.App
             (
                 () =>
                 {
-                    AlphaFactory.GetApp()?.Main?.OnUpdateIcon(User, Binary);
+                    AlphaAppFactory.GetApp()?.Main?.OnUpdateIcon(User, Binary);
                 }
             );
         }
@@ -259,7 +267,7 @@ namespace keep.grass.App
             (
                 () =>
                 {
-                    AlphaFactory.GetApp()?.Main?.OnErrorInQuery();
+                    AlphaAppFactory.GetApp()?.Main?.OnErrorInQuery();
                 }
             );
         }
@@ -269,10 +277,11 @@ namespace keep.grass.App
             (
                 () =>
                 {
-                    AlphaFactory.GetApp()?.Main?.OnEndQuery();
+                    AlphaAppFactory.GetApp()?.Main?.OnEndQuery();
                 }
             );
         }
+        //*/
 
         public virtual void UpdateAlerts(DateTime LastPublicActivity)
         {
@@ -438,7 +447,7 @@ namespace keep.grass.App
                     Color = LeftTime.Ticks <= 0 ?
                         MakeLeftTimeColor(LeftTime) :
                         i.Time.Ticks < Now.Ticks ?
-							Color.Gray.ToSKColor() :
+                            new SKColor(0x80, 0x80, 0x80):
                             MakeLeftTimeColor(LimitTime - i.Time),
                     Angle = 360.0f * ((float)(i.Hour) / 24.0f),
                 }

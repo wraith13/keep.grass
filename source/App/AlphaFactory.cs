@@ -9,31 +9,22 @@ using keep.grass.Domain;
 
 namespace keep.grass.App
 {
-    public abstract class AlphaFactory
+    public abstract class AlphaAppFactory
     {
-        static AlphaFactory Instance = null;
-        AlphaDomain Domain = null;
+        static AlphaAppFactory Instance = null;
         AlphaApp App = null;
-        AlphaLanguage Language = null;
 
-        public AlphaFactory()
+        public AlphaAppFactory()
         {
         }
-        protected static void Init(AlphaFactory Factory)
+        protected static void Init(AlphaAppFactory Factory)
         {
             Instance = Factory;
         }
-        public static AlphaFactory Get()
+        public static AlphaAppFactory Get()
         {
             return Instance;
         }
-
-        public static AlphaDomain MakeSureDomain()
-        {
-            return Instance.Domain ??
-                (Instance.Domain = Instance.MakeOmegaDomain());
-        }
-        public abstract AlphaDomain MakeOmegaDomain();
 
         public static AlphaApp GetApp()
         {
@@ -49,16 +40,6 @@ namespace keep.grass.App
                 SetApp(Instance.MakeOmegaApp());
         }
         public abstract AlphaApp MakeOmegaApp();
-
-        public static AlphaLanguage MakeSureLanguage()
-        {
-            return Instance.Language ??
-                (Instance.Language = Instance.MakeOmegaLanguage());
-        }
-        public virtual AlphaLanguage MakeOmegaLanguage()
-        {
-            return new AlphaLanguage();
-        }
 
         public static AlphaMainPage MakeMainPage()
         {
@@ -238,15 +219,6 @@ namespace keep.grass.App
         public virtual Type GetOmegaGitHubUserCellType()
         {
             return typeof(AlphaCircleImageCell);
-        }
-
-        public static AlphaDrawer MakeDrawer()
-        {
-            return Instance.MakeOmegaDrawer();
-        }
-        public virtual AlphaDrawer MakeOmegaDrawer()
-        {
-            return new AlphaDrawer();
         }
     }
 }

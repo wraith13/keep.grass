@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RuyiJinguBang;
 
-namespace keep.grass.App
+namespace keep.grass.Domain
 {
     public class AlphaImageEntry
     {
@@ -19,7 +19,7 @@ namespace keep.grass.App
 
         static public async Task<byte[]> GetWithoutCache(string Url)
         {
-            return await AlphaFactory.MakeSureDomain().GetByteArrayFromUrlAsync(Url);
+            return await AlphaDomainFactory.MakeSureDomain().GetByteArrayFromUrlAsync(Url);
         }
         static public byte[] GetFromCache(string Url)
         {

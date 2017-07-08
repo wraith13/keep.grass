@@ -16,15 +16,15 @@ namespace keep.grass.App
     {
         public NavigationPage Navigation;
         public AlphaMainPage Main;
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
 
         public AlphaApp()
         {
-            AlphaFactory.SetApp(this);
+            AlphaAppFactory.SetApp(this);
 
             MainPage = Navigation = new NavigationPage
             (
-                Main = AlphaFactory.MakeMainPage()
+                Main = AlphaAppFactory.MakeMainPage()
             );
             MainPage.Title = "keep.grass";
             AlphaThemeStatic.Apply(Navigation);
@@ -106,17 +106,17 @@ namespace keep.grass.App
                 }
             );
             // ページ遷移処理
-            Navigation.PushAsync(AlphaFactory.MakeSettingsPage());
+            Navigation.PushAsync(AlphaAppFactory.MakeSettingsPage());
         }
 
         public void ShowSelectUserPage(Action<string> Reciever, IEnumerable<string> ExistUsers = null)
         {
-            Navigation.PushAsync(AlphaFactory.MakeSelectUserPage(Reciever, ExistUsers));
+            Navigation.PushAsync(AlphaAppFactory.MakeSelectUserPage(Reciever, ExistUsers));
         }
 
         public virtual void OnChangeSettings()
         {
-            AlphaFactory.MakeSureLanguage().Update();
+            AlphaDomainFactory.MakeSureLanguage().Update();
             Main.UpdateInfoAsync();
             Domain.UpdateAlerts(Domain.GetLastPublicActivity(Settings.UserName));
         }

@@ -35,7 +35,7 @@ namespace keep.grass.App
             TextLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
             RefreshImage.VerticalOptions = LayoutOptions.Center;
             RefreshImage.HorizontalOptions = LayoutOptions.End;
-            RefreshImage.Source = AlphaFactory.GetApp().GetRefreshImageSource();
+            RefreshImage.Source = AlphaAppFactory.GetApp().GetRefreshImageSource();
             RefreshImage.IsVisible = null != CommandValue;
 
             Indicator.IsVisible = false;

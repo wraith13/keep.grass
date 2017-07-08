@@ -11,8 +11,8 @@ namespace keep.grass.App
 {
     public class AlphaLeftTimeSettingsPage : ResponsiveContentPage
     {
-        AlphaApp Root = AlphaFactory.MakeSureApp();
-        AlphaLanguage L = AlphaFactory.MakeSureLanguage();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
+        AlphaLanguage L = AlphaDomainFactory.MakeSureLanguage();
 
         KeyValuePair<TimeSpan, VoidSwitchCell>[] LeftTimeAlertSwitchCellList = null;
 
@@ -24,7 +24,7 @@ namespace keep.grass.App
                 i => new KeyValuePair<TimeSpan, VoidSwitchCell>
                 (
                     i,
-                    AlphaFactory.MakeSwitchCell
+                    AlphaAppFactory.MakeSwitchCell
                     (
                         Text: Settings.AlertTimeSpanToDisplayName(L, i),
                         On: Settings.GetAlert(i)

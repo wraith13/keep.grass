@@ -16,10 +16,10 @@ namespace keep.grass.App
     }
     public class AlphaFeedEntryCell : VoidFeedEntryCell
     {
-        AlphaDomain Domain = AlphaFactory.MakeSureDomain();
-        AlphaApp Root = AlphaFactory.MakeSureApp();
+        AlphaDomain Domain = AlphaDomainFactory.MakeSureDomain();
+        AlphaApp Root = AlphaAppFactory.MakeSureApp();
 
-        protected Image Image = AlphaFactory.MakeCircleImage();
+        protected Image Image = AlphaAppFactory.MakeCircleImage();
         protected Label UpdatedLabel = new Label();
         protected Label TitleLabel = new Label();
         protected StackLayout DetailStack = new StackLayout
@@ -90,7 +90,7 @@ namespace keep.grass.App
             UpdatedLabel.FontSize = 13;
             OptionImage.VerticalOptions = LayoutOptions.Center;
             OptionImage.HorizontalOptions = LayoutOptions.End;
-            OptionImage.Source = AlphaFactory.GetApp().GetExportImageSource();
+            OptionImage.Source = AlphaAppFactory.GetApp().GetExportImageSource();
             OptionImage.IsVisible = null != CommandValue;
             OptionImage.HeightRequest = 40;
             OptionImage.WidthRequest = 40;
