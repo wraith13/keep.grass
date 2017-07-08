@@ -34,11 +34,11 @@ namespace keep.grass.Domain
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
+                return AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
+                AppSettings.AddOrUpdateValue(SettingsKey, value);
             }
         }
 
@@ -48,11 +48,11 @@ namespace keep.grass.Domain
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(LanguageKey, LanguageDefault);
+                return AppSettings.GetValueOrDefault(LanguageKey, LanguageDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(LanguageKey, value);
+                AppSettings.AddOrUpdateValue(LanguageKey, value);
             }
         }
 
@@ -62,11 +62,11 @@ namespace keep.grass.Domain
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(ThemeKey, ThemeDefault);
+                return AppSettings.GetValueOrDefault(ThemeKey, ThemeDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(ThemeKey, value);
+                AppSettings.AddOrUpdateValue(ThemeKey, value);
             }
         }
 
@@ -76,11 +76,11 @@ namespace keep.grass.Domain
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(UserNameKey, UserNameDefault);
+                return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(UserNameKey, value);
+                AppSettings.AddOrUpdateValue(UserNameKey, value);
             }
         }
         public static string FriendSettingKey(int index)
@@ -131,14 +131,14 @@ namespace keep.grass.Domain
         private static readonly DateTime LastPublicActivityDefault = default(DateTime);
         public static DateTime GetLastPublicActivity(string User)
         {
-            var value = AppSettings.GetValueOrDefault<DateTime>(MakeLastPublicActivityKey(User), LastPublicActivityDefault);
+            var value = AppSettings.GetValueOrDefault(MakeLastPublicActivityKey(User), LastPublicActivityDefault);
             return value == LastPublicActivityDefault ?
                 value :
                 value.ToLocalTime();
         }
         public static void SetLastPublicActivity(string User, DateTime value)
         {
-            AppSettings.AddOrUpdateValue<DateTime>
+            AppSettings.AddOrUpdateValue
             (
                 MakeLastPublicActivityKey(User),
                 value == LastPublicActivityDefault ?
@@ -147,13 +147,21 @@ namespace keep.grass.Domain
             );
         }
 
-        public static T Get<T>(string Key, T DefaultValue)
+        public static string Get(string Key, string DefaultValue)
         {
-            return AppSettings.GetValueOrDefault<T>(Key, DefaultValue);
+            return AppSettings.GetValueOrDefault(Key, DefaultValue);
         }
-        public static void Set<T>(string Key, T NewValue)
+        public static void Set(string Key, string NewValue)
         {
-            AppSettings.AddOrUpdateValue<T>(Key, NewValue);
+            AppSettings.AddOrUpdateValue(Key, NewValue);
+        }
+        public static bool Get(string Key, bool DefaultValue)
+        {
+            return AppSettings.GetValueOrDefault(Key, DefaultValue);
+        }
+        public static void Set(string Key, bool NewValue)
+        {
+            AppSettings.AddOrUpdateValue(Key, NewValue);
         }
 
         public static TimeSpan[] AlertTimeSpanTable = new[]
@@ -267,14 +275,14 @@ namespace keep.grass.Domain
         private const string RecentUsersKey = "RecentUsers";
         public static string[] GetRecentUsers()
         {
-            return AppSettings.GetValueOrDefault<string>(RecentUsersKey, "")
+            return AppSettings.GetValueOrDefault(RecentUsersKey, "")
                 .Split(',')
                 .Where(i => !string.IsNullOrWhiteSpace(i))
                 .ToArray();
         }
         public static void SetRecentUsers(IEnumerable<string> RecentUsers)
         {
-            AppSettings.AddOrUpdateValue<string>(RecentUsersKey, string.Join(",", RecentUsers));
+            AppSettings.AddOrUpdateValue(RecentUsersKey, string.Join(",", RecentUsers));
         }
     }
 }
