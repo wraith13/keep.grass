@@ -4,10 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using SkiaSharp;
 using RuyiJinguBang;
-using keep.grass.App;
 
 namespace keep.grass.Domain
 {
@@ -46,7 +44,7 @@ namespace keep.grass.Domain
                 {
                     LastPublicActivityCache[User] = value;
                 }
-                OnUpdateLastPublicActivity(User, value);
+                OnUpdateLastPublicActivity?.Invoke(User, value);
             }
         }
         public DateTime GetLastPublicActivity(string User)
@@ -177,7 +175,7 @@ namespace keep.grass.Domain
                 var Binary = await AlphaImageProxy.Get(IconUrl);
                 if (Binary?.Any() ?? false)
                 {
-                    OnUpdateIcon(User, Binary);
+                    OnUpdateIcon?.(User, Binary);
                 }
             }
         }
@@ -201,7 +199,7 @@ namespace keep.grass.Domain
             PreviousUpdateLastPublicActivityStamp = DateTime.Now;
             try
             {
-                OnStartQuery();
+                OnStartQuery?.Invoke();
                 foreach (var User in Users)
                 {
                     await UpdateLastPublicActivityCoreAsync(User);
@@ -212,76 +210,19 @@ namespace keep.grass.Domain
             {
                 Debug.WriteLine("AlphaDomain::UpdateLastPublicActivityAsync::catch::err" + err.ToString());
                 RefreshHttpClient();
-                OnErrorInQuery();
+                OnErrorInQuery?.Invoke();
             }
             finally
             {
-                OnEndQuery();
+                OnEndQuery?.Invoke();
             }
         }
 
-        /*
         public Action OnStartQuery { get; set; }
         public Action<string, DateTime> OnUpdateLastPublicActivity { get; set; } // (string User, DateTime LastPublicActivity)
         public Action<string, byte[]> OnUpdateIcon { get; set; } // (string User, byte[] Binary)
         public Action OnErrorInQuery { get; set; }
         public Action OnEndQuery { get; set; }
-        /*/
-        public void OnStartQuery()
-        {
-            Device.BeginInvokeOnMainThread
-            (
-                () =>
-                {
-                    AlphaAppFactory.GetApp()?.Main?.OnStartQuery();
-                }
-            );
-        }
-        public void OnUpdateLastPublicActivity(string User, DateTime LastPublicActivity)
-        {
-            Device.BeginInvokeOnMainThread
-            (
-                () =>
-                {
-                    if (User == Settings.UserName)
-                    {
-                        UpdateAlerts(LastPublicActivity);
-                    }
-                    AlphaAppFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
-                }
-            );
-        }
-        public void OnUpdateIcon(string User, byte[] Binary)
-        {
-            Device.BeginInvokeOnMainThread
-            (
-                () =>
-                {
-                    AlphaAppFactory.GetApp()?.Main?.OnUpdateIcon(User, Binary);
-                }
-            );
-        }
-        public void OnErrorInQuery()
-        {
-            Device.BeginInvokeOnMainThread
-            (
-                () =>
-                {
-                    AlphaAppFactory.GetApp()?.Main?.OnErrorInQuery();
-                }
-            );
-        }
-        public void OnEndQuery()
-        {
-            Device.BeginInvokeOnMainThread
-            (
-                () =>
-                {
-                    AlphaAppFactory.GetApp()?.Main?.OnEndQuery();
-                }
-            );
-        }
-        //*/
 
         public virtual void UpdateAlerts(DateTime LastPublicActivity)
         {

@@ -28,6 +28,51 @@ namespace keep.grass.App
             );
             MainPage.Title = "keep.grass";
             AlphaThemeStatic.Apply(Navigation);
+
+            Domain.OnStartQuery = () =>
+                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                (
+                    () =>
+                    {
+                        AlphaAppFactory.GetApp()?.Main?.OnStartQuery();
+                    }
+                );
+            Domain.OnUpdateLastPublicActivity = (string User, DateTime LastPublicActivity) =>
+                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                (
+                    () =>
+                    {
+                        if (User == Settings.UserName)
+                        {
+                            Domain.UpdateAlerts(LastPublicActivity);
+                        }
+                        AlphaAppFactory.GetApp()?.Main?.OnUpdateLastPublicActivity(User, LastPublicActivity);
+                    }
+                );
+            Domain.OnUpdateIcon = (string User, byte[] Binary) =>
+                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                (
+                    () =>
+                    {
+                        AlphaAppFactory.GetApp()?.Main?.OnUpdateIcon(User, Binary);
+                    }
+                );
+            Domain.OnErrorInQuery = () =>
+                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                (
+                    () =>
+                    {
+                        AlphaAppFactory.GetApp()?.Main?.OnErrorInQuery();
+                    }
+                );
+            Domain.OnEndQuery = () =>
+                Xamarin.Forms.Device.BeginInvokeOnMainThread
+                (
+                    () =>
+                    {
+                        AlphaAppFactory.GetApp()?.Main?.OnEndQuery();
+                    }
+                );
         }
 
         public void RebuildMainPage()
