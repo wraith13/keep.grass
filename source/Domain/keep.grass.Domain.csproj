@@ -37,6 +37,9 @@
     <Compile Include="AlphaLanguage.cs" />
     <Compile Include="AlphaTheme.cs" />
     <Compile Include="AlphaDrawer.cs" />
+    <Compile Include="AlphaDomain.cs" />
+    <Compile Include="AlphaDomainFactory.cs" />
+    <Compile Include="AlphaImageProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

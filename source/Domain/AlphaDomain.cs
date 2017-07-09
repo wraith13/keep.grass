@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -175,7 +175,7 @@ namespace keep.grass.Domain
                 var Binary = await AlphaImageProxy.Get(IconUrl);
                 if (Binary?.Any() ?? false)
                 {
-                    OnUpdateIcon?.(User, Binary);
+                    OnUpdateIcon?.Invoke(User, Binary);
                 }
             }
         }
