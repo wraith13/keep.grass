@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using keep.grass.Domain;
 using keep.grass.App;
 
 namespace keep.grass.iOS
@@ -39,8 +40,9 @@ namespace keep.grass.iOS
             {
                 global::Xamarin.Forms.Forms.Init();
                 ImageCircleRenderer.Init();
-                OmegaFactory.MakeSureInit();
-                App = AlphaFactory.MakeSureApp();
+                OmegaDomainFactory.MakeSureInit();
+                OmegaAppFactory.MakeSureInit();
+                App = AlphaAppFactory.MakeSureApp();
             }
             return App;
         }
@@ -53,8 +55,9 @@ namespace keep.grass.iOS
 
         public override void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler)
         {
-            OmegaFactory.MakeSureInit();
-            AlphaFactory.MakeSureDomain().BackgroundUpdateLastPublicActivityAsync().ContinueWith
+            OmegaAppFactory.MakeSureInit();
+            OmegaDomainFactory.MakeSureInit();
+            AlphaDomainFactory.MakeSureDomain().BackgroundUpdateLastPublicActivityAsync().ContinueWith
             (
                 t =>
                     completionHandler(UIBackgroundFetchResult.NoData)

@@ -4,13 +4,13 @@ using keep.grass.Domain;
 
 namespace keep.grass.iOS
 {
-    public class OmegaFactory : AlphaFactory
+    public class OmegaDomainFactory : AlphaDomainFactory
     {
         public static void MakeSureInit()
         {
-            if (null == AlphaFactory.Get())
+            if (null == AlphaDomainFactory.Get())
             {
-                AlphaFactory.Init(new OmegaFactory());
+                AlphaDomainFactory.Init(new OmegaDomainFactory());
             }
         }
 
@@ -18,17 +18,9 @@ namespace keep.grass.iOS
         {
             return new OmegaDomain();
         }
-        public override AlphaApp MakeOmegaApp()
-        {
-            return new OmegaApp();
-        }
         public override AlphaLanguage MakeOmegaLanguage()
         {
             return new OmegaLanguage();
-        }
-        public override AlphaPickerCell MakeOmegaPickerCell()
-        {
-            return new OmegaPickerCell();
         }
     }
 }

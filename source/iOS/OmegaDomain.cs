@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Foundation;
 using UIKit;
-using keep.grass.App;
+using keep.grass.Domain;
 using WatchConnectivity;
 
 namespace keep.grass.iOS
