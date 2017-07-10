@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 using ImageCircle.Forms.Plugin.UWP;
 using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.UWP
 {
@@ -34,8 +35,9 @@ namespace keep.grass.UWP
             if (null == App)
             {
                 ImageCircleRenderer.Init();
-                OmegaFactory.MakeSureInit();
-                App = AlphaFactory.MakeSureApp();
+                OmegaDomainFactory.MakeSureInit();
+                OmegaAppFactory.MakeSureInit();
+                App = AlphaAppFactory.MakeSureApp();
             }
             return App;
         }
@@ -46,8 +48,9 @@ namespace keep.grass.UWP
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             var Deferral = taskInstance.GetDeferral();
-            OmegaFactory.MakeSureInit();
-            AlphaFactory.MakeSureDomain()
+            OmegaDomainFactory.MakeSureInit();
+            OmegaAppFactory.MakeSureInit();
+            AlphaDomainFactory.MakeSureDomain()
                 .BackgroundUpdateLastPublicActivityAsync()
                 .ContinueWith
                 (

@@ -114,7 +114,8 @@
     <Compile Include="OmegaCircleImageCell.cs" />
     <Compile Include="OmegaDomain.cs" />
     <Compile Include="OmegaEntryCell.cs" />
-    <Compile Include="OmegaFactory.cs" />
+    <Compile Include="OmegaAppFactory.cs" />
+    <Compile Include="OmegaDomainFactory.cs" />
     <Compile Include="OmegaLanguage.cs" />
     <Compile Include="OmegaSwitchCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

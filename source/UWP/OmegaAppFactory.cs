@@ -6,31 +6,22 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Diagnostics;
 using keep.grass.App;
-using keep.grass.Domain;
 
 namespace keep.grass.UWP
 {
-    public class OmegaFactory : AlphaFactory
+    public class OmegaAppFactory : AlphaAppFactory
     {
         public static void MakeSureInit()
         {
-            if (null == AlphaFactory.Get())
+            if (null == AlphaAppFactory.Get())
             {
-                AlphaFactory.Init(new OmegaFactory());
+                AlphaAppFactory.Init(new OmegaAppFactory());
             }
         }
 
-        public override AlphaDomain MakeOmegaDomain()
-        {
-            return new OmegaDomain();
-        }
         public override AlphaApp MakeOmegaApp()
         {
             return new OmegaApp();
-        }
-        public override AlphaLanguage MakeOmegaLanguage()
-        {
-            return new OmegaLanguage();
         }
         public override AlphaActivityIndicatorTextCell MakeOmegaActivityIndicatorTextCell()
         {
