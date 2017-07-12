@@ -97,7 +97,7 @@ namespace keep.grass.App
             );
 
             // Mobile Center クラッシュのデータ収集を有効化する
-            Crashes.Enabled = true;
+            Crashes.SetEnabledAsync(true);
         }
         protected override void OnSleep()
         {
