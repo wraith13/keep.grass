@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Foundation;
 using AppKit;
-using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.Mac
 {

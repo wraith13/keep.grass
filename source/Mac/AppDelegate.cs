@@ -34,8 +34,9 @@ namespace keep.grass.Mac
             {
                 global::Xamarin.Forms.Forms.Init();
                 //ImageCircleRenderer.Init();
-                OmegaFactory.MakeSureInit();
-                App = AlphaFactory.MakeSureApp();
+                OmegaDomainFactory.MakeSureInit();
+                OmegaAppFactory.MakeSureInit();
+                App = AlphaAppFactory.MakeSureApp();
             }
             return App;
         }
