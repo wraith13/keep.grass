@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Xamarin.Forms;
-using keep.grass.App;
+using keep.grass.Domain;
 
 namespace keep.grass.Droid
 {
@@ -31,8 +31,9 @@ namespace keep.grass.Droid
 
         void UpdateLastPublicActivity(Intent intent)
         {
-            OmegaFactory.MakeSureInit();
-            var Domain = AlphaFactory.MakeSureDomain() as OmegaDomain;
+            OmegaDomainFactory.MakeSureInit();
+            OmegaAppFactory.MakeSureInit();
+            var Domain = AlphaDomainFactory.MakeSureDomain() as OmegaDomain;
             try
             {
                 Domain.ThreadContext.Value = this;

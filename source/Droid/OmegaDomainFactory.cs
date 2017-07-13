@@ -1,26 +1,21 @@
 ﻿using System;
-using keep.grass.App;
 using keep.grass.Domain;
 
 namespace keep.grass.Droid
 {
-    public class OmegaFactory : AlphaFactory
+    public class OmegaDomainFactory : AlphaDomainFactory
     {
         public static void MakeSureInit()
         {
-            if (null == AlphaFactory.Get())
+            if (null == AlphaDomainFactory.Get())
             {
-                AlphaFactory.Init(new OmegaFactory());
+                AlphaDomainFactory.Init(new OmegaDomainFactory());
             }
         }
 
         public override AlphaDomain MakeOmegaDomain()
         {
             return new OmegaDomain();
-        }
-        public override AlphaApp MakeOmegaApp()
-        {
-            return new OmegaApp();
         }
         public override AlphaLanguage MakeOmegaLanguage()
         {
