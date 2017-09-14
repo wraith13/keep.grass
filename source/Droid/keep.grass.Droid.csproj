@@ -109,12 +109,6 @@
     <Reference Include="SkiaSharp">
       <HintPath>..\packages\SkiaSharp.1.59.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp.Views.Android">
-      <HintPath>..\packages\SkiaSharp.Views.1.59.1\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Mobile.Android.Bindings">
       <HintPath>..\packages\Microsoft.Azure.Mobile.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Android.Bindings.dll</HintPath>
     </Reference>
@@ -132,6 +126,12 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Mobile.Analytics">
       <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.15.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Android">
+      <HintPath>..\packages\SkiaSharp.Views.1.59.1.1\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.1.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
