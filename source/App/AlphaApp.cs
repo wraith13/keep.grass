@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using Microsoft.Azure.Mobile.Push;
 using keep.grass.Domain;
 
 namespace keep.grass.App
@@ -93,7 +94,7 @@ namespace keep.grass.App
                     $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};"
                     + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};"
                     + $"uwp={keep.grass.Properties.Key.MobileCenterSecretUwp};",
-                services: new[] { typeof(Analytics), typeof(Crashes) }
+                services: new[] { typeof(Analytics), typeof(Crashes), typeof(Push), }
             );
 
             // Mobile Center クラッシュのデータ収集を有効化する
