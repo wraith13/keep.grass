@@ -2,6 +2,8 @@
 
 このアプリは github 上の Contributions つまりネット上での俗称である「草」を途切らせることのないようにスマートフォンで Public Activity の最新のタイムスタンプとそこから24時間が経過してしまうまでの残り時間を確認する為のアプリです。
 
+![Visual Studio Mobile Center Badge](https://build.mobile.azure.com/v0.1/apps/23ea7a36-fb5e-44c7-b68c-96556a5b498a/branches/master/badge)
+
 ## アプリストア
 
 * [iOS版](https://itunes.apple.com/us/app/keep.grass/id1170833136?l=ja&ls=1&mt=8)
