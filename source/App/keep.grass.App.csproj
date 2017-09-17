@@ -58,7 +58,6 @@
     <Compile Include="AlphaAppFactory.cs" />
     <Compile Include="AlphaTheme.cs" />
     <Compile Include="Properties\Key.cs" />
-    <Compile Include="Properties\KeySample.cs" />
     <Compile Include="Views\AlphaActivityIndicatorButton.cs" />
     <Compile Include="Cells\AlphaActivityIndicatorTextCell.cs" />
     <Compile Include="Views\AlphaCircleGraph.cs" />

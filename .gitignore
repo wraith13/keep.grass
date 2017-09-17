@@ -45,4 +45,4 @@ Thumbs.db
 *.pfx
 .history
 
-source/App/Properties/Key.cs
+#source/App/Properties/Key.cs

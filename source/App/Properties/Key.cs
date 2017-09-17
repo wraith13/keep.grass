@@ -1,7 +1,7 @@
 ﻿using System;
 namespace keep.grass.Properties
 {
-    public static class KeySample
+    public static class Key
     {
         // Mobile Center の iOSアプリの AppSecret文字列
         public static readonly string MobileCenterSecretIos = "aaaa-aaaa-aaaa-aaa-aaaaaaa";
