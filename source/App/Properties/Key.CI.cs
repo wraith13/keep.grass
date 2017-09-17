@@ -1,0 +1,15 @@
+﻿using System;
+namespace keep.grass.Properties
+{
+    public static class Key
+    {
+        // Mobile Center の iOSアプリの AppSecret文字列
+        public static readonly string MobileCenterSecretIos = "aaaa-aaaa-aaaa-aaa-aaaaaaa";
+
+        // Mobile Center の Android アプリの AppSecret文字列
+        public static readonly string MobileCenterSecretAndroid = "aaaaa-aaa-aaaa-aaaa-aaaaaaaaaaaaaa";
+
+        // Mobile Center の UWP アプリの AppSecret文字列
+        public static readonly string MobileCenterSecretUwp = "aaaaa-aaa-aaaa-aaaa-aaaaaaaaaaaaaa";
+    }
+}
