@@ -35,7 +35,7 @@ namespace keep.grass.UITest
         public void SettingsPage()
         {
             app.WaitForElement(c => c.Marked("action_bar_title").Text("keep.grass"));
-            app.Tap(c => c.Text("設定"));
+            app.Tap(c => c.Text("Settings"));
         }
 
         /*
