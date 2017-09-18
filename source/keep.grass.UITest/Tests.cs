@@ -30,5 +30,20 @@ namespace keep.grass.UITest
         {
             app.Screenshot("First screen.");
         }
+
+        [Test]
+        public void SettingsPage()
+        {
+            app.WaitForElement(c => c.Marked("action_bar_title").Text("keep.grass"));
+            app.Tap(c => c.Text("設定"));
+        }
+
+        /*
+        [Test]
+        public void Repl()
+        {
+            app.Repl();
+        }
+        */
     }
 }
