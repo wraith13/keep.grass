@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.App", "App\keep.grass.App.csproj", "{34988BF1-96C1-46FD-B646-B86C538C637D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.App", "App\keep.grass.App.Production.csproj", "{34988BF1-96C1-46FD-B646-B86C538C637D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.iOS", "iOS\keep.grass.iOS.csproj", "{F33CF9EB-F3C5-4203-87ED-51992015E409}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Droid.Wear", "Dr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Mac", "Mac\keep.grass.Mac.csproj", "{DC605CB5-5E9E-4AF9-97F3-0057C19C0F80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.UWP", "UWP\keep.grass.UWP.csproj", "{DBACD1F3-A298-492D-960B-BEF639E32DB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.UWP", "UWP\keep.grass.UWP.Production.csproj", "{DBACD1F3-A298-492D-960B-BEF639E32DB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
