@@ -46,3 +46,5 @@ Thumbs.db
 .history
 
 source/App/Properties/Production.Key.cs
+
+log/
