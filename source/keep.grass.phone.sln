@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.App", "App\keep.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.iOS", "iOS\keep.grass.iOS.csproj", "{F33CF9EB-F3C5-4203-87ED-51992015E409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Droid", "Droid\keep.grass.Droid.csproj", "{3F8C5846-B93A-4DB9-AE05-0C1D667E0C18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Droid", "Droid\keep.grass.Droid.Production.csproj", "{3F8C5846-B93A-4DB9-AE05-0C1D667E0C18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keep.grass.Droid.Wear", "Droid.Wear\keep.grass.Droid.Wear.csproj", "{3ED9F08B-3D01-41CF-B286-39B44BB035D9}"
 EndProject

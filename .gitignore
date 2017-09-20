@@ -48,3 +48,4 @@ Thumbs.db
 source/App/Properties/Production.Key.cs
 
 log/
+source/Droid/Properties/google-services.json
