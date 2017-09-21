@@ -25,7 +25,7 @@ namespace keep.grass.App
                 AlphaAppFactory.MakeCircleImageCell
                 (
                     ImageSource: Root.GetApplicationImageSource(),
-                    Text: "2.00.004",
+                    Text: "2.00.005",
                     Command: new Command
                     (
                         o => Device.OpenUri
