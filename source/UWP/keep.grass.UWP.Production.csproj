@@ -183,7 +183,7 @@
       <Version>1.59.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>1.59.1</Version>
+      <Version>1.59.1.1</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>1.8.1</Version>
