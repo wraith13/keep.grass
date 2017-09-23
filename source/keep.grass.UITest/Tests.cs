@@ -39,19 +39,24 @@ namespace keep.grass.UITest
             //  select user
             app.WaitForElement(c => c.Marked("action_bar_title").Text("keep.grass"));
             app.Screenshot("MainPage::Init");
+
             app.Tap(c => c.Text("Settings"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Settings"));
             app.Screenshot("SettingsPage::Init");
+
             app.Tap(c => c.Text("unspecified"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Select a user"));
             app.Screenshot("SelectUserPage::Init");
+
             app.EnterText(c => c.Marked("search_src_text"), user);
             app.Tap(c => c.Text("Search"));
             app.WaitForElement(c => c.Class("FormsTextView").Text(user));
             app.Screenshot("SelectUserPage::Search");
+
             app.Tap(c => c.Class("FormsTextView").Text(user));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Settings"));
             app.Screenshot("SettingsPage::SelectedUser");
+
             app.Tap(c => c.Marked("up"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("keep.grass"));
             app.Screenshot("MainPage::SelectedUser");
@@ -60,22 +65,28 @@ namespace keep.grass.UITest
             app.Tap(c => c.Text("Settings"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Settings"));
             app.Screenshot("SettingsPage::Init2");
+
             app.Tap(c => c.Text("Rivals"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Rivals"));
             app.Screenshot("FriendsPage::Init");
+
             app.Tap(c => c.Text("Add"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Select a user"));
             app.Screenshot("SelectUserPage::Init2");
+
             app.EnterText(c => c.Marked("search_src_text"), rival);
             app.Tap(c => c.Text("Search"));
             app.WaitForElement(c => c.Class("FormsTextView").Text(rival));
             app.Screenshot("SelectUserPage::Search2");
+
             app.Tap(c => c.Class("FormsTextView").Text(rival));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Rivals"));
             app.Screenshot("FriendsPage::SelectedRival");
+
             app.Tap(c => c.Marked("up"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("Settings"));
             app.Screenshot("SettingsPage::SelectedRival");
+
             app.Tap(c => c.Marked("up"));
             app.WaitForElement(c => c.Marked("action_bar_title").Text("keep.grass"));
             app.Screenshot("MainPage::SelectedRival");
