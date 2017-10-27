@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/wraith13</id>
+  <link type="text/html" rel="alternate" href="https://github.com/wraith13"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/wraith13.atom"/>
+  <title>wraith13’s Activity</title>
+  <updated>2017-10-27T01:22:24Z</updated>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6772812457</id>
+    <published>2017-10-27T01:22:24Z</published>
+    <updated>2017-10-27T01:22:24Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/ff35c87794...663bdd58f8"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/663bdd58f87a92af7c35e1ce43388a396943c372&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;663bdd5&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( iOS )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-27T01:22:24Z&quot;&gt;Oct 27, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6770946859</id>
+    <published>2017-10-26T17:12:07Z</published>
+    <updated>2017-10-26T17:12:07Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/accelang/compare/471805672e...701b9da248"/>
+    <title type="html">wraith13 pushed to master in wraith13/accelang</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/accelang/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/accelang&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/accelang&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/accelang/commit/701b9da2487ce9f94fc41f38e4a3a10281d01aea&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;701b9da&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;memo&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4dd.png&quot; ios-version=&quot;6.0&quot;&gt;📝&lt;/g-emoji&gt; コンセプト ( WIP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-26T17:12:07Z&quot;&gt;Oct 26, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6770100482</id>
+    <published>2017-10-26T14:36:38Z</published>
+    <updated>2017-10-26T14:36:38Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/accelang/compare/7bbf1d791e...471805672e"/>
+    <title type="html">wraith13 pushed to master in wraith13/accelang</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/accelang/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/accelang&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/accelang&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/accelang/commit/471805672e6a2c843f5b37d20ba6757f385ca6a7&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;4718056&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;memo&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4dd.png&quot; ios-version=&quot;6.0&quot;&gt;📝&lt;/g-emoji&gt; コンセプト ( WIP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-26T14:36:38Z&quot;&gt;Oct 26, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6768233688</id>
+    <published>2017-10-26T08:05:48Z</published>
+    <updated>2017-10-26T08:05:48Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/bcdd92ab1a...ff35c87794"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/ff35c8779476a93041d1b17cbd5096ca0223fbce&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;ff35c87&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xamarin.Forms の更新( UWP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-26T08:05:48Z&quot;&gt;Oct 26, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/6765296045</id>
+    <published>2017-10-25T17:25:55Z</published>
+    <updated>2017-10-25T17:25:55Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/accelang/compare/master"/>
+    <title type="html">wraith13 created a branch master at wraith13/accelang</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;d-flex flex-items-baseline border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; created a branch &lt;a href=&quot;/wraith13/accelang/tree/master&quot; class=&quot;css-truncate css-truncate-target branch-name v-align-middle&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target: branch link&quot; title=&quot;master&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;/wraith13/accelang&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/accelang&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-25T17:25:55Z&quot;&gt;Oct 25, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/6765243361</id>
+    <published>2017-10-25T17:14:45Z</published>
+    <updated>2017-10-25T17:14:45Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/accelang"/>
+    <title type="html">wraith13 created a repository wraith13/accelang</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;d-flex flex-items-baseline border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; created a repository &lt;a href=&quot;/wraith13/accelang&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:repository&quot; title=&quot;wraith13/accelang&quot; rel=&quot;noreferrer&quot;&gt;wraith13/accelang&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-25T17:14:45Z&quot;&gt;Oct 26, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6764965570</id>
+    <published>2017-10-25T16:18:28Z</published>
+    <updated>2017-10-25T16:18:28Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/073f2d191b...bcdd92ab1a"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/bcdd92ab1ab9e0fdb10d54c793f8c0f9f2322e37&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;bcdd92a&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( Droid.Wear )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-25T16:18:28Z&quot;&gt;Oct 25, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6763546530</id>
+    <published>2017-10-25T12:01:22Z</published>
+    <updated>2017-10-25T12:01:22Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/f41f2d14e7...073f2d191b"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/073f2d191bc549d8d7c3ba09cde9ac7e8ea08cf0&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;073f2d1&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( Android )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-25T12:01:22Z&quot;&gt;Oct 25, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6761334635</id>
+    <published>2017-10-25T01:03:43Z</published>
+    <updated>2017-10-25T01:03:43Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/30770bdb6f...f41f2d14e7"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/f41f2d14e724ce755eaf8796d037972daa4fb265&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;f41f2d1&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( App )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-25T01:03:43Z&quot;&gt;Oct 25, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6758802588</id>
+    <published>2017-10-24T15:11:55Z</published>
+    <updated>2017-10-24T15:11:55Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/33e893cff7...30770bdb6f"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/30770bdb6ff2a40434fc34fe169117d6d31f5536&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;30770bd&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( Domain )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-24T15:11:55Z&quot;&gt;Oct 24, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6757992202</id>
+    <published>2017-10-24T12:53:04Z</published>
+    <updated>2017-10-24T12:53:04Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/svcicon/compare/55609e26b3...3842296fed"/>
+    <title type="html">wraith13 pushed to master in wraith13/svcicon</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/svcicon/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/svcicon&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/svcicon&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/svcicon/commit/3842296fed66cb96f2c40a8fef0f9b5d01b70496&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;3842296&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;art&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f3a8.png&quot; ios-version=&quot;6.0&quot;&gt;🎨&lt;/g-emoji&gt; 半径が未指定だったアイコンリソースのソースに半径を指定
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-24T12:53:04Z&quot;&gt;Oct 24, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6756061920</id>
+    <published>2017-10-24T04:45:20Z</published>
+    <updated>2017-10-24T04:45:20Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wraith13.github.io/compare/0a8800cbb5...f671219abc"/>
+    <title type="html">wraith13 pushed to master in wraith13/wraith13.github.io</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/wraith13.github.io/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/wraith13.github.io&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wraith13.github.io&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/wraith13.github.io/commit/f671219abc3956173b3b74b29f52eb10e13cd552&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;f671219&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;hammer_and_wrench&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f6e0.png&quot; ios-version=&quot;9.1&quot;&gt;🛠&lt;/g-emoji&gt; polygon にも roundpattern に行ったもろもろの修正を適用
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-24T04:45:20Z&quot;&gt;Oct 24, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6753752475</id>
+    <published>2017-10-23T17:28:17Z</published>
+    <updated>2017-10-23T17:28:17Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wraith13.github.io/compare/bbab09381a...0a8800cbb5"/>
+    <title type="html">wraith13 pushed to master in wraith13/wraith13.github.io</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/wraith13.github.io/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/wraith13.github.io&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wraith13.github.io&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/wraith13.github.io/commit/0a8800cbb5abecd856ec77346b3d46cb634717f3&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;0a8800c&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;recycle&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/267b.png&quot; ios-version=&quot;6.0&quot;&gt;♻️&lt;/g-emoji&gt; roundpattern の不必要な canvas.remove(); の除去
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-23T17:28:17Z&quot;&gt;Oct 23, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6752121985</id>
+    <published>2017-10-23T12:23:13Z</published>
+    <updated>2017-10-23T12:23:13Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wraith13.github.io/compare/9f8849a69e...bbab09381a"/>
+    <title type="html">wraith13 pushed to master in wraith13/wraith13.github.io</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/wraith13.github.io/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/wraith13.github.io&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wraith13.github.io&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/wraith13.github.io/commit/bbab09381a3d9461deeeacb61f28358f49078db8&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;bbab093&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;hammer_and_wrench&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f6e0.png&quot; ios-version=&quot;9.1&quot;&gt;🛠&lt;/g-emoji&gt; roundpattern の不必要に JavaScript 内に埋め込まれてる HTML を部分を生の HTML へ
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-23T12:23:13Z&quot;&gt;Oct 23, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6750007407</id>
+    <published>2017-10-23T01:13:31Z</published>
+    <updated>2017-10-23T01:13:31Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/61a824d090...33e893cff7"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/33e893cff7ed55389a6f949742dc207166d5c123&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;33e893c&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xamarin.Android.Wear の更新( Droid.Wear )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-23T01:13:31Z&quot;&gt;Oct 23, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6748558265</id>
+    <published>2017-10-22T08:39:08Z</published>
+    <updated>2017-10-22T08:39:08Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/b5d27b2a55...61a824d090"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/61a824d0904dbd5b0591070ce10a60f9fe878979&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;61a824d&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xam.Plugins.Settings の更新( UWP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-22T08:39:08Z&quot;&gt;Oct 22, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6747655541</id>
+    <published>2017-10-21T18:57:33Z</published>
+    <updated>2017-10-21T18:57:33Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wraith13.github.io/compare/631a538e36...9f8849a69e"/>
+    <title type="html">wraith13 pushed to master in wraith13/wraith13.github.io</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/wraith13.github.io/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/wraith13.github.io&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wraith13.github.io&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/wraith13.github.io/commit/9f8849a69eca9da50c173653616e2cecd668c592&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;9f8849a&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;hammer_and_wrench&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f6e0.png&quot; ios-version=&quot;9.1&quot;&gt;🛠&lt;/g-emoji&gt; roundpattern のサンプルリンクをリンク生成コードとデータに分割
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-21T18:57:33Z&quot;&gt;Oct 21, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6746681194</id>
+    <published>2017-10-21T06:09:40Z</published>
+    <updated>2017-10-21T06:09:40Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/74114648c4...b5d27b2a55"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/b5d27b2a559c45d1e4bd6dc0b20022e043b6ef87&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;b5d27b2&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; NETStandard.Library の更新( iOS )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-21T06:09:40Z&quot;&gt;Oct 21, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6745266553</id>
+    <published>2017-10-20T18:51:12Z</published>
+    <updated>2017-10-20T18:51:12Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/49b2422472...74114648c4"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/74114648c4c6c004803f1de129fd1dbb561132c6&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;7411464&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; NETStandard.Library の更新( Droid.Wear )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-20T18:51:12Z&quot;&gt;Oct 20, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6743569469</id>
+    <published>2017-10-20T12:40:35Z</published>
+    <updated>2017-10-20T12:40:35Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/402fd15154...49b2422472"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/49b2422472ee119c4f94081874691e8913de6995&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;49b2422&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; NETStandard.Library の更新( App )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-20T12:40:35Z&quot;&gt;Oct 20, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6738444317</id>
+    <published>2017-10-19T13:21:20Z</published>
+    <updated>2017-10-19T13:21:20Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/svcicon/compare/f3c308f73b...55609e26b3"/>
+    <title type="html">wraith13 pushed to master in wraith13/svcicon</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/svcicon/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/svcicon&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/svcicon&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/svcicon/commit/55609e26b3db375210073117dc1f36d813f19a75&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;55609e2&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;art&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f3a8.png&quot; ios-version=&quot;6.0&quot;&gt;🎨&lt;/g-emoji&gt; アイコンリソースをリンク生成コードとデータに分割
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-19T13:21:20Z&quot;&gt;Oct 19, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6736505688</id>
+    <published>2017-10-19T04:35:21Z</published>
+    <updated>2017-10-19T04:35:21Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/svcicon/compare/ad51d2c6e2...f3c308f73b"/>
+    <title type="html">wraith13 pushed to master in wraith13/svcicon</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/svcicon/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/svcicon&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/svcicon&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/svcicon/commit/f3c308f73b0196dcba474c35e23e0550fa57a6eb&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;f3c308f&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;art&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f3a8.png&quot; ios-version=&quot;6.0&quot;&gt;🎨&lt;/g-emoji&gt; アイコンリソースの各ソースにタイトルを設定
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-19T04:35:21Z&quot;&gt;Oct 19, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6733617014</id>
+    <published>2017-10-18T15:20:18Z</published>
+    <updated>2017-10-18T15:20:18Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/d58ab6d2ca...402fd15154"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/402fd151548a1bc5b5e317bdbcec54c0071da2a1&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;402fd15&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; NETStandard.Library の更新( App )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-18T15:20:18Z&quot;&gt;Oct 18, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6731007966</id>
+    <published>2017-10-18T05:01:35Z</published>
+    <updated>2017-10-18T05:01:35Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/0616146428...d58ab6d2ca"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/d58ab6d2cafc7d8cbffab6086345f391f1f09e5b&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;d58ab6d&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;dizzy&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4ab.png&quot; ios-version=&quot;6.0&quot;&gt;💫&lt;/g-emoji&gt; Xamarin.Forms の更新( UWP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-18T05:01:35Z&quot;&gt;Oct 18, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6728273994</id>
+    <published>2017-10-17T16:11:26Z</published>
+    <updated>2017-10-17T16:11:26Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/f1d5b2bd30...0616146428"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/0616146428db32e8bcc17b9c6f085f8ba0459ac8&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;0616146&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  Microsoft.Azure.Mobile の更新( iOS )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T16:11:26Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/6727172738</id>
+    <published>2017-10-17T12:43:40Z</published>
+    <updated>2017-10-17T12:43:40Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wandbox-vscode/tree/v2.2.2"/>
+    <title type="html">wraith13 created a tag v2.2.2 at wraith13/wandbox-vscode</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;d-flex flex-items-baseline border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; created a tag &lt;a href=&quot;/wraith13/wandbox-vscode/tree/v2.2.2&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:tag&quot; title=&quot;v2.2.2&quot; rel=&quot;noreferrer&quot;&gt;v2.2.2&lt;/a&gt; at &lt;a href=&quot;/wraith13/wandbox-vscode&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:CreateEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wandbox-vscode&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T12:43:40Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:ReleaseEvent/6727172725</id>
+    <published>2017-10-17T12:43:40Z</published>
+    <updated>2017-10-17T12:43:40Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wandbox-vscode/releases/tag/v2.2.2"/>
+    <title type="html">wraith13 released 📍 v2.2.2 at wraith13/wandbox-vscode</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- release --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:ReleaseEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; released &lt;a href=&quot;/wraith13/wandbox-vscode/releases/tag/v2.2.2&quot; data-ga-click=&quot;News feed, event click, Event click type:ReleaseEvent target:release&quot; rel=&quot;noreferrer&quot;&gt;📍 v2.2.2&lt;/a&gt; at &lt;a href=&quot;/wraith13/wandbox-vscode&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:ReleaseEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wandbox-vscode&lt;/a&gt;
+      &lt;ul&gt;
+          &lt;li class=&quot;list-style-none mt-1&quot;&gt;
+            &lt;span class=&quot;f6 text-gray-light&quot;&gt;
+              &lt;svg aria-hidden=&quot;true&quot; class=&quot;octicon octicon-cloud-download&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+              &lt;blockquote&gt;&lt;a href=&quot;/wraith13/wandbox-vscode/archive/v2.2.2.zip&quot; class=&quot;link-gray&quot; data-ga-click=&quot;News feed, event click, Event click type:ReleaseEvent target:asset&quot; rel=&quot;nofollow noreferrer&quot;&gt;Source code (zip)&lt;/a&gt;&lt;/blockquote&gt;
+            &lt;/span&gt;
+          &lt;/li&gt;
+
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T12:43:40Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6727152573</id>
+    <published>2017-10-17T12:39:27Z</published>
+    <updated>2017-10-17T12:39:27Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/wandbox-vscode/compare/4cbfedc8f9...3243ab94df"/>
+    <title type="html">wraith13 pushed to master in wraith13/wandbox-vscode</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/wandbox-vscode/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/wandbox-vscode&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/wandbox-vscode&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/wandbox-vscode/commit/3243ab94df39a3bc5e726b64029f83f2c333bf46&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;3243ab9&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  &lt;g-emoji alias=&quot;round_pushpin&quot; fallback-src=&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f4cd.png&quot; ios-version=&quot;6.0&quot;&gt;📍&lt;/g-emoji&gt; v2.2.2
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T12:39:27Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6725320878</id>
+    <published>2017-10-17T04:34:08Z</published>
+    <updated>2017-10-17T04:34:08Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/4d8a7f00c1...f1d5b2bd30"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/f1d5b2bd30e2b5708971655ebfb3b211ec929d29&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;f1d5b2b&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                  Microsoft.Azure.Mobile の更新( UWP )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T04:34:08Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/6724853736</id>
+    <published>2017-10-17T01:16:17Z</published>
+    <updated>2017-10-17T01:16:17Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wraith13/keep.grass/compare/e06dcaf89e...4d8a7f00c1"/>
+    <title type="html">wraith13 pushed to master in wraith13/keep.grass</title>
+    <author>
+      <name>wraith13</name>
+      <email></email>
+      <uri>https://github.com/wraith13</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/645907?s=30&amp;v=4"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;div class=&quot;d-flex border-bottom border-gray-light py-3&quot;&gt;
+  &lt;a href=&quot;/wraith13&quot; rel=&quot;noreferrer&quot;&gt;&lt;img alt=&quot;@wraith13&quot; class=&quot;avatar mr-3&quot; height=&quot;32&quot; src=&quot;https://avatars2.githubusercontent.com/u/645907?s=64&amp;amp;v=4&quot; width=&quot;32&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;d-flex flex-justify-between flex-items-baseline width-full&quot;&gt;
+    &lt;div&gt;
+      &lt;a href=&quot;/wraith13&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:actor&quot; rel=&quot;noreferrer&quot;&gt;wraith13&lt;/a&gt; pushed to &lt;a href=&quot;/wraith13/keep.grass/tree/master&quot; class=&quot;branch-name&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:branch&quot; rel=&quot;noreferrer&quot;&gt;master&lt;/a&gt; in &lt;a href=&quot;/wraith13/keep.grass&quot; class=&quot;link-gray-dark text-bold&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:repo&quot; rel=&quot;noreferrer&quot;&gt;wraith13/keep.grass&lt;/a&gt;
+        &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;d-flex flex-items-baseline&quot;&gt;
+              &lt;span title=&quot;wraith13&quot;&gt;
+                &lt;img alt=&quot;@wraith13&quot; class=&quot;mr-1&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/645907?s=32&amp;amp;v=4&quot; width=&quot;16&quot;&gt;
+              &lt;/span&gt;
+              &lt;code&gt;&lt;a href=&quot;/wraith13/keep.grass/commit/4d8a7f00c1b03929cf49b5822b4f4f16264f24c1&quot; class=&quot;mr-1&quot; data-ga-click=&quot;News feed, event click, Event click type:PushEvent target:sha&quot; rel=&quot;noreferrer&quot;&gt;4d8a7f0&lt;/a&gt;&lt;/code&gt;
+              &lt;div class=&quot;message&quot;&gt;
+                &lt;blockquote&gt;
+                   Microsoft.Azure.Mobile の更新( Android )
+                &lt;/blockquote&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;f6 text-gray-light no-wrap ml-4&quot;&gt;
+      &lt;relative-time datetime=&quot;2017-10-17T01:16:17Z&quot;&gt;Oct 17, 2017&lt;/relative-time&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>
