@@ -35,29 +35,6 @@ namespace keep.grass.Domain
             {
                 public string Type { get; set; }
                 public string Value { get; set; }
-                public string Svg
-                {
-                    get
-                    {
-                        var start = Value.IndexOf("<svg");
-                        var end = Value.IndexOf("</svg>");
-                        if (0 <= start && 0 <= end)
-                        {
-                            var source = Value.Substring(start, end + "</svg>".Length - start);
-                            if (source.IndexOf("xmlns=\"http://www.w3.org/2000/svg\"") < 0)
-                            {
-                                source = source.Replace("<svg", "<svg xmlns=\"http://www.w3.org/2000/svg\"");
-                            }
-                            return source;
-                        }
-                        return null;
-                    }
-                }
-
-                public string OctIcon => Svg
-                    .Split(new[] { ' ', '=', '"', })
-                    .Where(i => i.StartsWith("octicon-"))
-                    .FirstOrDefault();
 
                 public string SingleLineValue => Regex.Replace(Value, "[\r\n]+", " ");
 
@@ -113,82 +90,87 @@ namespace keep.grass.Domain
 
                 public string EventTypeName => Regex.Match(Id, "([A-Za-z0-9]+Event)").Value;
 
-                /*
                 public bool IsContribution
                 {
                     get
                     {
-                        var Event = EventTypeName;
-                        return !string.IsNullOrWhiteSpace(Event) &&
-                            Event != "WatchEvent" &&
-                            Event != "IssueCommentEvent" &&
-                            Event != "GollumEvent";
+                        Debug.WriteLine($"EVENT: {EventTypeName}");
+                        switch (EventTypeName)
+                        {
+                        //  現状、まだ確認がとれてないモノをコメントアウトしている
+                        case "GollumEvent":
+                            return false;
+                        case "PullRequestReviewCommentEvent":
+                            return true;
+                        case "IssueCommentEvent":
+                            return false;
+                        case "CreateEvent":
+                            return 0 <= Title.IndexOf(" created a repository ");
+                        case "ForkEvent":
+                            return true;
+                        case "DeleteEvent":
+                            return false;
+                        case "PushEvent":
+                            return true;
+                        case "PullRequestEvent":
+                            return true; // false の場合もある？
+                        case "IssuesEvent":
+                            return
+                                0 <= Title.IndexOf(" opened an issue in ") ||
+                                0 <= Title.IndexOf(" opened issue ") ;
+                        case "MemberEvent":
+                            return false;
+                        case "WatchEvent":
+                            return false;
+                        }
+                        Debug.WriteLine($"IsContribution({EventTypeName}): UNKNOWN EVENT!!!");
+                        return false;
                     }
                 }
-                */
-
-                public bool IsContribution
+                public string OctIcon
                 {
                     get
                     {
-                        var OctIcon = Content.OctIcon;
-                        var Tag = "octicon-";
-                        if (OctIcon.StartsWith(Tag))
+                        switch (EventTypeName)
                         {
-                            Debug.WriteLine($"EVENT: {EventTypeName}");
-                            string CoreName = OctIcon.Substring(Tag.Length);
-                            switch (CoreName)
-                            {
-                            //  現状、まだ確認がとれてないモノをコメントアウトしている
-                            case "book":
-                                //  GollumEvent
-                                return false;
-                            case "comment-discussion":
-                                //  PullRequestReviewCommentEvent
-                                //  IssueCommentEvent
-                                return false; // true の場合もある？
-                            case "git-branch":
-                                //  CreateEvent ( created branch ) の場合は false
-                                //  ForkEvent ( forked branch ) の場合は true
-                                //  DeleteEvent ( delete branch ) の場合は false
-                                //  ...これらはたまたまそうなるだけで実際には master ブランチかどうかが肝だと思われる
-                                return "ForkEvent" == EventTypeName;
-                            case "git-commit":
-                                //  PushEvent
-                                //  master ブランチへの commit の場合にのみ true
-                                return 0 <= Title.IndexOf(" pushed to master ");
-                            //case "git-compare":
-                            //  return true;
-                            //case "git-merge":
-                            //  return true;
-                            case "git-pull-request":
-                                //  PullRequestEvent
-                                return true; // false の場合もある？
-                            case "issue-closed":
-                                //  IssuesEvent
-                                return false;
-                            case "issue-opened":
-                                //  IssuesEvent
-                                return true;
-                            //case "issue-reopened":
-                            //  return true;
-                            //case "mark-github":
-                            //  return true;
-                            case "person":
-                                //  MemberEvent
-                                return false;
-                            case "repo":
-                                return true;
-                            case "star":
-                                //  WatchEvent
-                                return false;
-                            case "tag":
-                                //  CreateEvent
-                                return false;
-                            }
+                            case "GollumEvent":
+                                return "book";
+                            case "PullRequestReviewCommentEvent":
+                                return "comment-discussion";
+                            case "IssueCommentEvent":
+                                return "comment-discussion";
+                            case "CreateEvent":
+                                return "git-branch";
+                            case "ForkEvent":
+                                return "git-branch";
+                            case "DeleteEvent":
+                                return "git-branch";
+                            case "PushEvent":
+                                return "git-commit";
+                            case "PullRequestEvent":
+                                return "git-pull-request";
+                            case "IssuesEvent":
+                                return
+                                    (
+                                        0 <= Title.IndexOf(" opened an issue in ") ||
+                                        0 <= Title.IndexOf(" opened issue ")
+                                    ) ? "issue-opened" :
+                                    (
+                                        (
+                                            0 <= Title.IndexOf(" reopened an issue in ") ||
+                                            0 <= Title.IndexOf(" reopened issue ")
+                                        ) ? "issue-reopened" :
+                                        "issue-closed"
+                                    );
+                            case "MemberEvent":
+                                return "person";
+                            case "WatchEvent":
+                                return "star";
+                            case "ReleaseEvent":
+                                return "book";
                         }
-                        Debug.WriteLine($"IsContribution({OctIcon}): UNKNOWN EVENT!!!");
-                        return false;
+                        Debug.WriteLine($"OctIcon({EventTypeName}): UNKNOWN EVENT!!!");
+                        return null;
                     }
                 }
             }

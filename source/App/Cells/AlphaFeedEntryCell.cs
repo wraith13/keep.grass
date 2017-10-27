@@ -35,7 +35,7 @@ namespace keep.grass.App
             set
             {
                 base.Entry = value;
-                ImageSource = Root.GetOcticonImageSource(Entry.Content.OctIcon);
+                ImageSource = Root.GetOcticonImageSource(Entry.OctIcon);
                 TitleLabel.Text = Entry.Title;
                 UpdatedLabel.Text = Domain.ToString(Entry.Updated);
                 DetailStack.Children.Clear();

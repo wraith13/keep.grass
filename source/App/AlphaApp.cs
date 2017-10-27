@@ -202,7 +202,7 @@ namespace keep.grass.App
         public virtual ImageSource GetOcticonImageSource(string Name)
         {
             var Tag = "octicon-";
-            if (Name.StartsWith(Tag))
+            if (Name?.StartsWith(Tag) ?? false)
             {
                 return GetOcticonImageSource(Name.Substring(Tag.Length));
             }
