@@ -155,12 +155,6 @@
     <Reference Include="Microsoft.Azure.Mobile.Analytics">
       <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.16.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Settings.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Settings">
-      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
-    </Reference>
     <Reference Include="SkiaSharp">
       <HintPath>..\packages\SkiaSharp.1.59.2\lib\MonoAndroid\SkiaSharp.dll</HintPath>
     </Reference>
@@ -190,6 +184,16 @@
       <HintPath>..\packages\Xamarin.Forms.3.0.0.446417\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.4.0.0.7\lib\monoandroid44\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Java.Interop" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
