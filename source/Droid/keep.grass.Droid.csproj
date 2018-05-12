@@ -262,7 +262,7 @@
   <Import Project="..\packages\Xamarin.Firebase.Analytics.Impl.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets" Condition="Exists('..\packages\Xamarin.Firebase.Analytics.Impl.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Analytics.Impl.targets')" />
   <Import Project="..\packages\Xamarin.Firebase.Analytics.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.Analytics.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Analytics.targets')" />
   <Import Project="..\packages\Xamarin.Firebase.Messaging.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Messaging.targets" Condition="Exists('..\packages\Xamarin.Firebase.Messaging.42.1001.0\build\MonoAndroid70\Xamarin.Firebase.Messaging.targets')" />
-  <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.74863\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.74863\build\netstandard1.0\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Forms.3.0.0.446417\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.0.0.446417\build\netstandard2.0\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
 </Project>
