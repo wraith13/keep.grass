@@ -6,9 +6,9 @@
 
 |platform|build status|
 |-|-|
-|iOS|![Visual Studio Mobile Center Badge](https://build.mobile.azure.com/v0.1/apps/af0849f1-9407-463a-b75d-6c5f52b25bb8/branches/master/badge)|
-|Android|![Visual Studio Mobile Center Badge](https://build.mobile.azure.com/v0.1/apps/6ffce19d-f967-478a-8cfc-e6a8a5fc5a08/branches/master/badge)|
-|UWP|![Visual Studio Mobile Center Badge](https://build.mobile.azure.com/v0.1/apps/23ea7a36-fb5e-44c7-b68c-96556a5b498a/branches/master/badge)|
+|iOS|[![Build status](https://build.appcenter.ms/v0.1/apps/af0849f1-9407-463a-b75d-6c5f52b25bb8/branches/master/badge)](https://appcenter.ms)|
+|Android|[![Build status](https://build.appcenter.ms/v0.1/apps/6ffce19d-f967-478a-8cfc-e6a8a5fc5a08/branches/master/badge)](https://appcenter.ms)|
+|UWP|[![Build status](https://build.appcenter.ms/v0.1/apps/23ea7a36-fb5e-44c7-b68c-96556a5b498a/branches/master/badge)](https://appcenter.ms)|
 
 ## アプリストア
 
