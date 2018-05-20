@@ -24,11 +24,12 @@ namespace keep.grass.Domain
 
                 public static Link Parse(XElement Node)
                 {
-                    var result = new Link();
-                    result.Type = Node.Attribute("type").Value;
-                    result.Rel = Node.Attribute("rel").Value;
-                    result.Href = Node.Attribute("href").Value;
-                    return result;
+                    return new Link
+                    {
+                        Type = Node.Attribute("type").Value,
+                        Rel = Node.Attribute("rel").Value,
+                        Href = Node.Attribute("href").Value
+                    };
                 }
             }
             public class Content
@@ -61,10 +62,11 @@ namespace keep.grass.Domain
 
                 public static Content Parse(XElement Node)
                 {
-                    var result = new Content();
-                    result.Type = Node.Attribute("type").Value;
-                    result.Value = Node.Value;
-                    return result;
+                    return new Content
+                    {
+                        Type = Node.Attribute("type").Value,
+                        Value = Node.Value
+                    };
                 }
             }
             public class Entry
@@ -78,14 +80,15 @@ namespace keep.grass.Domain
 
                 public static Entry Parse(XElement Node)
                 {
-                    var result = new Entry();
-                    result.Id = Node.LocalElement("id").Value;
-                    result.Published = DateTime.Parse(Node.LocalElement("published").Value);
-                    result.Updated = DateTime.Parse(Node.LocalElement("updated").Value);
-                    result.LinkList = Node.LocalElements("link").Select(i => Link.Parse(i)).ToList();
-                    result.Title = Node.LocalElement("title").Value;
-                    result.Content = Content.Parse(Node.LocalElement("content"));
-                    return result;
+                    return new Entry
+                    {
+                        Id = Node.LocalElement("id").Value,
+                        Published = DateTime.Parse(Node.LocalElement("published").Value),
+                        Updated = DateTime.Parse(Node.LocalElement("updated").Value),
+                        LinkList = Node.LocalElements("link").Select(i => Link.Parse(i)).ToList(),
+                        Title = Node.LocalElement("title").Value,
+                        Content = Content.Parse(Node.LocalElement("content"))
+                    };
                 }
 
                 public string EventTypeName => Regex.Match(Id, "([A-Za-z0-9]+Event)").Value;
@@ -183,13 +186,14 @@ namespace keep.grass.Domain
 
             public static Feed Parse(XElement Root)
             {
-                var result = new Feed();
-                result.Id = Root.LocalElement("id").Value;
-                result.Title = Root.LocalElement("title").Value;
-                result.Updated = DateTime.Parse(Root.LocalElement("updated").Value);
-                result.LinkList = Root.LocalElements("link").Select(i => Link.Parse(i)).ToList();
-                result.EntryList = Root.LocalElements("entry").Select(i => Entry.Parse(i)).ToList();
-                return result;
+                return new Feed
+                {
+                    Id = Root.LocalElement("id").Value,
+                    Title = Root.LocalElement("title").Value,
+                    Updated = DateTime.Parse(Root.LocalElement("updated").Value),
+                    LinkList = Root.LocalElements("link").Select(i => Link.Parse(i)).ToList(),
+                    EntryList = Root.LocalElements("entry").Select(i => Entry.Parse(i)).ToList()
+                };
             }
         }
         public class SearchResult<T>
