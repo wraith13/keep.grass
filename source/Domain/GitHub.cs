@@ -283,40 +283,40 @@ namespace keep.grass.Domain
             }
         }
 
-        static private string BaseUrl = "https://github.com";
-        static private string BaseApiUrl = "https://api.github.com";
+        private static readonly string BaseUrl = "https://github.com";
+        private static readonly string BaseApiUrl = "https://api.github.com";
 
-        static private string ProfileUrlFormat = BaseUrl + "/{0}";
+        private static readonly string ProfileUrlFormat = BaseUrl + "/{0}";
         static public string GetProfileUrl(string Id)
         {
             return String.Format(ProfileUrlFormat, Id);
         }
 
-        static private string UserUrlFormat = BaseApiUrl + "/users/{0}";
+        private static readonly string UserUrlFormat = BaseApiUrl + "/users/{0}";
         static public string GetUserUrl(string Id)
         {
             return String.Format(UserUrlFormat, Id);
         }
 
-        static private string AcitivityUrlFormat = BaseUrl + "/{0}?tab=activity";
+        private static readonly string AcitivityUrlFormat = BaseUrl + "/{0}?tab=activity";
         static public string GetAcitivityUrl(string Id)
         {
             return String.Format(AcitivityUrlFormat, Id);
         }
 
-        static private string AtomUrlFormat = BaseUrl + "/{0}.atom";
+        private static readonly string AtomUrlFormat = BaseUrl + "/{0}.atom";
         static public string GetAtomUrl(string Id)
         {
             return String.Format(AtomUrlFormat, Id);
         }
 
-        static private string IconUrlFormat = BaseUrl + "/{0}.png";
+        private static readonly string IconUrlFormat = BaseUrl + "/{0}.png";
         static public string GetIconUrl(string Id)
         {
             return String.Format(IconUrlFormat, Id);
         }
 
-        static private string SearchUsersUrlFormat = BaseApiUrl + "/search/users?q={0}";
+        private static readonly string SearchUsersUrlFormat = BaseApiUrl + "/search/users?q={0}";
         static public string GetSearchUsersUrl(string Query)
         {
             return String.Format
