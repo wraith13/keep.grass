@@ -166,6 +166,9 @@
     <PackageReference Include="Microsoft.Azure.Mobile.Push">
       <Version>0.17.1</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Bcl.Build">
+      <Version>1.0.21</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.4</Version>
     </PackageReference>
