@@ -153,7 +153,12 @@
       <Name>keep.grass.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup> <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"> <HintPath>..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\ref\netstandard.dll</HintPath> <Private>True</Private> </Reference> </ItemGroup>
+  <ItemGroup>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\ref\netstandard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Mobile">
       <Version>0.17.1</Version>
@@ -180,10 +185,10 @@
       <Version>14332.0.2</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
-      <Version>1.60.0</Version>
+      <Version>1.60.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>1.60.0</Version>
+      <Version>1.60.1</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>2.0.2</Version>
