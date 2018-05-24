@@ -159,12 +159,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.2.0.2\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageCircle.Forms.Plugin.Android">
-      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.2.0.2\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll</HintPath>
-    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\packages\Xamarin.Forms.3.0.0.482510\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>False</Private>
@@ -196,6 +190,9 @@
     <Reference Include="SkiaSharp.Views.Forms">
       <HintPath>..\packages\SkiaSharp.Views.Forms.1.60.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin">
+      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.3.0.0.5\lib\monoandroid71\ImageCircle.Forms.Plugin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
