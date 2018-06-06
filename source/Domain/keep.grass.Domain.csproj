@@ -40,6 +40,7 @@
     <Compile Include="AlphaDomain.cs" />
     <Compile Include="AlphaDomainFactory.cs" />
     <Compile Include="AlphaImageProxy.cs" />
+    <Compile Include="RuyiJinguBang\ObjectEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

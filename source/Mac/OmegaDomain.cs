@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Foundation;
 using AppKit;
+using RuyiJinguBang;
 using keep.grass.Domain;
 
 namespace keep.grass.Mac
@@ -13,14 +14,9 @@ namespace keep.grass.Mac
         {
             return await Task.Factory.StartNew<byte[]>
             (
-                () =>
-                {
-                    using (var Url2 = NSUrl.FromString(Url))
-                    using (var Data = NSData.FromUrl(Url2))
-                    {
-                        return Data.ToArray();
-                    }
-                }
+                () => NSUrl.FromString(Url)
+                    .Using(Url2 => NSData.FromUrl(Url2))
+                    .Using(Data => Data.ToArray())
             );
         }
 

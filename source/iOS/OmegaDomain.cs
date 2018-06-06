@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Foundation;
 using UIKit;
+using RuyiJinguBang;
 using keep.grass.Domain;
 using WatchConnectivity;
 
@@ -14,14 +15,9 @@ namespace keep.grass.iOS
         {
             return await Task.Factory.StartNew<byte[]>
             (
-                () =>
-                {
-                    using (var Url2 = NSUrl.FromString(Url))
-                    using (var Data = NSData.FromUrl(Url2))
-                    {
-                        return Data.ToArray();
-                    }
-                }
+                () => NSUrl.FromString(Url)
+                    .Using(Url2 => NSData.FromUrl(Url2))
+                    .Using(Data => Data.ToArray())
             );
         }
 

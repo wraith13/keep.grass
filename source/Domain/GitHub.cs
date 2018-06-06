@@ -332,10 +332,8 @@ namespace keep.grass.Domain
 
         static public Feed ParseFeed(byte[] AtomRawBytes)
         {
-            using (var stream = new MemoryStream(AtomRawBytes))
-            {
-                return Feed.Parse(XDocument.Load(stream).Root);
-            }
+            return new MemoryStream(AtomRawBytes)
+                .Using(stream => Feed.Parse(XDocument.Load(stream).Root));
         }
     }
 }
