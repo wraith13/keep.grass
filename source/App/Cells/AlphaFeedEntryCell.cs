@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using RuyiJinguBang;
 using keep.grass.Domain;
 

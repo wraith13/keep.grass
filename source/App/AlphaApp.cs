@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
-using Microsoft.Azure.Mobile.Push;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
 using keep.grass.Domain;
 
 namespace keep.grass.App
@@ -89,7 +89,7 @@ namespace keep.grass.App
             base.OnStart();
 
             // Mobile Center 初期化処理。(もしビルドエラーになるなら取り敢えず「Properties.KeySample.Mobi略」にすれば通る)
-            MobileCenter.Start(
+            AppCenter.Start(
                 appSecret:
                     $"ios={keep.grass.Properties.Key.MobileCenterSecretIos};"
                     + $"android={keep.grass.Properties.Key.MobileCenterSecretAndroid};"

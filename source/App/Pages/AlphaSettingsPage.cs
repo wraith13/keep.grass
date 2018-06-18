@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
-using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.AppCenter.Analytics;
 using RuyiJinguBang;
 using keep.grass.Domain;
 
