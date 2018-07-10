@@ -185,10 +185,10 @@
       <Version>14332.0.2</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
-      <Version>1.60.1</Version>
+      <Version>1.60.2</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>1.60.1</Version>
+      <Version>1.60.2</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
