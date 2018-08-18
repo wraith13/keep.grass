@@ -10,6 +10,7 @@ TestResults/
 source/UWP/AppPackages
 /reference/private/
 /source/.vs/
+/private/
 
 # globs
 Makefile.in
