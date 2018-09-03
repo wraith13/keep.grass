@@ -162,18 +162,6 @@
     <Reference Include="Microsoft.AppCenter.Analytics">
       <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.7.0\lib\MonoAndroid403\Microsoft.AppCenter.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.60.2\lib\MonoAndroid\SkiaSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Android">
-      <HintPath>..\packages\SkiaSharp.Views.1.60.2\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.60.2\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>False</Private>
@@ -192,6 +180,18 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.60.3\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Android">
+      <HintPath>..\packages\SkiaSharp.Views.1.60.3\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\packages\SkiaSharp.Views.Forms.1.60.3\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
